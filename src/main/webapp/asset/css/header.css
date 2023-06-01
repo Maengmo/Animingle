@@ -4,6 +4,13 @@
   padding-bottom: 15px;
   font-family: "SUITE-Regular";
   font-weight: 600;
+  justify-content: center;
+}
+
+.navbar > div {
+	width: 1280px;
+	padding: 0;
+	margin: 0;
 }
 
 .main-logo {
@@ -26,8 +33,7 @@
 
 .material-symbols-outlined {
   color: #0256aa;
-  /* color: #f15a29; */
-  font-size: 30px;
+  font-size: 4rem !important;
 }
 
 .sub-navbar {
@@ -35,10 +41,17 @@
   padding-bottom: 15px;
 }
 
+.sub-navbar > div {
+	width: 840px;
+	margin: 0 auto;
+}
+
 .sub-navbar ul {
   list-style-type: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
 }
 
 .sub-navbar a {
@@ -47,18 +60,16 @@
   color: black;
   font-size: 18px;
   font-weight: 600;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 .sub-navbar a:hover {
   color: #f24822;
 }
 
-@media (max-width: 735px) {
-  .sub-navbar a {
-    margin-left: 5px;
-    margin-right: 5px;
+@media (max-width: 850px) {
+  .sub-navbar > div {
+  	width: 650px;
+  	margin: 0 auto;
     font-size: 16px;
   }
 
