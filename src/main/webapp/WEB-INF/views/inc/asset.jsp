@@ -7,6 +7,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="asset/css/styles.css" rel="stylesheet" />
     <link href="asset/css/header.css" rel="stylesheet" />
+    <link href="asset/css/footer.css" rel="stylesheet" />
+    <link href="asset/css/content.css" rel="stylesheet" />
     <!-- text CSS -->
     <link
       rel="stylesheet"
