@@ -173,6 +173,136 @@ INSERT INTO tblWagle VALUES (wg_seq.nextVal, 3, '도넛 방석 나눔해요!', '
 
 -- tblWagleComment(와글와글 댓글) --
 
+-- 일상
+-- 1 ~ 10
+insert into tblWagleComment values (wgc_seq.nextVal, 1, 'walnut456', TO_DATE('2023-06-01','YYYY-MM-DD'), '너무 귀여워요~~ 애기가 사랑스럽네요.');
+insert into tblWagleComment values (wgc_seq.nextVal, 1, 'almond123', TO_DATE('2023-06-01','YYYY-MM-DD'), '아이고 애기가 주인을 닮아서 그런지 너무 귀엽네요');
+insert into tblWagleComment values (wgc_seq.nextVal, 1, 'pecan890', TO_DATE('2023-06-02','YYYY-MM-DD'), '볼을 콱! 깨물어주고 싶어요!!');
+insert into tblWagleComment values (wgc_seq.nextVal, 2, 'walnut567', TO_DATE('2023-06-01','YYYY-MM-DD'), '주인 닮아서 너무 사랑스러워요! ');
+insert into tblWagleComment values (wgc_seq.nextVal, 2, 'almond234', TO_DATE('2023-06-02','YYYY-MM-DD'), '너무 부러워요. 우리 아이도 날 닮았으면 좋으련만');
+insert into tblWagleComment values (wgc_seq.nextVal, 3, 'chestnut901', TO_DATE('2023-06-01','YYYY-MM-DD'), '미쳤다 저장해도 되나요???');
+insert into tblWagleComment values (wgc_seq.nextVal, 3, 'iris678', TO_DATE('2023-06-02','YYYY-MM-DD'), '오마이갓 너무 사랑스러워요 보쌈해갈꺼에요');
+insert into tblWagleComment values (wgc_seq.nextVal, 3, 'pistachio345', TO_DATE('2023-06-03','YYYY-MM-DD'), '우리 강아지랑 바꿉시다');
+insert into tblWagleComment values (wgc_seq.nextVal, 4, 'ebony012', TO_DATE('2023-06-02','YYYY-MM-DD'), '제가 다 감동받았어요 당신은 진짜 멋있는 주인이에요');
+insert into tblWagleComment values (wgc_seq.nextVal, 4, 'chestnut789', TO_DATE('2023-06-02','YYYY-MM-DD'), '우리 뽀삐에게도 그대로 말해줘야겠어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 4, 'pecan456', TO_DATE('2023-06-03','YYYY-MM-DD'), '우리 아이가 쪼금 아픈데 얼른 기운차리고 힘냈으면 좋겠어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 5, 'iris234', TO_DATE('2023-06-02','YYYY-MM-DD'), '우리 애기들은 보석처럼 눈이 반짝반짝 빛나요');
+insert into tblWagleComment values (wgc_seq.nextVal, 5, 'pecan456', TO_DATE('2023-06-03','YYYY-MM-DD'), '우리 아이들이 말을 할 수 있다면 얼마나 좋을까요. 하고 싶은거 다 하게 해줬을 텐데');
+insert into tblWagleComment values (wgc_seq.nextVal, 6, 'umber012', TO_DATE('2023-06-03','YYYY-MM-DD'), '애기들의 행복을 위해서라면 뭐든지 할 수 있어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 6, 'iris234', TO_DATE('2023-06-04','YYYY-MM-DD'), '다들 사랑으로 키웁시다.!');
+insert into tblWagleComment values (wgc_seq.nextVal, 7, 'almond234', TO_DATE('2023-06-04','YYYY-MM-DD'), '그래서 전 항상 여행갈때 애기들도 데려가요');
+insert into tblWagleComment values (wgc_seq.nextVal, 7, 'ebony012', TO_DATE('2023-06-04','YYYY-MM-DD'), '아이들이 더 넓은 세상을 봤으면 좋겠어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 7, 'almond123', TO_DATE('2023-06-05','YYYY-MM-DD'), '우리 애기들 정말 쑥쑥 크더라구요 대박이에요');
+insert into tblWagleComment values (wgc_seq.nextVal, 8, 'walnut456', TO_DATE('2023-06-06','YYYY-MM-DD'), '보물이라는 말이 너무 인상깊네요');
+insert into tblWagleComment values (wgc_seq.nextVal, 8, 'clover123', TO_DATE('2023-06-06','YYYY-MM-DD'), '사랑아 애기해~!!!!!!!!!!!');
+insert into tblWagleComment values (wgc_seq.nextVal, 8, 'olive456', TO_DATE('2023-06-06','YYYY-MM-DD'), '우리 애기 웃는거 정말 귀여워요');
+insert into tblWagleComment values (wgc_seq.nextVal, 9, 'peacock789', TO_DATE('2023-06-06','YYYY-MM-DD'), '애기랑 추억을 많이 쌓아야될 것 같아요');
+insert into tblWagleComment values (wgc_seq.nextVal, 9, 'umber012', TO_DATE('2023-06-07','YYYY-MM-DD'), '추억이 방울방울');
+insert into tblWagleComment values (wgc_seq.nextVal, 10, 'lavender345', TO_DATE('2023-06-02','YYYY-MM-DD'), '진짜 쑥쑥 자라지 않나요?? 너무 대단해요');
+insert into tblWagleComment values (wgc_seq.nextVal, 10, 'ebony678', TO_DATE('2023-06-06','YYYY-MM-DD'), '일어날때마다 커있어요 무서워요');
+insert into tblWagleComment values (wgc_seq.nextVal, 10, 'pistachio901', TO_DATE('2023-06-07','YYYY-MM-DD'), '우리 애기는 커서 요리사가 될 거에요. 강아지라 실제로 될 순 없겠지만 그래도 노력은 해봤으면 좋겠어요');
+
+-- 11~20
+insert into tblWagleComment values (wgc_seq.nextVal, 11, 'fern890', TO_DATE('2023-06-06','YYYY-MM-DD'), '사랑해 미야옹~~!!.');
+insert into tblWagleComment values (wgc_seq.nextVal, 11, 'peridot123', TO_DATE('2023-06-06','YYYY-MM-DD'), '나도 우리 아지 사랑해');
+insert into tblWagleComment values (wgc_seq.nextVal, 11, 'straw456', TO_DATE('2023-06-07','YYYY-MM-DD'), '항상 자신감 넘치게!! 우리 나비 파이팅');
+insert into tblWagleComment values (wgc_seq.nextVal, 12, 'flamingo789', TO_DATE('2023-06-07','YYYY-MM-DD'), '우리 애기의 꿈이 무엇이든지 나는 응원할거에요');
+insert into tblWagleComment values (wgc_seq.nextVal, 12, 'ginger678', TO_DATE('2023-06-07','YYYY-MM-DD'), '우리 강아지가 원하는 건 내 양말을 훔쳐가는 것.');
+insert into tblWagleComment values (wgc_seq.nextVal, 12, 'iris901', TO_DATE('2023-06-08','YYYY-MM-DD'), '우리 멍멍이의 꿈은 멀지 궁금해');
+insert into tblWagleComment values (wgc_seq.nextVal, 13, 'hickory890', TO_DATE('2023-06-08','YYYY-MM-DD'), '우리 아이의 행복은 내 양말을 훔쳐가는 것');
+insert into tblWagleComment values (wgc_seq.nextVal, 13, 'olive456', TO_DATE('2023-06-09','YYYY-MM-DD'), '우리 아이의 행복은......... 뭘까..? 지금 아무 생각없어 보여요');
+insert into tblWagleComment values (wgc_seq.nextVal, 14, 'peacock789', TO_DATE('2023-06-10','YYYY-MM-DD'), '나도 강아지와 함께 탐험하고 싶어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 14, 'lavender345', TO_DATE('2023-06-10','YYYY-MM-DD'), '나도 후각이 뛰어났으면 얼마나 좋을까');
+insert into tblWagleComment values (wgc_seq.nextVal, 14, 'walnut123', TO_DATE('2023-06-11','YYYY-MM-DD'), '더 큰 세계로 나가자 우리 똘이');
+insert into tblWagleComment values (wgc_seq.nextVal, 15, 'chestnut901', TO_DATE('2023-06-10','YYYY-MM-DD'), '하 근데 놀아주는거 너무 힘들지 않나요');
+insert into tblWagleComment values (wgc_seq.nextVal, 15, 'pecan890', TO_DATE('2023-06-11','YYYY-MM-DD'), '우리 강아지는 귀찮아서 장난을 안쳐요 힝 심심해');
+insert into tblWagleComment values (wgc_seq.nextVal, 16, 'almond123', TO_DATE('2023-06-06','YYYY-MM-DD'), '두근두근~');
+insert into tblWagleComment values (wgc_seq.nextVal, 16, 'peridot123', TO_DATE('2023-06-07','YYYY-MM-DD'), '추억 많이 쌓을 수 있을 때 많이 쌓아야겠어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 16, 'fern890', TO_DATE('2023-06-07','YYYY-MM-DD'), '며칠전에 우리 강아지가 개구리를 보고 먹을뻔했어요 큰일날뻔했슈');
+insert into tblWagleComment values (wgc_seq.nextVal, 17, 'azure567', TO_DATE('2023-06-10','YYYY-MM-DD'), '쑥쑥 자라는 우리 애기.... 무서워요');
+insert into tblWagleComment values (wgc_seq.nextVal, 17, 'quartz234', TO_DATE('2023-06-11','YYYY-MM-DD'), '일어서면 저랑 키가 똑같아요.. 커도 너무 많이 컸다');
+insert into tblWagleComment values (wgc_seq.nextVal, 18, 'hickory890', TO_DATE('2023-06-06','YYYY-MM-DD'), '세상에서 우리 애기 발자국이 제일 귀여울거에요');
+insert into tblWagleComment values (wgc_seq.nextVal, 18, 'olive456', TO_DATE('2023-06-07','YYYY-MM-DD'), '처음으로 산책나갔을 때가 기억나네요');
+insert into tblWagleComment values (wgc_seq.nextVal, 18, 'umber012', TO_DATE('2023-06-07','YYYY-MM-DD'), '발 완전 한입거리');
+insert into tblWagleComment values (wgc_seq.nextVal, 19, 'chestnut789', TO_DATE('2023-06-11','YYYY-MM-DD'), '사랑해 우리 멍멍이!');
+insert into tblWagleComment values (wgc_seq.nextVal, 20, 'almond123', TO_DATE('2023-06-06','YYYY-MM-DD'), '항상 나만 바라보는 땅콩아... 나도 너만 볼께 사랑해');
+insert into tblWagleComment values (wgc_seq.nextVal, 20, 'almond234', TO_DATE('2023-06-07','YYYY-MM-DD'), '우리 오복이는 나한테 너무 특별한 존재야');
+
+
+-- 정보 공유
+-- 21 ~ 30
+insert into tblWagleComment values (wgc_seq.nextVal, 21, 'quartz234', TO_DATE('2023-06-03','YYYY-MM-DD'), '페르시안은 원래 털이 많이 빠져요.. 빗질 많이 해주세요.');
+insert into tblWagleComment values (wgc_seq.nextVal, 21, 'lavender345', TO_DATE('2023-06-04','YYYY-MM-DD'), '[바비온 반려동물 브러쉬 장갑] 이거 제가 쓰고있는데 괜찮더라구요');
+insert into tblWagleComment values (wgc_seq.nextVal, 22, 'ebony678', TO_DATE('2023-06-03','YYYY-MM-DD'), '치킨 모양 인형 되게 좋아하더라구요');
+insert into tblWagleComment values (wgc_seq.nextVal, 22, 'pistachio901', TO_DATE('2023-06-03','YYYY-MM-DD'), '강아지들에게 최고의 장난감은... 주인의 양말입니다.');
+insert into tblWagleComment values (wgc_seq.nextVal, 22, 'peacock789', TO_DATE('2023-06-03','YYYY-MM-DD'), '푸들이면 엄청 귀엽겠는데요.... 당신이 기꺼이 장난감이 되어 주세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 23, 'hickory890', TO_DATE('2023-06-03','YYYY-MM-DD'), '어떤 알러지가 있죠??? 어떤 알러지가 있는지에 따라서 레시피가 달라질 것 같아요~');
+insert into tblWagleComment values (wgc_seq.nextVal, 23, 'taffy567', TO_DATE('2023-06-05','YYYY-MM-DD'), '저희 강아지도 알러지 있는데 저는 칠면조 가슴살 레시피 쳐서 그거 해서 우리집 강쥐 줬더니 되게 좋아하더라고요');
+insert into tblWagleComment values (wgc_seq.nextVal, 24, 'almond890', TO_DATE('2023-06-03','YYYY-MM-DD'), '치와와는 피하세요. 최고의 지랄견입니다.');
+insert into tblWagleComment values (wgc_seq.nextVal, 24, 'clover123', TO_DATE('2023-06-04','YYYY-MM-DD'), '푸들이나 말티즈가 괜찮을 듯요. 요새 퍼그도 인기가 많더라구요');
+insert into tblWagleComment values (wgc_seq.nextVal, 25, 'pistachio901', TO_DATE('2023-06-03','YYYY-MM-DD'), '대리석 조각 하나 사놓으면 애기들이 정말 좋아해요');
+insert into tblWagleComment values (wgc_seq.nextVal, 25, 'emerald345', TO_DATE('2023-06-03','YYYY-MM-DD'), '그래서 저희집은 하루종일 에어컨 틀어놓습니다..');
+insert into tblWagleComment values (wgc_seq.nextVal, 26, 'lavender567', TO_DATE('2023-06-05','YYYY-MM-DD'), '저는 뜨개질이 취미라서 항상 공을 만들어서 놀아주는데 좋아해요');
+insert into tblWagleComment values (wgc_seq.nextVal, 26, 'aqua789', TO_DATE('2023-06-07','YYYY-MM-DD'), '고양이들은 레이저만 쏴줘도 환장합니다.');
+insert into tblWagleComment values (wgc_seq.nextVal, 27, 'emerald345', TO_DATE('2023-06-10','YYYY-MM-DD'), '유튜브에 강형욱님 훈련영상있는데 그거 보면서 따라하면 좋아요');
+insert into tblWagleComment values (wgc_seq.nextVal, 27, 'indigo234', TO_DATE('2023-06-07','YYYY-MM-DD'), '골든리트리버면 말은 잘 들을테니 간식 주면서 차근차근하게 훈련해보세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 27, 'sapphire567', TO_DATE('2023-06-08','YYYY-MM-DD'), '훈련의 시작은 간식입니다. 간식 많이 주세옹.');
+insert into tblWagleComment values (wgc_seq.nextVal, 28, 'topaz789', TO_DATE('2023-06-05','YYYY-MM-DD'), '일단 햄스터는 높은데 두지 마세요 고양이가 밟고 올라가요');
+insert into tblWagleComment values (wgc_seq.nextVal, 28, 'beryl456', TO_DATE('2023-06-05','YYYY-MM-DD'), '고양이 생각보다 햄스터에 관심없어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 28, 'cinnamon789', TO_DATE('2023-06-06','YYYY-MM-DD'), '톰과 제리 실사판이네요');
+insert into tblWagleComment values (wgc_seq.nextVal, 29, 'slate345', TO_DATE('2023-06-06','YYYY-MM-DD'), '책은 아닌데 유튜브에 강형욱의 보듬TV 좋아요');
+insert into tblWagleComment values (wgc_seq.nextVal, 29, 'ruby678', TO_DATE('2023-06-07','YYYY-MM-DD'), '[애견 훈련 바이브]라는 책이 있는데 저는 이거보고 했어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 29, 'lavender234', TO_DATE('2023-06-07','YYYY-MM-DD'), '[애견 교육의 정석]이거 되게 좋아요');
+insert into tblWagleComment values (wgc_seq.nextVal, 30, 'quartz234', TO_DATE('2023-06-05','YYYY-MM-DD'), '저는 항상 펫프렌즈에서 구매해요');
+insert into tblWagleComment values (wgc_seq.nextVal, 30, 'ebony678', TO_DATE('2023-06-05','YYYY-MM-DD'), '여기 나눔게시판도 되게 좋던데요??');
+
+
+-- 31 ~ 40
+insert into tblWagleComment values (wgc_seq.nextVal, 31, 'almond890', TO_DATE('2023-06-04','YYYY-MM-DD'), '오호라 좋은 정보 공유 감사합니다!');
+insert into tblWagleComment values (wgc_seq.nextVal, 31, 'pistachio345', TO_DATE('2023-06-05','YYYY-MM-DD'), '퍼즐 장난감 한번 해봐야겠네요');
+insert into tblWagleComment values (wgc_seq.nextVal, 32, 'chestnut901', TO_DATE('2023-06-05','YYYY-MM-DD'), '해변 산책 진짜 좋아요 강아지가 엄청 좋아해요');
+insert into tblWagleComment values (wgc_seq.nextVal, 32, 'pecan890', TO_DATE('2023-06-05','YYYY-MM-DD'), '우리 해피는 해변 산책만 가면 바다에 뛰어들어서 너무 힘들어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 33, 'walnut123', TO_DATE('2023-06-04','YYYY-MM-DD'), '스트레스 푸는데엔 개껌이 최고에요');
+insert into tblWagleComment values (wgc_seq.nextVal, 33, 'almond890', TO_DATE('2023-06-05','YYYY-MM-DD'), '편한 환경을 제공하는게 생각보다 중요하더라구요');
+insert into tblWagleComment values (wgc_seq.nextVal, 33, 'iris678', TO_DATE('2023-06-08','YYYY-MM-DD'), '좋은 정보 감사합니당');
+insert into tblWagleComment values (wgc_seq.nextVal, 34, 'ebony678', TO_DATE('2023-06-08','YYYY-MM-DD'), '가을 나들이면 무조건 공원이죠');
+insert into tblWagleComment values (wgc_seq.nextVal, 34, 'ruby678', TO_DATE('2023-06-09','YYYY-MM-DD'), '단풍잎있는 산책로에서 산책하면 분위기도 좋고 사진찍기도 좋아요');
+insert into tblWagleComment values (wgc_seq.nextVal, 35, 'chestnut567', TO_DATE('2023-06-04','YYYY-MM-DD'), '발톱 관리 참 중요하죠');
+insert into tblWagleComment values (wgc_seq.nextVal, 35, 'almond890', TO_DATE('2023-06-05','YYYY-MM-DD'), '좋은 정보 감사합니당');
+insert into tblWagleComment values (wgc_seq.nextVal, 36, 'pecan456', TO_DATE('2023-06-06','YYYY-MM-DD'), '우리 아이가 알러지가 있는지 꼭 확인하는것도 중요합니다. ');
+insert into tblWagleComment values (wgc_seq.nextVal, 36, 'ruby678', TO_DATE('2023-06-06','YYYY-MM-DD'), '쿠팡에 사료 이상한거 많이 파니까 주의하세요 다들');
+insert into tblWagleComment values (wgc_seq.nextVal, 37, 'ebony012', TO_DATE('2023-06-06','YYYY-MM-DD'), '애정 많이 주세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 37, 'iris901', TO_DATE('2023-06-06','YYYY-MM-DD'), '많이많이 쓰다듬어 주는게 중요해요');
+insert into tblWagleComment values (wgc_seq.nextVal, 38, 'buttercup012', TO_DATE('2023-06-07','YYYY-MM-DD'), '가을 나들이면 무조건 공원이죠');
+insert into tblWagleComment values (wgc_seq.nextVal, 38, 'azure567', TO_DATE('2023-06-08','YYYY-MM-DD'), '단풍 구경 최고에요!!!');
+insert into tblWagleComment values (wgc_seq.nextVal, 39, 'flamingo789', TO_DATE('2023-06-09','YYYY-MM-DD'), '저는 우리애기 사진찍어주는게 취미입니다요');
+insert into tblWagleComment values (wgc_seq.nextVal, 39, 'plum345', TO_DATE('2023-06-09','YYYY-MM-DD'), '애완동물용 가을 의상이 있나요? 너무 귀엽겠당');
+insert into tblWagleComment values (wgc_seq.nextVal, 40, 'quartz234', TO_DATE('2023-06-08','YYYY-MM-DD'), '단풍잎 흩어져있는 거리에 강아지들이 모인거 봤는데 너무 귀여웠어요');
+insert into tblWagleComment values (wgc_seq.nextVal, 40, 'ebony678', TO_DATE('2023-06-09','YYYY-MM-DD'), '애완동물 동반가능한 가을축제 있는데 그런데 정말 좋아요');
+insert into tblWagleComment values (wgc_seq.nextVal, 40, 'iris234', TO_DATE('2023-06-09','YYYY-MM-DD'), '가을 축제는 애완동물도 좋아하죠.');
+
+
+-- 나눔
+-- 41 ~ 50
+insert into tblWagleComment values (wgc_seq.nextVal, 41, 'ginger678', TO_DATE('2023-06-06','YYYY-MM-DD'), '저요!!!!!!');
+insert into tblWagleComment values (wgc_seq.nextVal, 41, 'quartz234', TO_DATE('2023-06-07','YYYY-MM-DD'), '저 주세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 41, 'walnut456', TO_DATE('2023-06-07','YYYY-MM-DD'), '앗싸 마지막 저요');
+insert into tblWagleComment values (wgc_seq.nextVal, 42, 'peridot123', TO_DATE('2023-06-08','YYYY-MM-DD'), '밥 그릇 예쁘네요 저 주세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 42, 'chestnut901', TO_DATE('2023-06-09','YYYY-MM-DD'), '1개만 나눔하나요??');
+insert into tblWagleComment values (wgc_seq.nextVal, 43, 'sapphire567', TO_DATE('2023-06-08','YYYY-MM-DD'), '장난감 저 주세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 44, 'garnet890', TO_DATE('2023-06-08','YYYY-MM-DD'), '제가 찾고있는 사료였는데 저 주세요. 아 제가 먹을건 아니구요');
+insert into tblWagleComment values (wgc_seq.nextVal, 45, 'vermilion123', TO_DATE('2023-06-08','YYYY-MM-DD'), '캣타워 저 주세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 45, 'beryl456', TO_DATE('2023-06-09','YYYY-MM-DD'), '캣타워 저거 튼튼한가요??');
+insert into tblWagleComment values (wgc_seq.nextVal, 46, 'azure567', TO_DATE('2023-06-07','YYYY-MM-DD'), '우리애기 스크레처 필요해요 주세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 46, 'fern890', TO_DATE('2023-06-08','YYYY-MM-DD'), '사용감이 있나요?');
+insert into tblWagleComment values (wgc_seq.nextVal, 47, 'straw456', TO_DATE('2023-06-09','YYYY-MM-DD'), '무슨 냄새에요??');
+insert into tblWagleComment values (wgc_seq.nextVal, 47, 'plum345', TO_DATE('2023-06-10','YYYY-MM-DD'), '일단 저 주세요!!');
+insert into tblWagleComment values (wgc_seq.nextVal, 48, 'azure567', TO_DATE('2023-06-07','YYYY-MM-DD'), '선착순 몇명이요?? 일단 저요');
+insert into tblWagleComment values (wgc_seq.nextVal, 48, 'fern890', TO_DATE('2023-06-08','YYYY-MM-DD'), '머야머야 나도 줘요');
+insert into tblWagleComment values (wgc_seq.nextVal, 49, 'straw456', TO_DATE('2023-06-09','YYYY-MM-DD'), '강: 강사합니다~ 아 : 아~ 고맙습니다 지 : 지금 저 주세요');
+insert into tblWagleComment values (wgc_seq.nextVal, 49, 'plum345', TO_DATE('2023-06-10','YYYY-MM-DD'), '강 : 강아지 이놈자식아 아 : 아이고 지 : 지겹다지겨워');
+insert into tblWagleComment values (wgc_seq.nextVal, 50, 'flamingo789', TO_DATE('2023-06-07','YYYY-MM-DD'), '사람껀 아니죠??');
+insert into tblWagleComment values (wgc_seq.nextVal, 50, 'walnut456', TO_DATE('2023-06-07','YYYY-MM-DD'), '제가 가지고 싶어요 저 도넛방석 필요해요.');
 
 -- tblVeterinarian(수의사 회원)
 insert into tblVeterinarian (vet_seq, vet_clinic, vet_major, vet_address, vet_addressdetail) values ('chestnut789', '차지우동물병원', '강아지', '서울특별시 강서구 강서로62길 10', ' 한울빌딩 1층 (등촌동)');
@@ -248,3 +378,5 @@ insert into tblINAnswer(ina_seq, in_seq, ina_content, ina_regdate, a_id) values(
 insert into tblINAnswer(ina_seq, in_seq, ina_content, ina_regdate, a_id) values(ina_seq.nextVal, 17, '안녕하세요 고객님. 애니밍글입니다.\n특정 데이터가 누락되어 표시되지 않는다고 하셨는데, 혹시 어떤 데이터가 누락되어 표시되지 않으실까요?\n다시 문의해주시면 복구 방법을 안내드리겠습니다.\n감사합니다.', TO_DATE('2023-04-14', 'YYYY-MM-DD'),'admin7');
 insert into tblINAnswer(ina_seq, in_seq, ina_content, ina_regdate, a_id) values(ina_seq.nextVal, 18, '안녕하세요 고객님. 애니밍글입니다.\n개인정보 확인 후 초기화가 가능합니다.\n02-5412-4565로 연락주시면 확인 후 초기화해드리겠습니다.\n감사합니다.', TO_DATE('2023-05-23', 'YYYY-MM-DD'),'admin4');
 insert into tblINAnswer(ina_seq, in_seq, ina_content, ina_regdate, a_id) values(ina_seq.nextVal, 19, '안녕하세요 고객님. 애니밍글입니다.\n이전에 문의주신 사항이 없는 것으로 확인됩니다.\n확인 후 다시 문의 부탁드립니다.\n감사합니다.\n', TO_DATE('2023-06-01', 'YYYY-MM-DD'),'admin6');
+
+commit;
