@@ -6,21 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-   <title>Insert title here</title>
+   <title>펫시터</title>
    <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
    <link rel="stylesheet" href="/animingle/asset/css/index.css">
    <link rel="stylesheet" href="/animingle/asset/css/petsitter.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-   <style>
-   .profile-img {
-   		width : 30px;
-   		height : 30px;
-   		padding : 5px;
-   		border : 2px solid #F0F0F0;
-   		border-radius : 10px;
-   }
-   </style>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
 <body>
 
    <%@ include file="/WEB-INF/views/inc/header.jsp" %>
@@ -56,21 +49,135 @@
             
             <!-- 게시글 목록 -->
             <div class="board">
+            	<a href="http://localhost:8090/animingle/board/petsitterview.do" class="move-to-view">
+		            <div class="item-wrap">
+		            	<div class="item-header">
+		            		<div>
+			            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
+			            		<span class="item-id">밍글밍글(mingle77)</span>
+			            		<span class="item-time">16분전</span>
+			            	</div>
+		            		<div class="recruit-state">
+		            			모집중
+		            		</div>
+		            	</div>
+		            	<div class="item-content">
+		            		골든 리트리버 3살 3일간 맡아주실 분~!
+		            	</div>
+		            	
+		            	<div class="item-config">
+		            		<span>[2023.05.03 08:00 ~ 20:00]</span>
+		            		<span>서울시 강남구 역삼동</span>
+		            	</div>
+		            </div>
+	            </a>
+	            
 	            <div class="item-wrap">
-	            	<div>
-	            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
-	            		밍글밍글(mingle77)
-	            		<div>16분전</div>
+	            	<div class="item-header">
+	            		<div>
+		            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
+		            		<span class="item-id">밍글밍글(mingle77)</span>
+		            		<span class="item-time">16분전</span>
+		            	</div>
 	            		<div class="recruit-state">
 	            			모집중
 	            		</div>
 	            	</div>
-	            	<div>골든 리트리버 3살 3일간 맡아주실 분~!</div>
-	            	<div>
+	            	<div class="item-content">
+	            		골든 리트리버 3살 3일간 맡아주실 분~!
+	            	</div>
+	            	
+	            	<div class="item-config">
 	            		<span>[2023.05.03 08:00 ~ 20:00]</span>
 	            		<span>서울시 강남구 역삼동</span>
 	            	</div>
 	            </div>
+	            
+	            <div class="item-wrap">
+	            	<div class="item-header">
+	            		<div>
+		            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
+		            		<span class="item-id">밍글밍글(mingle77)</span>
+		            		<span class="item-time">16분전</span>
+		            	</div>
+	            		<div class="recruit-state">
+	            			모집중
+	            		</div>
+	            	</div>
+	            	<div class="item-content">
+	            		골든 리트리버 3살 3일간 맡아주실 분~!
+	            	</div>
+	            	
+	            	<div class="item-config">
+	            		<span>[2023.05.03 08:00 ~ 20:00]</span>
+	            		<span>서울시 강남구 역삼동</span>
+	            	</div>
+	            </div>
+	            
+	            <div class="item-wrap">
+	            	<div class="item-header">
+	            		<div>
+		            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
+		            		<span class="item-id">밍글밍글(mingle77)</span>
+		            		<span class="item-time">16분전</span>
+		            	</div>
+	            		<div class="recruit-state">
+	            			모집중
+	            		</div>
+	            	</div>
+	            	<div class="item-content">
+	            		골든 리트리버 3살 3일간 맡아주실 분~!
+	            	</div>
+	            	
+	            	<div class="item-config">
+	            		<span>[2023.05.03 08:00 ~ 20:00]</span>
+	            		<span>서울시 강남구 역삼동</span>
+	            	</div>
+	            </div>
+	            
+	            <div class="item-wrap">
+	            	<div class="item-header">
+	            		<div>
+		            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
+		            		<span class="item-id">밍글밍글(mingle77)</span>
+		            		<span class="item-time">16분전</span>
+		            	</div>
+	            		<div class="recruit-state">
+	            			모집중
+	            		</div>
+	            	</div>
+	            	<div class="item-content">
+	            		골든 리트리버 3살 3일간 맡아주실 분~!
+	            	</div>
+	            	
+	            	<div class="item-config">
+	            		<span>[2023.05.03 08:00 ~ 20:00]</span>
+	            		<span>서울시 강남구 역삼동</span>
+	            	</div>
+	            </div>
+	         </div>
+	         
+	         <div class="btn-div">
+	         	<button type="submit" id="write-btn" class="write-btn">
+		         	<span class="material-symbols-outlined">
+						edit_note
+					</span>
+		         	작성하기
+	         	</button>
+	         </div>
+	         
+	         <hr class="paging-hr">
+	         
+	         <div class="paging">
+	         	<span>&lt;</span>
+	         	<ul>
+	         		<li>1</li>
+	         		<li>2</li>
+	         		<li>3</li>
+	         		<li>4</li>
+	         		<li>5</li>
+	         	</ul>
+	         	<span>&gt;</span>
 	         </div>
          </div>
          <div class="rightbar">
