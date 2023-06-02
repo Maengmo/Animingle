@@ -16,3 +16,13 @@
 	align-items: center;
 	flex-direction: column;
 }
+
+.carousel-control-prev,
+.carousel-control-next {
+	width: 3% !important;
+	text-shadow: 0px 0px 2px white;
+}
+
+.material-symbols-outlined {
+	color: black !important;
+}
