@@ -1,0 +1,36 @@
+.content {
+	background-color: gold;	
+}
+.mycontainer {
+	width: 1280px;
+	background-color: blue;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width:1280px) {
+	.mycontainer {
+		width: 1280px;
+	}
+	.content {
+		width: 1280px;
+	}
+}
+.leftbar {
+	background-color: skyblue;
+	width: auto;
+	display: block;
+}
+.maincontent {
+	background-color: tomato;
+	width: auto;
+	display: block;
+}
+.rightbar {
+	background-color: gold;
+	width: auto;
+	display: block;
+}
+
+.mycontainer div {
+	height: 800px;
+}
