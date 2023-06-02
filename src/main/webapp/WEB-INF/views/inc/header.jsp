@@ -4,7 +4,7 @@
  	<nav class="navbar navbar-expand-lg navbar-dark bg-white">
       <div class="container">
         <a class="navbar-brand text-dark" href="#"
-          ><img class="main-logo" src="asset/commonimg/logo_03.png" alt=""
+          ><img class="main-logo" src="/animingle/asset/commonimg/logo_03.png" alt=""
         /></a>
         <button
           class="navbar-toggler"

@@ -5,10 +5,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="asset/css/styles.css" rel="stylesheet" />
-<link href="asset/css/header.css" rel="stylesheet" />
-<link href="asset/css/footer.css" rel="stylesheet" />
-<link href="asset/css/content.css" rel="stylesheet" />
+<link href="/animingle/asset/css/styles.css" rel="stylesheet" />
+<link href="/animingle/asset/css/header.css" rel="stylesheet" />
+<link href="/animingle/asset/css/footer.css" rel="stylesheet" />
+<link href="/animingle/asset/css/content.css" rel="stylesheet" />
 
 <!-- text CSS -->
 <link

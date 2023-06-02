@@ -20,67 +20,12 @@
 				<!-- 왼쪽 사이드바 입니다. -->
 			</div>
 			<div class="maincontent">
-				<div class="maincontent">
-				    <div class="table-container">
-				        <table class="walking-buddy-finder-table">
-				            <tr>
-				                <th>
-				                    산책 친구 구하기
-				                </th>
-				            </tr>
-				            <tr>
-				                <td>
-				                    친구 구합니다.
-				                </td>
-				            </tr>
-				            <tr>
-				                <td>
-				                    친구 구합니다.
-				                </td>
-				            </tr>
-				        </table>
 				
-				        <table class="chatterbox-table">
-				            <tr>
-				                <th>
-				                    와글와글
-				                </th>
-				            </tr>
-				            <tr>
-				                <td>
-				                    와글와글
-				                </td>
-				            </tr>
-				            <tr>
-				                <td>
-				                    와글와글
-				                </td>
-				            </tr>
-				        </table>
-				
-				        <table class="vet-qna-table">
-				            <tr>
-				                <th>
-				                    수의사QnA
-				                </th>
-				            </tr>
-				            <tr>
-				                <td>
-				                    강아지가 아파요
-				                </td>
-				            </tr>
-				            <tr>
-				                <td>
-				                    고양이가 아파요
-				                </td>
-				            </tr>
-				        </table>
-				    </div>
-				</div> 
 			</div>
 			<div class="rightbar">
 				<!-- 오른쪽 사이드바 입니다. -->
 			</div>
+		</div>
 			
 	</section>
 	<%@ include file="/WEB-INF/views/inc/footer.jsp" %>
