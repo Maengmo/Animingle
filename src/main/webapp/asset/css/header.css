@@ -58,7 +58,7 @@
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0;
 }
 
@@ -76,7 +76,7 @@
 
 @media (max-width: 1280px) {
   .sub-navbar > div {
-  	width: 840px;
+  	width: 860px;
   	margin: 0 auto;
     font-size: 16px;
   }
@@ -92,6 +92,10 @@
   } 
   
   .sub-navbar > div {
-  	width: 640px;
+  	width: 860px;
+  }
+  
+  nav.navbar {
+  width: 860px;
   }
 }
