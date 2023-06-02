@@ -1,0 +1,262 @@
+#map {
+	height : 800px;
+	width : 100%;
+	z-index : 1;
+}
+	
+#side {
+	/* border : 1px solid black; */
+border-collapse: separate;
+width : 210px;
+height : 800px;
+border-spacing: 0;
+z-index : 2;
+box-sizing: border-box;
+}
+
+#side tr:first-child th:first-child {
+	border-top-left-radius : 10px;
+	border-top-right-radius : 10px;
+}
+
+#side tr:last-child th:first-child {
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius : 10px;
+	border : 1px solid black;
+}
+
+#search tr, td, th {
+	border : 1px solid black;
+	text-align : center;
+	border-bottom: 0;
+}
+
+#search th {
+	font-size : 17px;
+	font-weight : bold;
+	height : 100px;
+	text-align : center;
+}
+
+#small {
+	font-size : 12px;
+	color : red;
+	font-weight: bold;
+}
+
+#small2 {
+	font-size : 12px;
+	color:#0256AA;
+	font-weight: bold;
+}
+
+#search2 {
+	border : 1px solid black;
+	border-radius: 4px;
+	wdith : 40px;
+	height : 40px;
+	margin : 5px;
+}
+
+#txt1 {
+	border : 0px;
+	outline : 0px;
+	width : 150px;	
+}
+
+#left {
+	display : block;
+	margin-right : 1px;
+}
+
+.material-symbols-outlined {
+	font-size : 20px !important;
+	transform : translate(0px, 5px) !important;
+}
+
+/* 상세보기 박스 */
+#addside {
+	border : 1px solid black;
+	border-radius: 10px;
+	width : 600px;
+	height : 800px;
+	overflow : scroll;
+}
+
+#close {
+	text-align : right;
+}
+
+/* 제목 */
+.title {
+	font-size : 20px;
+	font-weight : bold;
+	text-align : center;
+}
+
+/* 정보 */
+.middle {
+	font-size : 15px;
+	font-weight : bold;
+	text-align : left;
+}
+
+/* 리뷰 */
+.review {
+	font-size: 14px;
+	display: flex;
+    width: 90%;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding : 10px;
+}
+
+/* 카운트 */
+.count {
+	font-size : 5px;
+	color : red;
+	font-weight: bold;
+}
+
+
+.profile-img {
+      width : 40px;
+      height : 40px;
+      padding : 5px;
+      border : 2px solid #F0F0F0;
+      border-radius : 10px;
+}
+
+.item-wrap {
+   border : 1px solid #B1B1B1;
+   border-radius: 20px;
+   width : 95%;
+   padding : 20px;
+   margin: 10px;
+   
+}
+
+.item-header {
+   display : flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.item-id {
+   font-size : 15px;
+   font-weight : 500;
+}
+
+.recruit-state {
+   width : 80px;
+   height : 35px;
+   background-color : tomato;
+   border-radius : 5px;
+   color : white;
+   line-height : 35px;
+   text-align : center;
+}
+
+.item-content {
+   margin-top : 10px;
+   margin-bottom : 10px;
+   font-size : 15px;
+}
+
+.item-config {
+   color :  #5C5C5C;
+}
+
+.item-config span:nth-last-child(1) {
+    font-size : 11px;
+}
+
+#review-box {
+	border : 1px solid #B1B1B1;
+    border-radius: 20px;
+    width : 95%;
+    padding : 20px;
+    margin: 10px;
+    text-align : center;
+    background-color : #0256AA;
+    color : white;
+    font-weight : bold;
+}
+
+.upload-file input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.file-name {
+   	margin-left : 20px;
+   	width : 70% !important;
+   	background-color : #EFEFEF;
+}
+
+.file-name:focus{
+   outline : none !important;
+}
+
+
+.upload-file label {
+    display: inline-block;
+    padding: 0px 20px;
+    vertical-align: middle;
+    background-color: #c4c4c4;
+    cursor: pointer;
+    height: 43px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border : none;
+    line-height: 42px;
+    text-align: center;
+    margin-left : -40px;
+    margin-top : -5px;
+    height : 30px;
+    font-size : 5px;
+}
+
+.upload-file label:hover {
+    background-color:#a4a4a4;
+    transition : .3s;
+}
+
+#upload {
+	text-align : center;
+	transform : translate(0px, 0px) !important;
+}
+
+#add-box {
+	margin-top : 10px;
+	text-align : center;
+}	
+
+#addbtn {
+	background-color : #0256AA;
+	color : white;
+}
+
+.place-list:hover {
+   	cursor: pointer;
+}
+
+#addside {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.1s;
+    border-width: 0px;
+    margin: 0px;
+}
+
+#close:hover {
+   	cursor: pointer;
+}

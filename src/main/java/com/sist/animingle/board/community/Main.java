@@ -1,5 +1,5 @@
 package com.sist.animingle.board.community;
 
-public class main {
+public class Main {
 
 }
