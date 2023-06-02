@@ -38,7 +38,6 @@
         </div>
       </div>
     </nav>
-    <hr>
     <nav class="sub-navbar text-center">
       <div>
         <ul>

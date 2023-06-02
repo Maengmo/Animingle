@@ -1,15 +1,18 @@
+@font-face {
+	font-family: "SUITE-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2")
+    format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
 .navbar {
   padding-top: 15px;
   padding-bottom: 15px;
   font-family: "SUITE-Regular";
   font-weight: 600;
   justify-content: center;
-}
-
-hr {
-	margin: 0;
-	border: 2px solid #0256aa;
-	opacity: 1;
+  border-bottom: 2px solid #0256aa;
 }
 
 .navbar > div {
@@ -83,8 +86,12 @@ hr {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 860px) {
   hr {
-  	width: 850px;
+  	width: 860px;
   } 
+  
+  .sub-navbar > div {
+  	width: 640px;
+  }
 }

@@ -1,15 +1,6 @@
 .content {
-	width: 1280px;
-	/* display: flex; */
+	width: 1270px;
 	margin: 0 auto;
-
-}
-
-@media (max-width: 850px) {
-  .content {
-  	width: 650px;
-  	margin: 0 auto;
-  } 
 }
 
 @media (max-width: 1280px) {
@@ -17,13 +8,20 @@
 		width: 840px;
 	}
   
-  .leftbar, .rightbar {
-  	display: none;
-  }
+ 	.leftbar, .rightbar {
+  		display: none;
+  	}
   
-  .maincontent {
-  	margin: 0 auto;
-  }
+ 	.maincontent {
+  		margin: 0 auto;
+  	}
+}
+
+@media (max-width: 860px) {
+  	.content {
+  		width: 650px;
+  		margin: 0 auto;
+	} 
 }
 
 .mycontainer {
@@ -32,11 +30,11 @@
 }
 
 .leftbar {
-	width: 220px;
+	width: 215px;
 }
 
 .rightbar {
-	width: 220px;
+	width: 215px;
 }
 
 .maincontent {
