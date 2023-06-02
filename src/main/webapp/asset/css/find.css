@@ -183,9 +183,10 @@
 		border-radius: 5px;
 		font-family: "SUITE-Regular";
 		margin-bottom: 50px;
+		resize: none;
 	}
 	
-	.form-button {
+	.form-button, .view-button, .find-view-comment-button {
 		text-align: right;
 		margin-bottom: 100px;
 	}
@@ -202,8 +203,130 @@
 		background-color: white;
 	}
 	
-	#btnAdd {
+	#btnAdd, #btnEdit, #btnDel, #btnCommentAdd {
 		background-color: #99D3FD;
 		color: white;
 	}
+	
+	.main-border {
+		border: 1px solid black;
+		margin-top: 20px;
+	}
+		
+	.find-view-writer {
+		margin-left: 20px;
+		margin-top: 10px;
+		display: flex;
+		align-items: center;
+	}
+	
+	.find-view-writer span {
+		padding-left: 20px;
+	}
+		
+	.maincontent #view-subject {
+		margin-left: 20px;
+		font-family: "SUITE-Regular";
+		border: 1px solid red;
+	}
+	
+	.find-view-subject {
+		display: flex;
+		align-items: center;
+		padding-left: 40px;
+		margin-top: 25px;
+		margin-bottom: 40px;
+		width: 700px;
+	}
+	
+	.find-view-subject span:first-child {
+		margin-right: 20px;
+		font-size: 25px;
+		font-family: "SUITE-Regular";
+		font-weight: bold;
+	}
+	
+	.find-view-content {
+		font-family: "SUITE-Regular";
+		padding-left: 40px;
+		margin-bottom: 20px;
+		width: 700px;
+		font-size: 18px;
+	}
+	
+	.find-view-map {
+		background-color: gold;
+		width: 700px;
+		height: 400px;
+		margin-left: 40px;
+		margin-bottom: 20px;
+	}
+	
+	.view-button {
+		padding-right: 100px;
+		margin-bottom: 50px;
+	}
+	
+	.view-button button {
+		font-family: "SUITE-Regular";
+		width: 120px;
+		height: 50px;
+		border-radius: 10px;
+		border: 1px solid #ccc;
+	}
+	
+	.find-view-comment {
+		padding-left: 40px;
+		font-family: "SUITE-Regular";
+		margin-bottom: 30px;
+	}
+	
+	.find-view-comment div:first-child {
+		margin-bottom: 20px;
+		width: 700px;
+	}
+	
+	.find-view-write-comment {
+		display: flex;
+		align-items: flex-start;
+	}
+	
+	.find-view-write-comment img {
+		width: 40px;
+		height: 40px;
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		margin-right: 10px;
+	}
+	
+	.find-view-write-comment textarea {
+		width: 650px;
+		height: 100px;
+		resize: none;
+	}
+	
+	.find-view-comment-button button {
+		font-family: "SUITE-Regular";
+		width: 120px;
+		height: 50px;
+		border-radius: 10px;
+		border: 1px solid #ccc;
+		margin-right: 100px;
+	}
+	
+	.find-view-reply {
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 10px;
+		width: 700px;
+	}
+	
+	.find-view-reply .writer .time {
+		margin-left: 25px;
+	}
+	
+	.find-view-reply .content-list {
+		font-size: 20px;
+		margin-bottom: 5px;
+	}
+	
 	

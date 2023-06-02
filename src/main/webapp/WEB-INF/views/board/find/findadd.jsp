@@ -38,7 +38,7 @@
 					</div>
 					<div class="form-locate">
 						<div>위치</div>
-						<div class="map"></div>
+						<div class="map" id="map"></div>
 					</div>
 					<div class="form-content">
 						<div>본문</div>
@@ -59,5 +59,35 @@
 	<%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b4f885d6bb97b2a4a23735b58ee2a8c"></script>
+<script>
+	var container = document.getElementById('map'); 
+	var options = { 
+		center: new kakao.maps.LatLng(37.4993, 127.0331), 
+		level: 3 
+	};
+	
+	var map = new kakao.maps.Map(container, options);
+	
+	 
+	var marker = new kakao.maps.Marker({
+		position: map.getCenter()
+	});
+	
+	
+	
+	marker.setMap(map);
+	
+	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+		
+		var latlng = mouseEvent.latLng;
+		
+		marker.setPosition(latlng);
+		
+		//console.log(latlng.getLat()); //위도
+		//console.log(latlng.getLng()); //경도
+	});
+	
+</script>
 </body>
 </html>

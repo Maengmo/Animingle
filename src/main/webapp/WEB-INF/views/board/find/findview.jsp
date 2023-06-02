@@ -12,37 +12,8 @@
 <link rel="stylesheet" href="/animingle/asset/css/find.css">
 	<style>
 	
-	.main-border {
-		border: 1px solid black;
-	}
-		
-	.find-view-writer {
-		margin-left: 10px;
-		margin-top: 10px;
-		display: flex;
-		align-items: center;
-	}
 	
-	.find-view-writer span {
-		padding-left: 20px;
-	}
-		
-	.maincontent #view-subject {
-		margin-left: 20px;
-		font-family: "SUITE-Regular";
-		border: 1px solid red;
-	}
-	
-	.find-view-subject {
-		display: flex;
-		align-items: center;
-		padding-left: 40px;
-	}
-	
-	.view-subjcet {
-		margin-right: 20px;
-	} 
-	
+
 		
 	</style>
 </head>
@@ -65,6 +36,38 @@
 					<span class="material-symbols-outlined">visibility</span>50
 					<span class="material-symbols-outlined">chat</span>2
 				</div>
+				<div class="find-view-content">
+					역삼역 3번 출구 쪽 역삼 개나리공원에서 산책하다가 강아지를 잃어버렸습니다. <br>
+					회색 푸들이고 나이는 3살입니다.<br>
+					이름은 모찌입니다.
+				</div>
+				<div class="find-view-map" id="map">
+					
+				</div>
+				<div class="view-button">
+					<button id="btnEdit">수정하기</button>
+					<button id="btnDel">삭제하기</button>
+				</div>
+				<div class="find-view-comment">
+					<div>2개의 댓글</div>
+					<div class="find-view-reply">
+						<div class="writer">
+							<img src="/animingle/asset/commonimg/logo_01.png">
+							밍글맹글(mingle77)
+							<span class="time">16분전</span>
+						</div>
+						<div class="content-list">
+							어디 근처에서 봤어요. 꼭 찾길 바랄게요!!
+						</div>
+					</div>	
+					<div class="find-view-write-comment">
+						<img src="/animingle/asset/commonimg/logo_01.png">
+						<textarea></textarea>
+					</div>
+				</div>
+				<div class="find-view-comment-button">
+					<button id="btnCommentAdd">댓글 쓰기</button>
+				</div>
 			</div>
 			<div class="rightbar">
 				<!-- 오른쪽 사이드바 입니다. -->
@@ -75,5 +78,23 @@
 	<%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b4f885d6bb97b2a4a23735b58ee2a8c"></script>
+<script>
+	var container = document.getElementById('map'); 
+	var options = { 
+		center: new kakao.maps.LatLng(37.4993, 127.0331), 
+		level: 3 
+	};
+	
+	var map = new kakao.maps.Map(container, options);
+	
+	var markerPosition  = new kakao.maps.LatLng(37.4993, 127.0331); 
+	
+	var marker = new kakao.maps.Marker({
+		position: markerPosition
+	});
+	
+	marker.setMap(map);
+</script>
 </body>
 </html>
