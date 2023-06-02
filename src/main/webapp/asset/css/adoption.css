@@ -17,8 +17,15 @@
 	width: 200px;
 	height: 300px;
 	padding: 5px;
+}
+
+.card:nth-child(even) {
+	border: 2px solid #FC5230;
+	background: linear-gradient( 45deg, #FCD5CE, #F8EDEB );
+}
+.card:nth-child(odd) {
 	border: 2px solid #0256AA;
-	background-color: #EEF4F7;
+	background: linear-gradient( 45deg, #D1E1F0, white );
 }
 
 .anipic {
@@ -104,6 +111,9 @@
 
 .introurl {
 	color: #0256AA;
+}
+.introurl:hover {
+	color: #F24822;
 }
 
 .tblcenter th {
