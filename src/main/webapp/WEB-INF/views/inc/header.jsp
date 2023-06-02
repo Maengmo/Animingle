@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>   
     
  	<nav class="navbar navbar-expand-lg navbar-dark bg-white">
-      <div class="container">
+      <div class="container" style="margin: 0 auto;">
         <a class="navbar-brand text-dark" href="#"
           ><img class="main-logo" src="/animingle/asset/commonimg/logo_03.png" alt=""
         /></a>
