@@ -13,8 +13,6 @@
 	
 	<style>
 	
-
-	
 	</style>
 </head>
 <body>
@@ -83,8 +81,8 @@
 							<span class="material-symbols-outlined">chat</span>2
 						</div>
 				</div>		
-				<div>
-					<button>작성하기</button>
+				<div class="find-list-button">
+					<button id="btnWrite" onclick='location.href="/animingle/board/findadd.do";'>작성하기</button>
 				</div>
 			<div class="rightbar">
 				<!-- 오른쪽 사이드바 입니다. -->

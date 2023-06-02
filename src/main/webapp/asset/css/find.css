@@ -186,12 +186,12 @@
 		resize: none;
 	}
 	
-	.form-button, .view-button, .find-view-comment-button {
+	.form-button, .view-button, .find-view-comment-button, .find-list-button {
 		text-align: right;
-		margin-bottom: 100px;
+		margin-bottom: 70px;
 	}
 	
-	.form-button button {
+	.form-button button, .find-list-button button {
 		font-family: "SUITE-Regular";
 		width: 120px;
 		height: 50px;
@@ -203,7 +203,7 @@
 		background-color: white;
 	}
 	
-	#btnAdd, #btnEdit, #btnDel, #btnCommentAdd {
+	#btnAdd, #btnEdit, #btnDel, #btnCommentAdd, #btnWrite {
 		background-color: #99D3FD;
 		color: white;
 	}
@@ -282,8 +282,7 @@
 	}
 	
 	.find-view-comment div:first-child {
-		margin-bottom: 20px;
-		width: 700px;
+		width: 650px;
 	}
 	
 	.find-view-write-comment {
@@ -300,9 +299,7 @@
 	}
 	
 	.find-view-write-comment textarea {
-		width: 650px;
-		height: 100px;
-		resize: none;
+		width: 600px;
 	}
 	
 	.find-view-comment-button button {
@@ -329,4 +326,11 @@
 		margin-bottom: 5px;
 	}
 	
+	.form-content .ck-editor__editable { 
+    	height: 250px; 
+	}
 	
+	.find-view-write-comment .ck-editor__editable {
+		height: 150px;
+		width: 600px;
+	}

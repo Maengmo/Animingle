@@ -42,13 +42,13 @@
 					</div>
 					<div class="form-content">
 						<div>본문</div>
-						<textarea></textarea>
-					</div>
-					<div class="form-button">
-						<button id="btnCancle">취소</button>
-						<button id="btnAdd">등록</button>
+						<textarea id="editor" placeholder="내용을 입력하세요."></textarea>
 					</div>
 				</form>
+				<div class="form-button">
+						<button id="btnCancle" onclick='location.href="/animingle/board/findlist.do";'>취소</button>
+						<button id="btnAdd">등록</button>
+				</div>
 			</div>
 			<div class="rightbar">
 				<!-- 오른쪽 사이드바 입니다. -->
@@ -60,6 +60,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b4f885d6bb97b2a4a23735b58ee2a8c"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script>
 	var container = document.getElementById('map'); 
 	var options = { 
@@ -87,6 +89,11 @@
 		//console.log(latlng.getLat()); //위도
 		//console.log(latlng.getLng()); //경도
 	});
+	
+	 ClassicEditor.create( document.querySelector( '#editor' ), {
+	    removePlugins: [ 'Heading' ],
+	 	language: "ko"
+	 });
 	
 </script>
 </body>

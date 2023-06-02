@@ -62,7 +62,7 @@
 					</div>	
 					<div class="find-view-write-comment">
 						<img src="/animingle/asset/commonimg/logo_01.png">
-						<textarea></textarea>
+						<textarea id="editor" placeholder="내용을 입력하세요."></textarea>
 					</div>
 				</div>
 				<div class="find-view-comment-button">
@@ -79,22 +79,29 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b4f885d6bb97b2a4a23735b58ee2a8c"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script>
 	var container = document.getElementById('map'); 
 	var options = { 
-		center: new kakao.maps.LatLng(37.4993, 127.0331), 
+		center: new kakao.maps.LatLng(37.4975, 127.0361), 
 		level: 3 
 	};
 	
 	var map = new kakao.maps.Map(container, options);
 	
-	var markerPosition  = new kakao.maps.LatLng(37.4993, 127.0331); 
+	var markerPosition  = new kakao.maps.LatLng(37.4975, 127.0361); 
 	
 	var marker = new kakao.maps.Marker({
 		position: markerPosition
 	});
 	
 	marker.setMap(map);
+	
+	ClassicEditor.create( document.querySelector( '#editor' ), {
+	    removePlugins: [ 'Heading' ],
+		language: "ko"
+	});
 </script>
 </body>
 </html>
