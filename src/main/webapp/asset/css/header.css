@@ -92,6 +92,10 @@
   } 
   
   .sub-navbar > div {
-  	width: 640px;
+  	width: 860px;
+  }
+  
+  nav.navbar {
+  width: 860px;
   }
 }
