@@ -71,7 +71,7 @@
 .tbladopt tr {
 	border: 1px solid #DDD;
 	border-width: 1px 0px 1px;
-	height: 40px;
+	height: 46px;
 }
 
 .tbladopt tr:first-child {
@@ -99,6 +99,7 @@
 
 .tblinfo tr:last-child {
 	height: 150px;
+	overflow: auto;
 }
 
 .introurl {
