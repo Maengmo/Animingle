@@ -1,4 +1,4 @@
-package com.sist.animingle.board.petsitter;
+package com.sist.animingle.board.find;
 
 import java.io.IOException;
 
@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/petsitterview.do")
-public class PetsitterView extends HttpServlet {
+@WebServlet("/board/findlist.do")
+public class FindList extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/petsitter/petsitterview.jsp");
+		//
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/find/findlist.jsp");
 		dispatcher.forward(req, resp);
 
 	}
-
 }
