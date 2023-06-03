@@ -1,0 +1,48 @@
+img {
+	width: 40%;
+}
+
+.login-box {
+    background-color: #F1F1F1; 
+    text-align: center;
+    width: 50%;
+    font-family: "SUITE-Regular"; 
+    padding: 20px;
+}
+
+.login-box h2 {
+	font-weight: 800;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.login-form {
+	width: 100%;	
+}
+
+.id, .pw {
+    width: 80%;
+    height: 25px;
+    border: 0px;
+    border-radius: 16px;
+    padding-left: 18px;
+    margin-top: 12px;
+}
+
+.login-btn {
+    margin-top: 30px;
+    width: 80%;
+    height: 35px;
+    background-color: #D1E1F0;
+    border: 0px;
+    border-radius: 10px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.social {
+    width: 45px;
+    height:45px;
+    border-radius: 50%;
+    margin: 30px 12px 25px 12px;
+}
