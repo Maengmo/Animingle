@@ -20,43 +20,48 @@
    border-radius: 30px;
 }
 
-#btn-write {
-	position: relative;
-	left: 750px;
-	margin-top: 15px;
-	border: 1px solid #CCC;
-	border-radius: .25rem;
-	padding: 2px 8px;
+.write-btn:hover {
+	background-color: #0256AA;
+	border: 1px solid #0256AA;
+	color: white;
 }
 
-#writePCD {
-	position: relative;
-	top: -1px;
-	color: #5D5D5D;
-	font-weight: bold;	
+.write-btn:hover .material-symbols-outlined {
+	background-color: #0256AA;
+	border: 1px solid #0256AA;
+	color: white !important;
 }
 
-#btn-write .material-symbols-outlined{
-    font-size: 1.5rem !important;
-	position: relative;
-	top: 2px;
-	color: #5D5D5D !important;
+.write-btn {
+	font-size : 20px;
+	border-radius : 10px;
+	display : flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #555;
+    color: #555;
+    padding: 7px 10px;
+}
+
+.write-btn .material-symbols-outlined {
+	font-size: 25px !important;
+	color: #555;
+}
+
+.btn-div {
+	width : 100%;	
+	display : flex;
+	flex-direction: row-reverse;
+	margin-top: 20px;
 }
 
 .modal-footer .material-symbols-outlined {
-    color: white !important;
-    font-size: 1.5rem !important;
 	position: relative;
-	top: 4px;
+	top: 1px;
 }
 
-#staticBackdrop, #modalBtn, #btn-write {
-   font-family: "SUITE-Regular"; 
-}
-
-#chatPCD {
-	position: relative;
-	top: -3.5px;
+.modal-footer .btn-margin {
+	margin-top: 10px;
 }
 
 .status {
@@ -103,36 +108,33 @@ h6 {
 }
 
 .content-header {
-	font-size: 1.5rem;
 	font-weight: bold;
+	width: 100%;
+	margin-top: 30px;
 }
 
 hr {
-	width: 100%;
-	margin-top: 5px;
-	margin-bottom: 40px;
-	color: #868e96 !important;
-	border-top: 3px solid;
-	opacity: 0.5;
-}
-
-#addContent {
-	border: 2px solid #ccc;
-	border-radius: 7px;
-	width: 100%;
-	padding: 30px;
-	padding-top: 10px;
+   width: 100%;
+   margin-top: 5px;
+   margin-bottom: 40px;
+   color: #868e96 !important;
+   border-top: 2px solid;
+   opacity: 0.5;
 }
 
 .menu-title {
 	margin-bottom: 5px;
 	margin-top: 15px;
+	font-size: 18px;
 }
 
 input[type="text"] {
-	border: 1.5px solid #C4C4C4;
-	border-radius: 5px;
-	width: 100%;
+	padding : 10px;
+	padding-left : 15px;
+	border-radius : 5px;
+	border : 1px solid #878787;
+	margin-bottom: 10px;
+	width: 100%
 }
 
 input[type="text"]:focus-visible {
@@ -140,7 +142,7 @@ input[type="text"]:focus-visible {
 }
 
 #aboutInfo {
-	margin-top: 15px;
+	margin-top: 25px;
 }
 
 #aboutInfo input[type="text"] {
@@ -157,18 +159,20 @@ input[type="text"]:focus-visible {
 }
 
 #btns {
-	width: 100%;
 	text-align: right;
 }
 
-#btn-cancle, #btn-writeOk {
-	margin-top: 20px;
-	border: 1px solid #CCC;
-	border-radius: .25rem;
-	padding: 2px 8px;
-	width: 60px;
+.content-btn {
+	margin-top : 20px;
+	padding : 15px 30px;
+	width: 100px;
+	margin-left:10px;
+	border : none;
+	border-radius : 10px;
+	font-size : 18px;
 }
 
-#btn-writeOk {
-	margin-left: 10px;
+.content-btn.add-btn {
+	background-color: #0256AA;
+	color : white;
 }

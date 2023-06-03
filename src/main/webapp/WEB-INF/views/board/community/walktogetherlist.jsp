@@ -29,10 +29,14 @@
                 <div id="map" style="width:100%;height:800px;">
                 </div>
                 
-                <button type="button" id="btn-write">
-                	<span class="material-symbols-outlined">edit_square</span>
-                	<span id="writePCD">글쓰기</span>
-                </button>
+                <div class="btn-div">
+	                <button type="button" class="write-btn" onclick="window.location='http://localhost:8090/animingle/board/walktogetheradd.do';">
+			         	<span class="material-symbols-outlined">
+							edit_note
+						</span>
+			         	작성하기
+		         	</button>
+	         	</div>
     
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
@@ -64,10 +68,12 @@
                                 	<div></div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" id="btnChat">
-                                        <span class="material-symbols-outlined">sms</span>
-                                        <span id="chatPCD">채팅하기</span>
-                                    </button>
+                                	<div class="btn-div btn-margin">
+						                <button type="button" class="write-btn">
+								         	<span class="material-symbols-outlined">sms</span>
+								         	채팅하기
+							         	</button>
+						         	</div>
                                 </div>
                             </div>
                         </div>
