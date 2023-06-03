@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/community/walktogetherlist.do")
+@WebServlet("/walktogetherlist.do")
 public class WalkTogetherList extends HttpServlet {
 
 	@Override

@@ -21,6 +21,73 @@
    border-radius: 30px;
 }
 
+#writeBtn {
+	position: relative;
+	left: 380px;
+	margin-top: 15px;
+	border: 1px solid #CCC;
+	border-radius: .25rem;
+	padding: 2px 8px;
+}
+
+#writePCD {
+	position: relative;
+	top: -1px;
+	color: #5D5D5D;
+	font-weight: bold;	
+}
+
+#writeBtn .material-symbols-outlined{
+    font-size: 1.5rem !important;
+	position: relative;
+	top: 2px;
+	color: #5D5D5D !important;
+}
+
+.modal-footer .material-symbols-outlined {
+    color: white !important;
+    font-size: 1.5rem !important;
+	position: relative;
+	top: 4px;
+}
+
+#staticBackdrop, #modalBtn, #writeBtn {
+   font-family: "SUITE-Regular"; 
+}
+
+#chatPCD {
+	position: relative;
+	top: -3.5px;
+}
+
+.status {
+	background-color: tomato;
+	font-size: 1rem;
+	font-weight: 500;
+	position: relative;
+	top: -2.5px;
+	padding: 2px 7px;
+	color: white;
+	border-radius: 5px;
+	margin-left: 6px;
+}
+
+#staticBackdropLabel {
+	font-weight: bold;
+	font-size: 1.5rem !important;
+}
+
 #map {
-	width: 100%
+	margin-top: 20px;
+}
+
+h6 {
+	font-weight: bold;
+}
+
+.walkInfo {
+   border: 2px solid #ccc;
+   border-radius: 10px;
+   padding: 15px;
+   margin-top: 15px;
 }
