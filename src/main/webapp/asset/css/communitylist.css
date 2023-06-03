@@ -1,0 +1,87 @@
+.content {
+	/* 	background-color: gold;	 */
+	
+}
+
+.mycontainer {
+	width: 1280px;
+	/* 	background-color: blue; */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.sub-navbar>div {
+	width: 1280px;
+}
+
+.sub-navbar ul {
+	width: 860px;
+	margin: 0 auto;
+}
+
+@media ( max-width :1280px) {
+	.mycontainer {
+		width: 1280px;
+	}
+	.content {
+		width: 1280px;
+	}
+	.sub-navbar>div {
+		width: 1280px;
+	}
+	nav.navbar {
+		width: 1280px;
+	}
+}
+
+.leftbar {
+	background-color: skyblue;
+	width: auto;
+	display: block;
+}
+
+.maincontent {
+	background-color: tomato;
+	width: 426px;
+	display: block;
+}
+
+.rightbar {
+	width: auto;
+	display: block;
+}
+
+.maincontent, .leftbar, .rightbar {
+	height: 800px;
+}
+
+.content-list-box {
+	width: 95%;
+	background-color: white;
+	margin: 30px auto;
+	padding: 10px 20px;
+}
+
+.sub-content {
+	margin-bottom: 0px;
+}
+.tag {
+	padding: 5px 10px;
+	margin-bottom: 5px;
+}
+
+.content-list-title {
+	padding-bottom: 0px;
+}
+
+.content-title {
+	font-size: 30px;
+	background-color: white;
+	width: 95%;
+	padding: 10px;
+	height: 70px;
+}
+
+.btn {
+	padding: 0px;
+}

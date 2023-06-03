@@ -1,0 +1,94 @@
+.content {
+	font-family: "SUITE-Regular";	
+}
+.maincontent {
+	padding: 30px;
+}
+h1 {
+	text-align: center;
+	font-weight: bold;
+}
+.infobox {
+	margin: 15px auto;
+	display: flex;
+}
+.picbox {
+	border: 1px solid #DDD;
+}
+.picbox > img {
+	width: 180px;
+	height: 200px;
+}
+.tblinfo {
+	margin-left: 30px;
+}
+
+.tblinfo th {
+	width: 100px;
+}
+
+.tblinfo tr:last-child {
+	height: 80px;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.btn.editpic {
+	margin-left: 50px;
+}
+.selfintro {
+	margin: 60px auto;
+}
+h3 {
+	padding-left: 30px;
+	margin-bottom: 15px;
+}
+.selfintro textarea {
+	width: 100%;
+	min-height: 300px;
+	padding: 20px;
+	line-height: 30px;
+	outline: none;
+	border-radius: 10px;
+	background: linear-gradient( 45deg, #FFD5DE, #F8EDEB );
+	font-size: 1.2rem;
+}
+
+.editintro {
+	float: right;
+}
+
+.score {
+	position: relative;
+	top:10px;
+	color: #666;
+}
+
+.tblapply {
+	width: 100%;
+	font-size: 1.2rem;
+}
+
+.tblapply tr {
+	border: 2px solid #DDD;
+}
+
+
+
+.tblapply tr > td:first-child {
+	text-align: left;
+	padding: 15px;
+}
+
+.tblapply tr > td:last-child {
+	text-align: center;
+	width: 100px;
+}
+
+.state {
+	width: 90%;
+	border-radius: 5px;
+}
+
+
+
