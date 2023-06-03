@@ -1,0 +1,177 @@
+.maincontent {
+	border: solid 2px #AAAAAA;	
+	
+}
+
+.content-top {
+	font-family: "SUITE-Regular"; 
+	width: 90%;
+	margin-top: 35px;
+	
+}
+
+.content-top img {
+	width: 45px;
+	height: 45px;
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+}
+
+.content-top2 {
+	font-family: "SUITE-Regular"; 
+	display: flex;
+	justify-content: space-between;
+	margin-top: 15px;
+}
+
+.user-profile span {
+	font-weight: 800;
+	margin-left: 6px;
+	font-size: 20px;
+}
+
+.content-title:nth-child(1) {
+	font-weight: 800;
+	font-size: 28px;
+}
+
+.content-title span:nth-child(3) {
+	color: #AAAAAA;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.content-main {
+	font-family: "SUITE-Regular"; 
+	width: 85%;	
+	margin: 20px 0 20px 0;
+}
+
+.content-main span {
+	font-size: 20px;
+	font-weight: 300;
+}
+
+.content-image img {
+	width: 55%;
+	margin: 20px 0 20px 0;
+}
+
+.views-count {
+	font-size: 18px;
+	margin-right: 5px;
+	padding-bottom: 10px;
+}
+
+.material-symbols-outlined {
+	font-size: 20px !important;
+	padding-top: 10px;
+}
+
+.submit-btn {
+	width: 85%;
+}
+
+
+
+.submit-btn button {
+	width: 80px;
+	height: 40px;
+	border: 2px solid #AAAAAA;
+	border-radius: 10px;
+	background-color: white;
+	float: right;
+	margin-left: 7px;
+}
+
+.submit-btn button:hover {
+	background-color: #AAAAAA;
+}
+
+.content-bottom {
+	width: 85%;
+	margin-top: 20px;
+}
+
+.comment-top {
+	font-family: "SUITE-Regular"; 
+	font-size: 20px;
+	font-weight: 300;
+	text-align: left;
+	border-bottom: 2px solid #AAAAAA;
+	padding-bottom: 8px;
+	margin-bottom: 20px;
+}
+
+.comment-image {
+	float: left;
+	margin-right: 15px;
+	width: auto;
+}
+
+.comment-image img {
+	width: 45px;
+	height: 45px;
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+}
+
+.comment{
+	width: 100;
+	margin: 10px 0 45px 0;
+}
+
+.comment-info {
+	font-family: "SUITE-Regular"; 
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.comment-info span:nth-child(2) {
+	font-size: 15px;
+	color: #AAAAAA;
+	margin-left: 5px;
+}
+
+.comment-text {
+	width: 92%;
+	border: 3px solid #AAAAAA;
+	margin-left: 60px;
+	padding: 20px;
+	border-radius: 10px;
+	font-family: "SUITE-Regular"; 
+	font-weight: 500;
+	font-size: 20px;
+	
+}
+
+.content-bottom {
+	width: 85%;
+	margin-top: 20px;
+}
+
+.ck-editor__editable { 
+   height: 100px;
+   margin-bottom: 20px;
+}
+
+.comment-btn {
+	width: 100%;
+}
+
+
+
+.comment-btn button {
+	width: 100px;
+	height: 40px;
+	border: 2px solid #AAAAAA;
+	border-radius: 10px;
+	background-color: white;
+	float: right;
+	margin-left: 7px;
+	margin-bottom: 30px;
+}
+
+.comment-btn button:hover {
+	background-color: #AAAAAA;
+}

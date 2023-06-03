@@ -1,0 +1,77 @@
+.top-title {
+   width: 100%;
+   display: flex;
+   border-bottom: 3px solid #AAAAAA;
+   padding-bottom: 8px;
+}
+
+.addtitle {
+	 font-family: "SUITE-Regular"; 
+	 font-weight: 800;
+	 font-size: 40px;
+	 text-align: left;
+
+}
+
+.addtitle-hr {
+	height: 10px;
+	background-color: #AAAAAA;
+}
+
+.wagleform {
+   width: 95%;
+   margin-top: 30px;
+	
+}
+
+.wagleform select, textarea {
+	width: 100%;
+	height: 35px;
+	border-radius: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #AAAAAA;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.wagleform textarea {
+	resize:none;
+	padding-top: 3px;
+	padding-bottom: 3px;	
+}
+
+.wagleform div {
+   font-family: "SUITE-Regular";
+   font-weight: bold;
+   margin-bottom: 8px;
+}
+
+.wagleform div:nth-child(5) {
+	margin-top: 30px;
+}
+
+
+
+.waglesubmit {
+	width: 95%;
+}
+
+
+
+.waglesubmit button {
+	width: 80px;
+	height: 40px;
+	border: 2px solid #AAAAAA;
+	border-radius: 10px;
+	background-color: white;
+	float: right;
+	margin-left: 7px;
+}
+
+.waglesubmit button:hover {
+	background-color: #AAAAAA;
+}
+
+.ck-editor__editable { 
+   height: 400px; 
+}
