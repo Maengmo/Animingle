@@ -12,9 +12,6 @@
 <link rel="stylesheet" href="/animingle/asset/css/find.css">
 	<style>
 	
-	
-
-		
 	</style>
 </head>
 <body>
