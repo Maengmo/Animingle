@@ -1,6 +1,4 @@
-.content-top {
-   font-family: "SUITE-Regular"; 
-}
+/* WalkTogetherList*/
 
 .content-top {
    width: 100%;
@@ -8,6 +6,7 @@
    justify-content: center;
    flex-direction: column;
    align-items: center;
+   font-family: "SUITE-Regular";
 }
 
 .content-title {
@@ -21,7 +20,7 @@
    border-radius: 30px;
 }
 
-#writeBtn {
+#btn-write {
 	position: relative;
 	left: 380px;
 	margin-top: 15px;
@@ -37,7 +36,7 @@
 	font-weight: bold;	
 }
 
-#writeBtn .material-symbols-outlined{
+#btn-write .material-symbols-outlined{
     font-size: 1.5rem !important;
 	position: relative;
 	top: 2px;
@@ -51,7 +50,7 @@
 	top: 4px;
 }
 
-#staticBackdrop, #modalBtn, #writeBtn {
+#staticBackdrop, #modalBtn, #btn-write {
    font-family: "SUITE-Regular"; 
 }
 
@@ -90,4 +89,86 @@ h6 {
    border-radius: 10px;
    padding: 15px;
    margin-top: 15px;
+}
+
+
+/* WalkTogetherAdd*/
+.maincontent {
+	align-items: baseline;
+	font-family: "SUITE-Regular";
+}
+
+.ck-editor__editable { 
+	height: 400px; 
+}
+
+.content-header {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+hr {
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 40px;
+	color: #868e96 !important;
+	border-top: 3px solid;
+	opacity: 0.5;
+}
+
+#addContent {
+	border: 2px solid #ccc;
+	border-radius: 7px;
+	width: 100%;
+	padding: 30px;
+	padding-top: 10px;
+}
+
+.menu-title {
+	margin-bottom: 5px;
+	margin-top: 15px;
+}
+
+input[type="text"] {
+	border: 1.5px solid #C4C4C4;
+	border-radius: 5px;
+	width: 100%;
+}
+
+input[type="text"]:focus-visible {
+	outline-color: #ADB5BD;
+}
+
+#aboutInfo {
+	margin-top: 15px;
+}
+
+#aboutInfo input[type="text"] {
+	width: 30%;
+}
+
+#aboutInfo > span:nth-child(1) > span {
+	margin-right: 5px;
+}
+
+#aboutInfo > span:nth-child(2) > span {
+	margin-left:30px; 
+	margin-right: 5px;
+}
+
+#btns {
+	width: 100%;
+	text-align: right;
+}
+
+#btn-cancle, #btn-writeOk {
+	margin-top: 20px;
+	border: 1px solid #CCC;
+	border-radius: .25rem;
+	padding: 2px 8px;
+	width: 60px;
+}
+
+#btn-writeOk {
+	margin-left: 10px;
 }

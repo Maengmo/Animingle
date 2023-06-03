@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Animingle</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -29,10 +29,10 @@
                 <div id="map" style="width:100%;height:800px;">
                 </div>
                 
-                <button type="button" id="writeBtn">
+                <button type="button" id="btn-write">
                 	<span class="material-symbols-outlined">edit_square</span>
                 	<span id="writePCD">글쓰기</span>
-                	</button>
+                </button>
     
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
