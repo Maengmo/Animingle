@@ -90,10 +90,10 @@
 	         </div>
 	         <div class="button-box">
 	         	<button>
-	         		<span class="button-name">작성하기</span>
 	         		<span class="material-symbols-outlined">
 						edit_note
 					</span>
+	         		<span class="button-name">작성하기</span>
 	         	</button>
 	         </div>
          </div>

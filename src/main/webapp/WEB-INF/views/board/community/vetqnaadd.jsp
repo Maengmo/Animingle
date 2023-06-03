@@ -43,6 +43,10 @@
 	         		</div>
          		</form>
          	</div>
+         	<div class="btn-div">
+				<button type="button" id="add-btn" class="content-btn add-btn">등 록</button>
+	            <button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
+	        </div>
          </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->

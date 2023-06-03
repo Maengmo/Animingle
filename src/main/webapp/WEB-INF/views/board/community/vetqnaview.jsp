@@ -36,8 +36,8 @@
 					너무 짖어서 목이 다 쉬었어요... 하지 말라고 간식을 줘도 오히려 더 짖는 것 같네요ㅠㅠ
 				</div>
 				<div class="view-button">
-					<button id="btnEdit">수정하기</button>
 					<button id="btnDel">삭제하기</button>
+					<button id="btnEdit">수정하기</button>
 				</div>
 				<div class="content-box">
 					<div class="title">답 변</div>
