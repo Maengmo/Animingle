@@ -44,7 +44,40 @@
 }
 
 .paging {
-	height: 50px;
+	width : 100%;
+	display : flex;
+	justify-content: space-between;
+}
+
+.paging ul {
+	list-style-type : none;
+	display : inline-block;
+}
+
+.paging li {
+	float : left;
+	display : inline-block;
+	width : 100px !important;
+	font-size : 25px;
+	font-weight : bold;
+	text-align : center;
+
+}
+
+.paging li:hover {
+	cursor : pointer;
+
+}
+
+.paging span {
+	font-size : 25px;
+	font-weight : bold;
+
+}
+
+.paging-hr {
+	margin-top : 40px;
+	width : 100%;
 }
 
 .content-top {
@@ -60,14 +93,19 @@
 }
 
 .content-title {
-	width: 100%;
-	border: 2px solid #ccc;
-	padding: 20px;
-	text-align: center;
-	font-size: 40px;
-	font-weight: bold;
-	margin-bottom: 15px;
-	border-radius: 30px;
+	font-weight : bold;
+	width : 100%;
+	margin-top: 25px;
+	margin-bottom: 8px;
+}
+
+hr {
+   width: 100%;
+   margin-top: 10px;
+   margin-bottom: 40px;
+   color: #868e96 !important;
+   border-top: 2px solid;
+   opacity: 0.5;
 }
 
 .tbladopt {
@@ -124,7 +162,39 @@
 	width: 260px;
 }
 
+.write-btn:hover {
+	background-color: #0256AA;
+	border: 1px solid #0256AA;
+	color: white;
+}
 
+.write-btn:hover .material-symbols-outlined {
+	background-color: #0256AA;
+	border: 1px solid #0256AA;
+	color: white !important;
+}
+
+.write-btn {
+	font-size : 20px;
+	border-radius : 10px;
+	display : flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #555;
+    color: #555;
+    padding: 7px 10px;
+}
+
+.write-btn .material-symbols-outlined {
+	font-size: 25px !important;
+	color: #555;
+}
+
+.btn-div {
+	width : 100%;	
+	display : flex;
+	flex-direction: row-reverse;
+}
 
 
 

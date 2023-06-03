@@ -161,9 +161,21 @@
                		</div>
                </div>
          	</div>
-         	<div class="paging" style="text-align: center;">
-         		1 2 3 4 5 6 7 8 9 10
-         	</div>
+         	
+	         <hr class="paging-hr">
+	         
+	         <div class="paging">
+	         	<span>&lt;</span>
+	         	<ul>
+	         		<li>1</li>
+	         		<li>2</li>
+	         		<li>3</li>
+	         		<li>4</li>
+	         		<li>5</li>
+	         	</ul>
+	         	<span>&gt;</span>
+	         </div>
+         	
          </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->

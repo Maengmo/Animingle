@@ -23,9 +23,8 @@
             <!-- 왼쪽 사이드바 입니다. -->
          </div>
          <div class="maincontent">
-         <div class="content-top">
-               <div class="content-title">당신을 기다려요</div>
-         </div>
+         	<h2 class="content-title">당신을 기다려요</h2>
+            <hr>
                 <table class="tbladopt tblinfo">
                 	<tr><th colspan="3">동물의 정보</th></tr>
                 	<tr><th>동물번호</th><td>경남-진주-2023-00234</td> <td rowspan="4" class="tdimg"><img src="/animingle/asset/commonimg/animingle.png" class="anipic aniview"></td></tr>
@@ -52,9 +51,14 @@
                 	<tr><th>특이사항</th><td colspan="3">2.0kg</td></tr>
                 </table>
                 
-                <div>
-	                <button type="button" class="btn btn-primary" style="display: block; margin: 0 auto;">목록보기</button>
-                </div>
+                <div class="btn-div">
+	         	<button type="button" id="write-btn" class="write-btn" onclick="window.location='http://localhost:8090/animingle/board/petsitteradd.do';">
+		         	<span class="material-symbols-outlined">
+						reorder
+					</span>
+		         	목록보기
+	         	</button>
+	         </div>
 
          </div>
          <div class="rightbar">
