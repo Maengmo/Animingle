@@ -1,0 +1,31 @@
+.mymenu {
+	margin-top: 30px;
+}
+
+.mymenu ul {
+	list-style: none;
+	font-family: "SUITE-Regular";
+	font-size: 1.5rem;
+	font-weight: bold;
+	padding-left: 15px;
+}
+/* 
+.leftbar {
+	background-color: green;
+}
+ */
+.mymenu ul > li:hover {
+	color: #F24822;
+}
+
+.mymenu ul > li {
+	margin: 10px 0;
+	cursor: pointer;
+}
+.stamp {
+	width: 30px;
+	margin-right: 10px;
+}
+.selected {
+	color: #F24822;
+}
