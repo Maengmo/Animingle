@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+.main-title {
+	font-weight : bold;
+	width : 100%;
+}
+
+hr {
+	width : 100%;
+	border : 2px solid #CACACA;
+}
+
+.ck-editor__editable { 
+   height: 400px; 
+   width : 100% !important;
+}
+
+.main-form {
+	width : 100%;
+}
+
+.form-title div:nth-child(1),
+.date-title,
+.form-address div:nth-child(1),
+.main-content-sel3 div:nth-child(1)   {
+	margin : 10px 0px;
+	font-size : 18px;
+	font-weight : 500;
+}
+
+.form-date {
+	display: flex;
+    width: 50%;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.form-address div:nth-child(2){
+	display : flex;
+	align-items : center;
+	width : 80%;
+}
+.form-address div:nth-child(2) div:nth-child(1) {
+	width : 60%;
+} 
+.form-address div:nth-child(2) div:nth-child(2) {
+	width : 20%;
+	margin-left : 20px;
+}
+
+
+.title, .petsitter-date, .address {
+	padding : 10px;
+	padding-left : 15px;
+	border-radius : 5px;
+	border : 1px solid #878787;
+}
+
+.title:focus, .petsitter-date:focus, .address:focus {
+	outline : none;
+	border : 1px solid #4084DD;
+	box-shadow: inset 1px 1px 1px 1px #F0F0F0;
+}
+
+.title {
+	width : 80%;
+}
+
+.petsitter-date {
+	width : 190px;
+}
+
+.address {
+	width : 100%;
+}
+
+.btn-div {
+	display : flex;
+	flex-direction: row-reverse;
+	
+}
+
+
+.content-btn {
+	margin-top : 20px;
+	padding : 15px 20px;
+	width : 20%;
+	margin-left:10px;
+	border : none;
+	border-radius : 10px;
+	font-size : 18px;
+}
+
+.content-btn.add-btn {
+	background-color : #0081DD;
+	color : white;
+}
+
+.find-address {
+	padding : 0px 15px;
+	border : 1px solid #ccc;
+	border-radius : 10px;
+	height : 50px;
+}
+
+.find-address:hover, .content-btn:hover {
+	transition : .3s; 
+	opacity : 0.8;
+}

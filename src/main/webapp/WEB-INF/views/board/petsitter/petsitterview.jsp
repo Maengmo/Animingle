@@ -76,8 +76,77 @@
 		            <div class="applicant-list">
 		            	<span class="applicant-list-title">신청자 목록</span>
 		            	<div class="list-item">
-		            		<div>
+		            		<div class="list-item-div">
+		            			<div>
 		            			<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="applicant-profile-img" id="profile-img"> 
+		            			</div>
+		            			
+		            			<div class="item-div2">
+		            				<div class="applicant-id">펫시터1(ilovedog22)</div>
+		            				<div>돌봄 횟수 : 15회</div>
+		            				<div>별점 : 4.5</div>
+		            			</div>
+		            			
+		            			<div>
+		            				<button type="button" class="applicant-btn">채팅하기</button>
+		            				<button type="button" class="applicant-btn">맡기기</button>
+		            			</div>
+		            			
+		            		</div>
+		            		<div>
+		            			강아지 사랑<br>
+		            			나라 사랑<br>
+		            			나라에서 허락한 유일한 마약 = 강아지!	            			
+		            		</div>
+		            	</div>
+		            	
+		            	<div class="list-item">
+		            		<div class="list-item-div">
+		            			<div>
+		            			<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="applicant-profile-img" id="profile-img"> 
+		            			</div>
+		            			
+		            			<div class="item-div2">
+		            				<div class="applicant-id">펫시터1(ilovedog22)</div>
+		            				<div>돌봄 횟수 : 15회</div>
+		            				<div>별점 : 4.5</div>
+		            			</div>
+		            			
+		            			<div>
+		            				<button type="button" class="applicant-btn">채팅하기</button>
+		            				<button type="button" class="applicant-btn">맡기기</button>
+		            			</div>
+		            			
+		            		</div>
+		            		<div>
+		            			강아지 사랑<br>
+		            			나라 사랑<br>
+		            			나라에서 허락한 유일한 마약 = 강아지!	            			
+		            		</div>
+		            	</div>
+		            	
+		            	<div class="list-item">
+		            		<div class="list-item-div">
+		            			<div>
+		            			<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="applicant-profile-img" id="profile-img"> 
+		            			</div>
+		            			
+		            			<div class="item-div2">
+		            				<div class="applicant-id">펫시터1(ilovedog22)</div>
+		            				<div>돌봄 횟수 : 15회</div>
+		            				<div>별점 : 4.5</div>
+		            			</div>
+		            			
+		            			<div>
+		            				<button type="button" class="applicant-btn">채팅하기</button>
+		            				<button type="button" class="applicant-btn">맡기기</button>
+		            			</div>
+		            			
+		            		</div>
+		            		<div>
+		            			강아지 사랑<br>
+		            			나라 사랑<br>
+		            			나라에서 허락한 유일한 마약 = 강아지!	            			
 		            		</div>
 		            	</div>
 	            	</div>

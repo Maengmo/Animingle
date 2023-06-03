@@ -121,8 +121,15 @@
 
 
 .applicant-list {
-	witdh : 100%;
-	border : 1px solid red;
+	width: 100%;
+	padding : 10px;
+	
+}
+
+.list-item {
+	padding : 20px;
+	border-bottom : 1px solid #E6E6E6;
+	margin-bottom : 20px;
 }
 
 .applicant-list-title {
@@ -137,4 +144,49 @@
 	border : 1px solid #ccc;
 	border-radius : 15px;
 	padding : 5px;
+}
+
+.list-item-div {
+	display : flex;
+    justify-content: space-between;
+}
+
+.item-div2 {
+	width : 65%;
+	line-height : 30px;
+	
+}
+
+.item-div2 div:nth-child(2),
+.item-div2 div:nth-child(3) {
+	font-size : 17px;
+}
+
+
+.applicant-id {
+	font-size : 20px;
+	font-weight : bold;
+}
+
+.applicant-btn {
+	width : 100%;
+	margin-bottom : 10px;
+	border : none;
+	padding : 10px 0px;
+	border-radius : 5px; 
+}
+
+.applicant-btn:hover {
+	transition : .4s;
+	opacity : 0.7;
+}
+
+.applicant-btn:nth-child(1) {
+	background-color : tomato;
+	color : white;
+}
+
+.applicant-btn:nth-child(2) {
+	background-color :#9747FF;
+	color : white;
 }

@@ -158,7 +158,7 @@
 	         </div>
 	         
 	         <div class="btn-div">
-	         	<button type="submit" id="write-btn" class="write-btn">
+	         	<button type="submit" id="write-btn" class="write-btn" onclick="window.location='http://localhost:8090/animingle/board/petsitteradd.do';">
 		         	<span class="material-symbols-outlined">
 						edit_note
 					</span>
