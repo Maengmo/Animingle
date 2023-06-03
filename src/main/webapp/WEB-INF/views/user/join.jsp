@@ -28,11 +28,11 @@
               <fieldset class="join-form">
                   <h2 class="join-title">회원 가입</h2>
                   <div class="div-wrap">
-                      <input type="text" name="id" class="id" placeholder="아이디(6~12자, alphabet, number)">
+                      <input type="text" name="id" class="id" placeholder="6~12자 이내로 입력해주세요">
                       <input type="button" name="dupliBtn" id="dupli-Btn" class="dupli-Btn" value="중복 확인">
                   </div>
                   <div>
-                      <input type="password" class="pw" id="pw1" placeholder="비밀번호(alpabet, number 6~20, Case)">
+                      <input type="password" class="pw" id="pw1" placeholder="최소 6~20자 이상(알파벳, 숫자 필수)">
                   </div>
                   <div>  
                       <input type="password" class="pw" id="pw2" placeholder="비밀번호 확인">
@@ -47,9 +47,9 @@
                       생년월일 <input type="date" id="birthday" class="birthday" name="birthday">
                   </div>
                   <div>
-                      <input type="number" class="tel" id="tel1" value="010" readonly> - 
-                      <input type="number" class="tel" id="tel2" min="0"> - 
-                      <input type="number" class="tel" id="tel3" min="0"> 
+                      <input type="text" class="tel" id="tel1"> - 
+                      <input type="text" class="tel" id="tel2"> - 
+                      <input type="text" class="tel" id="tel3"> 
                   </div>
                   <div>
                       <input type="text" class="email" id="email1" placeholder="email"> @

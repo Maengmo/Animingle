@@ -60,12 +60,12 @@
 		            	</div>
 		            	
 		            	<div class="btn-div">
-		            		<button type="button" class="content-btn">수정하기</button>
-		            		<button type="button" class="content-btn">삭제하기</button>
+		            		<button type="button" class="content-btn1">수정하기</button>
+		            		<button type="button" class="content-btn2">삭제하기</button>
 		            	</div>
 		            	<div class="writebtn-div">
 				         	<button type="submit" id="write-btn" class="write-btn">
-					         	신청 하기
+					         	신청하기
 				         	</button>
 			        	 </div>
 	            	</div>
@@ -93,7 +93,7 @@
 		            			</div>
 		            			
 		            		</div>
-		            		<div>
+		            		<div class="info">
 		            			강아지 사랑<br>
 		            			나라 사랑<br>
 		            			나라에서 허락한 유일한 마약 = 강아지!	            			

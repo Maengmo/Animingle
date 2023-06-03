@@ -100,8 +100,8 @@
 		            		<span class="item-id">밍글밍글(mingle77)</span>
 		            		<span class="item-time">16분전</span>
 		            	</div>
-	            		<div class="recruit-state">
-	            			모집중
+	            		<div class="recruit-state-end">
+	            			모집완료
 	            		</div>
 	            	</div>
 	            	<div class="item-content">

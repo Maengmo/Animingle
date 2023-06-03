@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/mymenu.do")
+@WebServlet("/user/mymenu.do")
 public class Mymenu extends HttpServlet {
 
 	@Override

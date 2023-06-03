@@ -8,6 +8,9 @@ img {
     width: 50%;
     font-family: "SUITE-Regular"; 
     padding: 20px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    box-shadow: 5px 5px #ccc;
 }
 
 .login-box h2 {
@@ -22,11 +25,12 @@ img {
 
 .id, .pw {
     width: 80%;
-    height: 25px;
-    border: 0px;
+    height: 40px;
+    border: 1px solid #ccc;
     border-radius: 16px;
     padding-left: 18px;
     margin-top: 12px;
+    outline-color: #ADB5BD;
 }
 
 .login-btn {
@@ -34,10 +38,14 @@ img {
     width: 80%;
     height: 35px;
     background-color: #D1E1F0;
-    border: 0px;
     border-radius: 10px;
 	font-weight: bold;
 	font-size: 20px;
+	border: 1px solid rgb(191, 214, 234);
+}
+
+.login-btn:hover {
+	background-color: #91c4f3;
 }
 
 .social {

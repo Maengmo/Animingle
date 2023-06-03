@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/adoptionview.do")
+@WebServlet("/board/adoptionview.do")
 public class AdoptionView extends HttpServlet {
 
 	@Override

@@ -1,14 +1,14 @@
 .top-title {
    width: 100%;
    display: flex;
-   border-bottom: 3px solid #AAAAAA;
+   border-bottom: 1px solid #868e96;
    padding-bottom: 8px;
 }
 
 .addtitle {
 	 font-family: "SUITE-Regular"; 
-	 font-weight: 800;
-	 font-size: 40px;
+	 font-weight: bold;
+	 font-size: 32px;
 	 text-align: left;
 
 }
@@ -19,19 +19,30 @@
 }
 
 .wagleform {
-   width: 95%;
+   width: 100%;
    margin-top: 30px;
 	
 }
 
+.wagleform .title-box {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #878787;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+.wagleform .title-box:focus,
+.title-box {
+	outline-color: #ADB5BD;
+}
+
 .wagleform select, textarea {
 	width: 100%;
-	height: 35px;
-	border-radius: 10px;
+	border-radius: 5px;
 	margin-bottom: 15px;
-	border: 1px solid #AAAAAA;
-	padding-left: 8px;
-	padding-right: 8px;
+	border: 1px solid #878787;
+	padding: 10px;
 }
 
 .wagleform textarea {
@@ -42,34 +53,39 @@
 
 .wagleform div {
    font-family: "SUITE-Regular";
-   font-weight: bold;
-   margin-bottom: 8px;
+   margin-bottom: 5px;
 }
-
-.wagleform div:nth-child(5) {
-	margin-top: 30px;
-}
-
-
 
 .waglesubmit {
-	width: 95%;
+	width: 100%;
+	margin-top: 20px;
+	text-align: right;
 }
 
-
-
-.waglesubmit button {
-	width: 80px;
-	height: 40px;
-	border: 2px solid #AAAAAA;
+.waglesubmit button:nth-child(2) {
+	width: 100px;
+	padding: 15px 30px;
+	margin-left: 10px;
 	border-radius: 10px;
-	background-color: white;
-	float: right;
-	margin-left: 7px;
+	background-color: #0256AA;
+	border: none;
+	font-size: 18px;
+	color: white;
+}
+
+.waglesubmit button:nth-child(1) {
+	width: 100px;
+	padding: 15px 30px;
+	margin-left: 10px;
+	border-radius: 10px;
+	background-color: #f0f0f0;
+	border: none;
+	font-size: 18px;
 }
 
 .waglesubmit button:hover {
-	background-color: #AAAAAA;
+	transition : .3s; 
+	opacity : 0.8;
 }
 
 .ck-editor__editable { 

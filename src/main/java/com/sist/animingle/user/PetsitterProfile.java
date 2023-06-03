@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/petsitterprofile.do")
+@WebServlet("/user/petsitterprofile.do")
 public class PetsitterProfile extends HttpServlet {
 
 	@Override

@@ -88,12 +88,12 @@
 }
 
 .item-wrap {
-	border : 1px solid #B1B1B1;
+	border : 1px solid #ccc;
 	border-radius: 20px;
 	width : 100%;
 	padding : 20px;
-	margin-bottom : 10px;
-
+	margin-bottom : 30px;
+	box-shadow: 5px 5px #aaa;
 }
 
 .item-header {
@@ -122,6 +122,16 @@
 	text-align : center;
 }
 
+.recruit-state-end {
+	width : 80px;
+	height : 35px;
+	background-color : #14AE5C;
+	border-radius : 5px;
+	color : white;
+	line-height : 35px;
+	text-align : center;
+}
+
 .item-content {
 	font-size : 20px;
 	margin-bottom : 10px;
@@ -135,19 +145,32 @@
     font-size : 11px;
 }
 
+.write-btn:hover {
+	background-color: #0256AA;
+	border: 1px solid #0256AA;
+	color: white;
+}
+
+.write-btn:hover .material-symbols-outlined {
+	background-color: #0256AA;
+	border: 1px solid #0256AA;
+	color: white !important;
+}
+
 .write-btn {
-	padding : 10px 30px;
 	font-size : 20px;
-	background-color : #D1E1F0;
-	border : 1px solid #ADC3D9;
 	border-radius : 10px;
 	display : flex;
     align-items: center;
-    margin : 20px 0px;
+    background-color: white;
+    border: 1px solid #555;
+    color: #555;
+    padding: 7px 10px;
 }
 
 .write-btn .material-symbols-outlined {
-	font-size : 9px;
+	font-size: 25px !important;
+	color: #555;
 }
 
 .btn-div {

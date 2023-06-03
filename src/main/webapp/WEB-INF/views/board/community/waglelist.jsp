@@ -49,7 +49,7 @@
 		            	<span>16분 전</span>
 		            </div>
 		            <div class="content-text">
-		            	<div class="content-title">
+		            	<div class="content-title2">
 		            	<span>[일상]</span>
 		            	<span>우리 애기 돌잔치 했어용</span>
 		            	</div>
@@ -70,9 +70,9 @@
 		            	<span>16분 전</span>
 		            </div>
 		            <div class="content-text">
-		            	<div class="content-title">
-		            	<span>[일상]</span>
-		            	<span>우리 애기 돌잔치 했어용</span>
+		            	<div class="content-title2">
+		            		<span>[일상]</span>
+		            		<span>우리 애기 돌잔치 했어용</span>
 		            	</div>
 		            	<div class="content-views">
 							<span class="material-symbols-outlined icon">visibility</span> 
@@ -83,50 +83,13 @@
 		            </div>
 	            </div>
             </div>
-            <div class="content-bottom">
-	            <div class="content-info">
-		            <div class="user-info">
-		            	<img src="/animingle/asset/commonimg/animingle.png">
-		            	<span>밍글맹글(mingle77)</span>
-		            	<span>16분 전</span>
-		            </div>
-		            <div class="content-text">
-		            	<div class="content-title">
-		            	<span>[일상]</span>
-		            	<span>우리 애기 돌잔치 했어용</span>
-		            	</div>
-		            	<div class="content-views">
-							<span class="material-symbols-outlined">visibility</span> 
-							<span class="views-count">54</span>
-							<span class="material-symbols-outlined">chat</span> 
-							<span class="views-count">3</span>
-						</div>
-		            </div>
-	            </div>
-            </div>
-            <div class="content-bottom">
-	            <div class="content-info">
-		            <div class="user-info">
-		            	<img src="/animingle/asset/commonimg/animingle.png">
-		            	<span>밍글맹글(mingle77)</span>
-		            	<span>16분 전</span>
-		            </div>
-		            <div class="content-text">
-		            	<div class="content-title">
-		            	<span>[일상]</span>
-		            	<span>우리 애기 돌잔치 했어용</span>
-		            	</div>
-		            	<div class="content-views">
-							<span class="material-symbols-outlined">visibility</span> 
-							<span class="views-count">54</span>
-							<span class="material-symbols-outlined">chat</span> 
-							<span class="views-count">3</span>
-						</div>
-		            </div>
-	            </div>
-            </div>
             <div class="submit-btn">
-				<button type="button" onclick="">작성하기</button>
+				<button class="submit-btn2" type="button" onclick="">
+					<span class="material-symbols-outlined">
+							edit_note
+					</span>
+					작성하기
+				</button>
 			</div>
          </div>
 		

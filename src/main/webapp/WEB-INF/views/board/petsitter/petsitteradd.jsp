@@ -28,17 +28,6 @@
 						<div>제목</div>
 						<div><input type="text" class="title" id="title" placeholder="제목을 입력해주세요." autofocus></div>
 					</div>
-					<div class="form-date">
-						<div>
-							<div class="date-title">부터</div>
-							<div><input type="date" class="petsitter-date" id="start-date" ></div>
-						</div>
-						<span> ~ </span>
-						<div>
-							<div class="date-title">까지</div>
-							<div><input type="date" class="petsitter-date" id="end-date" onchange="checkDate();"></div>
-						</div>
-					</div>
 					<div class="form-address">
 						<div>지역(동)</div>
 						<div>
@@ -48,7 +37,17 @@
 							</div>
 						</div>
 					</div>
-					
+					<div class="form-date">
+					    <div>
+					        <div class="date-title">부터</div>
+					        <div><input type="date" class="petsitter-date" id="start-date"></div>
+					    </div>
+					    <span> ~ </span>
+					    <div>
+					        <div class="date-title">까지</div>
+					        <div><input type="date" class="petsitter-date" id="end-date" onchange="checkDate();"></div>
+					    </div>
+					</div>					
 					
 					<div class="main-content-sel3">
                         <div>본문</div>
@@ -56,10 +55,8 @@
                      </div>
 					
 					<div class="btn-div">
-						<button type="button" id="add-btn" class="content-btn add-btn">등록</button>
-						
-	            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취소</button>
-	            		
+						<button type="button" id="add-btn" class="content-btn add-btn">등 록</button>
+	            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
 	            	</div>
 				</div>
 				

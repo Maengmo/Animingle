@@ -127,7 +127,7 @@
 <script>
 	$(document).ready(function() {
 		
-		/* $(".comment-box").hide(); */
+		$(".comment-box").hide();
 		$(".main-content-sel3").toggle();
 		
 		$(".comment-list-btn").click(function() {

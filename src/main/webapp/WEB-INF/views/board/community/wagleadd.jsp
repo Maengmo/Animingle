@@ -32,7 +32,7 @@
 					    <option value="나눔">나눔</option>
 					</select>
             	<div>제목</div>
-            	<textarea placeholder="제목을 입력해주세요." ></textarea>
+            	<input class="title-box" type="text" placeholder="제목을 입력해주세요.">
             	<div class="main-content-sel3">
                         <div>본문</div>
                         <textarea name="text" id="editor" placeholder="내용을 입력하세요."></textarea>
@@ -40,8 +40,8 @@
             </div>
             
             <div class="waglesubmit">
-            <button type="button" onclick="location.href='#'">등록</button>
-            <button type="button" onclick="location.href='http://localhost:8090/animingle/board/waglelist.do'">취소</button>
+	            <button type="button" onclick="location.href='http://localhost:8090/animingle/board/waglelist.do'">취 소</button>
+	            <button type="button" onclick="location.href='#'">등 록</button>
             </div>
          </div>
          <div class="rightbar">

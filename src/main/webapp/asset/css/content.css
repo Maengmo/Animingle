@@ -1,6 +1,7 @@
 .content {
 	width: 1270px;
 	margin: 0 auto;
+	font-family: "SUITE-Regular"
 }
 
 @media (max-width: 1280px) {

@@ -26,10 +26,14 @@
             }
         }).open();
     };
-    let today = new Date();  
     
-    //현재 날짜로 기본 셋팅
-    document.getElementById('start-date').value = new Date().toISOString().substring(0, 10);
+	var today = new Date();
+	today.setDate(today.getDate() + 1); // 현재 날짜에 1을 더해서 내일로 설정
+	
+	var startDateInput = document.getElementById('start-date');
+	
+	// 현재 날짜로 기본 설정
+	startDateInput.value = today.toISOString().substring(0, 10);
     
     //종료 날짜 체크
     function checkDate() {
