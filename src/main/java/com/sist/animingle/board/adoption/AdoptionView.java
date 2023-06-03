@@ -1,4 +1,4 @@
-package com.sist.animingle.board.community;
+package com.sist.animingle.board.adoption;
 
 import java.io.IOException;
 
@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/vetqnaadd.do")
-public class VetQnAAdd extends HttpServlet {
+@WebServlet("/adoptionview.do")
+public class AdoptionView extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/vetqnaadd.jsp");
+		//AdoptionView.java
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/adoption/adoptionview.jsp");
 		dispatcher.forward(req, resp);
 
 	}

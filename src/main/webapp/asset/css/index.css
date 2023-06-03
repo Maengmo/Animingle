@@ -23,6 +23,6 @@
 	text-shadow: 0px 0px 2px white;
 }
 
-.material-symbols-outlined {
+.carousel-control-next > .material-symbols-outlined {
 	color: black !important;
 }
