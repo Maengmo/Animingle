@@ -40,12 +40,68 @@
 		            </div>
 	            </form>
 	         </div>
+	         <div class="content-container">
+		         <div class="content-list-box">
+		         	<div class="tag">
+		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_01.png">
+		         		<span>강아지</span>
+		         	</div>
+		         	<div class="content-list-title">
+		         		강아지가 먹으면 안돼는 음식
+		         		<div class="content-list-sub-title">
+		         			강아지가 먹으면 안돼는 음식 알려주세용
+		         		</div>
+		         	</div>
+		         	<div class="sub-content">
+		         		<div>
+		         			답변: 0
+		         		</div>
+		         		<div>
+		         			과일구미
+		         		</div>
+		         		<div>
+		         			7시간 전
+		         		</div>
+		         	</div>
+		         </div>
+		         <div class="content-list-box">
+		         	<div class="tag">
+		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_02.png">
+		         		<span>고양이</span>
+		         	</div>
+		         	<div class="content-list-title">
+		         		강아지가 먹으면 안돼는 음식
+		         		<div class="content-list-sub-title">
+		         			강아지가 먹으면 안돼는 음식 알려주세용
+		         		</div>
+		         	</div>
+		         	<div class="sub-content">
+		         		<div>
+		         			답변: 0
+		         		</div>
+		         		<div>
+		         			과일구미
+		         		</div>
+		         		<div>
+		         			7시간 전
+		         		</div>
+		         	</div>
+		         </div>
+	         </div>
+	         <div class="button-box">
+	         	<button>
+	         		<span class="button-name">작성하기</span>
+	         		<span class="material-symbols-outlined">
+						edit_note
+					</span>
+	         	</button>
+	         </div>
          </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->
          </div>
       </div>
-         
+
    </section>
    <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 

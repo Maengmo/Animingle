@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/vetqnalist.do")
-public class VetQnAList extends HttpServlet {
+@WebServlet("/communitylist.do")
+public class CommunityList extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/vetqnalist.jsp");
+		//CommunityList.java
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/communitylist.jsp");
 		dispatcher.forward(req, resp);
 
 	}
