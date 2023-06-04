@@ -22,11 +22,38 @@
 			margin-bottom: 15px;
 		}
 
-		.mypage-profile-img button, .mypage-profile-main button {
+		.mypage-profile-img button, .mypage-vet-img button{
+			margin-top : 20px;
+			padding : 15px 30px;
+			width: 140px;
+			margin-left:10px;
+			border : none;
+			border-radius : 10px;
+			font-size : 18px;			
+			background-color: #0256AA;
+			color : white;
+		}		
+
+		.mypage-profile-main button {
+			margin-top : 20px;
+			padding : 5px 30px;
 			width: 100px;
-			background-color: blue;
-			color: white;
-			border-radius: 10px;	
+			margin-left:10px;
+			border : none;
+			border-radius : 10px;
+			font-size : 18px;			
+			background-color: #0256AA;
+			color : white;
+			height: 40px;
+		}
+		
+		.mypage-edit button {	
+			background-color: #0256AA;
+		}
+		
+		.mypage-profile-img button:hover, .mypage-profile-main button:hover, .mypage-vet-img button:hover, .mypage-edit button:hover {
+			transition : .3s;
+			opacity : 0.8;
 		}
 
 		.mypage-profile-main {
@@ -41,7 +68,7 @@
 		.form-title {
 			font-size: 16px;
 			margin-bottom: 5px;
-			font-weiht: bold;
+			font-weight: bold;
 		}
 
 		.mypage-profile-main input, .mypage-profile-pw input {
@@ -53,12 +80,17 @@
 		}
 
 		.mypage-profile-main div:nth-child(6) button {
-			width: 100px;
-			height: 40px;
-			background: blue;
-			color: white;
+			width: 110px;
+			height: 43px;
+			background-color: #F0F0F0;
+			border:1px solid #ccc;
+			color: #000000;
 			border-radius: 10px;
-			margin-left: 10px;
+			margin-left: 5px;
+			font-size: 16px;
+			padding: 5px;
+			position: relative;
+			top: 0;
 		}
 
 		.address-detail {
@@ -80,10 +112,10 @@
 
 		.mypage-profile-pw .mypage-edit button {
 			width: 200px;
-			background-color: blue;
 			color: white;
 			border-radius: 10px;
 			margin-left: -100px;
+			border : none;
 		}
 
 		.mypage-profile-count {
@@ -140,7 +172,6 @@
 		5px;
 	}
 
-
 	.mypage-reply {
 		float: left;
 		margin-left: 100px;
@@ -175,4 +206,16 @@
 	
 	.veterinary-main {
 		border-bottom: 0px;
+	}
+	
+	input[type="text"], textarea {
+		padding : 10px;
+		padding-left : 15px;
+		border-radius : 5px;
+		border : 1px solid #878787;
+		margin-bottom: 10px;
+	}
+	
+	input[type="text"]:focus-visible, textarea:focus-visible{
+		outline-color: #ADB5BD;
 	}

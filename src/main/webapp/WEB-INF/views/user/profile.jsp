@@ -28,7 +28,7 @@
 				<div class="mypage-profile">
 					<div class="mypage-profile-img">
 						<img src="/animingle/asset/commonimg/logo_01.png">
-						<button>사진수정</button>
+						<button>사진 수정</button>
 					</div>
 					<form>
 					<div class="mypage-profile-main">
