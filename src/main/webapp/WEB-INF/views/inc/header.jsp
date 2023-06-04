@@ -3,7 +3,7 @@
     
  	<nav class="navbar navbar-expand-lg navbar-dark bg-white">
       <div class="container" style="margin: 0 auto;">
-        <a class="navbar-brand text-dark" href="#"
+        <a class="navbar-brand text-dark" href="/animingle/index.do"
           ><img class="main-logo" src="/animingle/asset/commonimg/logo_03.png" alt=""
         /></a>
         <button
@@ -20,17 +20,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link text-dark" aria-current="page" href="#"
+              <a class="nav-link text-dark" aria-current="page" href="/animingle/user/login.do"
                 >로그인</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" aria-current="page" href="#"
+              <a class="nav-link text-dark" aria-current="page" href="/animingle/user/join.do"
                 >회원가입</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" aria-current="page" href="#"
+              <a class="nav-link text-dark" aria-current="page" href="/animingle/board/inquiry.do"
                 >고객센터</a
               >
             </li>
@@ -42,19 +42,19 @@
       <div>
         <ul>
           <li>
-            <a href="#">펫시터</a>
+            <a href="/animingle/board/petsitter.do">펫시터</a>
           </li>
           <li>
-          	<a href="#">당신을 기다려요</a>
+          	<a href="/animingle/board/adoptionlist.do">당신을 기다려요</a>
           </li>
           <li>
-          	<a href="#">우리 가족을 찾아주세요</a>
+          	<a href="/animingle/board/findlist.do">우리 가족을 찾아주세요</a>
           </li>
           <li>
-          	<a href="#">커뮤니티</a>
+          	<a href="/animingle/board/communitylist.do">커뮤니티</a>
           </li>
           <li>
-          	<a href="#">병원/약국찾기</a>
+          	<a href="/animingle/board/medicalview.do">병원/약국찾기</a>
           </li>
         </ul>
       </div>

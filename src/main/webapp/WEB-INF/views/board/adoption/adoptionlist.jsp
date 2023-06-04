@@ -23,7 +23,7 @@
          </div>
          <div class="maincontent">
          <div class="content-top">
-               <div class="content-title">당신을 기다려요</div>
+         	<div class="content-title">당신을 기다려요</div>
          </div>
          	<div class="cardbox">
 

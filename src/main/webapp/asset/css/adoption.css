@@ -2,6 +2,26 @@
 	font-family: "SUITE-Regular";
 }
 
+.content-top {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   font-family: "SUITE-Regular";
+}
+
+.content-title {
+   width: 100%;
+   border: 2px solid #ccc;
+   padding: 20px;
+   text-align: center;
+   font-size: 40px;
+   font-weight: bold;
+   margin-bottom: 15px;
+   border-radius: 30px;
+}
+
 .cardbox {
 	width: 100%;
 	height: 1000px;
