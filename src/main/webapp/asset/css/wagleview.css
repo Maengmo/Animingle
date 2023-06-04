@@ -1,66 +1,107 @@
-.maincontent {
-	border: solid 2px #AAAAAA;	
-	
+.a-div {
+	width : 100%;
+	text-align : left;
+}
+
+.a-back {
+	text-decoration : none;	
+	margin-bottom : 10px;
+	display : flex;
+	align-items: center;
+	width : fit-content;
+}
+
+.back-to-list{
+	color :  #5C5C5C;
+	font-size : 18px;
+	font-weight : bold;
+	padding-top: 10px;
+}
+
+.profile-img {
+	width : 40px;
+	height : 40px;
+	padding : 5px;
+	border : 2px solid #F0F0F0;
+	border-radius : 10px;
+}
+
+.item-id {
+	font-size : 17px;
+}
+
+
+.content-box {
+	border : 1px solid #aaa;
+	width : 100%;
+	padding : 25px;
+	box-shadow: 5px 5px #ccc;
+	border-radius: 20px;
 }
 
 .content-top {
 	font-family: "SUITE-Regular"; 
-	width: 90%;
-	margin-top: 35px;
+	width: 100%;
 	
-}
-
-.content-top img {
-	width: 45px;
-	height: 45px;
-	border: 1px solid #CCCCCC;
-	border-radius: 10px;
 }
 
 .content-top2 {
 	font-family: "SUITE-Regular"; 
 	display: flex;
 	justify-content: space-between;
-	margin-top: 15px;
+	padding: 0 8px 0 8px;
+	margin-top : 20px;
+	padding : 10px;
 }
 
-.user-profile span {
-	font-weight: 800;
-	margin-left: 6px;
-	font-size: 20px;
+.content-title {
+	font-weight : bold;
+	font-size : 20px;
 }
 
-.content-title:nth-child(1) {
-	font-weight: 800;
-	font-size: 28px;
-}
-
-.content-title span:nth-child(3) {
-	color: #AAAAAA;
-	font-size: 20px;
-	margin-left: 10px;
+.content-time {
+	font-size: 16px;
+	font-weight: normal;
+	margin-left : 20px;
+	color : #AAAAAA;
 }
 
 .content-main {
 	font-family: "SUITE-Regular"; 
 	width: 85%;	
 	margin: 20px 0 20px 0;
+	padding: 0 8px 0 8px;
 }
 
 .content-main span {
-	font-size: 20px;
-	font-weight: 300;
+	font-size: 16px;
+	font-weight: normal;
 }
 
 .content-image img {
-	width: 55%;
+	width: 70%;
 	margin: 20px 0 20px 0;
 }
 
 .views-count {
+	font-family: "SUITE-Regular"; 
 	font-size: 18px;
-	margin-right: 5px;
-	padding-bottom: 10px;
+	font-weight: 300;
+	margin-right: 15px;
+	margin-left: 5px;
+	padding-top: 10px;
+}
+
+.content-views {
+	width: auto;
+	float: right;
+	display: flex;
+	align-items: center;
+}
+
+.content-views .material-symbols-outlined {
+	font-size: 22px !important;
+	color: #777 !important;
 }
 
 .material-symbols-outlined {
@@ -68,7 +109,75 @@
 	padding-top: 10px;
 }
 
-.submit-btn {
+.btn-div {
+	display : flex;
+	flex-direction: row-reverse;
+
+}
+
+.content-btn1 {
+	margin-top : 20px;
+	padding : 15px 20px;
+	width : 100px;
+	margin-left:10px;
+	background-color: #0256AA;
+	border : none;
+	border-radius : 10px;
+	color: white;
+}
+
+.content-btn2 {
+	margin-top : 20px;
+	padding : 15px 20px;
+	width : 100px;
+	margin-left:10px;
+	background-color : #F0F0F0;
+	border : none;
+	border-radius : 10px;
+}
+
+.content-btn1:hover,
+.content-btn2:hover {
+ 	transition : .3s; 
+	opacity : 0.8;	
+}
+
+.comment-btn {
+	display : flex;
+	flex-direction: row-reverse;
+
+}
+
+.comment-btn1 {
+	margin-top : 20px;
+	padding : 15px 20px;
+	width : 100px;
+	margin-left:10px;
+	background-color: #0256AA;
+	border : none;
+	border-radius : 10px;
+	color: white;
+}
+
+.comment-btn2 {
+	margin-top : 20px;
+	padding : 15px 20px;
+	width : 100px;
+	margin-left:10px;
+	background-color : #F0F0F0;
+	border : none;
+	border-radius : 10px;
+}
+
+.comment-btn1:hover,
+.comment-btn2:hover {
+ 	transition : .3s; 
+	opacity : 0.8;	
+}
+
+
+
+/* .submit-btn {
 	width: 85%;
 }
 
@@ -86,10 +195,10 @@
 
 .submit-btn button:hover {
 	background-color: #AAAAAA;
-}
+} */
 
 .content-bottom {
-	width: 85%;
+	width: 95%;
 	margin-top: 20px;
 }
 
@@ -97,7 +206,6 @@
 	font-family: "SUITE-Regular"; 
 	font-size: 20px;
 	font-weight: 300;
-	text-align: left;
 	border-bottom: 2px solid #AAAAAA;
 	padding-bottom: 8px;
 	margin-bottom: 20px;
@@ -116,8 +224,8 @@
 	border-radius: 10px;
 }
 
-.comment{
-	width: 100;
+.comment {
+	width: 100%;
 	margin: 10px 0 45px 0;
 }
 
@@ -134,7 +242,7 @@
 }
 
 .comment-text {
-	width: 92%;
+	width: 93%;
 	border: 3px solid #AAAAAA;
 	margin-left: 60px;
 	padding: 20px;
@@ -146,32 +254,12 @@
 }
 
 .content-bottom {
-	width: 85%;
+	width: 100%;
 	margin-top: 20px;
+	padding-right: 5px;
 }
 
 .ck-editor__editable { 
    height: 100px;
    margin-bottom: 20px;
-}
-
-.comment-btn {
-	width: 100%;
-}
-
-
-
-.comment-btn button {
-	width: 100px;
-	height: 40px;
-	border: 2px solid #AAAAAA;
-	border-radius: 10px;
-	background-color: white;
-	float: right;
-	margin-left: 7px;
-	margin-bottom: 30px;
-}
-
-.comment-btn button:hover {
-	background-color: #AAAAAA;
 }

@@ -25,15 +25,23 @@
 				<!-- 왼쪽 사이드바 입니다. -->
 			</div>
 			<div class="maincontent">
+				<div class="a-div">
+					<a href="http://localhost:8090/animingle/board/waglelist.do" class="a-back">
+						<span class="material-symbols-outlined">arrow_back</span>
+						<span class="back-to-list">목록으로 돌아가기</span>
+					</a>
+				</div>
+			<div class="content-box">
 				<div class="content-top">
 					<div class="user-profile">
-						<img src="/animingle/asset/commonimg/animingle.png"> <span>밍글맹글(mingle77)</span>
+						<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
+	            		<span class="item-id">밍글밍글(mingle77)</span>
 					</div>
 					<div class="content-top2">
 						<div class="content-title">
 							<span>[일상]</span> 
 							<span>우리 애기 돌잔치 했어용</span> 
-							<span>16분 전</span>
+							<span class="content-time">16분 전</span>
 						</div>
 						<div class="content-views">
 							<span class="material-symbols-outlined">visibility</span> <span
@@ -51,11 +59,10 @@
 						<img src="/animingle/asset/pic/Wagledog.png">
 					</div>
 				</div>
-				<div class="submit-btn">
-					<button type="button" onclick="">삭제하기</button>
-					<button type="button"
-						onclick="">수정하기</button>
-				</div>
+				<div class="btn-div">
+		            		<button type="button" class="content-btn1">수정하기</button>
+		            		<button type="button" class="content-btn2">삭제하기</button>
+		        </div>
 				<div class="content-bottom">
 					<div class="comment-top">
 						<span>2개의 댓글</span>
@@ -82,10 +89,10 @@
                         	<textarea name="text" id="editor" placeholder="생각의 차이를 인정하고 공감을 나눠주세요."></textarea>
                 		</div>
 					</div>
-					<div class="comment-btn">
-					<button type="button" onclick="">댓글 작성</button>
-					<button type="button"
-						onclick="location.href='http://localhost:8090/animingle/board/waglelist.do'">목록 보기</button>
+				<div class="comment-btn">
+		            		<button type="button" class="comment-btn1">댓글작성</button>
+		            		<button type="button" class="comment-btn2">목록보기</button>
+		        </div>
 				</div>
 				</div>
 			</div>
