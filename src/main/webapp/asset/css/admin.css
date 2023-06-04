@@ -1,0 +1,83 @@
+.admin-content-box {
+	width: 840px;	
+}
+
+.status-box {
+	width: 100%;
+	border: 2px solid #ccc;
+	background-color: white;
+	margin-top: 20px;
+	background-color: #eee;
+	border-radius: 10px;
+	box-shadow: 5px 5px #aaa;
+}
+
+.title {
+	border-bottom: 2px solid #ccc;
+	padding: 15px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #555
+}
+
+.ul-box {
+	padding: 15px 25px;
+}
+
+.ul-box ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
+	margin: 0;
+}
+
+.ul-box span {
+	color: tomato;
+	font-weight: bold;
+}
+
+.main-content-box {
+	margin-top: 20px;
+	display: flex;
+	width: 840px;
+}
+
+.main-content-box .sub-content-box:nth-child(1) {
+	margin-right: 10px;
+}
+
+.sub-content-box {
+	width: 100%;
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	background-color: #eee;
+	box-shadow: 5px 5px #aaa;
+}
+
+.graph-box {
+	padding: 10px;
+}
+
+.table-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.table-box tr {
+	border-bottom: 1px solid #ccc;
+	padding: 5px 0px;
+}
+
+.table-box table th {
+	color: #333;
+	font-weight: normal;
+	padding-bottom: 5px;
+}
+
+.table-box table td {
+	padding: 5px 0px;
+}
