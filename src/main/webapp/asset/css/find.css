@@ -88,9 +88,7 @@
 	   outline: none;
 	   width : 500px;
 	
-	}
-	
-	
+	}	
 	
 	.search-box .material-symbols-outlined {
 	   font-size: 35px !important;
@@ -103,12 +101,6 @@
 	
 	.search-filter {
 		margin-left : 20px;
-		/*
-		border-right : 1px solid  #aaa;
-		border-top: none;
-		border-bottom: none;
-		border-left: none;
-		*/
 		border : none;
 		outline : none;
 	}

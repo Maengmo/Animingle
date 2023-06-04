@@ -33,12 +33,20 @@ h1 {
 	font-weight: bold;
 }
 
-.btn.editpic {
+.btn.editpic, .editintro {
 	margin-left: 50px;
+	background-color: #0256AA;
 }
+
+.btn.editpic:hover, .editintro:hover  {
+	transition : .3s;
+	opacity : 0.8;
+}
+
 .selfintro {
 	margin: 60px auto;
 }
+
 h3 {
 	padding-left: 30px;
 	margin-bottom: 15px;
@@ -90,5 +98,20 @@ h3 {
 	border-radius: 5px;
 }
 
+.ing {
+	background-color:tomato;
+	color: white;
+	
+}
+
+.accept {
+	background-color:#14AE5C;
+	color: white;
+}
+
+.deny {
+	background-color:gold;
+	color: #A38902;
+}
 
 

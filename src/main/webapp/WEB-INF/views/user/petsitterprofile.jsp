@@ -55,7 +55,7 @@
                 		</tr>
                 	</table>
                 </div>
-                <button type="button" class="btn btn-primary editpic">사진수정</button>
+                <button type="button" class="btn btn-primary editpic">사진 수정</button>
                 <div class="selfintro">
                 	<h3>자기소개</h3>
                 	<textarea>저는 어렸을 때부터 고양이, 강아지, 햄스터 등 많은 반려동물을 키웠습니다.
@@ -67,9 +67,9 @@
                 <div class="applylist">
                 	<h3>신청 내역</h3>
                 	<table class="tblapply">
-                		<tr><td>천사같은 고양이... 맡아주실 분...</td><td><div class="state" style="background-color:cornflowerblue;">모집중</div></td></tr>
-                		<tr><td>악마 고양이 봐주실 분..</td><td><div class="state" style="background-color:lime;">수락</div></td></tr>
-                		<tr><td>냐옹~</td><td><div class="state" style="background-color:tomato;">거절</div></td></tr>
+                		<tr><td>천사같은 고양이... 맡아주실 분...</td><td><div class="state ing">모집중</div></td></tr>
+                		<tr><td>악마 고양이 봐주실 분..</td><td><div class="state accept">수락</div></td></tr>
+                		<tr><td>냐옹~</td><td><div class="state deny">거절</div></td></tr>
                 	</table>
                 </div>
 
