@@ -22,8 +22,9 @@
 			<div class="leftbar">
 				<!-- 왼쪽 사이드바 입니다. -->
 			</div>
-			<div class="maincontent">
-				<h1>우리 가족을 찾아주세요</h1>
+			<div class="maincontent">			
+				<h2 class="main-title">우리 가족을 찾아주세요</h2>
+				<hr>
 				<form id="form-content" action="" method="POST">
 					<div class="form-prefix">
 						<div>말머리</div>
@@ -45,10 +46,10 @@
 						<textarea id="editor" placeholder="내용을 입력하세요."></textarea>
 					</div>
 				</form>
-				<div class="form-button">
-						<button id="btnCancle" onclick='location.href="/animingle/board/findlist.do";'>취소</button>
-						<button id="btnAdd">등록</button>
-				</div>
+				<div class="btn-div">
+					<button type="button" id="add-btn" class="content-btn add-btn">등 록</button>
+	            	<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
+	            </div>
 			</div>
 			<div class="rightbar">
 				<!-- 오른쪽 사이드바 입니다. -->

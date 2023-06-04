@@ -22,48 +22,56 @@
 			<div class="leftbar">
 				<!-- 왼쪽 사이드바 입니다. -->
 			</div>
-			<div class="maincontent main-border">
-				<div class="writer find-view-writer">
-					<img src="/animingle/asset/commonimg/logo_01.png">
-							밍글맹글(mingle77)
-					<span class="time">16분전</span>
+			<div class="maincontent">
+				<div class="a-div">
+					<a href="http://localhost:8090/animingle/board/findlist.do" class="a-back">
+						<span class="material-symbols-outlined">arrow_back</span>
+						<span class="back-to-list">목록으로 돌아가기</span>
+					</a>
 				</div>
-				<div class="find-view-subject">
-					<span id="view-subjcet">[펫 찾아요] 강남구 역삼동에서 아이를 잃어버렸어요...</span>
-					<span class="material-symbols-outlined">visibility</span>50
-					<span class="material-symbols-outlined">chat</span>2
-				</div>
-				<div class="find-view-content">
-					역삼역 3번 출구 쪽 역삼 개나리공원에서 산책하다가 강아지를 잃어버렸습니다. <br>
-					회색 푸들이고 나이는 3살입니다.<br>
-					이름은 모찌입니다.
-				</div>
-				<div class="find-view-map" id="map">
-					
-				</div>
-				<div class="view-button">
-					<button id="btnEdit">수정하기</button>
-					<button id="btnDel">삭제하기</button>
-				</div>
-				<div class="find-view-comment">
-					<div>2개의 댓글</div>
-					<div class="find-view-reply">
-						<div class="writer">
-							<img src="/animingle/asset/commonimg/logo_01.png">
-							밍글맹글(mingle77)
-							<span class="time">16분전</span>
-						</div>
-						<div class="content-list">
-							어디 근처에서 봤어요. 꼭 찾길 바랄게요!!
-						</div>
-					</div>	
-					<div class="find-view-write-comment">
+				<div class="main-border">
+					<div class="writer find-view-writer">
 						<img src="/animingle/asset/commonimg/logo_01.png">
-						<textarea id="editor" placeholder="내용을 입력하세요."></textarea>
+								밍글맹글(mingle77)
+						<span class="time">16분전</span>
 					</div>
-				</div>
-				<div class="find-view-comment-button">
-					<button id="btnCommentAdd">댓글 쓰기</button>
+					<div class="find-view-subject">
+						<span id="view-subjcet">[펫 찾아요] 강남구 역삼동에서 아이를 잃어버렸어요...</span>
+						<span class="material-symbols-outlined">visibility</span>50
+						<span class="material-symbols-outlined">chat</span>2
+					</div>
+					<div class="find-view-content">
+						역삼역 3번 출구 쪽 역삼 개나리공원에서 산책하다가 강아지를 잃어버렸습니다. <br>
+						회색 푸들이고 나이는 3살입니다.<br>
+						이름은 모찌입니다.
+					</div>
+					<div class="find-view-map" id="map">
+						
+					</div>
+					<div class="view-button">
+		            		<button type="button" class="content-btn1">수정하기</button>
+		            		<button type="button" class="content-btn2">삭제하기</button>
+		            	</div>
+					<div class="find-view-comment">
+						<div>2개의 댓글</div>
+						<div class="find-view-reply">
+							<div class="writer">
+								<img src="/animingle/asset/commonimg/logo_01.png">
+								밍글맹글(mingle77)
+								<span class="time">16분전</span>
+							</div>
+							<div class="content-list">
+								어디 근처에서 봤어요. 꼭 찾길 바랄게요!!
+							</div>
+						</div>	
+						<div class="find-view-write-comment">
+							<img src="/animingle/asset/commonimg/logo_01.png">
+							<textarea id="editor" placeholder="내용을 입력하세요."></textarea>
+						</div>
+					</div>
+					<div class="find-view-comment-button">
+						<button id="btnCommentAdd">댓글 쓰기</button>
+					</div>
 				</div>
 			</div>
 			<div class="rightbar">
