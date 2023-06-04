@@ -16,48 +16,47 @@
 
 	<%@ include file="/WEB-INF/views/inc/header.jsp" %>
 	<section class="content">
-
-		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" data-bs-interval="3000">
-			<div class="carousel-indicators">
-			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-				aria-current="true" aria-label="Slide 1"></button>
-			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-				aria-label="Slide 2"></button>
-			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-				aria-label="Slide 3"></button>
-			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-				aria-label="Slide 4"></button>
-			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-				aria-label="Slide 5"></button>
+		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="true" data-bs-interval="2500">
+        	<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+					aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+					aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+					aria-label="Slide 3"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+					aria-label="Slide 4"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+					aria-label="Slide 5"></button>
 			</div>
 			<div class="carousel-inner">
-			  <div class="carousel-item active">
-				<img src="asset/commonimg/banner_01.png" class="d-block w-100" alt="banner" style="width:100%;">
-			  </div>
-			  <div class="carousel-item">
-				<img src="asset/commonimg/banner_02.png" class="d-block w-100" alt="banner" style="width:100%;">
-			  </div>
-			  <div class="carousel-item">
-				<img src="asset/commonimg/banner_03.png" class="d-block w-100" alt="banner" style="width:100%;">
-			  </div>
-			  <div class="carousel-item">
-				<img src="asset/commonimg/banner_04.png" class="d-block w-100" alt="banner" style="width:100%;">
-			  </div>
-			  <div class="carousel-item">
-				<img src="asset/commonimg/banner_05.png" class="d-block w-100" alt="banner" style="width:100%;">
-			  </div>
+				<div class="carousel-item active">
+					<img src="asset/commonimg/banner_01.png" class="d-block w-100" alt="banner">
+				</div>
+				<div class="carousel-item">
+					<img src="asset/commonimg/banner_02.png" class="d-block w-100" alt="banner">
+				</div>
+				<div class="carousel-item">
+					<img src="asset/commonimg/banner_03.png" class="d-block w-100" alt="banner">
+				</div>
+				<div class="carousel-item">
+					<img src="asset/commonimg/banner_04.png" class="d-block w-100" alt="banner">
+				</div>
+				<div class="carousel-item">
+					<img src="asset/commonimg/banner_05.png" class="d-block w-100" alt="banner">
+				</div>
 			</div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="material-symbols-outlined" aria-hidden="true">navigate_before</span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="material-symbols-outlined" aria-hidden="true">navigate_next</span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide="prev">
+				<span class="material-symbols-outlined" aria-hidden="true">navigate_before</span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide="next">
+				<span class="material-symbols-outlined" aria-hidden="true">navigate_next</span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
 		<div class="mycontainer">
 			<div class="leftbar">
 				<!-- 왼쪽 사이드바 입니다. -->
