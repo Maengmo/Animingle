@@ -21,15 +21,14 @@
          </div>
          <div class="maincontent">
          	<div class="main-content-box">
-         		<div class="main-content-title">수의사QnA</div>
+         		<div class="main-content-title">고객센터 - 문의하기</div>
          		<form action="#">
 	         		<div>
 	         			<div class="main-content-sel1">
 	         				<div>말머리</div>
 	         				<select>
-	         					<option>강아지</option>
-	         					<option>고양이</option>
-	         					<option>기타</option>
+	         					<option>건의하기</option>
+	         					<option>신고하기</option>
 	         				</select>
 	         			</div>
 	         			<div class="main-content-sel2">

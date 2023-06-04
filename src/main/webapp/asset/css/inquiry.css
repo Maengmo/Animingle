@@ -1,0 +1,82 @@
+.main-content-box {
+	font-family: "SUITE-Regular";
+	width: 840px;
+}
+
+.main-content-title {
+	font-size: 25px;
+	font-weight: bold;
+	border-bottom: 2px solid #bbb;
+	padding: 7px 10px;
+}
+
+.main-content-sel1 {
+	margin-top: 20px;
+	padding-bottom: 15px;
+}
+
+.main-content-sel1 div {
+	margin-bottom: 5px;
+	font-size: 18px;
+}
+
+.main-content-sel1 select {
+	width: 100%;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.main-content-sel2 {
+	margin-bottom: 15px;
+}
+
+.main-content-sel2 div {
+	margin-bottom: 5px;
+	font-size: 18px;
+}
+
+.main-content-sel2 input {
+	width: 100%;
+	border-radius: 5px;
+	padding: 10px;
+	border: 1px solid #878787; 
+}
+
+.main-content-sel2 input:focus {
+	outline-color: #ADB5BD;
+}
+
+.main-content-sel3 div {
+	margin-bottom: 5px;
+	font-size: 18px;
+}
+
+.ck-editor__editable { 
+	height: 400px; 
+}
+
+.btn-div {
+	display : flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
+.content-btn {
+	margin-top : 20px;
+	padding : 15px 30px;
+	width: 100px;
+	margin-left:10px;
+	border : none;
+	border-radius : 10px;
+	font-size : 18px;
+}
+
+.content-btn.add-btn {
+	background-color: #0256AA;
+	color : white;
+}
+
+.content-btn:hover {
+	transition : .3s; 
+	opacity : 0.8;
+}
