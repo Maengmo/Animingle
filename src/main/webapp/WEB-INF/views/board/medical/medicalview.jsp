@@ -65,9 +65,9 @@
 				<h2 class="title">온누리 약국</h2>
 				<hr>
 				
-				<h3 class="middle"><span class="material-symbols-outlined">location_on</span>&nbsp;강남구 역삼동</h3>
-				<h3 class="middle"><span class="material-symbols-outlined">timer</span>&nbsp;영업 시간</h3>
-				<h3 class="middle"><span class="material-symbols-outlined">phone_in_talk</span>&nbsp;전화번호</h3>
+				<h3 class="middle"><span class="material-symbols-outlined">location_on</span><span class="infoTxt">&nbsp;강남구 역삼동</span></h3>
+				<h3 class="middle"><span class="material-symbols-outlined">timer</span><span class="infoTxt">&nbsp;영업 시간</span></h3>
+				<h3 class="middle"><span class="material-symbols-outlined">phone_in_talk</span><span class="infoTxt">&nbsp;전화번호</span></h3>
 				<hr>
 				
 				<h3 class="middle">리뷰</h3>
@@ -165,10 +165,14 @@
                     <input type="file" id="pic">
                </div>
                
-               <div class="review-add" id="add-box">
-               		<span class="material-symbols-outlined">edit_note</span>
-               		<input type="button" id="addbtn" value="리뷰쓰기">
-               </div>
+               <div class="btn-div">
+	         	<button type="button" id="write-btn" class="write-btn" onclick="window.location='http://localhost:8090/animingle/board/petsitteradd.do';">
+		         	<span class="material-symbols-outlined">
+						edit_note
+					</span>
+		         	리뷰쓰기
+	         	</button>
+	         </div>
 			</div>
 			<div class="maincontent">
 				

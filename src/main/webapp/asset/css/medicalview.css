@@ -17,6 +17,7 @@ box-sizing: border-box;
 #side tr:first-child th:first-child {
 	border-top-left-radius : 10px;
 	border-top-right-radius : 10px;
+	padding-top: 10px;
 }
 
 #side tr:last-child th:first-child {
@@ -51,11 +52,14 @@ box-sizing: border-box;
 }
 
 #search2 {
-	border : 1px solid black;
-	border-radius: 4px;
-	width : 40px;
-	height : 40px;
-	margin : 5px;
+   display: flex;
+   border: 1px solid #aaa;
+   border-radius: 40px;
+   width: 95%;
+   padding-left: 18px;
+   padding-right: 10px;
+   margin-left: 5px;
+   margin-right: 5px;
 }
 
 #txt1 {
@@ -70,8 +74,8 @@ box-sizing: border-box;
 }
 
 .material-symbols-outlined {
-	font-size : 20px !important;
-	transform : translate(0px, 5px) !important;
+	font-size : 25px !important;
+	padding-top: 1.5px;
 }
 
 /* 상세보기 박스 */
@@ -99,6 +103,19 @@ box-sizing: border-box;
 	font-size : 15px;
 	font-weight : bold;
 	text-align : left;
+	padding-left: 10px;
+	
+}
+
+.middle .material-symbols-outlined {
+	position: relative;
+	top: 2px;
+	margin-right: 5px;
+}
+
+.middle .infoTxt {
+	position: relative;
+	top: -5px;
 }
 
 /* 리뷰 */
@@ -179,12 +196,19 @@ box-sizing: border-box;
 	border : 1px solid #B1B1B1;
     border-radius: 20px;
     width : 95%;
-    padding : 20px;
+    height: 50px;
+    padding : 0 20px;
     margin: 10px;
+    margin-bottom: 20px;
     text-align : center;
     background-color : #0256AA;
     color : white;
     font-weight : bold;
+    padding-top: 13px;
+}
+
+.upload-file {
+	text-align: center;
 }
 
 .upload-file input[type="file"] {
@@ -197,9 +221,13 @@ box-sizing: border-box;
 }
 
 .file-name {
-   	margin-left : 20px;
-   	width : 70% !important;
-   	background-color : #EFEFEF;
+	width : 80%;
+	height: 33px;
+    padding-left : 15px;
+    padding-right: 15px;
+    border : 1px solid #ccc;
+    border-radius : 10px;
+    margin-bottom : 20px;
 }
 
 .file-name:focus{
@@ -225,9 +253,49 @@ box-sizing: border-box;
     font-size : 5px;
 }
 
+.upload-file label {
+	height: 33px;
+    border : 1px solid #ccc;
+    position: relative;
+    top: 0.5px;
+}
+
 .upload-file label:hover {
     background-color:#a4a4a4;
     transition : .3s;
+}
+.write-btn:hover {
+	background-color: #0256AA;
+	border: 1px solid #0256AA;
+	color: white;
+}
+
+.write-btn:hover .material-symbols-outlined {
+	background-color: #0256AA;
+	border: 1px solid #0256AA;
+	color: white !important;
+}
+
+.write-btn {
+	font-size : 20px;
+	border-radius : 10px;
+	display : flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #555;
+    color: #555;
+    padding: 7px 10px;
+}
+
+.write-btn .material-symbols-outlined {
+	font-size: 25px !important;
+	color: #555;
+}
+
+.btn-div {
+	width : 95%;	
+	display : flex;
+	flex-direction: row-reverse;
 }
 
 #upload {
@@ -255,6 +323,7 @@ box-sizing: border-box;
     transition: width 0.1s;
     border-width: 0px;
     margin: 0px;
+    margin-left: 5px;
 }
 
 #close:hover {
