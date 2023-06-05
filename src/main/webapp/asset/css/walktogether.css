@@ -97,10 +97,35 @@ h6 {
 }
 
 
+
+
 /* WalkTogetherAdd*/
 .maincontent {
 	align-items: baseline;
 	font-family: "SUITE-Regular";
+}
+
+.editor-container {
+	padding-left: 0;
+	padding-right: 0;
+	display: inline-block !important;
+	margin-bottom: 20px;
+}
+
+.centered {
+	width: 100%;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	display: flex;
+	justify-content: center;
+}
+
+.row {
+	width: 100% !important;
+}
+
+.editor {
+	width: 100%;
 }
 
 .ck-editor__editable { 
@@ -123,9 +148,10 @@ hr {
 }
 
 .menu-title {
-	margin-bottom: 5px;
+	margin-bottom: 7px;
 	margin-top: 15px;
 	font-size: 18px;
+	width: 100%;
 }
 
 input[type="text"] {
@@ -134,7 +160,7 @@ input[type="text"] {
 	border-radius : 5px;
 	border : 1px solid #878787;
 	margin-bottom: 10px;
-	width: 100%
+	width: 100%;
 }
 
 input[type="text"]:focus-visible {
@@ -146,16 +172,16 @@ input[type="text"]:focus-visible {
 }
 
 #aboutInfo input[type="text"] {
-	width: 30%;
+	width: 33%;
 }
 
 #aboutInfo > span:nth-child(1) > span {
-	margin-right: 5px;
+	margin-right: 8px;
 }
 
 #aboutInfo > span:nth-child(2) > span {
-	margin-left:30px; 
-	margin-right: 5px;
+	margin-left: 40px; 
+	margin-right: 8px;
 }
 
 #btns {
@@ -175,4 +201,8 @@ input[type="text"]:focus-visible {
 .content-btn.add-btn {
 	background-color: #0256AA;
 	color : white;
+}
+
+form {
+	width: 100%;
 }
