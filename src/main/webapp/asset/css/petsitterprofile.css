@@ -1,9 +1,27 @@
+.content-top {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 25px; 
+}
+
+.content-title {
+   width: 100%;
+   border: 2px solid #ccc;
+   padding: 20px;
+   text-align: center;
+   font-size: 40px;
+   font-weight: bold;
+   margin-bottom: 15px;
+   border-radius: 30px;
+}
+
 .content {
 	font-family: "SUITE-Regular";	
 }
-.maincontent {
-	padding: 30px;
-}
+
 h1 {
 	text-align: center;
 	font-weight: bold;

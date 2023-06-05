@@ -19,21 +19,22 @@
          <div class="leftbar">
             <!-- 왼쪽 사이드바 입니다. -->
             <div class="mymenu">
-            
-            	<ul>
-            		<li>회원정보</li>
-            		<li>수의사 프로필</li>
-            		<li class="selected"><span><img src="/animingle/asset/commonimg/stamp.png" class="stamp"></span>펫시터 프로필</li>
-            		<li>펫시터 모집내역</li>
-            		<li>인증센터</li>
-            		<li>내 문의사항</li>
-            	</ul>
-            
+	            	<ul>
+	            		<li><a href="/animingle/user/profile.do" class="ea">회원정보</a></li>
+	            		<li><a href="/animingle/user/veterinary.do" class="ea">수의사 프로필</a></li>
+	            		<li class="selected"><span><img src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a href="/animingle/user/petsitterprofile.do" class="ea">펫시터 프로필</a></li>
+	            		<li><a href="/animingle/user/mypetsitter.do" class="ea">펫시터 모집내역</a></li>
+	            		<li><a href="/animingle/user/myauth.do" class="ea">인증센터</a></li>
+	            		<li><a href="/animingle/user/myquest.do" class="ea">내 문의사항</a></li>
+	            	</ul>
             </div>
+
          </div>
          <div class="maincontent">
 
-                <h1>펫시터 프로필</h1>
+				<div class="content-top">
+					<div class="content-title">펫시터 프로필</div>
+				</div>
                 <div class="infobox">
 	                <div class="picbox">
 	                	<img src="/animingle/asset/commonimg/animingle.png">
