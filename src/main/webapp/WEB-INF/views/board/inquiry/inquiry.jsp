@@ -26,14 +26,14 @@
 	         		<div>
 	         			<div class="main-content-sel1">
 	         				<div>말머리</div>
-	         				<select>
+	         				<select id="inquiry_brackets">
 	         					<option>건의하기</option>
 	         					<option>신고하기</option>
 	         				</select>
 	         			</div>
 	         			<div class="main-content-sel2">
 	         				<div>제목</div>
-	         				<input type="text" placeholder="제목을 입력하세요">
+	         				<input type="text" id="title" placeholder="제목을 입력하세요">
 	         			</div>
 	         			<div class="main-content-sel3">
 	         				<div>본문</div>
@@ -59,10 +59,35 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script>
+	let editor;
+	
 	ClassicEditor.create( document.querySelector( '#editor' ), {
 		removePlugins: [ 'Heading' ],
 		language: "ko"
+	}).then( newEditor => {
+	    editor = newEditor;
+	}).catch( error => {
+	    console.error( error );
 	});
+	
+	
+	
+	$('#add-btn').on('click', function() {
+		/*
+		const dataa = editor.getData();
+		console.log(dataa);
+		console.log($('#inquiry_brackets').val());
+		console.log($('#title').val());
+		*/
+		
+		
+		
+	});
+
+	
+	  
+
+	
 </script>
 </body>
 </html>

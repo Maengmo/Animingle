@@ -25,7 +25,7 @@
 				<img src="/animingle/asset/commonimg/logo_01.png">
 				<div class="login-box">
 					<h2>로그인</h2>
-					<form method="POST" action="#">
+					<form method="POST" action="/animingle/user/login.do">
 						<table class="login-form">
 							<tr>
 								<td><input type="text" name="id" id="id" class="id"
