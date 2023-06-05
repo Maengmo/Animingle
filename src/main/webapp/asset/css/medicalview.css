@@ -6,12 +6,16 @@
 	
 #side {
 	/* border : 1px solid black; */
-border-collapse: separate;
-width : 210px;
-height : 800px;
-border-spacing: 0;
-z-index : 2;
-box-sizing: border-box;
+	border-collapse: separate;
+	width : 210px;
+	height : 800px;
+	border-spacing: 0;
+	z-index : 2;
+	box-sizing: border-box;
+	-webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
 }
 
 #side tr:first-child th:first-child {
@@ -82,9 +86,15 @@ box-sizing: border-box;
 #addside {
 	border : 1px solid black;
 	border-radius: 10px;
-	width : 600px;
 	height : 800px;
-	overflow : scroll;
+	overflow-x : hidden;
+	overflow-y : hidden;
+	width: 0;
+    overflow: hidden;
+    transition: width 0.1s;
+    border-width: 0px;
+    margin: 0px;
+    margin-left: 5px;
 }
 
 #close {
@@ -296,6 +306,9 @@ box-sizing: border-box;
 	width : 95%;	
 	display : flex;
 	flex-direction: row-reverse;
+	text-align : center;
+	margin-bottom : 20px;
+	justify-content: space-around;
 }
 
 #upload {
@@ -313,19 +326,74 @@ box-sizing: border-box;
 	color : white;
 }
 
+#riview-content {
+	margin-top : 10px;
+	margin-bottom : 10px;
+	width : 50px;
+}
+
+.place-list {
+	
+	width : 200px;
+	height : 50px;
+	
+}
+
 .place-list:hover {
    	cursor: pointer;
 }
 
-#addside {
-    width: 0;
-    overflow: hidden;
-    transition: width 0.1s;
-    border-width: 0px;
-    margin: 0px;
-    margin-left: 5px;
-}
-
 #close:hover {
    	cursor: pointer;
+}
+
+.rating {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  text-align: center;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background-image: url('/animingle/asset/pic/star.png'); /* 별 이미지의 경로로 변경해야 합니다 */
+  background-size: cover;
+}
+
+#Hash-tag {
+	margin-left : 20px;
+	margin-bottom : 10px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom : 10px;
+}
+
+.tag.selected {
+  background-color: tomato;
+}
+
+#review-text {
+	margin: 10px 25px;
+	width : 90%;
+	resize: none;
+}
+
+#kind-select {
+	margin: 10px 10px;
+}
+
+.highlight {
+	background-color : yellow;
 }
