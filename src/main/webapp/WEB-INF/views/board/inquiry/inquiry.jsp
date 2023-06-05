@@ -22,30 +22,29 @@
          <div class="maincontent">
          	<div class="main-content-box">
          		<div class="main-content-title">고객센터 - 문의하기</div>
-         		<form action="#">
-	         		<div>
-	         			<div class="main-content-sel1">
-	         				<div>말머리</div>
-	         				<select id="inquiry_brackets">
-	         					<option>건의하기</option>
-	         					<option>신고하기</option>
-	         				</select>
-	         			</div>
-	         			<div class="main-content-sel2">
-	         				<div>제목</div>
-	         				<input type="text" id="title" placeholder="제목을 입력하세요">
-	         			</div>
-	         			<div class="main-content-sel3">
-	         				<div>본문</div>
-	         				<textarea name="text" id="editor" placeholder="내용을 입력하세요."></textarea>
-	         			</div>
-	         		</div>
-         		</form>
+         		<div>
+         			<div class="main-content-sel1">
+         				<div>말머리</div>
+         				<select id="inquiry_brackets">
+         					<option value="1">건의하기</option>
+         					<option value="2">신고하기</option>
+         				</select>
+         			</div>
+         			<div class="main-content-sel2">
+         				<div>제목</div>
+         				<input type="text" id="title" placeholder="제목을 입력하세요">
+         			</div>
+         			<div class="main-content-sel3">
+         				<div>본문</div>
+         				<textarea name="text" id="editor" placeholder="내용을 입력하세요."></textarea>
+         			</div>
+         		</div>
          	</div>
          	<div class="btn-div">
 	            <button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
 				<button type="button" id="add-btn" class="content-btn add-btn">등 록</button>
 	        </div>
+	        
          </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->
@@ -69,24 +68,38 @@
 	}).catch( error => {
 	    console.error( error );
 	});
-	
-	
+
 	
 	$('#add-btn').on('click', function() {
-		/*
-		const dataa = editor.getData();
-		console.log(dataa);
-		console.log($('#inquiry_brackets').val());
-		console.log($('#title').val());
-		*/
+		
+		const inquiryContent = editor.getData();
 		
 		
+		 $.ajax({
+	         type: 'POST',
+	         url: '/animingle/board/inquiry.do',
+	         data: {
+	        	 prefix : $('#inquiry_brackets').val(),
+	        	 title : $('#title').val(),
+	        	 content : inquiryContent
+	         },
+	         dataType: 'json',
+	         success: function (result) {
+	        	 if (result.result == 1) {
+	        		 alert("문의가 성공적으로 등록되었습니다.");
+	        		 window.location = '/animingle/index.do';
+	        	 } else {
+	        		 alert("문의 등록에 실패하였습니다.")
+	        	 }
+	         },
+	         
+	         error: (a,b,c)=>console.log(a,b,c)
+	      });
+		
+	
+	
 		
 	});
-
-	
-	  
-
 	
 </script>
 </body>
