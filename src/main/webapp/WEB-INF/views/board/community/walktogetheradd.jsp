@@ -24,7 +24,7 @@
             	<h2 class="content-header">산책 친구 구하기</h2>
 				<hr>
 				
-				<!-- <form method="post" action="/animingle/board/walktogetheradd.do"> -->
+				<form method="post" action="/animingle/board/walktogetheradd.do">
 					<div>
 						<div class="menu-title">제목</div>
 						<input type="text" name="subject" placeholder="제목을 입력해주세요.">
@@ -60,9 +60,9 @@
 		            	<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
 						<button type="submit" id="add-btn" class="content-btn add-btn">등 록</button>
 		            </div>
-		            <div id="">
+		            <div id="pathInfo">
 		            </div>		                       
-				<!-- </form> -->
+				</form>
 			</div>
 			<div class="rightbar">
 				<!-- 오른쪽 사이드바 입니다. -->
@@ -231,17 +231,13 @@
 
             //경로 정보 배열
             let las = path.map(item => item.La);
-    		let mas = path.map(item => item.Ma);    		
-    		
-    		
-            /* <input type="hidden" name="pathLat" id="pathLat">		            
-            <input type="hidden" name="pathLng" id="pathLng"> */		 
+    		let mas = path.map(item => item.Ma);        			 
             
-            for (let i=0; i<pathLat.length; i++) {
+            for (let i=0; i<las.length; i++) {
                 
         		$('#pathInfo').append(
             		    `<input type="hidden" name="pathLat" value="\${las[i]}">
-            		    <input type="hidden" name="pathLat" value="\${max[i]}">`	
+            		    <input type="hidden" name="pathLng" value="\${mas[i]}">`	
             	);           
         		
             }
