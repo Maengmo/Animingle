@@ -19,7 +19,7 @@ public class UserDAO {
 		this.conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 	}
 	
-	
+	//로그인
 	public UserDTO login(UserDTO dto) {
 		try {
 
@@ -46,7 +46,29 @@ public class UserDAO {
 		return null;
 	}
 	
-	
-	
-	
+	//회원가입 - 1. 아이디 중복 체크
+	public int checkId(String id) {
+		
+			
+		try {
+
+			String sql = "select count(*) as idCnt from tblUser where user_id = ?";
+
+			pstat = conn.prepareStatement(sql);
+
+			pstat.setString(1, id);
+
+			rs = pstat.executeQuery();
+
+			if (rs.next()) {
+
+				return rs.getInt("idCnt");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
 }
