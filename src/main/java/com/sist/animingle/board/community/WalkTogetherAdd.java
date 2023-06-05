@@ -27,11 +27,15 @@ public class WalkTogetherAdd extends HttpServlet {
 		String petKind = req.getParameter("petKind");
 		String walkTime = req.getParameter("walkTime");
 		String text = req.getParameter("text");
+		String[] pathLat = req.getParameterValues("pathLat");
+		String[] pathLng = req.getParameterValues("pathLng");
 		
 		System.out.println(subject);
 		System.out.println(petKind);
 		System.out.println(walkTime);
 		System.out.println(text);
+		System.out.println(pathLat[0]);
+		System.out.println(pathLng[0]);
 		
 		resp.sendRedirect("/animingle/board/walktogetherlist.do");
 		

@@ -11,11 +11,12 @@ import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor.js';
 import FontSize from '@ckeditor/ckeditor5-font/src/fontsize.js';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading.js';
 import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight.js';
-import Indent from '@ckeditor/ckeditor5-indent/src/indent.js';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic.js';
+import Link from '@ckeditor/ckeditor5-link/src/link.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough.js';
+import Table from '@ckeditor/ckeditor5-table/src/table.js';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 
 class Editor extends ClassicEditor {}
@@ -30,11 +31,12 @@ Editor.builtinPlugins = [
 	FontSize,
 	Heading,
 	Highlight,
-	Indent,
 	Italic,
+	Link,
 	List,
 	Paragraph,
 	Strikethrough,
+	Table,
 	Underline
 ];
 
@@ -46,21 +48,21 @@ Editor.defaultConfig = {
 			'|',
 			'bold',
 			'italic',
-			'fontSize',
-			'fontColor',
 			'strikethrough',
 			'underline',
+			'|',
+			'fontSize',
+			'fontColor',
 			'fontBackgroundColor',
 			'highlight',
+			'|',
 			'bulletedList',
 			'numberedList',
-			'|',
-			'outdent',
-			'indent',
-			'|',
 			'blockQuote',
+			'|',
 			'undo',
-			'redo'
+			'redo',
+			'|'
 		]
 	},
 	language: 'ko'
