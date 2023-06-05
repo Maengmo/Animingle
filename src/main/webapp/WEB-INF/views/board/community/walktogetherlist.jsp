@@ -95,27 +95,75 @@
             crossorigin="anonymous"></script>
         <script>
 
-            /* 접속 시 화면 map */
-            var container = document.getElementById('map');
-            var options = {
-                center: new kakao.maps.LatLng(37.4993, 127.0331),
-                level: 3
-            };
+        var lat = 37.4993;
+        var lng = 127.0331;
 
-            var map = new kakao.maps.Map(container, options);
+        var container = document.getElementById('map');
+        var options = {
+            level: 3
+        };
 
-            /* modal창 map */
-            document.getElementById('modalBtn').addEventListener('click', function () {
-                setTimeout(function () {
-                    var container2 = document.getElementById('map2');
-                    var options2 = {
-                        center: new kakao.maps.LatLng(37.4993, 127.0331),
-                        level: 3
-                    };
+        var map; 
+        var message;
 
-                    var map2 = new kakao.maps.Map(container2, options2);
-                }, 200);
+        
+        //TODO 메세지 받아오기 ('<div style="padding:5px;">여기에 계신가요?!</div>')
+        if (navigator.geolocation) {        
+
+            // GeoLocation을 이용해서 접속 위치를 얻어온다.
+            navigator.geolocation.getCurrentPosition(function(position) {
+                lat = position.coords.latitude, // 위도
+                lng = position.coords.longitude; // 경도
+
+                // 현재 위치를 받아온 후에 지도를 생성한다.
+                options.center = new kakao.maps.LatLng(lat, lng);
+                map = new kakao.maps.Map(container, options);
+
+                displayMarker(options.center, message); // Call the function inside the callback
+                
+            }, function(error) {     
+
+                // 사용자가 위치 정보를 허용하지 않았을 경우, 기본 위치를 사용한다.
+                options.center = new kakao.maps.LatLng(lat, lng);
+                map = new kakao.maps.Map(container, options);
+
+                displayMarker(options.center, message); // Call the function inside the callback
+                
             });
+
+        } else { 
+
+            // 브라우저가 Geolocation을 지원하지 않는 경우, 기본 위치를 사용한다.
+            options.center = new kakao.maps.LatLng(lat, lng);
+            map = new kakao.maps.Map(container, options);
+
+            displayMarker(options.center, message); // Call the function inside the callback
+        }
+
+        // 지도에 마커와 인포윈도우를 표시하는 함수입니다
+        function displayMarker(locPosition, message) {
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({  
+                map: map, 
+                position: locPosition
+            }); 
+
+            var iwContent = message, // 인포윈도우에 표시할 내용
+                iwRemoveable = true;
+
+            // 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content : iwContent,
+                removable : iwRemoveable
+            });
+
+            // 인포윈도우를 마커위에 표시합니다 
+            infowindow.open(map, marker);
+
+            // 지도 중심좌표를 접속위치로 변경합니다
+            map.setCenter(locPosition);      
+        }
 
         </script>
 </body>
