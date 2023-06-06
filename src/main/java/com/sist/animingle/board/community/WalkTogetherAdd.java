@@ -57,7 +57,6 @@ public class WalkTogetherAdd extends HttpServlet {
 		String wt_seq = String.valueOf(dao.getWtSeq());
 		
 		
-		
 		List<WTPathDTO> pathList = new ArrayList<WTPathDTO>();
 		
 		int cnt = 1;

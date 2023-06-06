@@ -93,14 +93,73 @@
     
     
     /* 지도 생성 */
+    
+    var lat = 37.4993;
+    var lng = 127.0331;
+
     var container = document.getElementById('map3');
     var options = {
-        center: new kakao.maps.LatLng(37.4993, 127.0331),
-        level: 3
+        level: 4
     };
 
-    var map = new kakao.maps.Map(container, options);
+    var map;
     
+    if (navigator.geolocation) {
+
+        // GeoLocation을 이용해서 접속 위치를 얻어온다.
+        navigator.geolocation.getCurrentPosition(function (position) {
+            
+            lat = position.coords.latitude, // 위도
+            lng = position.coords.longitude; // 경도
+
+            // 현재 위치를 받아온 후에 지도를 생성한다.
+            options.center = new kakao.maps.LatLng(lat, lng);
+            map = new kakao.maps.Map(container, options);      
+            
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+                drawLine(mouseEvent);
+            });
+            kakao.maps.event.addListener(map, 'mousemove', function(mouseEvent) {
+                mouseMoveEvent(mouseEvent);
+            });
+            kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
+                mouseRightClick(mouseEvent);
+            });
+
+        }, function (error) {
+
+            // 사용자가 위치 정보를 허용하지 않았을 경우, 기본 위치를 사용한다.
+            options.center = new kakao.maps.LatLng(lat, lng);
+            map = new kakao.maps.Map(container, options);     
+
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+                drawLine(mouseEvent);
+            });
+            kakao.maps.event.addListener(map, 'mousemove', function(mouseEvent) {
+                mouseMoveEvent(mouseEvent);
+            });
+            kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
+                mouseRightClick(mouseEvent);
+            });
+            
+        });
+
+    } else {
+
+        // 브라우저가 Geolocation을 지원하지 않는 경우, 기본 위치를 사용한다.
+        options.center = new kakao.maps.LatLng(lat, lng);
+        map = new kakao.maps.Map(container, options);
+   
+        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+            drawLine(mouseEvent);
+        });
+        kakao.maps.event.addListener(map, 'mousemove', function(mouseEvent) {
+            mouseMoveEvent(mouseEvent);
+        });
+        kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
+            mouseRightClick(mouseEvent);
+        });
+    }    
     
     
     /* 지도 경로 설정 */    
@@ -111,9 +170,9 @@
     var dots = {}; // 선이 그려지고 있을때 클릭할 때마다 클릭 지점과 거리를 표시하는 커스텀 오버레이 배열입니다.
 
     // 지도에 클릭 이벤트를 등록합니다
-    // 지도를 클릭하면 선 그리기가 시작됩니다 그려진 선이 있으면 지우고 다시 그립니다
-    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-
+    // 지도를 클릭하면 선 그리기가 시작됩니다 그려진 선이 있으면 지우고 다시 그립니다    
+    function drawLine(mouseEvent) {
+        
         // 마우스로 클릭한 위치입니다 
         var clickPosition = mouseEvent.latLng;
 
@@ -166,11 +225,11 @@
             var distance = Math.round(clickLine.getLength());
             displayCircleDot(clickPosition, distance);
         }
-    });
+    }
         
     // 지도에 마우스무브 이벤트를 등록합니다
     // 선을 그리고있는 상태에서 마우스무브 이벤트가 발생하면 그려질 선의 위치를 동적으로 보여주도록 합니다
-    kakao.maps.event.addListener(map, 'mousemove', function (mouseEvent) {
+    function mouseMoveEvent(mouseEvent) {
 
         // 지도 마우스무브 이벤트가 발생했는데 선을 그리고있는 상태이면
         if (drawingFlag){
@@ -190,11 +249,11 @@
                 content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + distance + '</span>m</div>'; // 커스텀오버레이에 추가될 내용입니다
 
         }             
-    });                 
+    }              
 
     // 지도에 마우스 오른쪽 클릭 이벤트를 등록합니다
     // 선을 그리고있는 상태에서 마우스 오른쪽 클릭 이벤트가 발생하면 선 그리기를 종료합니다
-    kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
+    function mouseRightClick(mouseEvent) {
 
         // 지도 오른쪽 클릭 이벤트가 발생했는데 선을 그리고있는 상태이면
         if (drawingFlag) {
@@ -243,7 +302,7 @@
             }
     		
         }  
-    });    
+    }    
 
     // 클릭으로 그려진 선을 지도에서 제거하는 함수입니다
     function deleteClickLine() {
