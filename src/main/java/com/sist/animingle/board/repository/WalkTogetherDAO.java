@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.test.my.DBUtil;
@@ -14,14 +15,11 @@ public class WalkTogetherDAO {
 	private Statement stat;
 	private PreparedStatement pstat;
 	private ResultSet rs;
-	
-	public WalkTogetherDAO() {
-	    this.conn = DBUtil.open("3.38.234.229", "admin", "java1234");
-	}
-	
 	public int addContent(WalkTogetherDTO dto1) {
 		
 		try {
+			
+			conn = DBUtil.open("localhost", "admin", "java1234");
 			
 			String sql = "insert into tblWalkTogether (wt_seq, wt_writer, wt_subject, wt_petkind, wt_time, wt_content, wt_regdate) values (wt_seq.nextVal, ?, ?, ?, ?, ?, sysdate)";
 			
@@ -34,6 +32,9 @@ public class WalkTogetherDAO {
 			pstat.setString(5, dto1.getWt_content());
 			
 			int result = pstat.executeUpdate();
+			
+			pstat.close();
+			conn.close();
 			
 			return result;
 			
@@ -49,6 +50,8 @@ public class WalkTogetherDAO {
 		int wt_seq = 0;
 		
 		try {
+			
+			conn = DBUtil.open("localhost", "admin", "java1234");
 
 			String sql = "select max(wt_seq) as seq from tblWalkTogether";
 			
@@ -57,8 +60,13 @@ public class WalkTogetherDAO {
 			
 			if(rs.next()) {
 				wt_seq = rs.getInt("seq");
+				
 			}
-
+			
+			rs.close();
+			stat.close();
+			conn.close();
+			
 			return wt_seq;
 			
 		} catch (Exception e) {
@@ -71,6 +79,8 @@ public class WalkTogetherDAO {
 	public int addPath(List<WTPathDTO> pathList) {
 		
 		try {
+			
+			conn = DBUtil.open("localhost", "admin", "java1234");
 			
 			String sql = "";
 			
@@ -88,6 +98,9 @@ public class WalkTogetherDAO {
 				pstat.executeUpdate();
 			}
 			
+			pstat.close();
+			conn.close();
+			
 			return 1;
 			
 		} catch (Exception e) {
@@ -95,6 +108,85 @@ public class WalkTogetherDAO {
 		}
 		
 		return 0;
+	}
+
+	public List<WTPathDTO> getBeginPath() {
+		
+		List<WTPathDTO> mlist = new ArrayList<WTPathDTO>();
+		
+		try {
+			
+			conn = DBUtil.open("localhost", "admin", "java1234");
+			
+			String sql = "select wt_seq, wtp_lat, wtp_lng, wtp_order from tblWTPath where wtp_order = 1";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				WTPathDTO dto = new WTPathDTO();
+				
+				dto.setWt_seq(rs.getString("wt_seq"));
+				dto.setWtp_lat(rs.getString("wtp_lat"));
+				dto.setWtp_lng(rs.getString("wtp_lng"));
+				dto.setWtp_order(rs.getInt("wtp_order"));
+				
+				mlist.add(dto);
+				
+			}
+			
+			rs.close();
+			stat.close();
+			conn.close();
+			
+			return mlist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return mlist;
+	}
+
+	public List<WalkTogetherDTO> getWriting() {
+
+		List<WalkTogetherDTO> ilist = new ArrayList<WalkTogetherDTO>();
+		
+		try {
+			
+			conn = DBUtil.open("localhost", "admin", "java1234");
+			
+			String sql = "select wt_seq, wt_writer, wt_petkind, wt_time, wt_content from tblWalkTogether";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				WalkTogetherDTO dto = new WalkTogetherDTO();
+				
+				dto.setWt_seq(rs.getString("wt_seq"));
+				dto.setWt_writer(rs.getString("wt_writer"));
+				dto.setWt_petkind(rs.getString("wt_petkind"));
+				dto.setWt_time(rs.getString("wt_time"));
+				dto.setWt_content(rs.getString("wt_content"));
+				
+				ilist.add(dto);
+				
+			}
+			
+			rs.close();
+			stat.close();
+			conn.close();
+			
+			return ilist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return ilist;
 	}
 
 }

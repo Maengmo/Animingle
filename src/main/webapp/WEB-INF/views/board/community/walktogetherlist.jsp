@@ -100,7 +100,7 @@
 
     var container = document.getElementById('map');
     var options = {
-        level: 3
+        level: 4
     };
 
     var map;
@@ -118,15 +118,21 @@
             options.center = new kakao.maps.LatLng(lat, lng);
             map = new kakao.maps.Map(container, options);
             
-            kakao.maps.event.addListener(map, 'bounds_changed', boundInfo);        
-
+            boundInfo(map);
+            kakao.maps.event.addListener(map, 'bounds_changed', function() {
+                boundInfo(map);
+            });
+            
         }, function (error) {
 
             // 사용자가 위치 정보를 허용하지 않았을 경우, 기본 위치를 사용한다.
             options.center = new kakao.maps.LatLng(lat, lng);
             map = new kakao.maps.Map(container, options);
-            
-            kakao.maps.event.addListener(map, 'bounds_changed', boundInfo);        
+
+            boundInfo(map);
+            kakao.maps.event.addListener(map, 'bounds_changed', function() {
+                boundInfo(map);
+            });      
 
         });
 
@@ -136,13 +142,16 @@
         options.center = new kakao.maps.LatLng(lat, lng);
         map = new kakao.maps.Map(container, options);
 
-        kakao.maps.event.addListener(map, 'bounds_changed', boundInfo);        
+        boundInfo(map);
+        kakao.maps.event.addListener(map, 'bounds_changed', function() {
+            boundInfo(map);
+        });       
     }
 
     
     
     /* 지도가 이동, 확대, 축소로 인해 지도영역이 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다 */
-    function boundInfo() {  
+    function boundInfo(map) {  
         
 	    // 지도 영역정보를 얻어옵니다 
 	    var bounds = map.getBounds();
@@ -162,10 +171,82 @@
 	            neLat: ne.getLat(),
 	            neLng: ne.getLng()
 	        },
+	        dataType: 'json',
+	        success: (result)=>{
+	            
+	            var positions = [];
+
+	            // Iterate over each item in the result
+	            $(result).each((index, item)=>{
+	                // Add item's latitude and longitude to the positions array
+	                positions.push({
+	                    content: 
+	                        '<div class="info"><ul><div><li>' + item.wt_petkind + '</li><li>' + item.wt_time + '</li></div></ul></div>',
+	                    latlng: new kakao.maps.LatLng(item.wtp_lat, item.wtp_lng)
+	                });
+
+	            });		            	            
+	            
+	            showMarkernInfo(positions, bounds);	            
+	            
+	        },
 	        error: (a, b, c) => console.log(a, b, c)
 	    });
   
     }
+     
+    function showMarkernInfo(positions, bounds) { 
+        
+        for (var i = 0; i < positions.length; i ++) {            
+            
+            var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
+            imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+            imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+	        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+	        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+	            markerPosition = new kakao.maps.LatLng(positions[i].latlng.Ma, positions[i].latlng.La); // 마커가 표시될 위치입니다
+	
+	        // 마커를 생성합니다
+	        var marker = new kakao.maps.Marker({
+	          position: markerPosition,
+	          image: markerImage // 마커이미지 설정 
+	        });
+	
+	        // 커스텀 오버레이가 표시될 위치입니다 
+	        var position = new kakao.maps.LatLng(positions[i].latlng.Ma, positions[i].latlng.La);  
+	
+	        // 커스텀 오버레이를 생성합니다
+	        var customOverlay = new kakao.maps.CustomOverlay({
+	            map: map,
+	            position: position,
+	            content: positions[i].content,
+	            yAnchor: 2.1
+	        });		   
+
+	    	
+	        // 마커가 지도 위에 표시되도록 설정합니다
+	        marker.setMap(map);  
+	        marker.customOverlay = customOverlay; // 마커에 커스텀 오버레이 참조를 저장합니다
+	        
+	        customOverlay.setMap(null); //처음에는 커스텀 오버레이를 다 숨겨놓는다.
+	        
+	        kakao.maps.event.addListener(marker, 'mouseover', function() {
+	            this.customOverlay.setMap(map); // 마커에 마우스를 올렸을 때, 커스텀 오버레이를 표시합니다.
+	        });
+
+	        kakao.maps.event.addListener(marker, 'mouseout', function() {
+	            this.customOverlay.setMap(null); // 마커에서 마우스를 뗐을 때, 커스텀 오버레이를 숨깁니다.
+	        });
+	        
+        }		
+        
+    }
+
+ 	
+	
+	   
+    
     
 
     /* modal창 map */
@@ -174,7 +255,7 @@
             var container2 = document.getElementById('map2');
             var options2 = {
                 center: new kakao.maps.LatLng(37.4993, 127.0331),
-                level: 3
+                level: 4
             };
             var map2 = new kakao.maps.Map(container2, options2);
         }, 200);

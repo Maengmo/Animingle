@@ -147,6 +147,12 @@ h6 {
 	box-shadow: #CCC 0 0 !important;
 }
 
+/* CKEditor footer로 인해 충돌 > 수정 필요 */
+.footer {
+	margin: 0;
+	margin-top: 50px;
+}
+
 .content-header {
 	font-weight: bold;
 	width: 100%;
@@ -222,9 +228,23 @@ form {
 	width: 100%;
 }
 
-/* CKEditor footer로 인해 충돌 > 수정 필요 */
-.footer {
-	margin: 0;
-	margin-top: 50px;
+
+.info ul {
+	margin-right: 50px;
+	margin-bottom: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
+.info {	
+    display: inline-block;
+    background: #fff;
+    margin-right: 35px;
+    padding-left: 0; 
+    padding-top: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    box-shadow: 3px 3px #aaa;
+}
