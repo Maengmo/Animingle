@@ -1,7 +1,9 @@
 package com.sist.animingle.user;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,12 +30,12 @@ public class Veterinary extends HttpServlet {
 		
 		VeterinarianDTO dto = dao.getVetInfo(id);
 		
-		List<String> clist = dao.getClist(id);
+		List<String> vclist = dao.getVClist(id);
+		//List<VetQnADTO> vqlist = dao.getVQlist(id);
 		
 		req.setAttribute("dto", dto);
-		req.setAttribute("clist", clist);
-		
-		
+		req.setAttribute("vclist", vclist);
+		//req.setAttribute("vqlist", vqlist);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/veterinary.jsp");
 		dispatcher.forward(req, resp);

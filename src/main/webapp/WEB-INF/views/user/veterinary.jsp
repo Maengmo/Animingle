@@ -57,43 +57,52 @@
 						<div class="mypage-profile-main veterinary-main">
 							<div class="form-title">이름</div>
 							<div>
-								<input type="text" value="홍길동">
+								<input type="text" value="${dto.vet_name }" readonly style="outline: none;">
 							</div>
 							<div class="form-title">병원명</div>
 							<div>
-								<input type="text" value="밍글맹글">
+								<input type="text" value="${dto.vet_clinic }" name="vet_clinic">
 							</div>
 							<div class="form-title">병원주소</div>
 							<div>
-								<input type="text" value="서울시 강남구 역삼동 한독빌딩">
+								<input type="text" value="${dto.vet_address }" id="sample6_address" readonly class="address" name="vet_address">
+								<button type="button" onclick="sample6_execDaumPostcode();"
+									class="search-btn">주소 검색</button>
 							</div>
 							<div class="form-title">경력</div>
 							<div>
-								<textarea>서울대학교 수의학과 학부 졸업</textarea>
+								<div class="careerlist">
+								<c:forEach items="${vclist}" var="career" varStatus="status">
+									<div>
+										<input type="text" value="${career }" readonly name="vet_career" style="outline: none;">
+										<button type="button" class="btn-del-career" onclick="delCareer();"> - </button>
+									</div>
+								</c:forEach>
+								</div>
+									<input type="text" value="" class="newcareer">
+									<button type="button" class="btn-add-career" onclick="addCareer();"> + </button>
 							</div>
 							<div class="form-title">진료과목</div>
 							<div>
-								<input type="text" value="고양이">
+								<input type="text" value="${dto.vet_major }" name="vet_major">
 							</div>
 							<div class="mypage-edit">
 								<button type="submit">수정</button>
 							</div>
 						</div>
 					</form>
-					<div class="mypage-profile-count mypage-reply">
-						<div>답변 내역</div>
+				</div>
+					<div class="mypage-reply">
+						<h3>답변 내역</h3>
 						<table id="tblReply">
-							<tr>
-								<td>천사같은 고양이..맡아주실분...</td>
-								<td>2023-03-14</td>
+							<c:forEach items="${vqlist }" var="dto">
+							<tr onclick="location.href='/animingle/board/vetqnaview.do&seq=${dto.vq_seq}'">
+								<td>${dto.vq_subject }</td>
+								<td>${dto.vq_regdate }</td>
 							</tr>
-							<tr>
-								<td>악마 고양이 봐주실분..</td>
-								<td>2023-02-14</td>
-							</tr>
+							</c:forEach>
 						</table>
 					</div>
-				</div>
 			</div>
 
 			<div class="rightbar">
@@ -106,17 +115,46 @@
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+	
+	
+	//주소 검색하는 api
+	function sample6_execDaumPostcode() {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	            var addr = ''; // 주소 변수
+	            var extraAddr = ''; // 참고항목 변수
+	
+	            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                addr = data.roadAddress;
+	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                addr = data.jibunAddress;
+	            }
+	
+	
+	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	            /* document.getElementById('sample6_postcode').value = data.zonecode; */
+	            document.getElementById("sample6_address").value = addr;
+	            $('#sample6_address').css('border', '2px solid #0256AA');
+	        }
+	    }).open();
+	}
 	
 	
 	$('#editpic').change(function() {
 		
-		editPic('${dto.vet_seq}');
+		editPic();
 		
 	});
 	
-	function editPic(id) {
+	function editPic() {
 		
 		const formData = new FormData(document.getElementById('formpic'));
 		
@@ -133,7 +171,8 @@
 			dataType: 'json',
 			success: (result)=>{
 				
-				$('#userpic').attr("src","/animingle/asset/pic/userpic/" + result.userpic);	
+				$('#userpic').attr("src","/animingle/asset/pic/userpic/" + result.userpic);
+				alert('사진 수정이 완료되었습니다.');
 				
 			},
 			error: (a,b,c)=>console.log(a,b,c)
@@ -142,7 +181,41 @@
 		
 		
 	}
-
+	
+	function addCareer() {
+		
+		let newcareer = $('.newcareer').val();
+		
+		if (newcareer != '') {
+			
+			$('.careerlist').append(
+				`	
+					<div>
+						<input type="text" value="\${newcareer}" readonly name="vet_career" style="border: 2px solid #0256AA; outline: none;">
+						<button type="button" class="btn-del-career" onclick="delCareer();"> - </button>
+					</div>
+				`
+			);
+			
+			$('.newcareer').val("");
+			
+		}
+		
+	}
+	
+	function delCareer() {
+		
+		$(event.target).parent().remove();
+		
+	}
+	
+	$('form input[type=text]').change(function() {
+		
+		$(this).css('border', '2px solid #0256AA');
+		$('.newcareer').css('border', '2px solid #CCC');
+		
+	});
+	
 	</script>
 </body>
 </html>

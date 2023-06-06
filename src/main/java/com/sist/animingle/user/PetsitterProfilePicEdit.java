@@ -13,39 +13,38 @@ import org.json.simple.JSONObject;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.sist.animingle.user.repository.PetsitterDTO;
 import com.sist.animingle.user.repository.UserDAO;
-import com.sist.animingle.user.repository.UserDTO;
 
-@WebServlet("/user/profilepicedit.do")
-public class ProfilePicEdit extends HttpServlet {
+@WebServlet("/user/petsitterprofilepicedit.do")
+public class PetsitterProfilePicEdit extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//ProfilePicEdit.java
-		
-		//System.out.println(req.getRealPath("/asset/pic/userpic"));
+		//PetsitterProfilePicEdit.java
+		//System.out.println(req.getRealPath("/asset/pic/petsitterpic"));
 		//HttpSession session = req.getSession();
 		//String id = (String)session.getAttribute("id");
-		String id = "wain1719";
+		String id = "happy012";
 		MultipartRequest multi = new MultipartRequest(
 				req
-				,req.getRealPath("/asset/pic/userpic")
+				,req.getRealPath("/asset/pic/petsitterpic")
 				,1024 * 1024 * 100
 				,"UTF-8"
 				,new DefaultFileRenamePolicy()
 				);
 		
-		String userpic = multi.getFilesystemName("editpic");
+		String petsitterpic = multi.getFilesystemName("editpic");
 		
 
 		
 		UserDAO dao = new UserDAO();
-		UserDTO dto = new UserDTO();
-		dto.setUser_id(id);
-		dto.setUser_pic(userpic);
+		PetsitterDTO dto = new PetsitterDTO();
+		dto.setPs_id(id);
+		dto.setPs_pic(petsitterpic);
 		
-		int result = dao.editUserPic(dto);
+		int result = dao.editPetsitterPic(dto);
 		
 		PrintWriter writer = resp.getWriter();
 		resp.setCharacterEncoding("UTF-8");
@@ -54,12 +53,14 @@ public class ProfilePicEdit extends HttpServlet {
 		if (result == 1) {
 			
 			JSONObject obj = new JSONObject();
-			obj.put("userpic", userpic);
+			
+			obj.put("petsitterpic", petsitterpic);
 			writer.print(obj);
 			writer.close();
 			
 		} 
-		
+
+
 	}
 
 }

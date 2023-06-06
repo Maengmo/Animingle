@@ -1,42 +1,67 @@
 .content-top {
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   align-items: center;
-   margin-top: 25px; 
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 25px;
 }
 
 .content-title {
-   width: 100%;
-   border: 2px solid #ccc;
-   padding: 20px;
-   text-align: center;
-   font-size: 40px;
-   font-weight: bold;
-   margin-bottom: 15px;
-   border-radius: 30px;
+	width: 100%;
+	border: 2px solid #ccc;
+	padding: 20px;
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	border-radius: 30px;
 }
 
 .content {
-	font-family: "SUITE-Regular";	
+	font-family: "SUITE-Regular";
 }
 
 h1 {
 	text-align: center;
 	font-weight: bold;
 }
+
 .infobox {
-	margin: 15px auto;
+	margin: 40px auto 0;
 	display: flex;
 }
+
 .picbox {
-	border: 1px solid #DDD;
+	font-family: "SUITE-Regular";
+	width: 200px;
+	text-align: center;
+	float: left;
+	padding: 10px;
 }
-.picbox > img {
+
+img#petsitterpic {
 	width: 180px;
 	height: 200px;
+	object-fit: cover;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 15px;
 }
+
+#btnlabel {
+	cursor: pointer;
+	margin: 0 auto;
+	width: 100px;
+	height: 40px;
+	padding: 7px;
+}
+
+#editpic {
+	display: none;
+}
+
+
 .tblinfo {
 	margin-left: 30px;
 }
@@ -51,14 +76,21 @@ h1 {
 	font-weight: bold;
 }
 
-.btn.editpic, .editintro {
-	margin-left: 50px;
+#btnlabel {
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
+	background-color: #0256AA;
+	color: white;
+}
+
+#btnlabel, .editintro {
 	background-color: #0256AA;
 }
 
-.btn.editpic:hover, .editintro:hover  {
-	transition : .3s;
-	opacity : 0.8;
+#btnlabel:hover, #btnlabel:hover {
+	transition: .3s;
+	opacity: 0.8;
 }
 
 .selfintro {
@@ -69,6 +101,7 @@ h3 {
 	padding-left: 30px;
 	margin-bottom: 15px;
 }
+
 .selfintro textarea {
 	width: 100%;
 	min-height: 300px;
@@ -76,7 +109,7 @@ h3 {
 	line-height: 30px;
 	outline: none;
 	border-radius: 10px;
-	background: linear-gradient( 45deg, #FFD5DE, #F8EDEB );
+	background: linear-gradient(45deg, #FFD5DE, #F8EDEB);
 	font-size: 1.2rem;
 }
 
@@ -86,7 +119,7 @@ h3 {
 
 .score {
 	position: relative;
-	top:10px;
+	top: 10px;
 	color: #666;
 }
 
@@ -99,14 +132,12 @@ h3 {
 	border: 2px solid #DDD;
 }
 
-
-
-.tblapply tr > td:first-child {
+.tblapply tr>td:first-child {
 	text-align: left;
 	padding: 15px;
 }
 
-.tblapply tr > td:last-child {
+.tblapply tr>td:last-child {
 	text-align: center;
 	width: 100px;
 }
@@ -117,19 +148,16 @@ h3 {
 }
 
 .ing {
-	background-color:tomato;
+	background-color: tomato;
 	color: white;
-	
 }
 
 .accept {
-	background-color:#14AE5C;
+	background-color: #14AE5C;
 	color: white;
 }
 
 .deny {
-	background-color:gold;
+	background-color: gold;
 	color: #A38902;
 }
-
-

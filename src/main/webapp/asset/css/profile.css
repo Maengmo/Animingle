@@ -1,265 +1,291 @@
 .content-top {
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   align-items: center;
-   margin-top: 25px; 
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 25px;
 }
 
 .content-title {
-   width: 100%;
-   border: 2px solid #ccc;
-   padding: 20px;
-   text-align: center;
-   font-size: 40px;
-   font-weight: bold;
-   margin-bottom: 15px;
-   border-radius: 30px;
+	width: 100%;
+	border: 2px solid #ccc;
+	padding: 20px;
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	border-radius: 30px;
 }
 
 .maincontent h1 {
-			font-family: "SUITE-Regular";
-			text-align: center;
-		}
-		.mypage-profile {
-			margin-top: 40px;
+	font-family: "SUITE-Regular";
+	text-align: center;
+}
 
-		}
+.mypage-profile {
+	margin-top: 40px;
+}
 
-		.mypage-profile-img {
-			font-family: "SUITE-Regular";
-			width :200px;
-			text-align: center;
-			float: left;
-			padding: 10px;
+.mypage-profile-img {
+	font-family: "SUITE-Regular";
+	width: 200px;
+	text-align: center;
+	float: left;
+	padding: 10px;
+}
 
-		}
-		img#userpic {
-			width: 180px;
-			height: 200px;
-			object-fit: cover;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			margin-bottom: 15px;
-			
-		}
+img#userpic {
+	width: 180px;
+	height: 200px;
+	object-fit: cover;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
 
-		.mypage-profile-img button, .mypage-vet-img button, #btnlabel{
-			margin-top : 20px;
-			padding : 15px 30px;
-			width: 140px;
-			margin-left:10px;
-			border : none;
-			border-radius : 10px;
-			font-size : 18px;			
-			background-color: #0256AA;
-			color : white;
-		}		
+#btnlabel {
+	margin-top: 20px;
+	padding: 15px 30px;
+	width: 140px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
+	background-color: #0256AA;
+	color: white;
+}
 
-		.mypage-profile-main button {
-			margin-top : 20px;
-			padding : 5px 30px;
-			width: 100px;
-			margin-left:10px;
-			border : none;
-			border-radius : 10px;
-			font-size : 18px;			
-			background-color: #0256AA;
-			color : white;
-			height: 40px;
-		}
-		
-		.mypage-edit button {	
-			background-color: #0256AA;
-		}
-		#btnlabel {
-			cursor: pointer;
-			margin: 0 auto;
-			width: 100px;
-			height: 40px;
-			padding: 7px;
-		}
-		
-		#editpic {
-			display: none;
-		}
-		.mypage-profile-img button:hover, .mypage-profile-main button:hover, .mypage-vet-img button:hover, .mypage-edit button:hover , #btnlabel:hover {
-			transition : .3s;
-			opacity : 0.8;
-		}
-		
+.mypage-profile-main button {
+	margin-top: 20px;
+	padding: 5px 30px;
+	width: 100px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
+	background-color: #0256AA;
+	color: white;
+	height: 40px;
+}
 
+.mypage-edit button {
+	background-color: #0256AA;
+}
 
-		.mypage-profile-main {
-			width: 600px;
-			font-family: "SUITE-Regular";
-			float: right;
-			margin-top: 10px;
-			padding-bottom: 40px;
-			border-bottom: 2px solid #ccc;
-		}
+#btnlabel {
+	cursor: pointer;
+	margin: 0 auto;
+	width: 100px;
+	height: 40px;
+	padding: 7px;
+}
 
-		.form-title {
-			font-size: 16px;
-			margin-bottom: 5px;
-			font-weight: bold;
-		}
+#editpic {
+	display: none;
+}
 
-		.mypage-profile-main input, .mypage-profile-pw input {
-			width: 400px;
-			border-radius: 10px;
-			height: 40px;
-			padding-left: 5px;
-			margin-bottom: 10px;
-		}
+.mypage-profile-img button:hover, .mypage-profile-main button:hover,
+	.mypage-vet-img button:hover, .mypage-edit button:hover, #btnlabel:hover
+	{
+	transition: .3s;
+	opacity: 0.8;
+}
 
-		.mypage-profile-main div:nth-child(6) button {
-			width: 110px;
-			height: 43px;
-			background-color: #F0F0F0;
-			border:1px solid #ccc;
-			color: #000000;
-			border-radius: 10px;
-			margin-left: 5px;
-			font-size: 16px;
-			padding: 5px;
-			position: relative;
-			top: 0;
-		}
+.mypage-profile-main {
+	width: 600px;
+	font-family: "SUITE-Regular";
+	float: right;
+	margin-top: 10px;
+	padding-bottom: 40px;
+	border-bottom: 2px solid #ccc;
+}
 
-		.address-detail {
-			margin-top: 10px;
-		}
+.mypage-profile::after {
+	content : "";
+	display: block;
+	clear: both;
+}
 
-		.mypage-edit {
-			margin-left: 300px;
-		}
+.vqlist {
+	cursor: pointer;	
+}
 
-		.mypage-profile-pw {
-			float: right;
-			margin-top: 10px;
-			width: 600px;
-			font-family: "SUITE-Regular";
-			border-bottom: 2px solid #ccc;
-			padding-bottom: 40px;
-		}
+.form-title {
+	font-size: 16px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
 
-		.mypage-profile-pw .mypage-edit button {
-			width: 200px;
-			color: white;
-			border-radius: 10px;
-			margin-left: -100px;
-			border : none;
-		}
-		
-		#btn-edit-pw {
-			width: 200px;
-			height: 40px;
-		}
+.mypage-profile-main input, .mypage-profile-pw input {
+	width: 400px;
+	border-radius: 10px;
+	height: 40px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
 
-		.mypage-profile-count {
-			float: right;
-			margin-top: 10px;
-			width: 600px;
-			font-family: "SUITE-Regular";
-			padding-bottom: 40px;
-		}
+.mypage-profile-main div:nth-child(6) button {
+	width: 110px;
+	height: 43px;
+	background-color: #F0F0F0;
+	border: 1px solid #ccc;
+	color: #000000;
+	border-radius: 10px;
+	margin-left: 5px;
+	font-size: 16px;
+	padding: 5px;
+	position: relative;
+	top: 0;
+}
 
-		#tblCount {
-			border: 1px solid black;
-			width: 400px;
-		}
+.address-detail {
+	margin-top: 10px;
+}
 
-		#tblCount td:first-child {
-			width: 150px;
-			padding-left: 5px;
-			text-align: center;
-		}
+.mypage-edit {
+	margin-left: 300px;
+}
 
-		#tblCount td {
-			border: 1px solid black;
-			padding-left: 10px;
-			height: 50px;
-		}
+.mypage-profile-pw {
+	float: right;
+	margin-top: 10px;
+	width: 600px;
+	font-family: "SUITE-Regular";
+	border-bottom: 2px solid #ccc;
+	padding-bottom: 40px;
+}
 
-	.mypage-vet-img {
-		font-family: "SUITE-Regular";
-		width :200px;
-		text-align: center;
-		float: left;
-		padding: 10px;
+.mypage-profile-pw .mypage-edit button {
+	width: 200px;
+	color: white;
+	border-radius: 10px;
+	margin-left: -100px;
+	border: none;
+}
 
-	}
+#btn-edit-pw {
+	width: 200px;
+	height: 40px;
+}
 
-	.mypage-vet-img img {
-		width: 180px;
-		height: 250px;
-		border: 1px solid #ccc;
-		border-radius: 5px;
-		margin-bottom: 15px;
-	}
+button.search-btn {
+	margin-top: 0px;
+}
 
+.maincontent button.btn-del-career, .maincontent button.btn-add-career {
+	width: 40px;
+    height: 40px;
+    background-color: #F0F0F0;
+    border: 1px solid #ccc;
+    color: #000000;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 16px;
+    padding: 5px;
+    position: relative;
+    top: 0;
+    margin-top: 0px;
+}
 
-	.mypage-profile-main textarea {
-		width: 400px;
-		height: 200px;
-		border-radius: 10px;
-		padding-left: 5px;
-		margin-bottom: 10px;
-		resize: none;
-		padding:
-		5px;
-	}
+.mypage-profile-count {
+	float: right;
+	margin-top: 10px;
+	width: 600px;
+	font-family: "SUITE-Regular";
+	padding-bottom: 40px;
+}
 
-	.mypage-reply {
-		float: left;
-		margin-left: 100px;
-	}
+#tblCount {
+	border: 1px solid black;
+	width: 400px;
+}
 
-	#tblReply {
-		width: 600px;
-		font-family: "SUITE-Regular";
-	}
+#tblCount td:first-child {
+	width: 150px;
+	padding-left: 5px;
+	text-align: center;
+}
 
-	#tblReply tr {
-		border: 1px solid black;
-	}
+#tblCount td {
+	border: 1px solid black;
+	padding-left: 10px;
+	height: 50px;
+}
 
-	#tblReply td {
-		height: 40px;
-	}
+.mypage-vet-img {
+	font-family: "SUITE-Regular";
+	width: 200px;
+	text-align: center;
+	float: left;
+	padding: 10px;
+}
 
-	#tblReply td:first-child {
-		padding-left: 10px;
-		font-size: 18px;
-		width: 500px;
-	}
+.mypage-vet-img img {
+	width: 180px;
+	height: 250px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
 
-	#tblReply td:last-child {
-		font-size : 12px;
-		color: #777;
-		text-align: right;
-		vertical-align: bottom;
-		padding-right: 20px;
-	}
-	
-	.veterinary-main {
-		border-bottom: 0px;
-	}
-	
-	input[type="text"], textarea {
-		padding : 10px;
-		padding-left : 15px;
-		border-radius : 5px;
-		border : 1px solid #878787;
-		margin-bottom: 10px;
-	}
-	
-	input[type="text"]:focus-visible, textarea:focus-visible{
-		outline-color: #ADB5BD;
-	}
-	
-	input.tel{
-		width: 122px;
-	}
+.mypage-profile-main textarea {
+	width: 400px;
+	height: 200px;
+	border-radius: 10px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+	resize: none;
+	padding: 5px;
+}
+
+.mypage-reply {
+
+}
+
+#tblReply {
+	width: 100%;
+	font-family: "SUITE-Regular";
+}
+
+#tblReply tr {
+	border: 1px solid black;
+}
+
+#tblReply td {
+	height: 40px;
+}
+
+#tblReply td:first-child {
+	padding-left: 10px;
+	font-size: 18px;
+	width: 500px;
+}
+
+#tblReply td:last-child {
+	font-size: 12px;
+	color: #777;
+	text-align: right;
+	vertical-align: bottom;
+	padding-right: 20px;
+}
+
+.veterinary-main {
+	border-bottom: 0px;
+}
+
+input[type="text"], textarea {
+	padding: 10px;
+	padding-left: 15px;
+	border-radius: 5px;
+	border: 1px solid #878787;
+	margin-bottom: 10px;
+}
+
+input[type="text"]:focus-visible, textarea:focus-visible {
+	outline-color: #ADB5BD;
+}
+
+input.tel {
+	width: 122px;
+}

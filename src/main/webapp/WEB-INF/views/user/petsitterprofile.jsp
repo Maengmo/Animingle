@@ -1,87 +1,152 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-   <title>Insert title here</title>
-   <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
-   <link rel="stylesheet" href="/animingle/asset/css/mymenu.css">
-   <link rel="stylesheet" href="/animingle/asset/css/petsitterprofile.css">
+<title>Insert title here</title>
+<%@ include file="/WEB-INF/views/inc/asset.jsp"%>
+<link rel="stylesheet" href="/animingle/asset/css/mymenu.css">
+<link rel="stylesheet" href="/animingle/asset/css/petsitterprofile.css">
 </head>
 <body>
 
-   <%@ include file="/WEB-INF/views/inc/header.jsp" %>
-   <section class="content">
-      <div class="mycontainer">
-         <div class="leftbar">
-            <!-- 왼쪽 사이드바 입니다. -->
-            <div class="mymenu">
-	            	<ul>
-	            		<li><a href="/animingle/user/profile.do" class="ea">회원정보</a></li>
-	            		<li><a href="/animingle/user/veterinary.do" class="ea">수의사 프로필</a></li>
-	            		<li class="selected"><span><img src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a href="/animingle/user/petsitterprofile.do" class="ea">펫시터 프로필</a></li>
-	            		<li><a href="/animingle/user/mypetsitter.do" class="ea">펫시터 모집내역</a></li>
-	            		<li><a href="/animingle/user/myauth.do" class="ea">인증센터</a></li>
-	            		<li><a href="/animingle/user/myquest.do" class="ea">내 문의사항</a></li>
-	            	</ul>
-            </div>
+	<%@ include file="/WEB-INF/views/inc/header.jsp"%>
+	<section class="content">
+		<div class="mycontainer">
+			<div class="leftbar">
+				<!-- 왼쪽 사이드바 입니다. -->
+				<div class="mymenu">
+					<ul>
+						<li><a href="/animingle/user/profile.do" class="ea">회원정보</a></li>
+						<li><a href="/animingle/user/veterinary.do" class="ea">수의사
+								프로필</a></li>
+						<li class="selected"><span><img
+								src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a
+							href="/animingle/user/petsitterprofile.do" class="ea">펫시터 프로필</a></li>
+						<li><a href="/animingle/user/mypetsitter.do" class="ea">펫시터
+								모집내역</a></li>
+						<li><a href="/animingle/user/myauth.do" class="ea">인증센터</a></li>
+						<li><a href="/animingle/user/myquest.do" class="ea">내
+								문의사항</a></li>
+					</ul>
+				</div>
 
-         </div>
-         <div class="maincontent">
+			</div>
+			<div class="maincontent">
 
 				<div class="content-top">
 					<div class="content-title">펫시터 프로필</div>
 				</div>
-                <div class="infobox">
-	                <div class="picbox">
-	                	<img src="/animingle/asset/commonimg/animingle.png">
-	                </div>
-                	<table class="tblinfo">
-                		<tr>
-                			<th>이름 </th><td>이민지</td>
-                		</tr>
-                		<tr>
-                			<th>별점</th><td><img src="/animingle/asset/commonimg/stars.png" style="width: 180px;">
-                			<span class="score">(5.0)</span>
-                			</td>
-                		</tr>
-                		<tr>
-                			<th colspan="2">매칭 횟수</th>
-                		</tr>
-                		<tr>
-                			<td colspan="2">999회</td>
-                		</tr>
-                	</table>
-                </div>
-                <button type="button" class="btn btn-primary editpic">사진 수정</button>
-                <div class="selfintro">
-                	<h3>자기소개</h3>
-                	<textarea>저는 어렸을 때부터 고양이, 강아지, 햄스터 등 많은 반려동물을 키웠습니다.
-누구보다 동물을 좋아해서 친구들 반려동물도 자주 돌봐주곤 합니다.
-현재 기르고 있는 반려동물은 없어서 다른 친구들과 갈등이 생길 일도 없습니다.
-믿고 맡겨주시면 아이들 특성 파악해서 잘 돌보겠습니다.^^</textarea>
-				<button type="button" class="btn btn-primary editintro">수정완료</button>
-                </div>
-                <div class="applylist">
-                	<h3>신청 내역</h3>
-                	<table class="tblapply">
-                		<tr><td>천사같은 고양이... 맡아주실 분...</td><td><div class="state ing">모집중</div></td></tr>
-                		<tr><td>악마 고양이 봐주실 분..</td><td><div class="state accept">수락</div></td></tr>
-                		<tr><td>냐옹~</td><td><div class="state deny">거절</div></td></tr>
-                	</table>
-                </div>
+				<div class="infobox">
+					<div class="picbox">
+						<form id="formpic">
+							<img src="/animingle/asset/pic/petsitterpic/${dto.ps_pic }"
+								id="petsitterpic">
+							<!-- 회원이 저장한 이미지로 변경 -->
+							<input type="file" name="editpic" id="editpic"> <label
+								for="editpic" id="btnlabel"> 사진 수정 </label>
 
-         </div>
-         <div class="rightbar">
-            <!-- 오른쪽 사이드바 입니다. -->
-         </div>
-         </div>
-   </section>
-   <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
+						</form>
+					</div>
+					<table class="tblinfo">
+						<tr>
+							<th>이름</th>
+							<td>이민지</td>
+						</tr>
+						<tr>
+							<th>별점</th>
+							<td><img src="/animingle/asset/commonimg/stars.png"
+								style="width: 180px;"> <span class="score">(${dto.ps_rate })</span></td>
+						</tr>
+						<tr>
+							<th colspan="2">매칭 횟수</th>
+						</tr>
+						<tr>
+							<td colspan="2">${dto.ps_matchcount }회</td>
+						</tr>
+					</table>
+				</div>
+				<div class="selfintro">
+					<h3>자기소개</h3>
+					<textarea>${dto.ps_intro }</textarea>
+					<button type="button" class="btn btn-primary editintro">수정완료</button>
+				</div>
+				<div class="applylist">
+					<h3>신청 내역</h3>
+					<table class="tblapply">
+						<c:forEach items="${psalist }" var="psr">
+						<tr onclick="location.href='/animingle/board/psrecruitmentview.do&seq=${psr.psr_seq}'">
+							<td>${psr.psr_subject }</td>
+								<td>
+									<c:if test="${psr.psa_state == '수락'}">
+										<div class="state accept">
+									</c:if>
+									<c:if test="${psr.psa_state == '거절'}">
+										<div class="state deny">
+									</c:if>
+									<c:if test="${psr.psa_state == '모집중'}">
+										<div class="state ing">
+									</c:if>
+									<c:if test="${psr.psa_state == '모집취소'}">
+										<div class="state deny">
+									</c:if>
+										${psr.psa_state }
+									</div>
+								</td>
+						</tr>
+						</c:forEach>
+					</table>
+				</div>
+
+			</div>
+			<div class="rightbar">
+				<!-- 오른쪽 사이드바 입니다. -->
+			</div>
+		</div>
+	</section>
+	<%@ include file="/WEB-INF/views/inc/footer.jsp"%>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+	$('#editpic').change(function() {
+		
+		editPic();
+		
+	});
+	
+	function editPic() {
+		
+		const formData = new FormData(document.getElementById('formpic'));
+		
+		$.ajax ({
+			type: "POST",
+			url: '/animingle/user/petsitterprofilepicedit.do',
+			
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+			
+			data: formData,
+	
+			dataType: 'json',
+			success: (result)=>{
+				
+				
+				$('#petsitterpic').attr("src","/animingle/asset/pic/petsitterpic/" + result.petsitterpic);
+				alert('사진 수정이 완료되었습니다.');
+				
+			},
+			error: (a,b,c)=>console.log(a,b,c)
+			
+		});
+		
+		
+	}
+
+
+</script>
 </body>
 </html>

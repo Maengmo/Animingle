@@ -175,11 +175,11 @@
 	
 	$('#editpic').change(function() {
 		
-		editPic('${dto.user_id}');
+		editPic();
 		
 	});
 	
-	function editPic(id) {
+	function editPic() {
 		
 		const formData = new FormData(document.getElementById('formpic'));
 		
