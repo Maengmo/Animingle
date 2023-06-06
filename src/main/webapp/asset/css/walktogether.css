@@ -132,6 +132,21 @@ h6 {
 	height: 400px; 
 }
 
+.ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
+	border-color: #CCC !important;	
+}
+
+.ck.ck-button.ck-on {
+	background-color: #DDD !important;
+	color: black !important;
+	font-weight: bold;	
+}
+
+.ck.ck-button:active, .ck.ck-button:focus, a.ck.ck-button:active, a.ck.ck-button:focus {
+	border: none !important;
+	box-shadow: #CCC 0 0 !important;
+}
+
 .content-header {
 	font-weight: bold;
 	width: 100%;
@@ -212,3 +227,4 @@ form {
 	margin: 0;
 	margin-top: 50px;
 }
+
