@@ -23,7 +23,11 @@ public class CheckId extends HttpServlet {
 		
 		String id = req.getParameter("id");  
 		
-		int result = dao.checkId(id);
+		int result_user = dao.checkId(id);
+		int result_admin = dao.checkId_admin(id);
+		
+		int result = result_user + result_admin;
+		System.out.println(result);
 		
 		//로그인 중복 체크
 		resp.setCharacterEncoding("UTF-8");
