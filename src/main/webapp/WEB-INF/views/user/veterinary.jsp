@@ -49,11 +49,11 @@
 							<img src="/animingle/asset/pic/userpic/${dto.vet_pic }"
 								id="userpic">
 							<!-- 회원이 저장한 이미지로 변경 -->
-							<input type="file" name="editpic" id="editpic"> <label
+							<input type="file" name="editpic" id="editpic" accept=".gif, .jpg, .png, .jpeg"> <label
 								for="editpic" id="btnlabel"> 사진 수정 </label>
 						</form>
 					</div>
-					<form>
+					<form method="POST" action="/animingle/user/veterinary.do">
 						<div class="mypage-profile-main veterinary-main">
 							<div class="form-title">이름</div>
 							<div>
@@ -61,13 +61,17 @@
 							</div>
 							<div class="form-title">병원명</div>
 							<div>
-								<input type="text" value="${dto.vet_clinic }" name="vet_clinic">
+								<input type="text" value="${dto.vet_clinic }" name="vet_clinic" required>
 							</div>
 							<div class="form-title">병원주소</div>
 							<div>
-								<input type="text" value="${dto.vet_address }" id="sample6_address" readonly class="address" name="vet_address">
+								<input type="text" value="${dto.vet_address }" id="sample6_address" readonly class="address" name="vet_address" required>
 								<button type="button" onclick="sample6_execDaumPostcode();"
 									class="search-btn">주소 검색</button>
+								<div class="address-detail">
+									<input type="text" value="${dto.vet_addressdetail }"
+										id="sample6_detailAddress" class="detail-address" name="vet_addressdetail" required>
+								</div>								
 							</div>
 							<div class="form-title">경력</div>
 							<div>
@@ -75,16 +79,16 @@
 								<c:forEach items="${vclist}" var="career" varStatus="status">
 									<div>
 										<input type="text" value="${career }" readonly name="vet_career" style="outline: none;">
-										<button type="button" class="btn-del-career" onclick="delCareer();"> - </button>
+										<button type="button" class="btn-del-career" onclick="delCareer();"> 삭제 </button>
 									</div>
 								</c:forEach>
 								</div>
-									<input type="text" value="" class="newcareer">
-									<button type="button" class="btn-add-career" onclick="addCareer();"> + </button>
+									<input type="text" value="" class="newcareer" placeholder="추가할 경력 입력">
+									<button type="button" class="btn-add-career" onclick="addCareer();"> 추가 </button>
 							</div>
 							<div class="form-title">진료과목</div>
 							<div>
-								<input type="text" value="${dto.vet_major }" name="vet_major">
+								<input type="text" value="${dto.vet_major }" name="vet_major" required>
 							</div>
 							<div class="mypage-edit">
 								<button type="submit">수정</button>
@@ -143,6 +147,8 @@
 	            /* document.getElementById('sample6_postcode').value = data.zonecode; */
 	            document.getElementById("sample6_address").value = addr;
 	            $('#sample6_address').css('border', '2px solid #0256AA');
+	            // 커서를 상세주소 필드로 이동한다.
+	            document.getElementById("sample6_detailAddress").focus();
 	        }
 	    }).open();
 	}
@@ -164,7 +170,7 @@
 			
 			enctype: 'multipart/form-data',
 			processData: false,
-			contentType: false,
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 			
 			data: formData,
 
@@ -192,7 +198,7 @@
 				`	
 					<div>
 						<input type="text" value="\${newcareer}" readonly name="vet_career" style="border: 2px solid #0256AA; outline: none;">
-						<button type="button" class="btn-del-career" onclick="delCareer();"> - </button>
+						<button type="button" class="btn-del-career" onclick="delCareer();"> 삭제 </button>
 					</div>
 				`
 			);

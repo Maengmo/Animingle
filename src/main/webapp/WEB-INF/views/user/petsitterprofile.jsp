@@ -46,7 +46,7 @@
 							<img src="/animingle/asset/pic/petsitterpic/${dto.ps_pic }"
 								id="petsitterpic">
 							<!-- 회원이 저장한 이미지로 변경 -->
-							<input type="file" name="editpic" id="editpic"> <label
+							<input type="file" name="editpic" id="editpic" accept=".gif, .jpg, .png, .jpeg"> <label
 								for="editpic" id="btnlabel"> 사진 수정 </label>
 
 						</form>
@@ -71,8 +71,10 @@
 				</div>
 				<div class="selfintro">
 					<h3>자기소개</h3>
-					<textarea>${dto.ps_intro }</textarea>
-					<button type="button" class="btn btn-primary editintro">수정완료</button>
+					<form method="POST" action="/animingle/user/petsitterprofile.do">
+						<textarea name="ps_intro">${dto.ps_intro }</textarea>
+						<button type="submit" class="btn btn-primary editintro" onclick="if(!confirm('수정하시겠습니까?')) event.preventDefault();">수정완료</button>
+					</form>
 				</div>
 				<div class="applylist">
 					<h3>신청 내역</h3>
@@ -111,6 +113,15 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
+
+	$('.selfintro textarea').change(function() {
+		
+		$(this).css('border', '2px solid #0256AA');
+		
+	});
+	
+	
+
 	$('#editpic').change(function() {
 		
 		editPic();
@@ -127,7 +138,7 @@
 			
 			enctype: 'multipart/form-data',
 			processData: false,
-			contentType: false,
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 			
 			data: formData,
 	

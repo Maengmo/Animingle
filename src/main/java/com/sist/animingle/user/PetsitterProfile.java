@@ -1,6 +1,7 @@
 package com.sist.animingle.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -30,6 +31,10 @@ public class PetsitterProfile extends HttpServlet {
 		
 		PetsitterDTO dto = dao.getPetsitterInfo(id);
 		
+		//String ps_intro = dto.getPs_intro().replace("<", "&lt;").replace(">", "&gt;");
+		
+		//dto.setPs_intro(ps_intro);
+		
 		dto.setPs_rate(dao.getPsRate(id));
 		dto.setPs_matchcount(dao.getPsMatchcount(id));
 		
@@ -37,10 +42,51 @@ public class PetsitterProfile extends HttpServlet {
 		
 		req.setAttribute("dto", dto);
 		req.setAttribute("psalist", psalist);
+		
+		for (PSApplyDTO psadto : psalist) {
+			
+			String subject = psadto.getPsr_subject();
+			subject = subject.replace("<", "&lt;").replace(">", "&gt;");
+			psadto.setPsr_subject(subject);
+			
+		}
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/petsitterprofile.jsp");
 		dispatcher.forward(req, resp);
 
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//HttpSession session = req.getSession();
+		//String id = (String)session.getAttribute("id");
+		String id = "happy012";
+		String ps_intro = req.getParameter("ps_intro");
+		
+		UserDAO dao = new UserDAO();
+		
+		PetsitterDTO dto = new PetsitterDTO();
+		
+		dto.setPs_id(id);
+		dto.setPs_intro(ps_intro);
+		
+		int result = dao.editPs_intro(dto);
+		resp.setCharacterEncoding("UTF-8");
+		
+		if (result == 1) {
+			
+			resp.sendRedirect("/animingle/user/petsitterprofile.do");
+			
+		} else {
+			
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('수정에 실패하였습니다.');history.back();</script>");
+			writer.close();
+			
+		}
+		
+		
 	}
 
 }

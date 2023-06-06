@@ -98,7 +98,6 @@ img#userpic {
 	float: right;
 	margin-top: 10px;
 	padding-bottom: 40px;
-	border-bottom: 2px solid #ccc;
 }
 
 .mypage-profile::after {
@@ -152,7 +151,6 @@ img#userpic {
 	margin-top: 10px;
 	width: 600px;
 	font-family: "SUITE-Regular";
-	border-bottom: 2px solid #ccc;
 	padding-bottom: 40px;
 }
 
@@ -162,6 +160,10 @@ img#userpic {
 	border-radius: 10px;
 	margin-left: -100px;
 	border: none;
+}
+
+.mypage-edit button {
+	margin-left: 0px;
 }
 
 #btn-edit-pw {
@@ -174,7 +176,7 @@ button.search-btn {
 }
 
 .maincontent button.btn-del-career, .maincontent button.btn-add-career {
-	width: 40px;
+	width: 60px;
     height: 40px;
     background-color: #F0F0F0;
     border: 1px solid #ccc;
@@ -191,27 +193,31 @@ button.search-btn {
 .mypage-profile-count {
 	float: right;
 	margin-top: 10px;
-	width: 600px;
+	width: 100%;
 	font-family: "SUITE-Regular";
 	padding-bottom: 40px;
 }
 
 #tblCount {
-	border: 1px solid black;
-	width: 400px;
+	margin-top: 20px;
+	width: 100%;
 }
 
 #tblCount td:first-child {
-	width: 150px;
+	width: 100px;
 	padding-left: 5px;
 	text-align: center;
+	border-right: 1px dashed #CCC;
 }
 
 #tblCount td {
-	border: 1px solid black;
+	border: 2px solid #0256AA;
+	border-left: 0;
+	border-right: 0;
 	padding-left: 10px;
 	height: 50px;
 }
+
 
 .mypage-vet-img {
 	font-family: "SUITE-Regular";
@@ -274,7 +280,7 @@ button.search-btn {
 	border-bottom: 0px;
 }
 
-input[type="text"], textarea {
+input[type="text"], textarea, input[type="password"] {
 	padding: 10px;
 	padding-left: 15px;
 	border-radius: 5px;
@@ -282,7 +288,7 @@ input[type="text"], textarea {
 	margin-bottom: 10px;
 }
 
-input[type="text"]:focus-visible, textarea:focus-visible {
+input[type="text"]:focus-visible, textarea:focus-visible, input[type="password"] {
 	outline-color: #ADB5BD;
 }
 

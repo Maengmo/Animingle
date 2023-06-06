@@ -12,6 +12,7 @@ public class PSApplyDTO {
 	private String psa_adoptdate;
 	
 	private String psr_subject;
+	
 	private String psa_state;
 
 }

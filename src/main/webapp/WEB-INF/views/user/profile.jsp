@@ -48,13 +48,25 @@
 						<form id="formpic">
 							<img src="/animingle/asset/pic/userpic/${dto.user_pic }" id="userpic">
 							<!-- 회원이 저장한 이미지로 변경 -->
-							<input type="file" name="editpic" id="editpic">
+							<input type="file" name="editpic" id="editpic" accept=".gif, .jpg, .png, .jpeg">
 
 							<label for="editpic" id="btnlabel">
 								사진 수정
 							</label>
 	
 						</form>
+						<div class="mypage-profile-count">
+						<table id="tblCount">
+							<tr>
+								<td>내 게시글</td>
+								<td>${boardcnt }건</td>
+							</tr>
+							<tr>
+								<td>내 댓글</td>
+								<td>${commentcnt }건</td>
+							</tr>
+						</table>
+					</div>
 					</div>
 					<form action="/animingle/user/profile.do" method="POST">
 						<div class="mypage-profile-main">
@@ -64,63 +76,51 @@
 							</div>
 							<div class="form-title">닉네임</div>
 							<div>
-								<input type="text" value="${dto.user_nickname }">
+								<input type="text" value="${dto.user_nickname }" name="user_nickname" id="nickname">
 							</div>
 							<div class="form-title">주소</div>
 							<div>
 								<input type="text" value="${dto.user_address }"
-									id="sample6_address" readonly class="address">
+									id="sample6_address" readonly class="address" name="user_address">
 								<button type="button" onclick="sample6_execDaumPostcode();"
 									class="search-btn">주소 검색</button>
 								<div class="address-detail">
 									<input type="text" value="${dto.user_addressdetail }"
-										id="sample6_detailAddress" class="detail-address">
+										id="sample6_detailAddress" class="detail-address" name="user_addressdetail">
 								</div>
 							</div>
 							<div class="form-title">연락처</div>
 							<div>
-								<input type="text" class="tel" id="tel1"> - <input
-									type="text" class="tel" id="tel2"> - <input type="text"
-									class="tel" id="tel3">
+								<input type="text" class="tel" id="tel1" name="tel1"> - <input
+									type="text" class="tel" id="tel2" name="tel2"> - <input type="text"
+									class="tel" id="tel3" name="tel3">
 							</div>
 							<div class="mypage-edit">
-								<button type="submit">수정</button>
+								<button type="submit" onclick="check1()">수정</button>
 							</div>
 						</div>
 					</form>
 
 					<div>
-						<form>
+						<form method="POST" action="/animingle/user/profilepwedit.do">
 							<div class="mypage-profile-pw">
 								<div class="form-title">현재 비밀번호</div>
 								<div>
-									<input type="text" placeholder="현재 비밀번호 입력">
+									<input type="password" placeholder="현재 비밀번호 입력" id="oldpw">
 								</div>
 								<div class="form-title">새 비밀번호</div>
 								<div>
-									<input type="text" placeholder="새 비밀번호 입력">
+									<input type="password" placeholder="새 비밀번호 입력" name="user_pw" id="pw1">
 								</div>
 								<div class="form-title">새 비밀번호 확인</div>
 								<div>
-									<input type="text" placeholder="새 비밀번호 입력">
+									<input type="password" placeholder="새 비밀번호 확인" name="user_pw" id="pw2">
 								</div>
 								<div class="mypage-edit">
-									<button type="submit" id="btn-edit-pw">비밀번호 변경하기</button>
+									<button type="submit" id="btn-edit-pw" onclick="check2();">비밀번호 변경하기</button>
 								</div>
 							</div>
 						</form>
-					</div>
-					<div class="mypage-profile-count">
-						<table id="tblCount">
-							<tr>
-								<td>내 게시글</td>
-								<td>100건</td>
-							</tr>
-							<tr>
-								<td>내 댓글</td>
-								<td>30건</td>
-							</tr>
-						</table>
 					</div>
 				</div>
 			</div>
@@ -187,9 +187,9 @@
 			type: "POST",
 			url: '/animingle/user/profilepicedit.do',
 			
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 			enctype: 'multipart/form-data',
 			processData: false,
-			contentType: false,
 			
 			data: formData,
 
@@ -205,7 +205,215 @@
 		
 		
 	}
+	
+	var oldpwok = false;
+	var pw1ok = false;
+	var pw2ok = false;
+	var nickok = true;
+	var tel1ok = true;
+	var tel2ok = true;
+	var tel3ok = true;
+	
+	//유효성 검사 - 1. 현재 비밀번호 확인
+	var oldpwresultDiv = document.createElement("div");
+	oldpwresultDiv.style.color = "#FC5230";
+	oldpwresultDiv.style.marginBottom = "15px";
+	oldpwresultDiv.style.height = '15px';
 
+	var parentDiv = document.getElementById("oldpw").parentNode;
+	parentDiv.insertBefore(oldpwresultDiv, document.getElementById("oldpw").nextSibling);
+
+	$('#oldpw').on('keyup', function() {
+	   if ($('#oldpw').val() != '${dto.user_pw}') {
+	      
+	      $('#oldpw').css('outline', '1px solid #FC5230');
+	      oldpwresultDiv.textContent = "현재 비밀번호와 불일치합니다.";
+	      oldpwresultDiv.style.color = "#FC5230";
+	      oldpwok = false;
+	      
+	   } else {
+	      
+	      $('#oldpw').css('outline', '1px solid #0256AA');
+	      oldpwresultDiv.textContent = "현재 비밀번호와 일치합니다.";
+	      oldpwresultDiv.style.color = "#0256AA";
+	      oldpwok = true;
+	   }
+
+	});
+
+	//유효성 검사 - 2. 비밀번호
+	var pwRegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,12}$/;
+	//유효성 검사 결과 나타낼 div 생성
+	var pwresultDiv = document.createElement("div");
+	pwresultDiv.style.color = "#FC5230";
+	pwresultDiv.style.marginBottom = "15px";
+	pwresultDiv.style.height = '15px';
+
+	var parentDiv = document.getElementById("pw1").parentNode;
+	parentDiv.insertBefore(pwresultDiv, document.getElementById("pw1").nextSibling);
+
+
+	$('#pw1').on('keyup', function() {
+	   
+	   var pw = $('#pw1').val();
+
+	   if (!pwRegExp.test(pw)) {
+	      
+	      pwresultDiv.textContent = "비밀번호는 영문 대소문자와 숫자 포함 6~12자리로 입력해주세요.";
+	      $('#pw1').css('outline', '1px solid #FC5230');
+	  	  pwresultDiv.style.color = "#FC5230";
+	      pw1ok = false;
+	      
+	   } else {
+	      
+	      $('#pw1').css('outline', '1px solid #0256AA');
+	      pwresultDiv.textContent = "올바른 비밀번호 입니다.";
+	      pwresultDiv.style.color = "#0256AA";
+	      pw2ok = true;
+	      
+	   }
+
+	});
+	   
+	   
+	//유효성 검사 - 3. 비밀번호 확인
+	var pw2resultDiv = document.createElement("div");
+	pw2resultDiv.style.color = "#FC5230";
+	pw2resultDiv.style.marginBottom = "15px";
+	pw2resultDiv.style.height = '15px';
+
+	var parentDiv = document.getElementById("pw2").parentNode;
+	parentDiv.insertBefore(pw2resultDiv, document.getElementById("pw2").nextSibling);
+
+	$('#pw2').on('keyup', function() {
+	   if ($('#pw1').val() != $('#pw2').val()) {
+	      
+	      $('#pw2').css('outline', '1px solid #FC5230');
+	      pw2resultDiv.textContent = "입력하신 비밀번호와 불일치합니다.";
+	      pw2resultDiv.style.color = "#FC5230";
+	      pw1ok = false;
+	      
+	   } else {
+	      
+	      $('#pw2').css('outline', '1px solid #0256AA');
+	      pw2resultDiv.textContent = "입력하신 비밀번호와 일치합니다.";
+	      pw2resultDiv.style.color = "#0256AA";
+	      pw1ok = true;
+	   }
+
+	});
+	
+	//유효성 검사 - 4. 닉네임
+	var nicknameRegExp = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/;
+	//유효성 검사 결과 나타낼 div 생성
+	var nickresultDiv = document.createElement("div");
+	nickresultDiv.style.color = "#FC5230";
+	nickresultDiv.style.marginBottom = "15px";
+	nickresultDiv.style.height = '15px';
+
+	var parentDiv = document.getElementById("nickname").parentNode;
+	parentDiv.insertBefore(nickresultDiv, document.getElementById("nickname").nextSibling);
+
+	$('#nickname').on('keyup', function() {
+	   
+	   var nickname = $('#nickname').val();
+
+	   if (!nicknameRegExp.test(nickname)) {
+	      
+	      nickresultDiv.textContent = "닉네임은 2~10 글자 이내로 입력해주세요.";
+	      $('#nickname').css('outline', '1px solid #FC5230');
+	  	  nickresultDiv.style.color = "#FC5230";
+	  	  nickok = false;
+	      
+	   } else {
+	      
+	      $('#nickname').css('outline', '1px solid #0256AA');
+	      nickresultDiv.textContent = "올바른 닉네임입니다.";
+	      nickresultDiv.style.color = "#0256AA";
+	      nickok = true;
+	      
+	   }
+
+	});
+	
+	   
+	//유효성 검사 - 7. 전화번호
+	var telRegExp = /^[0-9]{3}$/;
+	var tel2RegExp = /^[0-9]{3,4}$/;
+	$('#tel1').on('keyup', function() {
+	   
+	   var tel1 = $('#tel1').val();
+
+	   if (!telRegExp.test(tel1)) {
+	      
+	      $('#tel1').css('outline', '1px solid #FC5230');
+	      tel1ok = false;
+	      
+	   } else {
+	      
+	      $('#tel1').css('outline', '1px solid #ADB5BD');
+	      tel1ok = true;
+	      
+	   }      
+	});
+
+	$('#tel2').on('keyup', function() {
+	   
+	   var tel2 = $('#tel2').val();
+
+	   if (!tel2RegExp.test(tel2)) {
+	      
+	      $('#tel2').css('outline', '1px solid #FC5230');
+	      tel2ok = false;
+	      
+	   } else {
+	      
+	      $('#tel2').css('outline', '1px solid #ADB5BD');
+	      tel2ok = true;
+	      
+	   }
+
+	});
+
+	$('#tel3').on('keyup', function() {
+	      
+	   var tel3 = $('#tel3').val();
+
+	   if (!tel2RegExp.test(tel3)) {
+	      
+	      $('#tel3').css('outline', '1px solid #FC5230');
+	      tel3ok = false;
+	      
+	   } else {
+	      
+	      $('#tel3').css('outline', '1px solid #ADB5BD');
+	      tel3ok = true;
+	         
+	   }
+
+	});
+	
+	
+	function check1() {
+		if (nickok && tel1ok && tel2ok && tel3ok) {
+			if(!confirm('정말로 변경하시겠습니까?')) event.preventDefault();
+		} else {
+			alert('내용이 올바르지 않습니다.');
+			event.preventDefault();
+		}
+	}
+	
+	function check2() {
+		if (oldpwok && pw1ok && pw2ok) {
+			if(!confirm('정말로 변경하시겠습니까?')) event.preventDefault();
+		} else {
+			alert('비밀번호를 다시 확인해 주세요.');
+			event.preventDefault();
+		}
+	}
+	
+	
+	
 
 </script>
 </body>
