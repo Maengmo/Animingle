@@ -289,14 +289,14 @@
             
 
             //경로 정보 배열
-            let las = path.map(item => item.La);
-    		let mas = path.map(item => item.Ma);        			 
-            
+    		let mas = path.map(item => item.Ma); //위도
+            let las = path.map(item => item.La); //경도
+    		
             for (let i=0; i<las.length; i++) {
                 
         		$('#pathInfo').append(
-            		    `<input type="hidden" name="pathLat" value="\${las[i]}">
-            		    <input type="hidden" name="pathLng" value="\${mas[i]}">`	
+            		    `<input type="hidden" name="pathLat" value="\${mas[i]}">
+            		    <input type="hidden" name="pathLng" value="\${las[i]}">`	
             	);           
         		
             }

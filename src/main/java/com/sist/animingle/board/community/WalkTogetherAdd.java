@@ -34,6 +34,7 @@ public class WalkTogetherAdd extends HttpServlet {
 		
 		
 		//산책 친구 게시글 DB 저장
+		//TODO id바꾸기
 		String id = "wain1719";
 		String subject = req.getParameter("subject");
 		String petKind = req.getParameter("petKind");
