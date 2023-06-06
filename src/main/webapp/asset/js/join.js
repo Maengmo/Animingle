@@ -1,7 +1,21 @@
+
 $("#pic").on('change',function(){
     var fileName = $("#pic").val();
     $(".file-name").val(fileName);
 });
+
+var checkValidate = {
+	idcheck : false,
+	idDuplicatecheck : false,
+	pw1check : false,
+	pw2check : false,
+	nicknamecheck : false,
+	namecheck : false,
+	birthdaycheck : false,
+	telok : false,
+};
+
+	
     
 function sample6_execDaumPostcode() {
     new daum.Postcode({
@@ -52,16 +66,18 @@ $('.id').on('keyup', function() {
 		
 		idresultDiv.textContent = "아이디는 영문 대소문자와 숫자 포함 6~12자리로 입력해주세요. (숫자로 시작 불가)";
 		$('.id').css('outline', '1px solid #FC5230');
+		checkValidate.idcheck = false;
+		checkValidate.idDuplicatecheck = false;
 		
 		return false;
 	} else {
 		
 		$('.id').css('outline', '1px solid #ADB5BD');
 		idresultDiv.textContent = "";
+		checkValidate.idcheck = true;
 		
 		
 	}
-
 });
 	
 	
@@ -85,12 +101,13 @@ $('#pw1').on('keyup', function() {
 		
 		pwresultDiv.textContent = "비밀번호는 영문 대소문자와 숫자 포함 6~12자리로 입력해주세요.";
 		$('#pw1').css('outline', '1px solid #FC5230');
-		
+		checkValidate.pw1check = false;
 		return false;
 	} else {
 		
 		$('#pw1').css('outline', '1px solid #ADB5BD');
 		pwresultDiv.textContent = "";
+		checkValidate.pw1check = true;
 		
 		
 	}
@@ -111,13 +128,16 @@ $('#pw2').on('keyup', function() {
 	if ($('#pw1').val() != $('#pw2').val()) {
 		
 		$('#pw2').css('outline', '1px solid #FC5230');
+		pw2resultDiv.style.color = "#FC5230";
 		pw2resultDiv.textContent = "입력하신 비밀번호와 불일치합니다.";
+		checkValidate.pw2check = false;
 		
 	} else {
 		
 		$('#pw2').css('outline', '1px solid #0256AA');
 		pw2resultDiv.textContent = "입력하신 비밀번호와 일치합니다.";
 		pw2resultDiv.style.color = "#0256AA";
+		checkValidate.pw2check = true;
 	}
 
 });
@@ -146,13 +166,14 @@ $('#nickname').on('keyup', function() {
 		
 		nickresultDiv.textContent = "닉네임은 2~10 글자 이내로 입력해주세요.";
 		$('#nickname').css('outline', '1px solid #FC5230');
+		checkValidate.nicknamecheck = false;
 		
 		return false;
 	} else {
 		
 		$('#nickname').css('outline', '1px solid #ADB5BD');
 		nickresultDiv.textContent = "";
-		
+		checkValidate.nicknamecheck = true;
 		
 	}
 
@@ -179,12 +200,14 @@ $('#name').on('keyup', function() {
 		
 		nameresultDiv.textContent = "이름은 한글 2~8 글자 이내로 입력해주세요.";
 		$('#name').css('outline', '1px solid #FC5230');
+		checkValidate.namecheck = false;
 		
 		return false;
 	} else {
 		
 		$('#name').css('outline', '1px solid #ADB5BD');
 		nameresultDiv.textContent = "";
+		checkValidate.namecheck = true;
 		
 		
 	}
@@ -203,9 +226,11 @@ $('.birthday').on('change', function() {
 	    if (birthday >= today) {
 	    	alert("생년월일은 현재 날짜 이후의 날짜를 선택할 수 없습니다. \n다시 선택해주세요.")
 	    	$('.birthday').val('');
+	    	checkValidate.birthdaycheck = false;
 	    	
 	    } else {
 	    	$('#tel1').focus();
+	    	checkValidate.birthdaycheck = true;
 	    }
 	    
 	    
@@ -223,10 +248,12 @@ $('#tel1').on('keyup', function() {
 	if (!telRegExp.test(tel1)) {
 		
 		$('#tel1').css('outline', '1px solid #FC5230');
+		checkValidate.telok = false;
 		
 	} else {
 		
 		$('#tel1').css('outline', '1px solid #ADB5BD');
+		checkValidate.telok = true;
 		
 		
 	}		
@@ -239,10 +266,12 @@ $('#tel2').on('keyup', function() {
 	if (!tel2RegExp.test(tel2)) {
 		
 		$('#tel2').css('outline', '1px solid #FC5230');
+		checkValidate.telok = false;
 		
 	} else {
 		
 		$('#tel2').css('outline', '1px solid #ADB5BD');
+		checkValidate.telok = true;
 		
 		
 	}
@@ -256,15 +285,54 @@ $('#tel3').on('keyup', function() {
 	if (!tel2RegExp.test(tel3)) {
 		
 		$('#tel3').css('outline', '1px solid #FC5230');
+		checkValidate.telok = false;
 		
 	} else {
 		
 		$('#tel3').css('outline', '1px solid #ADB5BD');
-		
+		checkValidate.telok = true;
+
 			
 		}
 
 });
+
+
+//checkValidate 객체의 값들이 모두 true인지 확인하는 함수
+function isAllTrue(obj) {
+	for (var key in obj) {
+		if (!obj[key]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+ 
+ 
+function checkForm() {
+	
+	if (isAllTrue(checkValidate)) {
+		// 회원가입 로직 실행
+		return true;
+	} else {
+	
+		if (checkValidate.idDuplicatecheck == false) {
+			
+			alert("아이디 중복검사를 해주세요.");
+			$('.id').focus();
+			event.preventDefault();
+			return false;
+		
+		} else {
+		
+			alert("회원가입에 실패하였습니다.");
+			$('.id').focus();
+			event.preventDefault();
+			return false;
+		}
+	}
+}
 
 
 //아이디 중복 체크
@@ -280,11 +348,14 @@ $('#dupli-Btn').on('click', function() {
 		success : result => {
 			if (result.result == 1) {
 				alert("중복된 아이디가 존재합니다.");
+				checkValidate.idDuplicatecheck = false;
 				$('.id').val('');
 				$('.id').focus();
 			} else {
 				alert("사용 가능한 아이디입니다.");
+				checkValidate.idDuplicatecheck = true;
 				$('#pw1').focus();
+				
 			}
 		},
 		error : (a,b,c) => console.log(a,b,c)

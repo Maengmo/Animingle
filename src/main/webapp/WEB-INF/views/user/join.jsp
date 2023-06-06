@@ -24,7 +24,7 @@
             <img class="banner-img" src="/animingle/asset/commonimg/logo_01.png" style="width:35%;">
 
             <!-- 회원가입 폼 -->
-            <form method="POST"  action="/animingle/user/join.do" enctype="multipart/form-data">
+            <form method="POST"  action="/animingle/user/join.do" enctype="multipart/form-data" onsubmit="return checkForm();">
               <fieldset class="join-form">
                   <h2 class="join-title">회원 가입</h2>
                   <span class="join-label">아이디</span>
@@ -75,17 +75,17 @@
                   <span class="join-label">주소</span>
                   <div>
                       <input type="text" id="sample6_postcode" class="post-num" placeholder="우편번호">
-                      <input type="text" name="address" id="sample6_address" class="address" placeholder="주소">
+                      <input type="text" name="address" id="sample6_address" class="address" placeholder="주소" required>
                       <input type="button" class="search-btn" value="주소 검색" onclick="sample6_execDaumPostcode()">
                   </div>
                   <div>
-                      <input type="text" name="addressdetail" id="sample6_detailAddress" class="detail-address" placeholder="상세 주소">
+                      <input type="text" name="addressdetail" id="sample6_detailAddress" class="detail-address" placeholder="상세 주소" required>
                   </div>
                   
                   <span class="join-label">반려동물 여부</span>
                   <div class="select">
-                      <input type="radio" id="select" name="pets" value="o"><label for="select">반려동물 O</label>
-                      <input type="radio" id="select2" name="pets" value="x"><label for="select2">반려동물 X</label>
+                      <input type="radio" id="select" class="pets" name="pets" value="o" checked><label for="select">반려동물 O</label>
+                      <input type="radio" id="select2" class="pets" name="pets" value="x"><label for="select2">반려동물 X</label>
                  </div>
                   <div class="upload-file">
                       <span class="join-label">프로필 이미지</span>
@@ -116,6 +116,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/animingle/asset/js/join.js"></script>
-<script></script>
+<script>
+</script>
 </body>
 </html>
