@@ -64,7 +64,7 @@
 				         	</div>
 				         	<div class="view-subject-icon">
 				         		<span class="material-symbols-outlined">visibility</span>${ dto.vq_readcount }
-      							<span class="material-symbols-outlined">chat</span>${ dto.answer_cnt }
+	      						<span class="material-symbols-outlined">chat</span>${ clist[status.index].answer_cnt }
 				         	</div>
 			         	</div>
 			         	<div class="content-list-title">
@@ -93,6 +93,20 @@
 		         		<span class="button-name" onclick="location.href='/animingle/board/vetqnaadd.do'">작성하기</span>
 		         	</button>
 	         		</c:if>
+	         </div>
+	         <div class="paging">
+	         	<c:if test="${ currentPage > 1 }">
+			     	<span>&lt;</span>
+		     	</c:if>
+		        <ul>
+		        	<c:forEach var="pageNumber" begin="${ startPage }" end="${ endPage }">
+			        	<li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
+			        		onclick="location.href='/animingle/board/vetqnalist.do?page=${pageNumber}'">${ pageNumber }</li>
+		        	</c:forEach>
+		        </ul>
+		        <c:if test="${currentPage < totalPage }">
+			        <span>&gt;</span>
+		        </c:if>
 	         </div>
          </div>
          <div class="rightbar">

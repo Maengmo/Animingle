@@ -434,4 +434,115 @@ public class VetQnADAO {
 		
 	}
 
+	public int getTotalDataCount() {
+		
+		int page = 0;
+
+        try {
+
+        	String sql = "select count(vq_seq) as total from tblvetqna";
+        	
+            stat = conn.createStatement();
+
+            rs = stat.executeQuery(sql);
+
+            while (rs.next()) {
+                page = rs.getInt("total");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return page;
+        
+	}
+
+	public List<VetQnAListDTO> getBoardContent(int currentPage, int itemsPerPage) {
+		
+		List<VetQnAListDTO> list = new ArrayList<VetQnAListDTO>();
+		
+		try {
+			
+			String sql = "select * \r\n"
+					+ "from (select i.*, rownum r from\r\n"
+					+ "     (select * from tblvetqna order by vq_seq DESC) i)\r\n"
+					+ "where r between ? and ?";
+			
+			int offset = (currentPage - 1) * itemsPerPage;
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setInt(1, offset + 1);
+			pstat.setInt(2, offset + itemsPerPage);
+			
+			rs = pstat.executeQuery();
+			
+			while (rs.next()) {
+				VetQnAListDTO dto = new VetQnAListDTO();
+				
+				dto.setVq_seq(rs.getString("vq_seq"));
+				dto.setVq_writer(rs.getString("vq_writer"));
+				dto.setVq_subject(rs.getString("vq_subject"));
+				dto.setVq_prefix(rs.getString("vq_prefix"));
+				dto.setVq_content(rs.getString("vq_content"));
+				dto.setVq_regdate(rs.getDate("vq_regdate"));
+				dto.setVq_readcount(rs.getString("vq_readcount"));
+				
+				list.add(dto);
+				
+			}
+			
+			rs.close();
+			pstat.close();
+			conn.close();
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public List<VetQnAListDTO> getCommentCnt() {
+		
+		try {
+			
+			String sql = "select distinct\r\n"
+					+ "    q.vq_seq as vq_seq,\r\n"
+					+ "    (select count(*) from tblvqreply where vq_seq = r.vq_seq) as answer_cnt\r\n"
+					+ "from tblvetqna q\r\n"
+					+ "    left outer join tblvqreply r\r\n"
+					+ "     on q.vq_seq = r.vq_seq\r\n"
+					+ "order by vq_seq desc";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			List<VetQnAListDTO> clist = new ArrayList<VetQnAListDTO>();
+			
+			while (rs.next()) {
+				
+				VetQnAListDTO dto = new VetQnAListDTO();
+				dto.setVq_seq(rs.getString("vq_seq"));
+				dto.setAnswer_cnt(rs.getString("answer_cnt"));
+				
+				clist.add(dto);
+				
+			}
+			
+			rs.close();
+			stat.close();
+			conn.close();
+			
+			return clist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }

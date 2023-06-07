@@ -216,3 +216,39 @@
 	border: 1px solid #0256AA;
 	color: white;
 }
+
+.paging {
+	width : 100%;
+	display : flex;
+	justify-content: center;
+}
+
+.paging ul {
+	list-style-type : none;
+	display : inline-block;
+}
+
+.paging li {
+	display : inline-block;
+	width : 100px !important;
+	font-size : 25px;
+	font-weight : bold;
+	text-align : center;
+
+}
+
+.paging li:hover,
+.paging span:hover {
+	cursor : pointer;
+	color: tomato;
+
+}
+
+.page-item.active {
+	color: tomato;
+}
+
+.paging span {
+	font-size : 25px;
+	font-weight : bold;
+}
