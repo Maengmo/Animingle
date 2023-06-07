@@ -68,7 +68,13 @@ public class Join extends HttpServlet {
 			dto.setUser_address(address);
 			dto.setUser_addressdetail(addressdetail);
 			dto.setUser_animal(pets);
-			dto.setUser_pic(profile);
+			
+			if (profile == null) {
+				dto.setUser_pic("animingle.png");
+			} else {
+				dto.setUser_pic(profile);
+			}
+			
 			
 			UserDAO dao = new UserDAO();
 					
