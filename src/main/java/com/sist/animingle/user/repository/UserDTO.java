@@ -16,8 +16,10 @@ public class UserDTO {
 	private String user_animalnum;
 	private String user_birth;
 	private String user_pic;
+	private String user_animal;
 	
 	private String isVet;
 	private String isPetsitter;
+	private String isAdmin;
 	
 }

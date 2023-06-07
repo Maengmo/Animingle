@@ -17,6 +17,9 @@ public class Logout extends HttpServlet {
 		//Logout.java
 		req.getSession().removeAttribute("id");
 		req.getSession().removeAttribute("nickname");
+		req.getSession().removeAttribute("isVet");
+		req.getSession().removeAttribute("isPet");
+		req.getSession().removeAttribute("isAdmin");
 		
 		resp.sendRedirect("/animingle/index.do");
 	}
