@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.animingle.board.repository.WTPathDTO;
 import com.sist.animingle.board.repository.WalkTogetherDAO;
@@ -29,13 +30,10 @@ public class WalkTogetherAdd extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		
+		HttpSession session = req.getSession();
 		
 		//산책 친구 게시글 DB 저장
-		//TODO id바꾸기
-		String id = "wain1719";
+		String id = (String)session.getAttribute("id");
 		String subject = req.getParameter("subject");
 		String petKind = req.getParameter("petKind");
 		String walkTime = req.getParameter("walkTime");
@@ -47,10 +45,9 @@ public class WalkTogetherAdd extends HttpServlet {
 		dto1.setWt_petkind(petKind);
 		dto1.setWt_time(walkTime);
 		dto1.setWt_content(text);
-
-		WalkTogetherDAO dao = new WalkTogetherDAO();
-		int result1 = dao.addContent(dto1);
 		
+		WalkTogetherDAO dao = new WalkTogetherDAO();
+		//dao.addContent(dto1);
 		
 		//산책 친구 경로 DB 저장
 		String[] pathLat = req.getParameterValues("pathLat");
@@ -74,7 +71,7 @@ public class WalkTogetherAdd extends HttpServlet {
 			
 		}
 		
-		int result2 = dao.addPath(pathList);
+		//dao.addPath(pathList);
 		
 		resp.sendRedirect("/animingle/board/walktogetherlist.do");
 		

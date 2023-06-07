@@ -27,7 +27,7 @@
 				<form method="post" action="/animingle/board/walktogetheradd.do">
 					<div>
 						<div class="menu-title">제목</div>
-						<input type="text" name="subject" placeholder="제목을 입력해주세요.">
+						<input type="text" name="subject" placeholder="제목을 입력해주세요." required>
 					</div>
 					<div>
 						<div class="menu-title">산책 루트</div>
@@ -36,11 +36,11 @@
 					<div id="aboutInfo">
 						<span>
 							<span class="menu-title">반려동물 종</span>
-							<input type="text" name="petKind" placeholder="예) 강아지">
+							<input type="text" name="petKind" placeholder="예) 강아지" required>
 						</span>
 						<span>
 							<span class="menu-title">산책 가능 요일/시간</span>
-							<input type="text" name="walkTime" placeholder="예) 월수금 18시 이후">
+							<input type="text" name="walkTime" placeholder="예) 월수금 18시 이후" required>
 						</span>
 					</div>
 					<div>
@@ -58,7 +58,7 @@
 					</div>
 					<div id="btns">
 		            	<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
-						<button type="submit" id="add-btn" class="content-btn add-btn">등 록</button>
+						<button type="submit" id="add-btn" class="content-btn add-btn" onclick="check()">등 록</button>
 		            </div>
 		            <div id="pathInfo">
 		            </div>		                       
@@ -355,6 +355,24 @@
 
         dots = [];
     }
+    
+    function check() {
+
+        //본문을 입력하지 않으면 알림창 띄우기
+        let text = $('body > section > div > div.maincontent > form > div:nth-child(4) > div > div.centered > div > div > div > div.ck.ck-editor__main > div').text();
+        
+        if(text === null || text ==='') {
+            alert('본문 내용을 입력해주세요.');
+            event.preventDefault();
+        }
+        
+      	//지도에 경로를 표시하지 않으면 알림창 띄우기
+        if(typeof dots.length !== 'number') {
+            alert('지도에 산책 경로를 표시해주세요.');
+            event.preventDefault();
+        } 
+       
+     }
     
 </script>
 </body>
