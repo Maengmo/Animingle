@@ -22,6 +22,7 @@ public class VetQnAList extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
+		Object id = session.getAttribute("id");
 		
 		VetQnADAO dao = new VetQnADAO();
 		

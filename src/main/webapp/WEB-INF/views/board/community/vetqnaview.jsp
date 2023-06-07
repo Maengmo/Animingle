@@ -34,8 +34,8 @@
 				<div class="find-view-content">${ dto.vq_content }</div>
 				<div class="view-button">
 					<c:if test="${ dto.user_id == id }">
-					<button id="btnDel">삭제하기</button>
-					<button id="btnEdit">수정하기</button>
+						<button id="btnDel">삭제하기</button>
+						<button id="btnEdit">수정하기</button>
 					</c:if>
 				</div>
 				<div class="content-box">

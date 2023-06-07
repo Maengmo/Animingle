@@ -21,6 +21,7 @@ public class VetQnAView extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
+		Object id = session.getAttribute("id");
 		
 		String seq = req.getParameter("vq_seq");
 		
@@ -35,7 +36,7 @@ public class VetQnAView extends HttpServlet {
 		req.setAttribute("alist", alist);
 		req.setAttribute("clist", clist);
 		req.setAttribute("vq_seq", seq);
-		req.setAttribute("id", session);
+		req.setAttribute("id", id);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/vetqnaview.jsp");
 		dispatcher.forward(req, resp);
