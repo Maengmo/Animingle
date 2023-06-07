@@ -306,14 +306,16 @@
         
         if(data.sessionid === data.writerid) {
             $('#editBtns').html(
-            	`<button type="submit" class="content-btn1" onclick="complete(\${data.seq})">완료</button><button type="submit" class="content-btn2" onclick="delete(\${data.seq})">삭제</button>`
+            	`<button type="button" class="content-btn1" onclick="complete(\${data.seq})">완료</button><button type="submit" class="content-btn2" onclick="delete(\${data.seq})">삭제</button>`
             );
         }
         
     }    
     
     function complete(seq) {
-        location.href= `/animingle/board/walktogetherfin.do?seq=\${seq}`;
+        if(confirm('산책 친구 구하기를 완료하시겠습니까?')) {
+            location.href= `/animingle/board/walktogetherfin.do?seq=\${seq}`;            
+        }
     }
 
 </script>
