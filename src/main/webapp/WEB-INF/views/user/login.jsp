@@ -25,7 +25,7 @@
 				<img src="/animingle/asset/commonimg/logo_01.png">
 				<div class="login-box">
 					<h2>로그인</h2>
-					<form method="POST" action="#">
+					<form method="POST" action="/animingle/user/login.do">
 						<table class="login-form">
 							<tr>
 								<td><input type="text" name="id" id="id" class="id"
@@ -40,12 +40,9 @@
 						<button type="submit" class="login-btn">로그인</button>
 					</form>
 					<div class="social-login">
-						<img src="/animingle/asset/pic/KakaoTalk_logo.png" onclick=""
-							class="social"> <img
-							src="/animingle/asset/pic/Naver_logo.png" onclick=""
-							class="social"> <img
-							src="/animingle/asset/pic/Google_logo.png" onclick=""
-							class="social">
+						<a href="javascript:kakaoLogin()">
+							<img src="/animingle/asset/pic/kakao_login.png" alt="카카오 로그인" class="social">
+						</a>
 					</div>
 				</div>
 			</div>
@@ -59,7 +56,58 @@
 	</section>
 	<%@ include file="/WEB-INF/views/inc/footer.jsp"%>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+//https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=7ddecf747d80ea67d580be8a8a51542d&redirect_uri=http://localhost:8090/animingle/user/kakaoOauth.do?cmd=callback&response_type=code
+
+//카카오 로그인
+Kakao.init('aee326e29bebd9e80119e009577e3832');
+function kakaoLogin() {
+    Kakao.Auth.login({
+        success: function (response) {
+            Kakao.API.request({
+                url: '/v2/user/me',
+                success: function (response) {
+                	
+                	//정보 받아오기
+                	var data = {           			
+               			id : response.id,
+                       	email : response.kakao_account.email,
+       		            nickname : response.kakao_account.profile.nickname,
+       		            profile_image : response.kakao_account.profile.thumbnail_image_url,
+                	};
+                	
+                	$.ajax({
+                		type : 'POST',
+                		url : '/animingle/user/sociallogin.do',
+                		data : data,
+                		dataType : 'json',
+                		success : result => {
+                			console.log(result);
+                			
+                			location.href = "/animingle/user/profile.do";
+                		},
+                		error : (a,b,c) => console.log(a,b,c)	
+                	})
+                	
+              
+
+                    
+                },
+                fail: function (error) {
+                    alert(JSON.stringify(error));
+                },
+            })
+        },
+        fail: function (error) {
+            alert(JSON.stringify(error));
+        },
+    })
+}
+
+
+
+</script>
 </body>
 </html>
