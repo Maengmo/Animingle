@@ -175,14 +175,29 @@
 	        success: (result)=>{
 	            
 	            var positions = [];
-
+	         	
+	        	/* TODO 모달창에 전달해야 하는 정보 
+	        		- 경로 정보(wtPath)
+	        		- 반려동물종(wt_petKind)
+	        		- 산책가능요일/시간(wt_time)
+	        		- 본문(wt_content)
+	        		- 글쓴이 아이디(wt_id)
+	        		- 글 번호(wt_seq)
+	        	*/	        	   
+	        	
 	            // Iterate over each item in the result
 	            $(result).each((index, item)=>{
-	                // Add item's latitude and longitude to the positions array
+	                
+	                var filteredPlist = item.plist.filter(subList => subList[0]  === item.wt_seq);
+	                
 	                positions.push({
-	                    content: 
-	                        '<div class="info"><ul><div><li>' + item.wt_petkind + '</li><li>' + item.wt_time + '</li></div></ul></div>',
-	                    latlng: new kakao.maps.LatLng(item.wtp_lat, item.wtp_lng)
+	                    petkind: item.wt_petkind,
+	                    time: item.wt_time,
+	                    latlng: new kakao.maps.LatLng(item.wtp_lat, item.wtp_lng),
+	                	content: item.wt_content,
+	                	id: item.wt_id,
+	                	seq: item.wt_seq,
+	                	pathlist: filteredPlist
 	                });
 
 	            });		            	            
@@ -220,7 +235,7 @@
 	        var customOverlay = new kakao.maps.CustomOverlay({
 	            map: map,
 	            position: position,
-	            content: positions[i].content,
+	            content: `<div class="info"><ul><div><li>\${positions[i].petkind}</li><li>\${positions[i].time}</li></div></ul></div>`,
 	            yAnchor: 2.1
 	        });		   
 
@@ -228,6 +243,7 @@
 	        // 마커가 지도 위에 표시되도록 설정합니다
 	        marker.setMap(map);  
 	        marker.customOverlay = customOverlay; // 마커에 커스텀 오버레이 참조를 저장합니다
+	        marker.data = positions[i];
 	        
 	        customOverlay.setMap(null); //처음에는 커스텀 오버레이를 다 숨겨놓는다.
 	        
@@ -239,13 +255,20 @@
 	            this.customOverlay.setMap(null); // 마커에서 마우스를 뗐을 때, 커스텀 오버레이를 숨깁니다.
 	        });
 	        
+	     	//마커를 클릭하면 해당 모달창이 뜨도록 합니다. 
+	        kakao.maps.event.addListener(marker, 'click', function() {
+	            
+	            // 클릭된 마커의 데이터를 가져옵니다.
+	            var data = this.data;
+	            
+	            // 가져온 데이터를 이용하여 모달을 업데이트하고 표시합니다.
+	            updateModal(data);
+	            $('#myModal').modal('show');
+	        });
+	        
         }		
         
     }
-
- 	
-	
-	   
     
     
 

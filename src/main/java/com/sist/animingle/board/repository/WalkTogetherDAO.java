@@ -19,7 +19,8 @@ public class WalkTogetherDAO {
 		
 		try {
 			
-			conn = DBUtil.open("localhost", "admin", "java1234");
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 			
 			String sql = "insert into tblWalkTogether (wt_seq, wt_writer, wt_subject, wt_petkind, wt_time, wt_content, wt_regdate) values (wt_seq.nextVal, ?, ?, ?, ?, ?, sysdate)";
 			
@@ -51,7 +52,8 @@ public class WalkTogetherDAO {
 		
 		try {
 			
-			conn = DBUtil.open("localhost", "admin", "java1234");
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 
 			String sql = "select max(wt_seq) as seq from tblWalkTogether";
 			
@@ -80,7 +82,8 @@ public class WalkTogetherDAO {
 		
 		try {
 			
-			conn = DBUtil.open("localhost", "admin", "java1234");
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 			
 			String sql = "";
 			
@@ -116,7 +119,8 @@ public class WalkTogetherDAO {
 		
 		try {
 			
-			conn = DBUtil.open("localhost", "admin", "java1234");
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 			
 			String sql = "select wt_seq, wtp_lat, wtp_lng, wtp_order from tblWTPath where wtp_order = 1";
 			
@@ -155,7 +159,8 @@ public class WalkTogetherDAO {
 		
 		try {
 			
-			conn = DBUtil.open("localhost", "admin", "java1234");
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 			
 			String sql = "select wt_seq, wt_writer, wt_petkind, wt_time, wt_content from tblWalkTogether";
 			
@@ -187,6 +192,47 @@ public class WalkTogetherDAO {
 		}
 		
 		return ilist;
+	}
+
+	public List<List<String>> getPath() {
+		
+		List<List<String>> plist = new ArrayList<List<String>>();
+		
+		try {
+			
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
+			
+			String sql = "select wt_seq, wtp_lat, wtp_lng, wtp_order from tblWTPath";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				List<String> tmp = new ArrayList<String>();
+				
+				tmp.add(rs.getString("wt_seq"));
+				tmp.add(rs.getString("wtp_order"));
+				tmp.add(rs.getString("wtp_lat"));
+				tmp.add(rs.getString("wtp_lng"));
+				
+				plist.add(tmp);
+				
+			}
+			
+			rs.close();
+			stat.close();
+			conn.close();
+			
+			return plist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return plist;
 	}
 
 }

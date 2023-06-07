@@ -2,6 +2,8 @@ package com.sist.animingle.board.community;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -41,6 +43,19 @@ public class WalkTogetherList extends HttpServlet {
         
         List<WTPathDTO> mlist = dao.getBeginPath();
         List<WalkTogetherDTO> ilist = dao.getWriting();
+        List<List<String>> plist = dao.getPath();
+        
+        Collections.sort(plist, new Comparator<List<String>>() {
+            @Override
+            public int compare(List<String> o1, List<String> o2) {
+                int result = o1.get(0).compareTo(o2.get(0));
+                if (result != 0) {
+                    return result;
+                } else {
+                    return o1.get(1).compareTo(o2.get(1));
+                }
+            }
+        });
         
         JSONArray arr = new JSONArray();
 
@@ -57,6 +72,7 @@ public class WalkTogetherList extends HttpServlet {
             obj.put("wt_petkind", ilist.get(i).getWt_petkind());
             obj.put("wt_time", ilist.get(i).getWt_time());
             obj.put("wt_content", ilist.get(i).getWt_content());
+            obj.put("plist", plist);
             arr.add(obj);
             
         }
