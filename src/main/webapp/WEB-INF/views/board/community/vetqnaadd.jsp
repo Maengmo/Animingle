@@ -22,11 +22,11 @@
          <div class="maincontent">
          	<div class="main-content-box">
          		<div class="main-content-title">수의사QnA</div>
-         		<form action="#">
+         		<form action="/animingle/board/vetqnaadd.do" method="POST">
 	         		<div>
 	         			<div class="main-content-sel1">
 	         				<div>말머리</div>
-	         				<select>
+	         				<select name="tag">
 	         					<option>강아지</option>
 	         					<option>고양이</option>
 	         					<option>기타</option>
@@ -34,19 +34,19 @@
 	         			</div>
 	         			<div class="main-content-sel2">
 	         				<div>제목</div>
-	         				<input type="text" placeholder="제목을 입력하세요">
+	         				<input name="title" type="text" placeholder="제목을 입력하세요">
 	         			</div>
 	         			<div class="main-content-sel3">
 	         				<div>본문</div>
-	         				<textarea name="text" id="editor" placeholder="내용을 입력하세요."></textarea>
+	         				<textarea name="content" id="editor" placeholder="내용을 입력하세요."></textarea>
 	         			</div>
 	         		</div>
+	         		<div class="btn-div">
+	            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
+						<button type="submit" id="add-btn" class="content-btn add-btn">등 록</button>
+	        		</div>
          		</form>
          	</div>
-         	<div class="btn-div">
-	            <button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
-				<button type="button" id="add-btn" class="content-btn add-btn">등 록</button>
-	        </div>
          </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->

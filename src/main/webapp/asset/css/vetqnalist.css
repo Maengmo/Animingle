@@ -77,6 +77,12 @@
 	padding: 20px;
 }
 
+.content-top-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .tag {
 	text-align: center;
 	border: 1px solid #ccc;
@@ -98,16 +104,66 @@
 	object-fit: cover;
 }
 
-.content-list-title {
-	font-size: 18px;
-	font-weight: bold;
-	padding-bottom: 15px;
+.view-subject-icon {
+	display: flex;
+	align-items: center;
+	color: #555;
+}
+
+.view-subject-icon .material-symbols-outlined {
+	font-size: 25px !important;
+	color: #555 !important;
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
 .content-list-title {
 	font-size: 18px;
 	font-weight: bold;
 	padding-bottom: 15px;
+}
+
+.content-list-title a {
+	text-decoration: none;
+	color: #555;
+}
+
+.content-list-title a:hover {
+	color: tomato;
+}
+
+.content-list-title {
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 15px;
+}
+
+.content-list-sub-title {
+	font-size: 15px;
+	font-weight: normal;
+	color: #aaa;
+}
+
+.sub-content {
+	width: 760px;
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 10px;
+}
+
+.sub-content div {
+	margin-right: 12px;
+	color: #aaa;
+}
+
+.sub-content div:nth-child(1) {
+	width: 76px;
+	text-align: center;
+}
+
+.sub-content div:nth-child(2) {
+	width: 100px;
+	text-align: center;
 }
 
 .content-list-sub-title {
@@ -125,31 +181,6 @@
 .sub-content div {
 	margin-right: 12px;
 	color: #aaa;
-}
-
-.sub-content div:nth-child(1) {
-	color: #555;
-}
-
-.content-list-sub-title {
-	font-size: 15px;
-	font-weight: normal;
-	color: #aaa;
-}
-
-.sub-content {
-	display: flex;
-	justify-content: flex-end;
-	margin-bottom: 10px;
-}
-
-.sub-content div {
-	margin-right: 12px;
-	color: #aaa;
-}
-
-.sub-content div:nth-child(1) {
-	color: #555;
 }
 
 .button-box {

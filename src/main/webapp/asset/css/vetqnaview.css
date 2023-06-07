@@ -276,6 +276,7 @@ h1 {
 .content-box {
 	width: 800px;
 	padding-left: 40px;
+	padding-right: 40px;
 	margin-top: 30px;
 	margin-bottom: 20px;
 	font-family: "SUITE-Regular";
@@ -288,7 +289,10 @@ h1 {
 }
 
 .content-box .answer-box {
-	padding-left: 15px;	
+	padding-left: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #aaa;
+	margin-bottom: 10px;	
 }
 
 .answer-box .time {
@@ -297,7 +301,7 @@ h1 {
 }
 
 .answer-box .comment {
-	margin-top: 15px;
+	margin-top: 5px;
 	font-size: 18px;
 	margin-bottom: 20px;
 }
@@ -305,6 +309,7 @@ h1 {
 .comment-profile-box {
 	display: flex;
 	align-items: center;
+	margin-bottom: 10px;
 }
 
 .comment-profile-box > img {
@@ -327,7 +332,7 @@ h1 {
 
 .comment-list-btn-box {
 	display: flex;
-	width: 730px;
+	width: 100%;
 	justify-content: flex-end;
 }
 
@@ -348,7 +353,20 @@ h1 {
 	margin-top: 35px;
 }
 
-.comment-main .comment-main-profile-box img,
+.comment-sub-box {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 15px;
+}
+
+.comment-add-btn {
+	background-color: white;
+	border: 0;
+	color: #555;
+}
+
+.comment-main-profile-box img,
 .comment-sub-profile img {
 	width: 60px;
 	object-fit: cover;
@@ -358,7 +376,7 @@ h1 {
 	margin-right: 10px;
 }
 
-.comment-main .comment-main-profile-box {
+.comment-main-profile-box {
 	display: flex;
 	align-items: center;
 }
@@ -367,9 +385,9 @@ h1 {
 	font-size: 13px;
 }
 
-.comment-main .comment {
+.comment-sub-box .comment {
 	margin-left: 15px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	font-size: 15px;
 }
 
@@ -415,6 +433,24 @@ h1 {
 	padding: 15px;
 	border: 1px solid #999;
 	border-radius: 10px;
+}
+
+.btn-box {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.btn-box input {
+	color: #555;
+	border: 1px solid #555;
+	border-radius: 10px;
+	padding: 7px 15px;
+	background-color: white;
+}
+
+.btn-box input:hover {
+	background-color: #0256AA;
+	color: white;
 }
 
 .commet-add-text-area-box textarea {

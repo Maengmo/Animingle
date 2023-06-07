@@ -24,12 +24,10 @@
 	         <div class="content-top">
 	         	<div class="content-title">수의사 QnA</div>
 	            <div class="content-filter">
-	            	<form action="#">
-		           		<button>강아지</button>
-		           		<button>고양이</button>
-		           		<button>기타</button>
-		           		<button>전체보기</button>
-	            	</form>
+		           	<button>강아지</button>
+		           	<button>고양이</button>
+		           	<button>기타</button>
+		           	<button>전체보기</button>
 	            </div>
 	            <form action="#">
 		            <div class="search-box">
@@ -41,59 +39,57 @@
 	            </form>
 	         </div>
 	         <div class="content-container">
-		         <div class="content-list-box">
-		         	<div class="tag">
-		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_01.png">
-		         		<span>강아지</span>
-		         	</div>
-		         	<div class="content-list-title">
-		         		강아지가 먹으면 안돼는 음식
-		         		<div class="content-list-sub-title">
-		         			강아지가 먹으면 안돼는 음식 알려주세용
-		         		</div>
-		         	</div>
-		         	<div class="sub-content">
-		         		<div>
-		         			답변: 0
-		         		</div>
-		         		<div>
-		         			과일구미
-		         		</div>
-		         		<div>
-		         			7시간 전
-		         		</div>
-		         	</div>
-		         </div>
-		         <div class="content-list-box">
-		         	<div class="tag">
-		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_02.png">
-		         		<span>고양이</span>
-		         	</div>
-		         	<div class="content-list-title">
-		         		강아지가 먹으면 안돼는 음식
-		         		<div class="content-list-sub-title">
-		         			강아지가 먹으면 안돼는 음식 알려주세용
-		         		</div>
-		         	</div>
-		         	<div class="sub-content">
-		         		<div>
-		         			답변: 0
-		         		</div>
-		         		<div>
-		         			과일구미
-		         		</div>
-		         		<div>
-		         			7시간 전
-		         		</div>
-		         	</div>
-		         </div>
+	         	<c:forEach items="${ list }" var="dto" varStatus="status">
+			         <div class="content-list-box">
+			         	<div class="content-top-box">
+				         	<div class="tag">
+				         		<c:if test="${ dto.vq_prefix == 1 }">
+				         			<img class="tag-img" src="/animingle/asset/commonimg/tag_01.png">
+				         		</c:if>
+				         		<c:if test="${ dto.vq_prefix == 2 }">
+				         			<img class="tag-img" src="/animingle/asset/commonimg/tag_02.png">
+				         		</c:if>
+				         		<c:if test="${ dto.vq_prefix == 3 }">
+				         			<img class="tag-img" src="/animingle/asset/commonimg/tag_03.png">
+				         		</c:if>
+				         		<c:if test="${ dto.vq_prefix == 1 }">
+				         			<span>강아지</span>
+				         		</c:if>
+				         		<c:if test="${ dto.vq_prefix == 2 }">
+				         			<span>고양이</span>
+				         		</c:if>
+				         		<c:if test="${ dto.vq_prefix == 3 }">
+				         			<span>기타</span>
+				         		</c:if>
+				         	</div>
+				         	<div class="view-subject-icon">
+				         		<span class="material-symbols-outlined">visibility</span>${ dto.vq_readcount }
+      							<span class="material-symbols-outlined">chat</span>${ dto.answer_cnt }
+				         	</div>
+			         	</div>
+			         	<div class="content-list-title">
+			         		<a href="/animingle/board/vetqnaview.do?vq_seq=${ dto.vq_seq }">${ dto.vq_subject }</a>
+			         		<div class="content-list-sub-title">
+			         			${ dto.vq_content }
+			         		</div>
+			         	</div>
+			         	<div class="sub-content">
+			         		<div>
+			         			${ dto.vq_writer }
+			         		</div>
+			         		<div>
+			         			<fmt:formatDate value="${dto.vq_regdate}" pattern="yyyy-MM-dd" />
+			         		</div>
+			         	</div>
+			         </div>
+		         </c:forEach>
 	         </div>
 	         <div class="button-box">
 	         	<button>
 	         		<span class="material-symbols-outlined">
 						edit_note
 					</span>
-	         		<span class="button-name">작성하기</span>
+	         		<span class="button-name" onclick="location.href='/animingle/board/vetqnaadd.do'">작성하기</span>
 	         	</button>
 	         </div>
          </div>
@@ -101,10 +97,10 @@
             <!-- 오른쪽 사이드바 입니다. -->
          </div>
       </div>
-
    </section>
    <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="/animingle/asset/js/vetqnalist.js"></script>
 </body>
 </html>
