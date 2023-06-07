@@ -89,9 +89,9 @@
                  </div>
                   <div class="upload-file">
                       <span class="join-label">프로필 이미지</span>
-                      <input type="text" name="profile" class="file-name" value="첨부파일" placeholder="첨부파일" readonly>
+                      <input type="text" class="file-name" value="첨부파일" placeholder="첨부파일" readonly>
                       <label for="pic">파일 업로드</label> 
-                      <input type="file" id="pic">
+                      <input type="file" name="profile" id="pic">
                   </div>
 
                   <div>

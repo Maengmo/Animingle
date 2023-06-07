@@ -53,7 +53,9 @@ public class Join extends HttpServlet {
 			String address = multi.getParameter("address");
 			String addressdetail = multi.getParameter("addressdetail");
 			String pets = multi.getParameter("pets");
-			String profile = multi.getParameter("profile");
+			String profile = multi.getFilesystemName("profile");
+			
+			System.out.println("프로필 사진 : " + profile);
 			
 			UserDTO dto = new UserDTO();
 			dto.setUser_id(id);

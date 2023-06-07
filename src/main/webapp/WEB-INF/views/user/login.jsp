@@ -84,9 +84,15 @@ function kakaoLogin() {
                 		data : data,
                 		dataType : 'json',
                 		success : result => {
-                			console.log(result);
                 			
-                			location.href = "/animingle/user/profile.do";
+                			if (result.result == "success") {
+                				alert("로그인에 성공하였습니다.");
+                				location.replace("/animingle/user/profile.do");
+                				
+                			} else if (result.result == "failed") {
+                				alert("로그인에 실패하였습니다. 다시 로그인 해주세요.")
+                			}
+                			
                 		},
                 		error : (a,b,c) => console.log(a,b,c)	
                 	})
