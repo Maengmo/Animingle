@@ -3,13 +3,18 @@
     justify-content: space-between;
 }
 
+.join-label {
+	font-size : 18px;
+	margin-bottom : 5px;
+	display : inline-block;
+	
+}
 
 .join-title {
     text-align : center;
     margin : 25px 0px;
     font-weight : 600;
 }
-
 
 .join-form {
     margin : 0 auto;
@@ -64,7 +69,6 @@ input[type="date"]:focus-visible {
 }
 
 .birthday {
-    margin-left : 20px;
     width : 40%;
 }
 
