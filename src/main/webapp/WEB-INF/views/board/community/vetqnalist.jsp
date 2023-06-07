@@ -85,12 +85,14 @@
 		         </c:forEach>
 	         </div>
 	         <div class="button-box">
-	         	<button>
-	         		<span class="material-symbols-outlined">
-						edit_note
-					</span>
-	         		<span class="button-name" onclick="location.href='/animingle/board/vetqnaadd.do'">작성하기</span>
-	         	</button>
+	         	<c:if test="${ id != null }">
+		         	<button>
+		         		<span class="material-symbols-outlined">
+							edit_note
+						</span>
+		         		<span class="button-name" onclick="location.href='/animingle/board/vetqnaadd.do'">작성하기</span>
+		         	</button>
+	         		</c:if>
 	         </div>
          </div>
          <div class="rightbar">

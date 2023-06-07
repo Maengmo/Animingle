@@ -89,7 +89,8 @@ public class VetQnADAO {
 					+ "	l.vq_content as vq_content,\r\n"
 					+ "	l.vq_regdate as vq_regdate,\r\n"
 					+ "	l.vq_readcount as vq_readcount,\r\n"
-					+ "    (select count(*) from tblvqreply where vq_seq = l.vq_seq) as vqr_cnt\r\n"
+					+ " l.vq_prefix as vq_prefix,\r\n"
+					+ " (select count(*) from tblvqreply where vq_seq = l.vq_seq) as vqr_cnt\r\n"
 					+ "from tbluser u\r\n"
 					+ "	inner join tblvetqna l\r\n"
 					+ "	on u.user_id = l.vq_writer\r\n"
@@ -111,6 +112,7 @@ public class VetQnADAO {
 				dto.setVq_regdate(rs.getDate("vq_regdate"));
 				dto.setVq_readcount(rs.getString("vq_readcount"));
 				dto.setVqr_cnt(rs.getString("vqr_cnt"));
+				dto.setVq_prefix(rs.getString("vq_prefix"));
 				
 				return dto;			
 			}
@@ -252,11 +254,12 @@ public class VetQnADAO {
 			pstat.setString(3, dto.getVq_prefix());
 			pstat.setString(4, dto.getVq_content());
 			
-			rs.close();
+			int result = pstat.executeUpdate();
+			
 			pstat.close();
 			conn.close();
 			
-			return pstat.executeUpdate();
+			return result;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -361,6 +364,74 @@ public class VetQnADAO {
 		}
 		
 		return null;
+	}
+
+	public int qnaDel(String vq_seq) {
+		
+		try {
+			
+			String sql = "delete from tblvetqna where vq_seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, vq_seq);
+			
+			int result = pstat.executeUpdate();
+			
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int vetQnAEdit(VetQnAViewDTO dto) {
+		
+		try {
+			
+			String sql = "update tblvetqna set\r\n"
+					+ "    vq_subject = ?,\r\n"
+					+ "    vq_prefix = ?,\r\n"
+					+ "    vq_content = ?\r\n"
+					+ "where vq_seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getVq_subject());
+			pstat.setString(2, dto.getVq_prefix());
+			pstat.setString(3, dto.getVq_content());
+			pstat.setString(4, dto.getVq_seq());
+			
+			int result = pstat.executeUpdate();
+			
+			pstat.close();
+			conn.close();
+			
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public void updateReadcount(String seq) {
+		
+		try {
+			
+			String sql = "update tblvetqna set vq_readcount = vq_readcount + 1 where vq_seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+
+			pstat.setString(1, seq);
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

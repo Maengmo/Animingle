@@ -22,10 +22,22 @@ public class VetQnAView extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		Object id = session.getAttribute("id");
+		Object isVet = session.getAttribute("isVet");
 		
 		String seq = req.getParameter("vq_seq");
 		
 		VetQnADAO dao = new VetQnADAO();
+		
+		if (session.getAttribute("read" + seq) == null 
+				|| session.getAttribute("read" + seq).toString().equals("n")) {
+			
+			//읽음 증가
+			dao.updateReadcount(seq);
+			session.setAttribute("read" + seq, "y");
+			
+		}
+		
+		dao = new VetQnADAO();
 		VetQnAViewDTO dto = dao.viewList(seq);
 		List<VetQnAViewDTO> alist = dao.answerList(seq);
 		
@@ -37,7 +49,8 @@ public class VetQnAView extends HttpServlet {
 		req.setAttribute("clist", clist);
 		req.setAttribute("vq_seq", seq);
 		req.setAttribute("id", id);
-
+		req.setAttribute("isVet", isVet);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/vetqnaview.jsp");
 		dispatcher.forward(req, resp);
 

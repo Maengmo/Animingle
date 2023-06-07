@@ -29,13 +29,16 @@
 					<div class="view-subject-icon">
 						<span class="material-symbols-outlined">visibility</span>${ dto.vq_readcount }
 						<span class="material-symbols-outlined">chat</span>${ dto.vqr_cnt }
+						<input type="hidden" value="${ dto.vq_prefix }">
 					</div>
 				</div>
 				<div class="find-view-content">${ dto.vq_content }</div>
 				<div class="view-button">
 					<c:if test="${ dto.user_id == id }">
-						<button id="btnDel">삭제하기</button>
-						<button id="btnEdit">수정하기</button>
+						<c:if test="${ dto.vqr_cnt < 1 }">
+							<button id="btnDel" onclick="qnadel(${ vq_seq }, '${ dto.user_id }');">삭제하기</button>
+						</c:if>
+						<button id="btnEdit" onclick="qnaedit(${ vq_seq }, '${ dto.user_id }', '${ id }')">수정하기</button>
 					</c:if>
 				</div>
 				<div class="content-box">
@@ -83,13 +86,23 @@
 								<button class="comment-add-btn"
 									data-target="#comment-add-btn-${status.index}">댓글쓰기</button>
 								<div class="comment-textarea-box" id="comment-add-btn-${status.index}">
-									<form id="comment-add" class="comment-add">
-										<textarea class="comment-textarea-${ status.index }" name="text" id="editor-${status.index}"
-											placeholder="내용을 입력하세요."></textarea>
-										<div class="btn-box">
-											<input class="comment-btn" type="button" value="댓글작성" onclick="commentadd(${status.index})">
-										</div>
-									</form>
+									<c:if test="${ id != null }">
+										<form id="comment-add" class="comment-add">
+											<textarea class="comment-textarea-${ status.index }" name="text" id="editor-${status.index}"
+												placeholder="내용을 입력하세요."></textarea>
+											<div class="btn-box">
+												<input class="comment-btn" type="button" value="댓글작성" onclick="commentadd(${status.index})">
+											</div>
+										</form>
+									</c:if>
+									<c:if test="${ id == null }">
+										<form id="comment-add" class="comment-add">
+											<textarea class="comment-textarea-${ status.index }" name="text" id="editor-${status.index}"
+												placeholder="댓글은 로그인 후 입력 가능합니다."></textarea>
+											<div class="btn-box">
+											</div>
+										</form>
+									</c:if>
 								</div>
 							</div>
 						</div>
@@ -97,16 +110,29 @@
 				</div>
 				<div class="comment-add-text-box">
 					<form action="/animingle/board/vetqnaanswer.do" method="POST">
-						<div class="commet-add-text-area-box">
-							<textarea name="vqr_content" class="comment-area"
-								maxlength="1000" placeholder="답변을 입력하세요"></textarea>
-							<div class="character-count">0/1000</div>
-						</div>
-						<div class="comment-add-btn-box">
-							<input type="button" value="목록보기"
-								onclick="location.href='/animingle/board/vetqnalist.do'">
-							<input class="answer_add_btn" type="submit" value="답변쓰기">
-						</div>
+						<c:if test="${ isVet == 'Y' }">
+							<div class="commet-add-text-area-box">
+								<textarea name="vqr_content" class="comment-area"
+									maxlength="1000" placeholder="답변을 입력하세요"></textarea>
+								<div class="character-count">0/1000</div>
+							</div>
+							<div class="comment-add-btn-box">
+								<input type="button" value="목록보기"
+									onclick="location.href='/animingle/board/vetqnalist.do'">
+								<input class="answer_add_btn" type="submit" value="답변쓰기">
+							</div>
+						</c:if>
+						<c:if test="${ isVet != 'Y' }">
+							<div class="commet-add-text-area-box">
+								<textarea name="vqr_content" class="comment-area"
+									maxlength="1000" readonly="readonly" placeholder="답변은 수의사만 가능합니다."></textarea>
+								<div class="character-count">0/1000</div>
+							</div>
+							<div class="comment-add-btn-box">
+								<input type="button" value="목록보기"
+									onclick="location.href='/animingle/board/vetqnalist.do'">
+							</div>
+						</c:if>
 						<input name="vq_seq" type="hidden" value="${ vq_seq }">
 					</form>
 				</div>
@@ -205,6 +231,39 @@
 		
 	};
 	
+	function qnadel(vq_seq, user_id) {
+		
+		if (!confirm("정말 게시물을 삭제 할까요??")) {
+			alert("삭제를 취소합니다.");
+			
+		} else {
+			location.href = "/animingle/board/vetqnadel.do?vq_seq=" + vq_seq + "&user_id=" + user_id;
+		}
+		
+	}
+	
+	function qnaedit(vq_seq, user_id, id) {
+		
+		let subject = $("#view-subject").text();
+		let content = $(".find-view-content").html();
+		let prefix = $("input[type='hidden']").val();
+		
+		if (user_id == id) {
+			
+			let url = "/animingle/board/vetqnaedit.do" +
+		      "?vq_seq=" + vq_seq +
+		      "&vq_subject=" + encodeURIComponent(subject) +
+		      "&vq_content=" + encodeURIComponent(content) +
+		      "&vq_prefix=" + encodeURIComponent(prefix);
+			
+			location.href = url;
+			
+		} else {
+			alert("게시글 작성자가 아닙니다.");
+			location.href = "/animingle/index.do";
+		}
+		
+	}
 </script>
 </body>
 </html>

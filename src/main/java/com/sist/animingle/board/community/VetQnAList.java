@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.animingle.board.repository.VetQnADAO;
 import com.sist.animingle.board.repository.VetQnAListDTO;
-import com.sist.animingle.board.repository.VetQnAViewDTO;
 
 @WebServlet("/board/vetqnalist.do")
 public class VetQnAList extends HttpServlet {
@@ -29,6 +28,7 @@ public class VetQnAList extends HttpServlet {
 		List<VetQnAListDTO> list = dao.list();
 		
 		req.setAttribute("list", list);
+		req.setAttribute("id", id);
 				
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/vetqnalist.jsp");
 		dispatcher.forward(req, resp);

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.animingle.board.repository.VetQnAAddDTO;
 import com.sist.animingle.board.repository.VetQnADAO;
@@ -26,9 +27,12 @@ public class VetQnAAdd extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		HttpSession session = req.getSession();
+		Object id = session.getAttribute("id");
+		
 		req.setCharacterEncoding("UTF-8");
 		
-		String vq_writer = "seohyun05";
+		String vq_writer = id + "";
 		String vq_subject = req.getParameter("title");
 		String vq_prefix = req.getParameter("tag");
 		String vq_content = req.getParameter("content");
@@ -51,8 +55,6 @@ public class VetQnAAdd extends HttpServlet {
 		
 		VetQnADAO dao = new VetQnADAO();
 		int result = dao.qnaAdd(dto);
-		
-		System.out.println(result);
 		
 		resp.sendRedirect("/animingle/board/vetqnalist.do");
 		
