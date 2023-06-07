@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.sist.animingle.board.repository.WTPathDTO;
 import com.sist.animingle.board.repository.WalkTogetherDAO;
 import com.sist.animingle.board.repository.WalkTogetherDTO;
 
@@ -41,9 +40,8 @@ public class WalkTogetherList extends HttpServlet {
         
         WalkTogetherDAO dao = new WalkTogetherDAO();
         
-        List<WTPathDTO> mlist = dao.getBeginPath();
         List<WalkTogetherDTO> ilist = dao.getWriting();
-        List<List<String>> plist = dao.getPath();
+        List<List<String>> plist = dao.getPath(swLat, swLng, neLat, neLng);
         
         Collections.sort(plist, new Comparator<List<String>>() {
             @Override
@@ -59,15 +57,12 @@ public class WalkTogetherList extends HttpServlet {
         
         JSONArray arr = new JSONArray();
 
-        for (int i = 0; i < mlist.size(); i++) {
+        for (int i = 0; i < ilist.size(); i++) {
         	
             JSONObject obj = new JSONObject();
             
-            obj.put("wt_seq", mlist.get(i).getWt_seq());
-            obj.put("wtp_lat", mlist.get(i).getWtp_lat());
-            obj.put("wtp_lng", mlist.get(i).getWtp_lng());
-            obj.put("wtp_order", mlist.get(i).getWtp_order());
             obj.put("wt_seq", ilist.get(i).getWt_seq());
+            obj.put("wt_subject", ilist.get(i).getWt_subject());
             obj.put("wt_writer", ilist.get(i).getWt_writer());
             obj.put("wt_petkind", ilist.get(i).getWt_petkind());
             obj.put("wt_time", ilist.get(i).getWt_time());

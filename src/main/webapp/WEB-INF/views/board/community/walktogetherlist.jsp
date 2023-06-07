@@ -39,33 +39,27 @@
                 </button>
             </div>
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                id="modalBtn">
-                상세보기(마커로 버튼 변경 필요)
-            </button>
-
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                산책친구 구해요
-                                <span class="status">모집 중</span>
-                            </h1>
+                            <h1 class="modal-title fs-5">
+							    <span id="staticBackdropLabel"></span>
+							    <span class="status">모집 중</span>
+							</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <h6>산책 루트</h6>
                             <div id="map2" style="width:100%;height:300px;"></div>
+                            <ul class="walkInfo basicInfo">
+                                <li>반려동물 종: <span class="petInfo" id="petInfo"></span></li>
+                                <li>산책 가능 요일/시간: <span class="timeInfo" id="timeInfo"></span></li>
+                            </ul>
                             <div class="walkInfo">
-                                <div class="petInfo">반려동물 종: 강아지</div>
-                                <div class="timeInfo">산책 가능 요일/시간: 5월 30일 19시 이후</div>
-                            </div>
-                            <div class="walkInfo">
-                                <div class="introInfo">우리 강아지 착해요</div>
+                                <div class="introInfo" id="introInfo"></div>
                                 <div></div>
                             </div>
                             <div class="modal-footer">
@@ -176,24 +170,29 @@
 	            
 	            var positions = [];
 	         	
-	        	/* TODO 모달창에 전달해야 하는 정보 
-	        		- 경로 정보(wtPath)
+	        	/* 모달창에 전달해야 하는 정보 
 	        		- 반려동물종(wt_petKind)
 	        		- 산책가능요일/시간(wt_time)
 	        		- 본문(wt_content)
 	        		- 글쓴이 아이디(wt_id)
 	        		- 글 번호(wt_seq)
+	        		- 경로 정보(pathlist)
 	        	*/	        	   
 	        	
-	            // Iterate over each item in the result
 	            $(result).each((index, item)=>{
 	                
-	                var filteredPlist = item.plist.filter(subList => subList[0]  === item.wt_seq);
+	                var filteredPlist = item.plist.filter(subList => subList[0] === item.wt_seq);
+	                
+	                var filteredBeginPath = item.plist.filter(subList => subList[0] === item.wt_seq && subList[1] == '1');
+	                
+	                var lat = filteredBeginPath.map(subList => subList[2]);
+	                var lng = filteredBeginPath.map(subList => subList[3]);	                
 	                
 	                positions.push({
 	                    petkind: item.wt_petkind,
 	                    time: item.wt_time,
-	                    latlng: new kakao.maps.LatLng(item.wtp_lat, item.wtp_lng),
+	                    latlng: new kakao.maps.LatLng(lat, lng),
+	                    subject: item.wt_subject,
 	                	content: item.wt_content,
 	                	id: item.wt_id,
 	                	seq: item.wt_seq,
@@ -238,7 +237,6 @@
 	            content: `<div class="info"><ul><div><li>\${positions[i].petkind}</li><li>\${positions[i].time}</li></div></ul></div>`,
 	            yAnchor: 2.1
 	        });		   
-
 	    	
 	        // 마커가 지도 위에 표시되도록 설정합니다
 	        marker.setMap(map);  
@@ -263,26 +261,29 @@
 	            
 	            // 가져온 데이터를 이용하여 모달을 업데이트하고 표시합니다.
 	            updateModal(data);
-	            $('#myModal').modal('show');
+	            $('#staticBackdrop').modal('show');
+	            $('#staticBackdrop').on('shown.bs.modal', function () {
+	                var container2 = document.getElementById('map2');
+	                var options2 = {
+	                    center: new kakao.maps.LatLng(37.4993, 127.0331),
+	                    level: 4
+	                };
+	                var map2 = new kakao.maps.Map(container2, options2);
+	              })
 	        });
 	        
         }		
         
     }
     
-    
-
-    /* modal창 map */
-    document.getElementById('modalBtn').addEventListener('click', function () {
-        setTimeout(function () {
-            var container2 = document.getElementById('map2');
-            var options2 = {
-                center: new kakao.maps.LatLng(37.4993, 127.0331),
-                level: 4
-            };
-            var map2 = new kakao.maps.Map(container2, options2);
-        }, 200);
-    });
+    function updateModal(data) {
+        
+        $('#staticBackdropLabel').text(data.subject);
+        $('#petInfo').text(data.petkind);
+        $('#timeInfo').text(data.time);
+        $('#introInfo').html(data.content);
+        
+    }    
 
 </script>
 </body>
