@@ -184,19 +184,29 @@
 	                
 	                var filteredPlist = item.plist.filter(subList => subList[0] === item.wt_seq);
 	                
+	                //시작 위경도
 	                var filteredBeginPath = item.plist.filter(subList => subList[0] === item.wt_seq && subList[1] == '1');	           
 	                var beginLat = filteredBeginPath.map(subList => subList[2]);
 	                var beginLng = filteredBeginPath.map(subList => subList[3]);	                
 	                
+	                //두 번째 위경도
 	                var filteredCenterPath = item.plist.filter(subList => subList[0] === item.wt_seq && subList[1] == '2');       
 	                var centerLat = filteredBeginPath.map(subList => subList[2]);
-	                var centerLng = filteredBeginPath.map(subList => subList[3]);	                
+	                var centerLng = filteredBeginPath.map(subList => subList[3]);
+	                
+	                //마지막 위경도
+	                var filteredEndPath = item.plist.filter(subList => subList[0] === item.wt_seq);
+					var maxOrder = Math.max(...filteredEndPath.map(subList => parseInt(subList[1])));
+					var lastPath = filteredEndPath.filter(subList => subList[1] === maxOrder.toString());				
+	                var endLat = lastPath.map(subList => subList[2]);
+	                var endLng = lastPath.map(subList => subList[3]);
 	                
 	                positions.push({
 	                    petkind: item.wt_petkind,
 	                    time: item.wt_time,
 	                    beginlatlng: new kakao.maps.LatLng(beginLat, beginLng),
-	                    centerlatlng: new kakao.maps.LatLng(beginLat, beginLng),
+	                    centerlatlng: new kakao.maps.LatLng(centerLat, centerLng),
+	                    endlatlng: new kakao.maps.LatLng(endLat, endLng),
 	                    subject: item.wt_subject,
 	                	content: item.wt_content,
 	                	seq: item.wt_seq,
@@ -290,6 +300,40 @@
 	                });	                
 
 	                polyline.setMap(map2);
+	                
+	                //산책 경로 시작 지점과 끝 지점에 마커를 생성합니다.
+	                //console.log(data.beginlatlng);
+	                //console.log(data.endlatlng);	                
+	                var imageSrc2 = '/animingle/asset/commonimg/marker2.png', 
+		                imageSize2 = new kakao.maps.Size(44, 49), 
+		                imageOption2 = {offset: new kakao.maps.Point(15, 45)}; 
+	
+		            var markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2, imageOption2),
+		                markerPosition2 = new kakao.maps.LatLng(data.beginlatlng.Ma, data.beginlatlng.La); 
+	
+		            var marker2 = new kakao.maps.Marker({
+		                position: markerPosition2,
+		                image: markerImage2 
+		            });  
+	
+		            marker2.setMap(map2); 
+	
+	
+		            var imageSrc3 = '/animingle/asset/commonimg/marker3.png', 
+		                imageSize3 = new kakao.maps.Size(44, 49), 
+		                imageOption3 = {offset: new kakao.maps.Point(15, 45)}; 
+	
+		            var markerImage3 = new kakao.maps.MarkerImage(imageSrc3, imageSize3, imageOption3),
+		                markerPosition3 = new kakao.maps.LatLng(data.endlatlng.Ma, data.endlatlng.La); 
+	
+		            var marker3 = new kakao.maps.Marker({
+		                position: markerPosition3,
+		                image: markerImage3 
+		            });  
+	
+		            marker3.setMap(map2);
+
+	    	        
 	                
 	              })
 	        });
