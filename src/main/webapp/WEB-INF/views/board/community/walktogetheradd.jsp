@@ -24,7 +24,7 @@
             	<h2 class="content-header">산책 친구 구하기</h2>
 				<hr>
 				
-				<form method="post" action="/animingle/board/walktogetheradd.do">
+				<form method="post" action="/animingle/board/walktogetheradd.do" id="addForm">
 					<div>
 						<div class="menu-title">제목</div>
 						<input type="text" name="subject" placeholder="제목을 입력해주세요." required>

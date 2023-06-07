@@ -32,24 +32,26 @@ a:hover {
 }
 
 .content-btn1 {
-	margin-top : 20px;
+	margin-top : 18px;
 	padding : 15px 20px;
-	width : 100px;
+	width : 90px !important;
 	margin-left:10px;
 	background-color: #0256AA;
 	border : none;
 	border-radius : 10px;
 	color: white;
+	font-size : 20px;
 }
 
 .content-btn2 {
-	margin-top : 20px;
-	padding : 15px 20px;
-	width : 100px;
+	margin-top : 18px;
+	padding : 15px 0;
+	width : 90px;
 	margin-left:10px;
 	background-color : #F0F0F0;
-	border : none;
+	border : 1px solid #DDD;
 	border-radius : 10px;
+	font-size : 20px;
 }
 .write-btn:hover {
 	background-color: #0256AA;
@@ -61,6 +63,14 @@ a:hover {
 	background-color: #0256AA;
 	border: 1px solid #0256AA;
 	color: white !important;
+}
+
+#delForm {
+	display: inline-block;
+}
+
+#editBtns {
+	display: flex;
 }
 
 .write-btn {
@@ -268,7 +278,7 @@ input[type="text"]:focus-visible {
 	color : white;
 }
 
-form {
+#addForm {
 	width: 100%;
 }
 

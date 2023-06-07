@@ -306,7 +306,7 @@
         
         if(data.sessionid === data.writerid) {
             $('#editBtns').html(
-            	`<button type="button" class="content-btn1" onclick="complete(\${data.seq})">완료</button><button type="submit" class="content-btn2" onclick="delete(\${data.seq})">삭제</button>`
+            	`<button type="button" class="content-btn1" onclick="complete(\${data.seq})">완료</button><form method="POST" action="/animingle/board/walktogetherfin.do" id="delForm"><input type="hidden" name="seq" value="\${data.seq}"><button type="submit" class="content-btn2">삭제</button></form>`
             );
         }
         
@@ -317,6 +317,8 @@
             location.href= `/animingle/board/walktogetherfin.do?seq=\${seq}`;            
         }
     }
+    
+    
 
 </script>
 </body>

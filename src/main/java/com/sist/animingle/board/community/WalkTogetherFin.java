@@ -30,8 +30,17 @@ public class WalkTogetherFin extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// delete
-		super.doPost(req, resp);
+
+		//delete
+		
+		String wt_seq = req.getParameter("seq");
+		
+		WalkTogetherDAO dao = new WalkTogetherDAO();
+		
+		dao.deleteWriting(wt_seq);
+		
+		resp.sendRedirect("/animingle/board/walktogetherlist.do");
+		
 	}
 
 }

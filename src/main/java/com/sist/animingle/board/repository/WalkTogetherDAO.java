@@ -211,11 +211,36 @@ public class WalkTogetherDAO {
 			//conn = DBUtil.open("localhost", "admin", "java1234");
 			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 			
-			String sql = "Update tblWalktogether set wt_ing = 'N' where wt_seq = ?";
+			String sql = "update tblWalktogether set wt_ing = 'N' where wt_seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, wt_seq);
 			pstat.executeUpdate();
+			
+			pstat.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void deleteWriting(String wt_seq) {
+		
+		try {
+
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
+
+			System.out.println("처리 준비");
+			String sql = "delete from tblWalkTogether where wt_seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, wt_seq);
+			pstat.executeUpdate();
+			
+			System.out.println("처리 완료");
 			
 			pstat.close();
 			conn.close();
