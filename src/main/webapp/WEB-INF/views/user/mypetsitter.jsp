@@ -38,6 +38,9 @@
 				</div>
 				    
 				<div class="pr-content">
+				
+					<img src="/animingle/asset/commonimg/logo_01.png" class="logoimg">
+				
 					<table class="tblcontent">
 						<tr>
 							<th>내 펫시터 모집내역</th>

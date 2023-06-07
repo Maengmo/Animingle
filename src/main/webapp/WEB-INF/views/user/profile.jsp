@@ -45,14 +45,15 @@
 
 				<div class="mypage-profile">
 					<div class="mypage-profile-img">
-						<form id="formpic">
+						<form id="formpic" enctype="multipart/form-data">
 							<img src="/animingle/asset/pic/userpic/${dto.user_pic }" id="userpic">
 							<!-- 회원이 저장한 이미지로 변경 -->
-							<input type="file" name="editpic" id="editpic" accept=".gif, .jpg, .png, .jpeg">
+							<input type="file" name="editpic" id="editpic">
 
 							<label for="editpic" id="btnlabel">
 								사진 수정
 							</label>
+							<input type="hidden" value="test" name="hiddentest">
 	
 						</form>
 						<div class="mypage-profile-count">
@@ -181,29 +182,29 @@
 	
 	function editPic() {
 		
-		const formData = new FormData(document.getElementById('formpic'));
-		
-		$.ajax ({
-			type: "POST",
-			url: '/animingle/user/profilepicedit.do',
+			let formData = new FormData(document.getElementById('formpic'));
 			
-			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-			enctype: 'multipart/form-data',
-			processData: false,
-			
-			data: formData,
+			$.ajax ({
+				type: "POST",
+				url: '/animingle/user/profilepicedit.do',
+				
+				enctype: 'multipart/form-data',
+				processData: false,
+				contentType: false,
+				
+				data: formData,
+	
+				dataType: 'json',
+				success: (result)=>{
+					
+					$('#userpic').attr("src","/animingle/asset/pic/userpic/" + result.userpic);
+					alert('변경이 완료되었습니다.');
+					
+				},
+				error: (a,b,c)=>console.log(a,b,c)
+				
+			});
 
-			dataType: 'json',
-			success: (result)=>{
-				
-				$('#userpic').attr("src","/animingle/asset/pic/userpic/" + result.userpic);	
-				
-			},
-			error: (a,b,c)=>console.log(a,b,c)
-			
-		});
-		
-		
 	}
 	
 	var oldpwok = false;

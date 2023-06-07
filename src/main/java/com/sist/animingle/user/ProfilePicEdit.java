@@ -47,9 +47,9 @@ public class ProfilePicEdit extends HttpServlet {
 		
 		int result = dao.editUserPic(dto);
 		
-		PrintWriter writer = resp.getWriter();
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
+		PrintWriter writer = resp.getWriter();
 		
 		if (result == 1) {
 			

@@ -40,6 +40,9 @@
 				</div>
 				    
 				<div class="pr-content">
+				
+					<img src="/animingle/asset/commonimg/logo_01.png" class="logoimg">
+				
 					<table class="tblcontent">
 					  <tr>
 					    <th>내 문의사항</th>

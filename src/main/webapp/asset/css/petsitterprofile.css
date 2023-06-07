@@ -98,7 +98,6 @@ img#petsitterpic {
 }
 
 h3 {
-	padding-left: 30px;
 	margin-bottom: 15px;
 }
 
@@ -161,4 +160,43 @@ h3 {
 .deny {
 	background-color: gold;
 	color: #A38902;
+}
+
+
+.tblcontent {
+	border-collapse: separate;
+	width: 100%;
+	border-radius: 10px;
+	border-spacing: 0;
+}
+
+.tblcontent tr:first-child th:first-child {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.tblcontent tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.tblcontent th, .tblcontent td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+.tblcontent tbody tr {
+	cursor: pointer;
+}
+
+.tblcontent th {
+	background-color: #D1E0F0;
+	text-align: center;
+}
+
+.tblcontent td {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }

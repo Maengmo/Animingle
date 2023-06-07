@@ -80,3 +80,10 @@
 	font-size: 10px;
 	margin-right: 3px;
 }
+
+
+.logoimg {
+	display: block;
+	width: 350px;
+	margin: 20px auto;	
+}

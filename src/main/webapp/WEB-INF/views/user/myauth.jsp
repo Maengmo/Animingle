@@ -39,6 +39,9 @@
 				</div>
 				    
 				<div class="pr-content">
+					
+					<img src="/animingle/asset/commonimg/logo_01.png" class="logoimg">
+				
 					<table class="tblcontent">
 						<tr>
 							<th>동물등록 칩</th>

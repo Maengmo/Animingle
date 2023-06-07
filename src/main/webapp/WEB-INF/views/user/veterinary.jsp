@@ -98,14 +98,32 @@
 				</div>
 					<div class="mypage-reply">
 						<h3>답변 내역</h3>
-						<table id="tblReply">
-							<c:forEach items="${vqlist }" var="dto">
-							<tr onclick="location.href='/animingle/board/vetqnaview.do&seq=${dto.vq_seq}'">
-								<td>${dto.vq_subject }</td>
-								<td>${dto.vq_regdate }</td>
+						
+						<table class="tblcontent">
+						<thead>
+						<tr>
+							<th>내 Q&A 답변 내역</th>
+						</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${vqlist }" var="dto">
+						<tr onclick="location.href='/animingle/board/vetqnaview.do&seq=${dto.vq_seq}'">
+							<td>
+								${dto.vq_subject } 
+								<div>
+								<small class="date">${dto.vq_regdate }</small>
+								</div>
+							</td>
+						</tr>
+						</c:forEach>
+						<c:if test="${vqlist.size() == 0 }">
+							<tr style="cursor: default;">
+								<td style="display: table-cell; text-align: center;">답변 내역이 없습니다.</td>
 							</tr>
-							</c:forEach>
-						</table>
+						</c:if>
+						</tbody>
+					</table>
+						
 					</div>
 			</div>
 
@@ -170,7 +188,7 @@
 			
 			enctype: 'multipart/form-data',
 			processData: false,
-			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			contentType: false,
 			
 			data: formData,
 

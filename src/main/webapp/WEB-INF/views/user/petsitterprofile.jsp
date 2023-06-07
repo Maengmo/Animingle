@@ -78,12 +78,20 @@
 				</div>
 				<div class="applylist">
 					<h3>신청 내역</h3>
-					<table class="tblapply">
+					
+					<table class="tblcontent">
+						<thead>
+						<tr>
+							<th>내 펫시터 신청 내역</th>
+						</tr>
+						</thead>
+						<tbody>
 						<c:forEach items="${psalist }" var="psr">
 						<tr onclick="location.href='/animingle/board/psrecruitmentview.do&seq=${psr.psr_seq}'">
-							<td>${psr.psr_subject }</td>
-								<td>
-									<c:if test="${psr.psa_state == '수락'}">
+							<td>
+								${psr.psr_subject }
+								<div style="width: 100px; text-align: center;">
+								<c:if test="${psr.psa_state == '수락'}">
 										<div class="state accept">
 									</c:if>
 									<c:if test="${psr.psa_state == '거절'}">
@@ -97,10 +105,18 @@
 									</c:if>
 										${psr.psa_state }
 									</div>
-								</td>
+								</div>
+							</td>
 						</tr>
 						</c:forEach>
+						<c:if test="${psalist.size() == 0 }">
+							<tr style="cursor: default;">
+								<td style="display: table-cell; text-align: center;">신청 내역이 없습니다.</td>
+							</tr>
+						</c:if>
+						</tbody>
 					</table>
+					
 				</div>
 
 			</div>
@@ -138,7 +154,7 @@
 			
 			enctype: 'multipart/form-data',
 			processData: false,
-			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			contentType: false,
 			
 			data: formData,
 	

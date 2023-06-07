@@ -46,9 +46,10 @@ public class PetsitterProfilePicEdit extends HttpServlet {
 		
 		int result = dao.editPetsitterPic(dto);
 		
-		PrintWriter writer = resp.getWriter();
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
+		
+		PrintWriter writer = resp.getWriter();
 		
 		if (result == 1) {
 			

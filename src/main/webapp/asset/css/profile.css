@@ -219,6 +219,45 @@ button.search-btn {
 }
 
 
+.tblcontent {
+	border-collapse: separate;
+	width: 100%;
+	border-radius: 10px;
+	border-spacing: 0;
+}
+
+.tblcontent tr:first-child th:first-child {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.tblcontent tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.tblcontent th, .tblcontent td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.tblcontent th {
+	background-color: #D1E0F0;
+	text-align: center;
+}
+
+.tblcontent td {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tblcontent tbody tr {
+	cursor: pointer;
+}
+
 .mypage-vet-img {
 	font-family: "SUITE-Regular";
 	width: 200px;
@@ -294,4 +333,8 @@ input[type="text"]:focus-visible, textarea:focus-visible, input[type="password"]
 
 input.tel {
 	width: 122px;
+}
+
+h3 {
+	margin-bottom: 15px;
 }
