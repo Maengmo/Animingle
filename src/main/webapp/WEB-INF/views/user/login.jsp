@@ -25,7 +25,7 @@
 				<img src="/animingle/asset/commonimg/logo_01.png">
 				<div class="login-box">
 					<h2>로그인</h2>
-					<form method="POST" action="/animingle/user/login.do">
+					<form method="POST" action="/animingle/user/login.do" onsubmit="return checkLogin();">
 						<table class="login-form">
 							<tr>
 								<td><input type="text" name="id" id="id" class="id"
@@ -60,6 +60,17 @@
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 //https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=7ddecf747d80ea67d580be8a8a51542d&redirect_uri=http://localhost:8090/animingle/user/kakaoOauth.do?cmd=callback&response_type=code
+		
+function checkLogin() {
+	
+	if ($('.pw').val() == 0) {
+		alert("비밀번호는 영문 대소문자와 숫자 포함 6~12자리로 입력해주세요.");
+		event.preventDefault();
+		return false;
+	} else {
+		return true;
+	};
+};
 
 //카카오 로그인
 Kakao.init('aee326e29bebd9e80119e009577e3832');
