@@ -183,15 +183,19 @@
 	                
 	                var filteredPlist = item.plist.filter(subList => subList[0] === item.wt_seq);
 	                
-	                var filteredBeginPath = item.plist.filter(subList => subList[0] === item.wt_seq && subList[1] == '1');
+	                var filteredBeginPath = item.plist.filter(subList => subList[0] === item.wt_seq && subList[1] == '1');	           
+	                var beginLat = filteredBeginPath.map(subList => subList[2]);
+	                var beginLng = filteredBeginPath.map(subList => subList[3]);	                
 	                
-	                var lat = filteredBeginPath.map(subList => subList[2]);
-	                var lng = filteredBeginPath.map(subList => subList[3]);	                
+	                var filteredCenterPath = item.plist.filter(subList => subList[0] === item.wt_seq && subList[1] == '2');       
+	                var centerLat = filteredBeginPath.map(subList => subList[2]);
+	                var centerLng = filteredBeginPath.map(subList => subList[3]);	                
 	                
 	                positions.push({
 	                    petkind: item.wt_petkind,
 	                    time: item.wt_time,
-	                    latlng: new kakao.maps.LatLng(lat, lng),
+	                    beginlatlng: new kakao.maps.LatLng(beginLat, beginLng),
+	                    centerlatlng: new kakao.maps.LatLng(beginLat, beginLng),
 	                    subject: item.wt_subject,
 	                	content: item.wt_content,
 	                	id: item.wt_id,
@@ -219,7 +223,7 @@
 
 	        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 	        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-	            markerPosition = new kakao.maps.LatLng(positions[i].latlng.Ma, positions[i].latlng.La); // 마커가 표시될 위치입니다
+	            markerPosition = new kakao.maps.LatLng(positions[i].beginlatlng.Ma, positions[i].beginlatlng.La); // 마커가 표시될 위치입니다
 	
 	        // 마커를 생성합니다
 	        var marker = new kakao.maps.Marker({
@@ -228,7 +232,7 @@
 	        });
 	
 	        // 커스텀 오버레이가 표시될 위치입니다 
-	        var position = new kakao.maps.LatLng(positions[i].latlng.Ma, positions[i].latlng.La);  
+	        var position = new kakao.maps.LatLng(positions[i].beginlatlng.Ma, positions[i].beginlatlng.La);  
 	
 	        // 커스텀 오버레이를 생성합니다
 	        var customOverlay = new kakao.maps.CustomOverlay({
@@ -263,15 +267,30 @@
 	            updateModal(data);
 	            $('#staticBackdrop').modal('show');
 	            $('#staticBackdrop').on('shown.bs.modal', function () {
+	                
 	                var container2 = document.getElementById('map2');
 	                var options2 = {
-	                    center: new kakao.maps.LatLng(37.4993, 127.0331),
-	                    level: 4
+	                    center: new kakao.maps.LatLng(data.centerlatlng.Ma, data.centerlatlng.La),
+	                    level: 5
 	                };
 	                var map2 = new kakao.maps.Map(container2, options2);
+	                
+	             	// 경로 위도와 경도 정보를 담은 배열을 생성합니다.
+	                var pathList = data.pathlist.map((item) => new kakao.maps.LatLng(item[2], item[3]));
+
+	                // 폴리라인을 생성하고 지도에 표시합니다.
+	                var polyline = new kakao.maps.Polyline({
+	                    path: pathList, // 선을 구성하는 좌표 배열입니다
+	                    strokeWeight: 2, // 선의 두께입니다
+	                    strokeColor: 'blue', // 선의 색깔입니다
+	                    strokeOpacity: 0.7, // 선의 불투명도입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	                    strokeStyle: 'solid' // 선의 스타일입니다
+	                });	                
+
+	                polyline.setMap(map2);
+	                
 	              })
 	        });
-	        
         }		
         
     }
