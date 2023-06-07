@@ -25,64 +25,44 @@
             <div class="content-top">
                <div class="content-title">와글와글</div>
                <div class="content-filter">
-                  <form action="#">
-                       <button>일상</button>
-                       <button>정보 공유</button>
-                       <button>나눔</button>
-                       <button>전체보기</button>
-                  </form>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=1';">일상</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=2';">정보 공유</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=3';">나눔</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do';">전체보기</button>
                </div>
-               <form action="#">
+               <form id="searchform" action="/animingle/board/waglelist.do" method="GET">
                   <div class="search-box">
-                       <input class="content-search" type="text" placeholder="검색">
+                       <input class="content-search" type="text" placeholder="검색" name="searchtext">
                        <span class="material-symbols-outlined">
                      search
                   </span>
                   </div>
                </form>
             </div>
-            <div class="content-bottom">
+            <c:forEach items="${list}" var="dto">
+            <div class="content-bottom" onclick="location.href='/animingle/board/wagleview.do?seq=${dto.wg_seq}';">
 	            <div class="content-info">
 		            <div class="user-info">
 		            	<img src="/animingle/asset/commonimg/animingle.png">
-		            	<span>밍글맹글(mingle77)</span>
-		            	<span>16분 전</span>
+		            	<span>${dto.wg_nickname}(${dto.wg_writer})</span>
+		            	<span>${dto.wg_regdate}</span>
 		            </div>
 		            <div class="content-text">
 		            	<div class="content-title2">
-		            	<span>[일상]</span>
-		            	<span>우리 애기 돌잔치 했어용</span>
+		            	<span>[${dto.wg_prefix}]</span>
+		            	<span>${dto.wg_subject}</span>
 		            	</div>
 		            	<div class="content-views">
 							<span class="material-symbols-outlined">visibility</span> 
-							<span class="views-count">54</span>
+							<span class="views-count">${dto.wg_readcount}</span>
 							<span class="material-symbols-outlined">chat</span> 
-							<span class="views-count">3</span>
+							<span class="views-count">${dto.wg_ccnt}</span>
 						</div>
 		            </div>
 	            </div>
             </div>
-            <div class="content-bottom">
-	            <div class="content-info">
-		            <div class="user-info">
-		            	<img src="/animingle/asset/commonimg/animingle.png">
-		            	<span>밍글맹글(mingle77)</span>
-		            	<span>16분 전</span>
-		            </div>
-		            <div class="content-text">
-		            	<div class="content-title2">
-		            		<span>[일상]</span>
-		            		<span>우리 애기 돌잔치 했어용</span>
-		            	</div>
-		            	<div class="content-views">
-							<span class="material-symbols-outlined icon">visibility</span> 
-							<span class="views-count">54</span>
-							<span class="material-symbols-outlined icon">chat</span> 
-							<span class="views-count">3</span>
-						</div>
-		            </div>
-	            </div>
-            </div>
+            </c:forEach>
+            <c:if test="${not empty id}">
             <div class="submit-btn">
 				<button class="submit-btn2" type="button" onclick="">
 					<span class="material-symbols-outlined">
@@ -91,6 +71,7 @@
 					작성하기
 				</button>
 			</div>
+			</c:if>
          </div>
 		
          <div class="rightbar">
