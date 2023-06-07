@@ -1,3 +1,8 @@
+/* header */
+a:hover {
+    text-decoration: none !important;
+}
+
 /* WalkTogetherList*/
 
 .content-top {
@@ -20,6 +25,32 @@
    border-radius: 30px;
 }
 
+.btn-div {
+	display : flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.content-btn1 {
+	margin-top : 20px;
+	padding : 15px 20px;
+	width : 100px;
+	margin-left:10px;
+	background-color: #0256AA;
+	border : none;
+	border-radius : 10px;
+	color: white;
+}
+
+.content-btn2 {
+	margin-top : 20px;
+	padding : 15px 20px;
+	width : 100px;
+	margin-left:10px;
+	background-color : #F0F0F0;
+	border : none;
+	border-radius : 10px;
+}
 .write-btn:hover {
 	background-color: #0256AA;
 	border: 1px solid #0256AA;
@@ -41,11 +72,18 @@
     border: 1px solid #555;
     color: #555;
     padding: 7px 10px;
+    margin-top: 20px;
 }
 
 .write-btn .material-symbols-outlined {
 	font-size: 25px !important;
 	color: #555;
+}
+
+.content-btn1:hover,
+.content-btn2:hover {
+ 	transition : .3s; 
+	opacity : 0.8;	
 }
 
 .btn-div {
@@ -104,7 +142,6 @@ h6 {
 .basicInfo {
    padding-bottom: 15px;
 }
-
 
 /* WalkTogetherAdd*/
 .maincontent {

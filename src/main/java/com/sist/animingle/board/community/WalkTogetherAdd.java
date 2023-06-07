@@ -47,7 +47,7 @@ public class WalkTogetherAdd extends HttpServlet {
 		dto1.setWt_content(text);
 		
 		WalkTogetherDAO dao = new WalkTogetherDAO();
-		//dao.addContent(dto1);
+		dao.addContent(dto1);
 		
 		//산책 친구 경로 DB 저장
 		String[] pathLat = req.getParameterValues("pathLat");
@@ -71,7 +71,7 @@ public class WalkTogetherAdd extends HttpServlet {
 			
 		}
 		
-		//dao.addPath(pathList);
+		dao.addPath(pathList);
 		
 		resp.sendRedirect("/animingle/board/walktogetherlist.do");
 		

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -32,7 +33,8 @@ public class WalkTogetherList extends HttpServlet {
 	
 	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		//지도 영역 안 데이터 불러오기
         String swLat = req.getParameter("swLat");
         String swLng = req.getParameter("swLng");
         String neLat = req.getParameter("neLat");
@@ -55,6 +57,9 @@ public class WalkTogetherList extends HttpServlet {
             }
         });
         
+        HttpSession session = req.getSession();
+		String sessionId = (String)session.getAttribute("id");
+        
         JSONArray arr = new JSONArray();
 
         for (int i = 0; i < ilist.size(); i++) {
@@ -64,6 +69,7 @@ public class WalkTogetherList extends HttpServlet {
             obj.put("wt_seq", ilist.get(i).getWt_seq());
             obj.put("wt_subject", ilist.get(i).getWt_subject());
             obj.put("wt_writer", ilist.get(i).getWt_writer());
+            obj.put("session_id", sessionId);
             obj.put("wt_petkind", ilist.get(i).getWt_petkind());
             obj.put("wt_time", ilist.get(i).getWt_time());
             obj.put("wt_content", ilist.get(i).getWt_content());

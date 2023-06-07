@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <title>Animingle</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <link rel="stylesheet" href="/animingle/asset/css/index.css">
 <link rel="stylesheet" href="/animingle/asset/css/walktogether.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-                
+
 <body>
                 
 <%@ include file="/WEB-INF/views/inc/header.jsp" %>
@@ -29,15 +29,16 @@
             <div id="map" style="width:100%;height:800px;">
             </div>
 
+			<c:if test="${id != null}">
             <div class="btn-div">
-                <button type="button" class="write-btn"
-                    onclick="window.location='http://localhost:8090/animingle/board/walktogetheradd.do';">
+                <button type="button" class="write-btn" onclick="window.location='http://localhost:8090/animingle/board/walktogetheradd.do';">
                     <span class="material-symbols-outlined">
                         edit_note
                     </span>
                     작성하기
                 </button>
             </div>
+            </c:if>
 
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -64,6 +65,8 @@
                             </div>
                             <div class="modal-footer">
                                 <div class="btn-div btn-margin">
+                                	<span id="editBtns">					            		
+				            		</span>
                                     <button type="button" class="write-btn">
                                         <span class="material-symbols-outlined">sms</span>
                                         채팅하기
@@ -140,9 +143,7 @@
         kakao.maps.event.addListener(map, 'bounds_changed', function() {
             boundInfo(map);
         });       
-    }
-
-    
+    }    
     
     /* 지도가 이동, 확대, 축소로 인해 지도영역이 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다 */
     function boundInfo(map) {  
@@ -198,9 +199,10 @@
 	                    centerlatlng: new kakao.maps.LatLng(beginLat, beginLng),
 	                    subject: item.wt_subject,
 	                	content: item.wt_content,
-	                	id: item.wt_id,
 	                	seq: item.wt_seq,
-	                	pathlist: filteredPlist
+	                	pathlist: filteredPlist,
+	                	writerid: item.wt_writer,
+	                	sessionid: item.session_id
 	                });
 
 	            });		            	            
@@ -283,7 +285,7 @@
 	                    path: pathList, // 선을 구성하는 좌표 배열입니다
 	                    strokeWeight: 2, // 선의 두께입니다
 	                    strokeColor: 'blue', // 선의 색깔입니다
-	                    strokeOpacity: 0.7, // 선의 불투명도입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	                    strokeOpacity: 1, // 선의 불투명도입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
 	                    strokeStyle: 'solid' // 선의 스타일입니다
 	                });	                
 
@@ -302,7 +304,17 @@
         $('#timeInfo').text(data.time);
         $('#introInfo').html(data.content);
         
+        if(data.sessionid === data.writerid) {
+            $('#editBtns').html(
+            	`<button type="submit" class="content-btn1" onclick="complete(\${data.seq})">완료</button><button type="submit" class="content-btn2" onclick="delete(\${data.seq})">삭제</button>`
+            );
+        }
+        
     }    
+    
+    function complete(seq) {
+        location.href= `/animingle/board/walktogetherfin.do?seq=\${seq}`;
+    }
 
 </script>
 </body>

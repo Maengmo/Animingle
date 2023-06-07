@@ -296,7 +296,7 @@
                 
         		$('#pathInfo').append(
             		    `<input type="hidden" name="pathLat" value="\${mas[i]}">
-            		    <input type="hidden" name="pathLng" value="\${las[i]}">`	
+            		    <input type="hidden" name="pathLng" value="\${las[i]}">`
             	);           
         		
             }

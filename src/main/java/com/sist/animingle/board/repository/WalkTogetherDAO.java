@@ -124,7 +124,7 @@ public class WalkTogetherDAO {
 			//conn = DBUtil.open("localhost", "admin", "java1234");
 			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 			
-			String sql = "select wt_seq, wt_subject, wt_writer, wt_petkind, wt_time, wt_content from tblWalkTogether";
+			String sql = "select wt_seq, wt_subject, wt_writer, wt_petkind, wt_time, wt_content from tblWalkTogether where wt_ing != 'N'";
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -166,7 +166,7 @@ public class WalkTogetherDAO {
 			//conn = DBUtil.open("localhost", "admin", "java1234");
 			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 			
-			String sql = "select wt_seq, wtp_lat, wtp_lng, wtp_order from tblWTPath where (wtp_lat between ? and ?) and (wtp_lng between ? and ?)";
+			String sql = "select wt_seq, wtp_lat, wtp_lng, wtp_order from tblWTPath where (wtp_lat between ? and ?) and (wtp_lng between ? and ?) and wt_seq not in (select wt_seq from tblWalkTogether where wt_ing = 'N')";
 			
 			pstat = conn.prepareStatement(sql);
 			
@@ -202,6 +202,28 @@ public class WalkTogetherDAO {
 		
 		
 		return plist;
+	}
+
+	public void updateState(String wt_seq) {
+		
+		try {
+			
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
+			
+			String sql = "Update tblWalktogether set wt_ing = 'N' where wt_seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, wt_seq);
+			pstat.executeUpdate();
+			
+			pstat.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
