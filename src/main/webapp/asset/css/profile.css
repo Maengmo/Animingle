@@ -1,221 +1,342 @@
+.content-top {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 25px;
+}
+
+.content-title {
+	width: 100%;
+	border: 2px solid #ccc;
+	padding: 20px;
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	border-radius: 30px;
+}
+
 .maincontent h1 {
-			font-family: "SUITE-Regular";
-			text-align: center;
-		}
-		.mypage-profile {
-			margin-top: 40px;
+	font-family: "SUITE-Regular";
+	text-align: center;
+}
 
-		}
+.mypage-profile {
+	margin-top: 40px;
+}
 
-		.mypage-profile-img {
-			font-family: "SUITE-Regular";
-			width :200px;
-			text-align: center;
-			float: left;
-			padding: 10px;
+.mypage-profile-img {
+	font-family: "SUITE-Regular";
+	width: 200px;
+	text-align: center;
+	float: left;
+	padding: 10px;
+}
 
-		}
-		.mypage-profile-img img {
-			width: 180px;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			margin-bottom: 15px;
-		}
+img#userpic {
+	width: 180px;
+	height: 200px;
+	object-fit: cover;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
 
-		.mypage-profile-img button, .mypage-vet-img button{
-			margin-top : 20px;
-			padding : 15px 30px;
-			width: 140px;
-			margin-left:10px;
-			border : none;
-			border-radius : 10px;
-			font-size : 18px;			
-			background-color: #0256AA;
-			color : white;
-		}		
+#btnlabel {
+	margin-top: 20px;
+	padding: 15px 30px;
+	width: 140px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
+	background-color: #0256AA;
+	color: white;
+}
 
-		.mypage-profile-main button {
-			margin-top : 20px;
-			padding : 5px 30px;
-			width: 100px;
-			margin-left:10px;
-			border : none;
-			border-radius : 10px;
-			font-size : 18px;			
-			background-color: #0256AA;
-			color : white;
-			height: 40px;
-		}
-		
-		.mypage-edit button {	
-			background-color: #0256AA;
-		}
-		
-		.mypage-profile-img button:hover, .mypage-profile-main button:hover, .mypage-vet-img button:hover, .mypage-edit button:hover {
-			transition : .3s;
-			opacity : 0.8;
-		}
+.mypage-profile-main button {
+	margin-top: 20px;
+	padding: 5px 30px;
+	width: 100px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
+	background-color: #0256AA;
+	color: white;
+	height: 40px;
+}
 
-		.mypage-profile-main {
-			width: 600px;
-			font-family: "SUITE-Regular";
-			float: right;
-			margin-top: 10px;
-			padding-bottom: 40px;
-			border-bottom: 2px solid #ccc;
-		}
+.mypage-edit button {
+	background-color: #0256AA;
+}
 
-		.form-title {
-			font-size: 16px;
-			margin-bottom: 5px;
-			font-weight: bold;
-		}
+#btnlabel {
+	cursor: pointer;
+	margin: 0 auto;
+	width: 100px;
+	height: 40px;
+	padding: 7px;
+}
 
-		.mypage-profile-main input, .mypage-profile-pw input {
-			width: 400px;
-			border-radius: 10px;
-			height: 40px;
-			padding-left: 5px;
-			margin-bottom: 10px;
-		}
+#editpic {
+	display: none;
+}
 
-		.mypage-profile-main div:nth-child(6) button {
-			width: 110px;
-			height: 43px;
-			background-color: #F0F0F0;
-			border:1px solid #ccc;
-			color: #000000;
-			border-radius: 10px;
-			margin-left: 5px;
-			font-size: 16px;
-			padding: 5px;
-			position: relative;
-			top: 0;
-		}
+.mypage-profile-img button:hover, .mypage-profile-main button:hover,
+	.mypage-vet-img button:hover, .mypage-edit button:hover, #btnlabel:hover
+	{
+	transition: .3s;
+	opacity: 0.8;
+}
 
-		.address-detail {
-			margin-top: 10px;
-		}
+.mypage-profile-main {
+	width: 600px;
+	font-family: "SUITE-Regular";
+	float: right;
+	margin-top: 10px;
+	padding-bottom: 40px;
+}
 
-		.mypage-edit {
-			margin-left: 300px;
-		}
+.mypage-profile::after {
+	content : "";
+	display: block;
+	clear: both;
+}
 
-		.mypage-profile-pw {
-			float: right;
-			margin-top: 10px;
-			width: 600px;
-			font-family: "SUITE-Regular";
-			border-bottom: 2px solid #ccc;
-			padding-bottom: 40px;
-		}
+.vqlist {
+	cursor: pointer;	
+}
 
-		.mypage-profile-pw .mypage-edit button {
-			width: 200px;
-			color: white;
-			border-radius: 10px;
-			margin-left: -100px;
-			border : none;
-		}
+.form-title {
+	font-size: 16px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
 
-		.mypage-profile-count {
-			float: right;
-			margin-top: 10px;
-			width: 600px;
-			font-family: "SUITE-Regular";
-			padding-bottom: 40px;
-		}
+.mypage-profile-main input, .mypage-profile-pw input {
+	width: 400px;
+	border-radius: 10px;
+	height: 40px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
 
-		#tblCount {
-			border: 1px solid black;
-			width: 400px;
-		}
+.mypage-profile-main div:nth-child(6) button {
+	width: 110px;
+	height: 43px;
+	background-color: #F0F0F0;
+	border: 1px solid #ccc;
+	color: #000000;
+	border-radius: 10px;
+	margin-left: 5px;
+	font-size: 16px;
+	padding: 5px;
+	position: relative;
+	top: 0;
+}
 
-		#tblCount td:first-child {
-			width: 150px;
-			padding-left: 5px;
-			text-align: center;
-		}
+.address-detail {
+	margin-top: 10px;
+}
 
-		#tblCount td {
-			border: 1px solid black;
-			padding-left: 10px;
-			height: 50px;
-		}
+.mypage-edit {
+	margin-left: 300px;
+}
 
-	.mypage-vet-img {
-		font-family: "SUITE-Regular";
-		width :200px;
-		text-align: center;
-		float: left;
-		padding: 10px;
+.mypage-profile-pw {
+	float: right;
+	margin-top: 10px;
+	width: 600px;
+	font-family: "SUITE-Regular";
+	padding-bottom: 40px;
+}
 
-	}
+.mypage-profile-pw .mypage-edit button {
+	width: 200px;
+	color: white;
+	border-radius: 10px;
+	margin-left: -100px;
+	border: none;
+}
 
-	.mypage-vet-img img {
-		width: 180px;
-		height: 250px;
-		border: 1px solid #ccc;
-		border-radius: 5px;
-		margin-bottom: 15px;
-	}
+.mypage-edit button {
+	margin-left: 0px;
+}
+
+#btn-edit-pw {
+	width: 200px;
+	height: 40px;
+}
+
+button.search-btn {
+	margin-top: 0px;
+}
+
+.maincontent button.btn-del-career, .maincontent button.btn-add-career {
+	width: 60px;
+    height: 40px;
+    background-color: #F0F0F0;
+    border: 1px solid #ccc;
+    color: #000000;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 16px;
+    padding: 5px;
+    position: relative;
+    top: 0;
+    margin-top: 0px;
+}
+
+.mypage-profile-count {
+	float: right;
+	margin-top: 10px;
+	width: 100%;
+	font-family: "SUITE-Regular";
+	padding-bottom: 40px;
+}
+
+#tblCount {
+	margin-top: 20px;
+	width: 100%;
+}
+
+#tblCount td:first-child {
+	width: 100px;
+	padding-left: 5px;
+	text-align: center;
+	border-right: 1px dashed #CCC;
+}
+
+#tblCount td {
+	border: 2px solid #0256AA;
+	border-left: 0;
+	border-right: 0;
+	padding-left: 10px;
+	height: 50px;
+}
 
 
-	.mypage-profile-main textarea {
-		width: 400px;
-		height: 200px;
-		border-radius: 10px;
-		padding-left: 5px;
-		margin-bottom: 10px;
-		resize: none;
-		padding:
-		5px;
-	}
+.tblcontent {
+	border-collapse: separate;
+	width: 100%;
+	border-radius: 10px;
+	border-spacing: 0;
+}
 
-	.mypage-reply {
-		float: left;
-		margin-left: 100px;
-	}
+.tblcontent tr:first-child th:first-child {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
 
-	#tblReply {
-		width: 600px;
-		font-family: "SUITE-Regular";
-	}
+.tblcontent tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
 
-	#tblReply tr {
-		border: 1px solid black;
-	}
+.tblcontent th, .tblcontent td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	height: 70px;
+	font-size: 1.2rem;
+}
 
-	#tblReply td {
-		height: 40px;
-	}
+.tblcontent th {
+	background-color: #D1E0F0;
+	text-align: center;
+}
 
-	#tblReply td:first-child {
-		padding-left: 10px;
-		font-size: 18px;
-		width: 500px;
-	}
+.tblcontent td {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 
-	#tblReply td:last-child {
-		font-size : 12px;
-		color: #777;
-		text-align: right;
-		vertical-align: bottom;
-		padding-right: 20px;
-	}
-	
-	.veterinary-main {
-		border-bottom: 0px;
-	}
-	
-	input[type="text"], textarea {
-		padding : 10px;
-		padding-left : 15px;
-		border-radius : 5px;
-		border : 1px solid #878787;
-		margin-bottom: 10px;
-	}
-	
-	input[type="text"]:focus-visible, textarea:focus-visible{
-		outline-color: #ADB5BD;
-	}
+.tblcontent tbody tr {
+	cursor: pointer;
+}
+
+.mypage-vet-img {
+	font-family: "SUITE-Regular";
+	width: 200px;
+	text-align: center;
+	float: left;
+	padding: 10px;
+}
+
+.mypage-vet-img img {
+	width: 180px;
+	height: 250px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+.mypage-profile-main textarea {
+	width: 400px;
+	height: 200px;
+	border-radius: 10px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+	resize: none;
+	padding: 5px;
+}
+
+.mypage-reply {
+
+}
+
+#tblReply {
+	width: 100%;
+	font-family: "SUITE-Regular";
+}
+
+#tblReply tr {
+	border: 1px solid black;
+}
+
+#tblReply td {
+	height: 40px;
+}
+
+#tblReply td:first-child {
+	padding-left: 10px;
+	font-size: 18px;
+	width: 500px;
+}
+
+#tblReply td:last-child {
+	font-size: 12px;
+	color: #777;
+	text-align: right;
+	vertical-align: bottom;
+	padding-right: 20px;
+}
+
+.veterinary-main {
+	border-bottom: 0px;
+}
+
+input[type="text"], textarea, input[type="password"] {
+	padding: 10px;
+	padding-left: 15px;
+	border-radius: 5px;
+	border: 1px solid #878787;
+	margin-bottom: 10px;
+}
+
+input[type="text"]:focus-visible, textarea:focus-visible, input[type="password"] {
+	outline-color: #ADB5BD;
+}
+
+input.tel {
+	width: 122px;
+}
+
+h3 {
+	margin-bottom: 15px;
+}
