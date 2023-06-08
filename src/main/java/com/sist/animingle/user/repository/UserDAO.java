@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.test.my.DBUtil;
@@ -152,7 +153,6 @@ public class UserDAO {
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getUser_id());
-			pstat.setString(2, dto.getUser_nickname());
 
 			rs = pstat.executeQuery();
 
@@ -209,18 +209,21 @@ public class UserDAO {
 		
 		try {
 
-			String sql = "insert into tblUser (user_id, user_pw, user_name, user_address, user_addressdetail, user_tel, user_email, user_nickname, user_birth, user_animal, user_pic) values (?, ?, ?, '.', '.', '.', ?, ?,  '.',  'n', ?)";
+			String sql = "insert into tblUser (user_id, user_pw, user_name, user_address, user_addressdetail, user_tel, user_email, user_nickname, user_birth, user_animal, user_pic) values (?, ?, ?, '.', '.', '.', ?, ?,  ?,  'n', ?)";
 
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getUser_id());
 		
 			//비밀번호 숫자 랜덤
-			String randomPw = String.valueOf((int)Math.random()*1000);
+			String randomPw = String.valueOf((int)(Math.random()*1000)+1);
 			pstat.setString(2, randomPw);
 			pstat.setString(3, dto.getUser_nickname()); //name도 nickname으로 기본 설정
 			pstat.setString(4, dto.getUser_email());
 			pstat.setString(5, dto.getUser_nickname());
-			pstat.setString(6, dto.getUser_pic());
+			
+			Calendar now = Calendar.getInstance();
+			pstat.setString(6, String.format("%tF", now));
+			pstat.setString(7, dto.getUser_pic());
 			
 
 			return pstat.executeUpdate();
@@ -328,6 +331,10 @@ public class UserDAO {
 	}
 	
 	
+	
+	
+	
+
 	//user_profile
 	public UserDTO getUserInfo(String id) {
 		
@@ -512,7 +519,7 @@ public class UserDAO {
 			
 			this.conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 
-			String sql = "select ps_id, ps_pic, ps_intro, to_char(ps_authdate, 'yyyy-mm-dd') as ps_authdate, ps_idcard, ps_crime from tblPetsitter where ps_id = ?";
+			String sql = "select ps_id, ps_pic, ps_intro, to_char(ps_authdate, 'yyyy-mm-dd') as ps_authdate, ps_idcard, ps_crime,(select user_name from tblUser where user_id = p.ps_id ) as ps_name from tblPetsitter p where ps_id = ?";
 
 			pstat = conn.prepareStatement(sql);
 
@@ -529,6 +536,7 @@ public class UserDAO {
 				dto.setPs_authdate(rs.getString("ps_authdate"));
 				dto.setPs_idcard(rs.getString("ps_idcard"));
 				dto.setPs_crime(rs.getString("ps_crime"));
+				dto.setPs_name(rs.getString("ps_name"));
 				
 				rs.close();
 				pstat.close();
@@ -637,7 +645,7 @@ public class UserDAO {
 					+ "from tblPSApply psa\r\n"
 					+ "    inner join tblPSRecruitment psr\r\n"
 					+ "        on psa.psr_seq = psr.psr_seq\r\n"
-					+ "            where psa.ps_id = ?";
+					+ "            where psa.ps_id = ? order by psr.psr_seq";
 
 			pstat = conn.prepareStatement(sql);
 
@@ -647,7 +655,10 @@ public class UserDAO {
 
 			List<PSApplyDTO> list = new ArrayList<PSApplyDTO>();
 
-			while (rs.next()) {
+			
+			int num = 0;//5개만 가져오려는 변수
+			
+			while (rs.next() && num < 5) {
 
 				PSApplyDTO dto = new PSApplyDTO();
 
@@ -656,6 +667,8 @@ public class UserDAO {
 				dto.setPsa_state(rs.getString("psa_state"));
 
 				list.add(dto);
+				
+				num++;
 			}
 			
 			rs.close();
@@ -685,7 +698,7 @@ public class UserDAO {
 					+ "inner join tblVQReply vqr\r\n"
 					+ "on vq.vq_seq = vqr.vq_seq\r\n"
 					+ "where vqr.vet_seq = ?\r\n"
-					+ "group by vq.vq_seq";
+					+ "group by vq.vq_seq order by vq.vq_seq";
 
 			pstat = conn.prepareStatement(sql);
 
@@ -694,8 +707,10 @@ public class UserDAO {
 			rs = pstat.executeQuery();
 
 			List<VetQnADTO> list = new ArrayList<VetQnADTO>();
+			
+			int num = 5;
 
-			while (rs.next()) {
+			while (rs.next() && num < 5) {
 
 				VetQnADTO dto = new VetQnADTO();
 
@@ -704,6 +719,8 @@ public class UserDAO {
 				dto.setVq_regdate(rs.getString("vq_regdate"));
 
 				list.add(dto);
+				
+				num++;
 			}
 			
 			rs.close();
@@ -963,9 +980,246 @@ public class UserDAO {
 		return 0;
 	}
 
+	public List<MyPSRDTO> getPSRlist(String id) {
+		
+		try {
+
+			String sql = "select psr_seq, psr_subject, to_char(psr_regdate, 'yyyy-mm-dd') as psr_regdate, psr_state from tblPSRecruitment where psr_writer = ? order by psr_seq";
+
+			pstat = conn.prepareStatement(sql);
+
+			pstat.setString(1, id);
+
+			rs = pstat.executeQuery();
+
+			List<MyPSRDTO> list = new ArrayList<MyPSRDTO>();
+
+			int num = 0;
+		
+			while (rs.next() && num < 5) {
+
+				MyPSRDTO dto = new MyPSRDTO();
+
+				dto.setPsr_seq(rs.getString("psr_seq"));
+				dto.setPsr_subject(rs.getString("psr_subject"));
+				dto.setPsr_regdate(rs.getString("psr_regdate"));
+				dto.setPsr_state(rs.getString("psr_state"));
+
+				list.add(dto);
+				
+				num++;
+			}
+
+			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		return null;
+	}
+
+	public List<MyQuestDTO> getMQlist(String id) {
+		
+		try {
+
+			String sql = "select i.in_seq as in_seq,\r\n"
+					+ "i.in_subject as in_subject,\r\n"
+					+ "case\r\n"
+					+ "when i.in_prefix = '1' then '[신고]'\r\n"
+					+ "when i.in_prefix = '2' then '[건의]'\r\n"
+					+ "end as in_prefix,\r\n"
+					+ "to_char(i.in_regdate, 'yyyy-mm-dd') as in_regdate,\r\n"
+					+ "ia.ina_content as ina_content,\r\n"
+					+ "to_char(ia.ina_regdate, 'yyyy-mm-dd') as ina_regdate,\r\n"
+					+ "ia.a_id as a_id,\r\n"
+					+ "a.a_nickname as a_nickname,\r\n"
+					+ "case\r\n"
+					+ "when ia.ina_seq is null then '확인중'\r\n"
+					+ "when ia.ina_seq is not null then '답변완료'\r\n"
+					+ "end as in_state\r\n"
+					+ "from tblinquiry i\r\n"
+					+ "    left outer join tblinanswer ia\r\n"
+					+ "        on i.in_seq = ia.in_seq\r\n"
+					+ "            left outer join tblAdmin a\r\n"
+					+ "                on a.a_id = ia.a_id\r\n"
+					+ "        where i.in_writer = ? order by i.in_seq";
+
+			pstat = conn.prepareStatement(sql);
+
+			pstat.setString(1, id);
+
+			rs = pstat.executeQuery();
+
+			List<MyQuestDTO> list = new ArrayList<MyQuestDTO>();
+			
+			int num = 0;
+
+			while (rs.next() && num < 5) {
+
+				MyQuestDTO dto = new MyQuestDTO();
+
+				dto.setIn_seq(rs.getString("in_seq"));
+				dto.setIn_subject(rs.getString("in_subject"));
+				dto.setIn_prefix(rs.getString("in_prefix"));
+				dto.setIn_regdate(rs.getString("in_regdate"));
+				dto.setIna_content(rs.getString("ina_content"));
+				dto.setIna_regdate(rs.getString("ina_regdate"));
+				dto.setA_id(rs.getString("a_id"));
+				dto.setA_nickname(rs.getString("a_nickname"));
+				dto.setIn_state(rs.getString("in_state"));
+
+				list.add(dto);
+				
+				num++;
+			}
+
+			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public int authPet(String id, String regInfo) {
+		
+		try {
+
+			String sql = "update tblUser set user_animalnum = ? where user_id = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, regInfo);
+			pstat.setString(2, id);
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		return 0;
+	}
+
+	public int authPetsitter(String id, String regInfo) {
+		
+		try {
+
+			String sql = "insert into tblPetsitter (ps_id, ps_pic, ps_intro, ps_authdate, ps_idcard, ps_crime) values(?, 'ps_pic.png', '자기 소개', sysdate, ?, 'pscrime.png')";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			pstat.setString(2, regInfo);
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		return 0;
+	}
+
+	public int authVet(String id, String regInfo) {
+		
+		try {
+
+			String sql = "insert into tblVeterinarian (vet_seq, vet_clinic, vet_major, vet_address, vet_addressdetail, vet_license) "
+					+ "values(?, '.', '.', '.', '.', ?)";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			pstat.setString(2, regInfo);
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		return 0;
+	}
+
+	public String getAnimalnum(String id) {
+		
+		try {
+
+			String sql = "select user_animalnum from tblUser where user_id = ?";
+
+			pstat = conn.prepareStatement(sql);
+
+			pstat.setString(1, id);
+
+			rs = pstat.executeQuery();
+
+			if (rs.next()) {
+
+				return rs.getString("user_animalnum");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		return null;
+	}
+
+	public String getAuthdate(String id) {
+		
+		try {
+
+			String sql = "select to_char(ps_authdate, 'yyyy-mm-dd') as ps_authdate from tblPetsitter where ps_id = ?";
+
+			pstat = conn.prepareStatement(sql);
+
+			pstat.setString(1, id);
+
+			rs = pstat.executeQuery();
+
+			if (rs.next()) {
+
+				return rs.getString("ps_authdate");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		return null;
+	}
+
+	public String getLicensenum(String id) {
+		
+		try {
+
+			String sql = "select vet_license from tblVeterinarian where vet_seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+
+			pstat.setString(1, id);
+
+			rs = pstat.executeQuery();
+
+			if (rs.next()) {
+
+				return rs.getString("vet_license");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		return null;
+	}
 
 	
 }
-
 	
-}

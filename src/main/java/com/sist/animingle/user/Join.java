@@ -53,7 +53,9 @@ public class Join extends HttpServlet {
 			String address = multi.getParameter("address");
 			String addressdetail = multi.getParameter("addressdetail");
 			String pets = multi.getParameter("pets");
-			String profile = multi.getParameter("profile");
+			String profile = multi.getFilesystemName("profile");
+			
+			System.out.println("프로필 사진 : " + profile);
 			
 			UserDTO dto = new UserDTO();
 			dto.setUser_id(id);
@@ -66,7 +68,13 @@ public class Join extends HttpServlet {
 			dto.setUser_address(address);
 			dto.setUser_addressdetail(addressdetail);
 			dto.setUser_animal(pets);
-			dto.setUser_pic(profile);
+			
+			if (profile == null) {
+				dto.setUser_pic("animingle.png");
+			} else {
+				dto.setUser_pic(profile);
+			}
+			
 			
 			UserDAO dao = new UserDAO();
 					

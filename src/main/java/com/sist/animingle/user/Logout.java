@@ -20,6 +20,7 @@ public class Logout extends HttpServlet {
 		req.getSession().removeAttribute("isVet");
 		req.getSession().removeAttribute("isPet");
 		req.getSession().removeAttribute("isAdmin");
+		req.getSession().removeAttribute("socialLogin");
 		
 		resp.sendRedirect("/animingle/index.do");
 	}

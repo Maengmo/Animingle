@@ -16,6 +16,7 @@ public class CommunityList extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//CommunityList.java
+		
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/communitylist.jsp");
 		dispatcher.forward(req, resp);
