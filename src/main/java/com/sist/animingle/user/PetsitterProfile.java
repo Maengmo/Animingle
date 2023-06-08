@@ -82,9 +82,8 @@ public class PetsitterProfile extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		String id = "happy012";
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
 		String ps_intro = req.getParameter("ps_intro");
 		
 		UserDAO dao = new UserDAO();

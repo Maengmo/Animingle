@@ -49,10 +49,10 @@
 				<div class="mypage-profile">
 					<div class="mypage-profile-img">
 						<form id="formpic" enctype="multipart/form-data">
-							<c:if test="${socailLogin != null}">
+							<c:if test="${socialLogin != null}">
 								<img src="${dto.user_pic }" id="userpic">
 							</c:if>
-							<c:if test="${socailLogin == null }">
+							<c:if test="${socialLogin == null }">
 								<img src="/animingle/asset/pic/userpic/${dto.user_pic }" id="userpic" alt="${dto.user_pic }">
 								
 								<!-- 회원이 저장한 이미지로 변경 -->
@@ -111,7 +111,7 @@
 						</div>
 					</form>
 
-					<c:if test="${socailLogin == null }">
+					<c:if test="${socialLogin == null }">
 					<div>
 						<form method="POST" action="/animingle/user/profilepwedit.do">
 							<div class="mypage-profile-pw">

@@ -55,10 +55,9 @@ public class Profile extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		String id = "wain1719";
-		
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
+
 		String user_nickname = req.getParameter("user_nickname");
 		String user_address = req.getParameter("user_address");
 		String user_addressdetail = req.getParameter("user_addressdetail");
