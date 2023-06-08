@@ -54,6 +54,7 @@
                         </div>
                         <div class="modal-body">
                             <h6>산책 루트</h6>
+                            <div></div>
                             <div id="map2" style="width:100%;height:300px;"></div>
                             <ul class="walkInfo basicInfo">
                                 <li>반려동물 종: <span class="petInfo" id="petInfo"></span></li>
@@ -77,9 +78,9 @@
                     </div>
                 </div>
             </div>
-            <div class="rightbar">
-                <!-- 오른쪽 사이드바 입니다. -->
-            </div>
+        </div>
+        <div class="rightbar">
+        	<!-- 오른쪽 사이드바 입니다. -->
         </div>
     </div>
 </section>
