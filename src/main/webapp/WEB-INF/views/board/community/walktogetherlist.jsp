@@ -93,6 +93,8 @@
     crossorigin="anonymous"></script>
 <script>
 
+	
+
     var lat = 37.4993;
     var lng = 127.0331;
 
@@ -102,6 +104,10 @@
     };
 
     var map;
+    
+    
+    
+    
 
     /* 현재 위치 받아서 기본 지도 화면 출력하기 */
     if (navigator.geolocation) {
@@ -351,7 +357,21 @@
         
         if(data.sessionid === data.writerid) {
             $('#editBtns').html(
-            	`<button type="button" class="content-btn1" onclick="complete(\${data.seq})">완료</button><form method="POST" action="/animingle/board/walktogetherfin.do" id="delForm"><input type="hidden" name="seq" value="\${data.seq}"><button type="submit" class="content-btn2">삭제</button></form>`
+            	`
+            	<form method="POST" action="/animingle/board/walktogetheredit.do" id="editForm">
+            	<input type="hidden" name="seq" value="\${data.seq}">
+            	<input type="hidden" name="subject" value="\${data.subject}">
+            	<input type="hidden" name="petkind" value="\${data.petkind}">
+            	<input type="hidden" name="time" value="\${data.time}">
+            	<input type="hidden" name="pathlist" value="\${data.pathlist}">
+            	<button type="submit" class="content-btn2">수정</button>
+            	</form>
+            	<form method="POST" action="/animingle/board/walktogetherfin.do" id="delForm">
+            	<input type="hidden" name="seq" value="\${data.seq}">
+            	<button type="submit" class="content-btn2">삭제</button>
+            	</form>
+            	<button type="button" class="content-btn1" onclick="complete(\${data.seq})">완료</button>
+            	`
             );
         }
         

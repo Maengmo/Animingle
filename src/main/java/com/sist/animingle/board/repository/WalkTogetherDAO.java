@@ -233,14 +233,11 @@ public class WalkTogetherDAO {
 			//conn = DBUtil.open("localhost", "admin", "java1234");
 			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
 
-			System.out.println("처리 준비");
 			String sql = "delete from tblWalkTogether where wt_seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, wt_seq);
 			pstat.executeUpdate();
-			
-			System.out.println("처리 완료");
 			
 			pstat.close();
 			conn.close();
@@ -249,6 +246,39 @@ public class WalkTogetherDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public String getContent(String seq) {
+		
+		String content ="";
+		
+		try {
+
+			//conn = DBUtil.open("localhost", "admin", "java1234");
+			conn = DBUtil.open("3.38.234.229", "admin", "java1234");
+			
+			String sql = "select wt_content from tblWalkTogether where wt_seq = ?";
+			
+			pstat= conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				content = rs.getString("wt_content");
+			}
+			
+			rs.close();
+			pstat.close();
+			conn.close();
+			
+			return content;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return content;
 	}
 
 }
