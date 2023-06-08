@@ -29,25 +29,33 @@ public class WagleDAO {
 			
 			String where = "";
 			
-			if (map.get("search").equals("y")) {
-				where =  String.format("where wg_subject like '%%%s%%'"
-										, map.get("searchtext"));
-			}
+			String currentPage = map.get("currentPage");
+			String itemsPerPage = map.get("itemsPerPage");
 			
-			String sql = String.format("SELECT\r\n"
-					+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
-					+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
-					+ "    CASE\r\n"
-					+ "        WHEN wg_prefix = 1 THEN '일상'\r\n"
-					+ "        WHEN wg_prefix = 2 THEN '정보공유'\r\n"
-					+ "        ELSE '나눔'\r\n"
-					+ "    END AS  wg_prefix,\r\n"
-					+ "    (select count(*) from tblWagleComment where tblWagleComment.wg_seq = tblWagle.wg_seq) as wg_ccnt\r\n"
-					+ "FROM tblWagle %s order by wg_regdate desc", where);
+			
+			 if (map.get("search").equals("y")) { 
+				 where = String.format("where wg_subject like '%%%s%%'" , map.get("searchtext")); 
+				 }
+			 
+			
+			 String sql = String.format("select * from (select i.*, rownum r from (SELECT\r\n"
+		         		+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
+		         		+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+		         		+ "    CASE\r\n"
+		         		+ "        WHEN wg_prefix = 1 THEN '일상'\r\n"
+		         		+ "        WHEN wg_prefix = 2 THEN '정보공유'\r\n"
+		         		+ "        ELSE '나눔'\r\n"
+		         		+ "    END AS  wg_prefix,\r\n"
+		         		+ "    (select count(*) from tblWagleComment where tblWagleComment.wg_seq = tblWagle.wg_seq) as wg_ccnt\r\n"
+		         		+ "FROM tblWagle %s order by wg_regdate desc) i) where r between ? and ?", where);
 
-
-			stat = conn.createStatement();
-			rs = stat.executeQuery(sql);
+			    int offset = (Integer.parseInt(currentPage) - 1) * Integer.parseInt(itemsPerPage);
+		         
+		         pstat = conn.prepareStatement(sql);
+		         pstat.setInt(1, offset + 1);
+		         pstat.setInt(2, offset + Integer.parseInt(itemsPerPage));
+		         
+		         rs = pstat.executeQuery();
 
 			while (rs.next()) {
 
@@ -355,6 +363,88 @@ public class WagleDAO {
 		}
 		
 		return 0;
+	}
+
+	public int getTotalDataCount() {
+		
+	    int page = 0;
+
+        try {
+
+           String sql = "select count(wg_seq) as total from tblwagle";
+           
+            stat = conn.createStatement();
+
+            rs = stat.executeQuery(sql);
+
+            while (rs.next()) {
+                page = rs.getInt("total");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return page;
+
+	}
+
+	public List<WagleDTO> getBoardContent(int currentPage, int itemsPerPage) {
+		
+		List<WagleDTO> list = new ArrayList<WagleDTO>();
+		   
+	      try {
+	         
+	         String sql = "select * from (select i.*, rownum r from (SELECT\r\n"
+	         		+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
+	         		+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+	         		+ "    CASE\r\n"
+	         		+ "        WHEN wg_prefix = 1 THEN '일상'\r\n"
+	         		+ "        WHEN wg_prefix = 2 THEN '정보공유'\r\n"
+	         		+ "        ELSE '나눔'\r\n"
+	         		+ "    END AS  wg_prefix,\r\n"
+	         		+ "    (select count(*) from tblWagleComment where tblWagleComment.wg_seq = tblWagle.wg_seq) as wg_ccnt\r\n"
+	         		+ "FROM tblWagle order by wg_regdate desc) i) where r between ? and ?";
+	         
+	         int offset = (currentPage - 1) * itemsPerPage;
+	         
+	         pstat = conn.prepareStatement(sql);
+	         pstat.setInt(1, offset + 1);
+	         pstat.setInt(2, offset + itemsPerPage);
+	         
+	         rs = pstat.executeQuery();
+	         
+	         while (rs.next()) {
+	            WagleDTO dto = new WagleDTO();
+          
+	            
+	            dto.setWg_seq(rs.getInt("wg_seq"));
+				dto.setWg_prefix(rs.getString("wg_prefix"));
+				dto.setWg_subject(rs.getString("wg_subject"));
+				dto.setWg_content(rs.getString("wg_content"));
+				dto.setWg_regdate(rs.getString("wg_regdate"));
+				dto.setWg_writer(rs.getString("wg_writer"));
+				dto.setWg_readcount(rs.getInt("wg_readcount"));
+				
+				 dto.setWg_nickname(rs.getString("wg_nickname"));
+				 dto.setWg_ccnt(Integer.parseInt(rs.getString("wg_ccnt")));
+				 
+	            
+	            list.add(dto);
+	            
+	         }
+	         
+	         rs.close();
+	         pstat.close();
+	         conn.close();
+	         
+	         return list;
+	         
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      return null;
 	}
 
 	

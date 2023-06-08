@@ -30,7 +30,7 @@
                        <button onclick="location.href='/animingle/board/waglelist.do?prefix=3';">나눔</button>
                        <button onclick="location.href='/animingle/board/waglelist.do';">전체보기</button>
                </div>
-               <form id="searchform" action="/animingle/board/waglelist.do" method="GET">
+               <form id="searchform" action="/animingle/board/waglelist.do" method="POST">
                   <div class="search-box">
                        <input class="content-search" type="text" placeholder="검색" name="searchtext">
                        <span class="material-symbols-outlined">
@@ -62,9 +62,23 @@
 	            </div>
             </div>
             </c:forEach>
+         <div class="paging">
+               <c:if test="${ currentPage > 1 }">
+                 <span onclick="location.href='/animingle/board/waglelist.do?page=${ currentPage - 1 }'">&lt;</span>
+              </c:if>
+              <ul>
+                 <c:forEach var="pageNumber" begin="${ startPage }" end="${ endPage }">
+                    <li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
+                       onclick="location.href='/animingle/board/waglelist.do?page=${pageNumber}'">${ pageNumber }</li>
+                 </c:forEach>
+              </ul>
+              <c:if test="${currentPage < totalPage }">
+                 <span onclick="location.href='/animingle/board/waglelist.do?page=${ currentPage + 1 }'">&gt;</span>
+              </c:if>
+            </div>
             <c:if test="${not empty id}">
             <div class="submit-btn">
-				<button class="submit-btn2" type="button" onclick="">
+				<button class="submit-btn2" type="button" onclick="location.href='/animingle/board/wagleadd.do'">
 					<span class="material-symbols-outlined">
 							edit_note
 					</span>
@@ -72,14 +86,14 @@
 				</button>
 			</div>
 			</c:if>
-         </div>
-		
+		 </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->
          </div>
         </div>
          
    </section>
+   
    <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

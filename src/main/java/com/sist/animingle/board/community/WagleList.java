@@ -39,52 +39,105 @@ public class WagleList extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		session.setAttribute("read", "n");
+		session.setAttribute("read", "n"); 
+
 		
-		req.getSession().setAttribute("id", "pineappe4");
 		
+		String search = "n"; 
+		String searchtext = req.getParameter("searchtext");
 		String prefix = req.getParameter("prefix");
 		
-		String search = "n";
-		String searchtext = req.getParameter("searchtext");
+		
+		
+		 int currentPage = 1; // 현재 페이지 번호 
+		 int itemsPerPage = 5; // 페이지당 항목
+		 
+	    
+		 String pageParam = req.getParameter("page"); 
+		 if (pageParam != null) {
+		 currentPage = Integer.parseInt(pageParam); }
+		 
 		
 		
 		
-		if ((searchtext == null) || searchtext.equals("")) {
-			search = "n";
-		} else {
-			search = "y";
-		}
+		 if ((searchtext == null) || searchtext.equals("")) { 
+			 
+			 search = "n"; 
+			 
+		 } else {
+			 
+			 search = "y";
+		 
+		 }
+		 
 		
 		HashMap<String, String> map = new HashMap<String,String>();
 		
 		WagleDAO dao = new WagleDAO();
 		
-		List<WagleDTO> searchlist = dao.list(map);
+		
+		
+		
+		 // 모든 게시물의 수를 담는다 
+		int totalDataCount = dao.getTotalDataCount();
+		 
+		 // 현재 페이지 수 계산 
+		int totalPage = (int) Math.ceil((double) totalDataCount / itemsPerPage);
+		 
+		 // 모든 게시글 목록을 리스트에 담는다 
+			/* List<WagleDTO> list = dao.getBoardContent(currentPage, itemsPerPage); */
+		
+		 
+		 int maxPage = 5; // 한 번에 표시할 최대 페이지 수
+	     int startPage = Math.max(currentPage - (maxPage / 2), 1);
+	     int endPage = Math.min(startPage + maxPage - 1, totalPage);
+		 
+
 		
 		map.put("searchtext", searchtext);
-		map.put("search", search);
+		map.put("search", search); 
+		map.put("currentPage", Integer.toString(currentPage));
+		map.put("itemsPerPage", Integer.toString(itemsPerPage));
 		
 		
 		
 		
-		if (prefix == null) {
-			List<WagleDTO> list = dao.list(map);
-			
-			for (WagleDTO dto : list) {
-				dto.setWg_regdate(dto.getWg_regdate().substring(0, 10));
-			}
-			
-			req.setAttribute("list", list);
-		} else {
-			List<WagleDTO> list = dao.prefixlist(prefix);
-			
-			for (WagleDTO dto : list) {
-				dto.setWg_regdate(dto.getWg_regdate().substring(0, 10));
-			}
-			
-			req.setAttribute("list", list);
+		List<WagleDTO> list = dao.list(map);
+		
+		 /*if (prefix == null) { 
+			 List<WagleDTO> slist = dao.list(map);
+		 
+		 for (WagleDTO dto : slist) {
+		 dto.setWg_regdate(dto.getWg_regdate().substring(0, 10)); 
+		 }
+		 
+		 req.setAttribute("list", slist); 
+		 
+		 
+		 } else { 
+			 List<WagleDTO> slist =  dao.prefixlist(prefix);
+		 
+		 for (WagleDTO dto : slist) {
+		 dto.setWg_regdate(dto.getWg_regdate().substring(0, 10)); 
+		 }
+		 
+		 req.setAttribute("list", slist); 
+		 }
+		 */
+		
+		for (WagleDTO dto : list) {
+			 dto.setWg_regdate(dto.getWg_regdate().substring(0, 10)); 
 		}
+		
+		
+		
+		req.setAttribute("list", list);
+	    req.setAttribute("currentPage", currentPage);
+	    req.setAttribute("totalPage", totalPage);
+	    req.setAttribute("startPage", startPage);
+	    req.setAttribute("endPage", endPage);
+		
+		
 		
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/waglelist.jsp");

@@ -25,8 +25,7 @@ public class WagleView extends HttpServlet {
 		//WagleView.java
 		HttpSession session = req.getSession();
 
-		
-		req.getSession().setAttribute("id", "pineappe4");
+
 		
 		String seq = req.getParameter("seq");
 		

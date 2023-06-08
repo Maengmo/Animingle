@@ -82,8 +82,8 @@
 										${cdto.wgc_content}
 										<c:if test="${not empty id && (id == cdto.wgc_writer)}">
 										<div class="comment-editdelbtn">
-										<button type="button" class="comment-editbtn"
-								onclick="location.href='/animingle/board/wagledelcomment.do?cseq=${cdto.wgc_seq}&seq=${dto.wg_seq}';">수정</button>
+										<%-- <button type="button" class="comment-editbtn"
+								onclick="location.href='/animingle/board/wagledelcomment.do?cseq=${cdto.wgc_seq}&seq=${dto.wg_seq}';">수정</button> --%>
 										<button type="button" class="comment-delbtn"
 								onclick="location.href='/animingle/board/wagledelcomment.do?cseq=${cdto.wgc_seq}&seq=${dto.wg_seq}';">삭제</button>
 										</div>
