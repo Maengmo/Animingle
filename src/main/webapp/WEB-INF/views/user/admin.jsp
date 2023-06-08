@@ -26,11 +26,11 @@
 					<div class="ul-box">
 						<ul>
 							<li>
-								신고현황 :
+								<a href="/animingle/user/admin/inquirylist.do?prefix=2">신고현황 :</a>
 								<span>3</span>
 							</li>
 							<li>
-								문의현황 :
+								<a href="/animingle/user/admin/inquirylist.do?prefix=1">문의현황 :</a>
 								<span>2</span>
 							</li>
 							<li>
