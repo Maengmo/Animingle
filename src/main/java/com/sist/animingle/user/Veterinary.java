@@ -76,9 +76,9 @@ public class Veterinary extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		String id = "ebony012";
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
+
 		
 		String vet_clinic = req.getParameter("vet_clinic");
 		String vet_address = req.getParameter("vet_address");
