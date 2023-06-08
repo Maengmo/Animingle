@@ -34,7 +34,6 @@
 							<li>마우스 왼쪽 버튼을 누를 때마다 지도에 한 개의 지점이 찍힙니다. 두 개의 지점을 찍으면 자동으로 선이 이어집니다.
 </li>
 							<li>마우스 오른쪽 버튼을 누르면 경로 선택이 종료됩니다. 즉, 경로 선택이 끝나면 추가적인 지점은 찍히지 않습니다.</li>
-							<li>경로 초기화 버튼을 누르면 표시한 지도가 모두 삭제됩니다.</li>
                         </ul>
 						<div id="map3" style="width:100%;height:400px;"></div>
 					</div>
@@ -67,7 +66,8 @@
 						<button type="submit" id="add-btn" class="content-btn add-btn" onclick="check()">등 록</button>
 		            </div>
 		            <div id="pathInfo">
-		            </div>		                       
+		            </div>		     
+		            <input type="hidden" name="seq" value="${seq}">
 				</form>
 			</div>
 			<div class="rightbar">
@@ -206,12 +206,12 @@
             	if (confirm('경로가 모두 초기화됩니다. 수정하시겠습니까?')) {
               		polyLine.setMap(null);
               		drawLine(map2, mouseEvent);
-            }
-            isEditPath = false; // 처음 클릭 상태를 false로 변경하여 다음 클릭부터는 확인 창이 뜨지 않도록 함
+            	}
+            	isEditPath = false; // 처음 클릭 상태를 false로 변경하여 다음 클릭부터는 확인 창이 뜨지 않도록 함
             
-          } else {
-            drawLine(map2, mouseEvent); // 처음 클릭 이후에는 바로 drawLine 실행
-          }
+			} else {
+			    drawLine(map2, mouseEvent); // 처음 클릭 이후에는 바로 drawLine 실행
+			}
         	
         });
         
@@ -351,6 +351,8 @@
     		let mas = path.map(item => item.Ma); //위도
             let las = path.map(item => item.La); //경도
     		
+            
+            
             for (let i=0; i<las.length; i++) {
                 
         		$('#pathInfo').append(
@@ -426,7 +428,7 @@
         }
         
       	//지도에 경로를 표시하지 않으면 알림창 띄우기
-        if(typeof dots.length !== 'number') {
+        if(typeof dots.length !== 'number' && '${path}'.length === 0) {
             alert('지도에 산책 경로를 표시해주세요.');
             event.preventDefault();
         } 

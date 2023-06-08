@@ -38,6 +38,7 @@ public class WalkTogetherAdd extends HttpServlet {
 		String petKind = req.getParameter("petKind");
 		String walkTime = req.getParameter("walkTime");
 		String text = req.getParameter("text");
+		String seq = req.getParameter("seq");
 		
 		WalkTogetherDTO dto1 = new WalkTogetherDTO();
 		dto1.setId(id);
@@ -45,9 +46,12 @@ public class WalkTogetherAdd extends HttpServlet {
 		dto1.setWt_petkind(petKind);
 		dto1.setWt_time(walkTime);
 		dto1.setWt_content(text);
+		dto1.setWt_seq(seq);
+		
 		
 		WalkTogetherDAO dao = new WalkTogetherDAO();
-		dao.addContent(dto1);
+		//dao.addContent(dto1);
+		//TODO DB에 이미 있을 경우 update 하기
 		
 		//산책 친구 경로 DB 저장
 		String[] pathLat = req.getParameterValues("pathLat");
@@ -58,20 +62,24 @@ public class WalkTogetherAdd extends HttpServlet {
 		List<WTPathDTO> pathList = new ArrayList<WTPathDTO>();
 		
 		int cnt = 1;
-		for (int i=0; i<pathLat.length; i++) {
-
-			WTPathDTO dto2 = new WTPathDTO();
-			
-			dto2.setWt_seq(wt_seq);
-			dto2.setWtp_lat(pathLat[i]);
-			dto2.setWtp_lng(pathLng[i]);
-			dto2.setWtp_order(cnt++);
-			
-			pathList.add(dto2);
-			
+		
+		if(pathLat != null && pathLng != null) {
+			for (int i=0; i<pathLat.length; i++) {
+	
+				WTPathDTO dto2 = new WTPathDTO();
+				
+				dto2.setWt_seq(wt_seq);
+				dto2.setWtp_lat(pathLat[i]);
+				dto2.setWtp_lng(pathLng[i]);
+				dto2.setWtp_order(cnt++);
+				
+				pathList.add(dto2);
+				
+			}
 		}
 		
-		dao.addPath(pathList);
+		//dao.addPath(pathList);
+		//TODO DB에 이미 있을 경우 update 하기
 		
 		resp.sendRedirect("/animingle/board/walktogetherlist.do");
 		
