@@ -38,7 +38,7 @@ public class WalkTogetherAdd extends HttpServlet {
 		String petKind = req.getParameter("petKind");
 		String walkTime = req.getParameter("walkTime");
 		String text = req.getParameter("text");
-		String seq = req.getParameter("seq");
+		String edit_seq = req.getParameter("seq");
 		
 		WalkTogetherDTO dto1 = new WalkTogetherDTO();
 		dto1.setId(id);
@@ -46,43 +46,66 @@ public class WalkTogetherAdd extends HttpServlet {
 		dto1.setWt_petkind(petKind);
 		dto1.setWt_time(walkTime);
 		dto1.setWt_content(text);
-		dto1.setWt_seq(seq);
 		
 		
 		WalkTogetherDAO dao = new WalkTogetherDAO();
-		//dao.addContent(dto1);
-		//TODO DB에 이미 있을 경우 update 하기
-		
 		//산책 친구 경로 DB 저장
 		String[] pathLat = req.getParameterValues("pathLat");
 		String[] pathLng = req.getParameterValues("pathLng");
-		String wt_seq = String.valueOf(dao.getWtSeq());
 		
+		//글번호로 글이 이미 있는지 확인해보기(수정 or 새글)
+		boolean isExist = dao.checkWriting(edit_seq);
 		
-		List<WTPathDTO> pathList = new ArrayList<WTPathDTO>();
-		
-		int cnt = 1;
-		
-		if(pathLat != null && pathLng != null) {
-			for (int i=0; i<pathLat.length; i++) {
-	
-				WTPathDTO dto2 = new WTPathDTO();
+		if(!isExist) {
+			
+			//새 글 삽입
+			dao.addContent(dto1);
+
+			String new_seq = String.valueOf(dao.getWtSeq());
+			dto1.setWt_seq(new_seq);
+			
+			//새 글 경로 삽입
+			dao.addPath(addPathDTO(pathLat, pathLng, new_seq));
+			
+		} else {
+			
+			// 글 내용 수정
+			dto1.setWt_seq(edit_seq);
+			
+			dao.editContent(dto1);
 				
-				dto2.setWt_seq(wt_seq);
-				dto2.setWtp_lat(pathLat[i]);
-				dto2.setWtp_lng(pathLng[i]);
-				dto2.setWtp_order(cnt++);
+			if(pathLat != null && pathLng != null) {
 				
-				pathList.add(dto2);
-				
+				//경로 수정
+				dao.delPath(edit_seq);
+				dao.editPath(addPathDTO(pathLat, pathLng, edit_seq));
 			}
+			
 		}
-		
-		//dao.addPath(pathList);
-		//TODO DB에 이미 있을 경우 update 하기
 		
 		resp.sendRedirect("/animingle/board/walktogetherlist.do");
 		
+	}
+
+	private List<WTPathDTO> addPathDTO(String[] pathLat, String[] pathLng, String seq) {
+		
+		List<WTPathDTO> pathList = new ArrayList<WTPathDTO>();
+		int cnt = 1;
+		
+		for (int i=0; i<pathLat.length; i++) {
+
+			WTPathDTO dto2 = new WTPathDTO();
+			
+			dto2.setWt_seq(seq);
+			dto2.setWtp_lat(pathLat[i]);
+			dto2.setWtp_lng(pathLng[i]);
+			dto2.setWtp_order(cnt++);
+			
+			pathList.add(dto2);
+			
+		}
+		
+		return pathList;
 	}
 
 }

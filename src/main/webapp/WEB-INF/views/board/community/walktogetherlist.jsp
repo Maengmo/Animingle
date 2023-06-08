@@ -354,7 +354,7 @@
         $('#petInfo').text(data.petkind);
         $('#timeInfo').text(data.time);
         $('#introInfo').html(data.content);
-        
+
         if(data.sessionid === data.writerid) {
             $('#editBtns').html(
             	`

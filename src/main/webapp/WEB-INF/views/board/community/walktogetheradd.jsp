@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
 	<link rel="stylesheet" type="text/css" href="/animingle/asset/ckeditor/sample/styles.css">
 </head>
-<body style="background-image: url('/animingle/asset/commonimg/background.png');">
+<body>
     <%@ include file="/WEB-INF/views/inc/header.jsp" %>
     <section class="content">
         <div class="mycontainer">
@@ -33,7 +33,7 @@
 						<ul>
 							<li>마우스 왼쪽 버튼을 누를 때마다 지도에 한 개의 지점이 찍힙니다. 두 개의 지점을 찍으면 자동으로 선이 이어집니다.
 </li>
-							<li>마우스 오른쪽 버튼을 누르면 경로 선택이 종료됩니다. 즉, 경로 선택이 끝나면 추가적인 지점은 찍히지 않습니다.</li>
+							<li>마우스 오른쪽 버튼을 누르면 경로 선택이 종료됩니다.</li>
                         </ul>
 						<div id="map3" style="width:100%;height:400px;"></div>
 					</div>
@@ -243,7 +243,7 @@
             // 상태를 true로, 선이 그리고있는 상태로 변경합니다
             drawingFlag = true;
             
-            // 지도 위에 선이 표시되고 있다면 지도에서 제거합니다
+            //선이 이미 표시되어 있다면 삭제합니다.
             deleteClickLine();
             
             // 지도 위에 커스텀오버레이가 표시되고 있다면 지도에서 제거합니다
@@ -312,8 +312,8 @@
 
     // 지도에 마우스 오른쪽 클릭 이벤트를 등록합니다
     // 선을 그리고있는 상태에서 마우스 오른쪽 클릭 이벤트가 발생하면 선 그리기를 종료합니다
-    function mouseRightClick(map, mouseEvent) {
-
+    function mouseRightClick(map, mouseEvent) {		
+        
         // 지도 오른쪽 클릭 이벤트가 발생했는데 선을 그리고있는 상태이면
         if (drawingFlag) {
             
@@ -322,11 +322,10 @@
             moveLine = null;  
             
             // 마우스 클릭으로 그린 선의 좌표 배열을 얻어옵니다
-            var path = clickLine.getPath();
-        
+            var path = clickLine.getPath();            
+            
             // 선을 구성하는 좌표의 개수가 2개 이상이면
             if (path.length > 1) {
-
                 // 마지막 클릭 지점에 대한 거리 정보 커스텀 오버레이를 지웁니다
                 if (dots[dots.length-1].distance) {
                     dots[dots.length-1].distance.setMap(null);
@@ -344,14 +343,14 @@
             }
             
             // 상태를 false로, 그리지 않고 있는 상태로 변경합니다
-            drawingFlag = false;         
+            drawingFlag = false;        
             
-
             //경로 정보 배열
     		let mas = path.map(item => item.Ma); //위도
-            let las = path.map(item => item.La); //경도
-    		
-            
+            let las = path.map(item => item.La); //경도         
+
+            $("input[name='pathLat']").remove();
+            $("input[name='pathLng']").remove();
             
             for (let i=0; i<las.length; i++) {
                 
@@ -360,7 +359,7 @@
             		    <input type="hidden" name="pathLng" value="\${las[i]}">`
             	);           
         		
-            }
+            } 
     		
         }  
     }    
