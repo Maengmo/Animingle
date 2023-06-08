@@ -40,6 +40,8 @@
 	padding: 8px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
+	height: 70px;
+	font-size: 1.2rem;
 }
 
 .tblcontent th {
@@ -53,31 +55,32 @@
 	align-items: center;
 }
 
-.state-ing {
-	background-color: red;
-	color: white;
-	text-align: center;
-	width: 50px;
-	height: 20px;
-	border-radius: 5px;
-	font-size: 12px;
-	margin-right: 0px;
+.tblcontent .subject-box {
+	margin-left: 20px;
 }
 
-.state-complete {
-	background-color: green;
+.state-ing, .state-complete {
 	color: white;
 	text-align: center;
-	width: 50px;
-	height: 20px;
+	width: 90px;
+	height: 28px;
 	border-radius: 5px;
-	font-size: 12px;
+	font-size: 1rem;
 	margin-right: 0px;
+
 }
+
+.state-ing {
+	background-color: tomato;
+}
+.state-complete {
+	background-color: #14AE5C;
+}
+
 
 .date {
 	color: gray;
-	font-size: 10px;
+	font-size: 1rem;
 	margin-right: 3px;
 }
 

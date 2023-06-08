@@ -1,5 +1,6 @@
 package com.sist.animingle.user;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
@@ -25,9 +27,21 @@ public class ProfilePicEdit extends HttpServlet {
 		//ProfilePicEdit.java
 		
 		//System.out.println(req.getRealPath("/asset/pic/userpic"));
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		String id = "wain1719";
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		if (id == null || id.equals("")) {
+			
+			resp.setContentType("text/html; charset=UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('회원 전용 메뉴입니다.');history.back();</script>");
+			writer.close();
+			return;
+			
+		}
+	
+
 		MultipartRequest multi = new MultipartRequest(
 				req
 				,req.getRealPath("/asset/pic/userpic")
@@ -37,7 +51,14 @@ public class ProfilePicEdit extends HttpServlet {
 				);
 		
 		String userpic = multi.getFilesystemName("editpic");
+		String oldpic = multi.getParameter("oldpic");
+
 		
+		//파일 수정 시 원래 있던 파일 삭제 
+		if (userpic != "") {
+			File file = new File(req.getRealPath("/asset/pic/userpic") + "\\" + oldpic);
+			file.delete();
+		}
 
 		
 		UserDAO dao = new UserDAO();

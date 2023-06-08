@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.animingle.user.repository.UserDAO;
 import com.sist.animingle.user.repository.UserDTO;
@@ -20,10 +21,21 @@ public class ProfilePwEdit extends HttpServlet {
 
 		//ProfilePwEdit.java
 		
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		String id = "wain1719";
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
 		String[] user_pw = req.getParameterValues("user_pw");
+		
+		
+		if (id == null || id.equals("")) {
+			
+			resp.setContentType("text/html; charset=UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('회원 전용 메뉴입니다.');history.back();</script>");
+			writer.close();
+			return;
+			
+		}
 		
 		if (user_pw[0].equals(user_pw[1])) {
 			

@@ -23,13 +23,15 @@
 				<div class="mymenu">
 					<ul>
 						<li><a href="/animingle/user/profile.do" class="ea">회원정보</a></li>
-						<li class="selected"><span><img
-								src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a
-							href="/animingle/user/veterinary.do" class="ea">수의사 프로필</a></li>
-						<li><a href="/animingle/user/petsitterprofile.do" class="ea">펫시터
-								프로필</a></li>
-						<li><a href="/animingle/user/mypetsitter.do" class="ea">펫시터
-								모집내역</a></li>
+						
+						<li class="selected"><span><img src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a href="/animingle/user/veterinary.do" class="ea">수의사 프로필</a></li>
+						
+						<c:if test="${isPet != null }">
+							<li><a href="/animingle/user/petsitterprofile.do" class="ea">펫시터 프로필</a></li>
+						</c:if>
+						
+						<li><a href="/animingle/user/mypetsitter.do" class="ea">펫시터 모집내역</a></li>
+						
 						<li><a href="/animingle/user/myauth.do" class="ea">인증센터</a></li>
 						<li><a href="/animingle/user/myquest.do" class="ea">내
 								문의사항</a></li>
@@ -51,6 +53,7 @@
 							<!-- 회원이 저장한 이미지로 변경 -->
 							<input type="file" name="editpic" id="editpic" accept=".gif, .jpg, .png, .jpeg"> <label
 								for="editpic" id="btnlabel"> 사진 수정 </label>
+							<input type="hidden" value="${dto.vet_pic }" name="oldpic">
 						</form>
 					</div>
 					<form method="POST" action="/animingle/user/veterinary.do">
@@ -76,12 +79,14 @@
 							<div class="form-title">경력</div>
 							<div>
 								<div class="careerlist">
+								<c:if test="${vclist.size() > 0 }">
 								<c:forEach items="${vclist}" var="career" varStatus="status">
 									<div>
 										<input type="text" value="${career }" readonly name="vet_career" style="outline: none;">
 										<button type="button" class="btn-del-career" onclick="delCareer();"> 삭제 </button>
 									</div>
 								</c:forEach>
+								</c:if>
 								</div>
 									<input type="text" value="" class="newcareer" placeholder="추가할 경력 입력">
 									<button type="button" class="btn-add-career" onclick="addCareer();"> 추가 </button>
@@ -196,6 +201,7 @@
 			success: (result)=>{
 				
 				$('#userpic').attr("src","/animingle/asset/pic/userpic/" + result.userpic);
+				$('#oldpic').val(result.userpic);
 				alert('사진 수정이 완료되었습니다.');
 				
 			},

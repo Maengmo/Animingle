@@ -25,8 +25,12 @@
 				<div class="mymenu">
 	            	<ul>
 	            		<li><a href="/animingle/user/profile.do" class="ea">회원정보</a></li>
-	            		<li><a href="/animingle/user/veterinary.do" class="ea">수의사 프로필</a></li>
-	            		<li><a href="/animingle/user/petsitterprofile.do" class="ea">펫시터 프로필</a></li>
+            			<c:if test="${isVet != null }">
+		            		<li><a href="/animingle/user/veterinary.do" class="ea">수의사 프로필</a></li>
+	            		</c:if>
+						<c:if test="${isPet != null }">
+		            		<li><a href="/animingle/user/petsitterprofile.do" class="ea">펫시터 프로필</a></li>
+						</c:if>	
 	            		<li><a href="/animingle/user/mypetsitter.do" class="ea">펫시터 모집내역</a></li>
 	            		<li><a href="/animingle/user/myauth.do" class="ea">인증센터</a></li>
 	            		<li class="selected"><span><img src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a href="/animingle/user/myquest.do" class="ea">내 문의사항</a></li>
@@ -44,94 +48,55 @@
 					<img src="/animingle/asset/commonimg/logo_01.png" class="logoimg">
 				
 					<table class="tblcontent">
+					<thead>
 					  <tr>
 					    <th>내 문의사항</th>
 					  </tr>
-					  <tr onclick="toggleAnswer('report1')">
+					 </thead>
+					 
+					 <tbody>
+					 <c:forEach items="${mqlist }" var="mqdto" varStatus="status">
+					  <c:if test="${mqdto.in_state == '답변완료' }">
+					  <tr onclick="toggleAnswer('report${status.index}')" style="cursor: pointer;">
+					  </c:if>
+					  <c:if test="${mqdto.in_state == '확인중' }">
+					  <tr>
+					  </c:if>
 					    <td>
-					      [신고] 이상한 사진 올리는 놈이 있어요!
+					      ${mqdto.in_subject }
 					      <div>
-					        <div class="state-ing">확인중</div>
-					        <small class="date">2023-05-12</small>
+					      	<c:if test="${mqdto.in_state == '확인중' }">
+						        <div class="state-ing">${mqdto.in_state }</div>
+					        </c:if>
+					      	<c:if test="${mqdto.in_state == '답변완료' }">
+						        <div class="state-complete">${mqdto.in_state }</div>
+					        </c:if>
+					        <small class="date">${mqdto.in_regdate }</small>
 					      </div>
 					    </td>
 					  </tr>
-					  <tr class="answer-row" id="report1" onclick="toggleAnswer('report1')">
+					  <c:if test="${mqdto.in_state == '확인중' }">
+						  <tr class="answer-row">
+					  </c:if>
+					  <c:if test="${mqdto.in_state == '답변완료' }">
+						  <tr class="answer-row" id="report${status.index}" style="display: none;">
 					    <td>
-					      <div class="answer">
+					      <div class="answer" style="width: 100%;">
 					        <span class="material-symbols-outlined">subdirectory_arrow_right</span>
-					        해당유저 탈퇴 처리 진행하겠습니다.
+					        ${mqdto.ina_content }
+					        <div style="text-align: right;">${mqdto.a_nickname}(${mqdto.a_id})<small>[${mqdto.ina_regdate }]</small></div>
 					      </div>
 					    </td>
 					  </tr>
-					  <tr onclick="toggleAnswer('inquiry1')">
-					    <td>
-					      [문의] 펫시터 인증이 잘 안되네요..
-					      <div>
-					        <div class="state-complete">답변 완료</div>
-					        <small class="date">2023-05-10</small>
-					      </div>
-					    </td>
-					  </tr>
-					  <tr class="answer-row" id="inquiry1" onclick="toggleAnswer('inquiry1')">
-					    <td>
-					      <div class="answer">
-					        <span class="material-symbols-outlined">subdirectory_arrow_right</span>
-					        불편을 끼쳐 드려 죄송합니다. 빠른 시일 내에 보완하겠습니다.
-					      </div>
-					    </td>
-					  </tr>
-					  <tr onclick="toggleAnswer('inquiry2')">
-					    <td>
-					      [신고] 맨날 요거트에 빵을 먹어요..
-					      <div>
-					        <div class="state-complete">답변 완료</div>
-					        <small class="date">2023-05-10</small>
-					      </div>
-					    </td>
-					  </tr>
-					  <tr class="answer-row" id="inquiry2" onclick="toggleAnswer('inquiry2')">
-					    <td>
-					      <div class="answer">
-					        <span class="material-symbols-outlined">subdirectory_arrow_right</span>
-					        해당유저 요거트와 빵 압수하겠습니다.
-					      </div>
-					    </td>
-					  </tr>
-					  <tr onclick="toggleAnswer('inquiry3')">
-					    <td>
-					      [문의] 프로필 사진을 올리는데 에러가 발생해요..
-					      <div>
-					        <div class="state-complete">답변 완료</div>
-					        <small class="date">2023-05-10</small>
-					      </div>
-					    </td>
-					  </tr>
-					  <tr class="answer-row" id="inquiry3" onclick="toggleAnswer('inquiry3')">
-					    <td>
-					      <div class="answer">
-					        <span class="material-symbols-outlined">subdirectory_arrow_right</span>
-					        불편을 끼쳐 드려 죄송합니다. 바로 수정 조치 하겠습니다.
-					      </div>
-					    </td>
-					  </tr>
-					  <tr onclick="toggleAnswer('report2')">
-					    <td>
-					      [신고] 사기꾼이 있는 것 같아요
-					      <div>
-					        <div class="state-complete">답변 완료</div>
-					        <small class="date">2023-05-10</small>
-					      </div>
-					    </td>
-					  </tr>
-					  <tr class="answer-row" id="report2" onclick="toggleAnswer('report2')">
-					    <td>
-					      <div class="answer">
-					        <span class="material-symbols-outlined">subdirectory_arrow_right</span>
-					        사기꾼 유저 탈퇴 처리 진행하겠습니다.
-					      </div>
-					    </td>
-					  </tr>
+					  </c:if>
+					 </c:forEach>
+							<c:if test="${mqlist.size() == 0 }">
+							<tr style="cursor: default;">
+								<td style="display: table-cell; text-align: center;">문의 내역이 없습니다.</td>
+							</tr>
+						</c:if>
+					  </tbody>
+					  
 					</table>
 				</div>
 				

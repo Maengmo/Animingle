@@ -21,11 +21,17 @@
 				<div class="mymenu">
 					<ul>
 						<li><a href="/animingle/user/profile.do" class="ea">회원정보</a></li>
-						<li><a href="/animingle/user/veterinary.do" class="ea">수의사
-								프로필</a></li>
-						<li class="selected"><span><img
-								src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a
-							href="/animingle/user/petsitterprofile.do" class="ea">펫시터 프로필</a></li>
+						
+						<c:if test="${isVet != null }">
+							<li><a href="/animingle/user/veterinary.do" class="ea">수의사프로필</a></li>
+						</c:if>
+
+						
+						<c:if test="${isPet != null }">
+							<li class="selected"><span><img
+									src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a
+								href="/animingle/user/petsitterprofile.do" class="ea">펫시터 프로필</a></li>
+						</c:if>		
 						<li><a href="/animingle/user/mypetsitter.do" class="ea">펫시터
 								모집내역</a></li>
 						<li><a href="/animingle/user/myauth.do" class="ea">인증센터</a></li>
@@ -48,31 +54,30 @@
 							<!-- 회원이 저장한 이미지로 변경 -->
 							<input type="file" name="editpic" id="editpic" accept=".gif, .jpg, .png, .jpeg"> <label
 								for="editpic" id="btnlabel"> 사진 수정 </label>
-
+							<input type="hidden" value="${dto.ps_pic }" name="oldpic" id="oldpic">
 						</form>
 					</div>
 					<table class="tblinfo">
 						<tr>
 							<th>이름</th>
-							<td>이민지</td>
+							<td>${dto.ps_name }</td>
 						</tr>
 						<tr>
 							<th>별점</th>
-							<td><img src="/animingle/asset/commonimg/stars.png"
-								style="width: 180px;"> <span class="score">(${dto.ps_rate })</span></td>
+							<td><div id="star-rate"><img src="/animingle/asset/commonimg/stars.png" style="width: 180px;"></div>
+							<span class="score">(${dto.ps_rate })</span></td>
 						</tr>
 						<tr>
-							<th colspan="2">매칭 횟수</th>
-						</tr>
-						<tr>
-							<td colspan="2">${dto.ps_matchcount }회</td>
+							<th>매칭 횟수</th>
+							<td>${dto.ps_matchcount }회</td>
 						</tr>
 					</table>
 				</div>
 				<div class="selfintro">
 					<h3>자기소개</h3>
 					<form method="POST" action="/animingle/user/petsitterprofile.do">
-						<textarea name="ps_intro">${dto.ps_intro }</textarea>
+						<textarea name="ps_intro" id="ps_intro" maxlength="1000">${dto.ps_intro }</textarea>
+						<span style="padding-left: 20px;" id="wordcnt"></span>
 						<button type="submit" class="btn btn-primary editintro" onclick="if(!confirm('수정하시겠습니까?')) event.preventDefault();">수정완료</button>
 					</form>
 				</div>
@@ -89,7 +94,9 @@
 						<c:forEach items="${psalist }" var="psr">
 						<tr onclick="location.href='/animingle/board/psrecruitmentview.do&seq=${psr.psr_seq}'">
 							<td>
+								<div class="subject-box">
 								${psr.psr_subject }
+								</div>
 								<div style="width: 100px; text-align: center;">
 								<c:if test="${psr.psa_state == '수락'}">
 										<div class="state accept">
@@ -129,6 +136,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
+	
+	$('#star-rate').css('width', `\${${dto.ps_rate}*36}px`);
 
 	$('.selfintro textarea').change(function() {
 		
@@ -163,6 +172,7 @@
 				
 				
 				$('#petsitterpic').attr("src","/animingle/asset/pic/petsitterpic/" + result.petsitterpic);
+				$('#oldpic').val(result.petsitterpic);
 				alert('사진 수정이 완료되었습니다.');
 				
 			},
@@ -172,7 +182,27 @@
 		
 		
 	}
-
+	
+	$('#wordcnt').text("${dto.ps_intro.length() }"+"/1000");
+	
+	$('#ps_intro').keyup(function() {
+		//$('#wordcnt').text($('#wordcnt').text().length);
+		console.log($('#wordcnt').text().length);
+	});
+	
+        
+    $("#ps_intro").on('input', function () {
+        var maxLength = 1000;
+          var currentLength = $(this).val().length;
+        var remainingLength = maxLength - currentLength;
+  
+     $("#wordcnt").text(currentLength + "/" + maxLength);
+  
+        if (currentLength > maxLength) {
+           $(this).val($(this).val().substring(0, maxLength));
+          }
+        
+     });
 
 </script>
 </body>

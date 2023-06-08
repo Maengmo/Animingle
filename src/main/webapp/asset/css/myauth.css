@@ -23,6 +23,7 @@
 	width: 100%;
 	border-radius: 10px;
 	border-spacing: 0;
+	font-size: 1.3rem;
 }
 
 .tblcontent tr:first-child th:first-child {
@@ -58,10 +59,14 @@
 	text-align: center;
 }
 
-.tblcontent td:hover {
+.tblcontent .authing:hover {
 	color: red;
 	cursor: pointer;
 	font-weight: bold;
+}
+
+.tblcontent .authed {
+	color: #0256AA;
 }
 
 /* 모달창 구문 */

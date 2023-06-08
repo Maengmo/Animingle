@@ -11,6 +11,7 @@ public class PetsitterDTO {
 	private String ps_authdate;
 	private String ps_idcard;
 	private String ps_crime;
+	private String ps_name;
 	
 	private String ps_rate;
 	private String ps_matchcount;

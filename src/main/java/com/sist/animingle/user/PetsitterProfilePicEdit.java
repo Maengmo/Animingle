@@ -1,5 +1,6 @@
 package com.sist.animingle.user;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
@@ -24,9 +26,32 @@ public class PetsitterProfilePicEdit extends HttpServlet {
 
 		//PetsitterProfilePicEdit.java
 		//System.out.println(req.getRealPath("/asset/pic/petsitterpic"));
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		String id = "happy012";
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
+		String isPet = (String)session.getAttribute("isPet");
+		
+		if (id == null || id.equals("")) {
+			
+			resp.setContentType("text/html; charset=UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('회원 전용 메뉴입니다.');history.back();</script>");
+			writer.close();
+			return;
+			
+		}
+		
+		if (isPet == null || isPet.equals("")) {
+			
+			resp.setContentType("text/html; charset=UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('펫시터 회원이 아니면 접근할 수 없습니다.');history.back();</script>");
+			writer.close();
+			return;
+			
+		}
+		
 		MultipartRequest multi = new MultipartRequest(
 				req
 				,req.getRealPath("/asset/pic/petsitterpic")
@@ -36,6 +61,15 @@ public class PetsitterProfilePicEdit extends HttpServlet {
 				);
 		
 		String petsitterpic = multi.getFilesystemName("editpic");
+		String oldpic = multi.getParameter("oldpic");
+		
+
+		
+		//파일 수정 시 원래 있던 파일 삭제 
+		if (petsitterpic != "") {
+			File file = new File(req.getRealPath("/asset/pic/petsitterpic") + "\\" + oldpic);
+			file.delete();
+		}
 		
 
 		

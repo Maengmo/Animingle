@@ -25,10 +25,13 @@
 						<li class="selected"><span><img
 								src="/animingle/asset/commonimg/stamp.png" class="stamp"></span><a
 							href="/animingle/user/profile.do" class="ea">회원정보</a></li>
-						<li><a href="/animingle/user/veterinary.do" class="ea">수의사
-								프로필</a></li>
-						<li><a href="/animingle/user/petsitterprofile.do" class="ea">펫시터
-								프로필</a></li>
+						<c:if test="${isVet != null }">
+							<li><a href="/animingle/user/veterinary.do" class="ea">수의사프로필</a></li>
+						</c:if>
+						<c:if test="${isPet != null }">
+							<li><a href="/animingle/user/petsitterprofile.do" class="ea">펫시터프로필</a></li>
+						</c:if>
+						
 						<li><a href="/animingle/user/mypetsitter.do" class="ea">펫시터
 								모집내역</a></li>
 						<li><a href="/animingle/user/myauth.do" class="ea">인증센터</a></li>
@@ -46,14 +49,20 @@
 				<div class="mypage-profile">
 					<div class="mypage-profile-img">
 						<form id="formpic" enctype="multipart/form-data">
-							<img src="/animingle/asset/pic/userpic/${dto.user_pic }" id="userpic">
-							<!-- 회원이 저장한 이미지로 변경 -->
-							<input type="file" name="editpic" id="editpic">
-
-							<label for="editpic" id="btnlabel">
-								사진 수정
-							</label>
-							<input type="hidden" value="test" name="hiddentest">
+							<c:if test="${socailLogin != null}">
+								<img src="${dto.user_pic }" id="userpic">
+							</c:if>
+							<c:if test="${socailLogin == null }">
+								<img src="/animingle/asset/pic/userpic/${dto.user_pic }" id="userpic" alt="${dto.user_pic }">
+								
+								<!-- 회원이 저장한 이미지로 변경 -->
+								<input type="file" name="editpic" id="editpic" accept=".gif, .jpg, .png, .jpeg">
+	
+								<label for="editpic" id="btnlabel">
+									사진 수정
+								</label>
+								<input type="hidden" value="${dto.user_pic }" name="oldpic" id="oldpic">
+							</c:if>
 	
 						</form>
 						<div class="mypage-profile-count">
@@ -77,7 +86,7 @@
 							</div>
 							<div class="form-title">닉네임</div>
 							<div>
-								<input type="text" value="${dto.user_nickname }" name="user_nickname" id="nickname">
+								<input type="text" value="${dto.user_nickname }" name="user_nickname" id="nickname" maxlength="10">
 							</div>
 							<div class="form-title">주소</div>
 							<div>
@@ -92,9 +101,9 @@
 							</div>
 							<div class="form-title">연락처</div>
 							<div>
-								<input type="text" class="tel" id="tel1" name="tel1"> - <input
-									type="text" class="tel" id="tel2" name="tel2"> - <input type="text"
-									class="tel" id="tel3" name="tel3">
+								<input type="text" class="tel" id="tel1" name="tel1" maxlength="3"> - <input
+									type="text" class="tel" id="tel2" name="tel2" maxlength="4"> - <input type="text"
+									class="tel" id="tel3" name="tel3" maxlength="4">
 							</div>
 							<div class="mypage-edit">
 								<button type="submit" onclick="check1()">수정</button>
@@ -102,20 +111,21 @@
 						</div>
 					</form>
 
+					<c:if test="${socailLogin == null }">
 					<div>
 						<form method="POST" action="/animingle/user/profilepwedit.do">
 							<div class="mypage-profile-pw">
 								<div class="form-title">현재 비밀번호</div>
 								<div>
-									<input type="password" placeholder="현재 비밀번호 입력" id="oldpw">
+									<input type="password" placeholder="현재 비밀번호 입력" id="oldpw" maxlength="12">
 								</div>
 								<div class="form-title">새 비밀번호</div>
 								<div>
-									<input type="password" placeholder="새 비밀번호 입력" name="user_pw" id="pw1">
+									<input type="password" placeholder="새 비밀번호 입력" name="user_pw" id="pw1" maxlength="12">
 								</div>
 								<div class="form-title">새 비밀번호 확인</div>
 								<div>
-									<input type="password" placeholder="새 비밀번호 확인" name="user_pw" id="pw2">
+									<input type="password" placeholder="새 비밀번호 확인" name="user_pw" id="pw2" maxlength="12">
 								</div>
 								<div class="mypage-edit">
 									<button type="submit" id="btn-edit-pw" onclick="check2();">비밀번호 변경하기</button>
@@ -123,6 +133,10 @@
 							</div>
 						</form>
 					</div>
+					</c:if>
+					
+					
+					
 				</div>
 			</div>
 			<div class="rightbar">
@@ -198,6 +212,7 @@
 				success: (result)=>{
 					
 					$('#userpic').attr("src","/animingle/asset/pic/userpic/" + result.userpic);
+					$('#oldpic').val(result.userpic);
 					alert('변경이 완료되었습니다.');
 					
 				},
@@ -211,10 +226,19 @@
 	var pw1ok = false;
 	var pw2ok = false;
 	var nickok = true;
+	
 	var tel1ok = true;
 	var tel2ok = true;
 	var tel3ok = true;
 	
+	<c:if test="${socailLogin != null}">
+		tel1ok = false;
+		tel2ok = false;
+		tel3ok = false;
+	</c:if>
+	
+	
+	<c:if test="${socailLogin == null }">
 	//유효성 검사 - 1. 현재 비밀번호 확인
 	var oldpwresultDiv = document.createElement("div");
 	oldpwresultDiv.style.color = "#FC5230";
@@ -303,6 +327,18 @@
 	   }
 
 	});
+	
+	
+	function check2() {
+		if (oldpwok && pw1ok && pw2ok) {
+			if(!confirm('정말로 변경하시겠습니까?')) event.preventDefault();
+		} else {
+			alert('비밀번호를 다시 확인해 주세요.');
+			event.preventDefault();
+		}
+	}
+
+	</c:if>
 	
 	//유효성 검사 - 4. 닉네임
 	var nicknameRegExp = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,10}$/;
@@ -404,16 +440,7 @@
 		}
 	}
 	
-	function check2() {
-		if (oldpwok && pw1ok && pw2ok) {
-			if(!confirm('정말로 변경하시겠습니까?')) event.preventDefault();
-		} else {
-			alert('비밀번호를 다시 확인해 주세요.');
-			event.preventDefault();
-		}
-	}
-	
-	
+
 	
 
 </script>

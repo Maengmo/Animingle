@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.animingle.user.repository.UserDAO;
 import com.sist.animingle.user.repository.UserDTO;
@@ -19,9 +20,21 @@ public class Profile extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		String id = "wain1719";
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		if (id == null || id.equals("")) {
+			
+			resp.setContentType("text/html; charset=UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('회원 전용 메뉴입니다.');history.back();</script>");
+			writer.close();
+			return;
+			
+		}
+
+		//소셜로그인 회원이면 비밀번호 수정 못하게 해야함
 		
 		UserDAO dao = new UserDAO();
 		
@@ -32,6 +45,7 @@ public class Profile extends HttpServlet {
 		req.setAttribute("dto", dto);
 		req.setAttribute("boardcnt", boardcnt);
 		req.setAttribute("commentcnt", commentcnt);
+		//req.setAttribute("socailLogin", "y");
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/profile.jsp");
 		dispatcher.forward(req, resp);

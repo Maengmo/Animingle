@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.animingle.user.repository.UserDAO;
 import com.sist.animingle.user.repository.VetQnADTO;
@@ -22,9 +23,31 @@ public class Veterinary extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//
-		//HttpSession session = req.getSession();
-		//String id = (String)session.getAttribute("id");
-		String id = "ebony012";
+		HttpSession session = req.getSession();
+		String id = (String)session.getAttribute("id");
+		String isVet = (String)session.getAttribute("isVet");
+		
+		if (id == null || id.equals("")) {
+			
+			resp.setContentType("text/html; charset=UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('회원 전용 메뉴입니다.');history.back();</script>");
+			writer.close();
+			return;
+			
+		}
+		
+		if (isVet == null || isVet.equals("")) {
+			
+			resp.setContentType("text/html; charset=UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			PrintWriter writer = resp.getWriter();
+			writer.print("<script>alert('수의사 회원이 아니면 접근할 수 없습니다.');history.back();</script>");
+			writer.close();
+			return;
+			
+		}
 		
 		UserDAO dao = new UserDAO();
 		

@@ -64,18 +64,55 @@ img#petsitterpic {
 
 .tblinfo {
 	margin-left: 30px;
+	width: 600px;
+	border-collapse: separate;
+	border-radius: 10px;
+	border-spacing: 0;
 }
 
 .tblinfo th {
-	width: 100px;
+	width: 150px;
+	background-color: #D1E0F0;
+	text-align: center;
+	border: 1px solid #CCC;
+	height: 60px;
+	font-size: 1.2rem
 }
 
-.tblinfo tr:last-child {
-	height: 80px;
-	font-size: 40px;
+.tblinfo td {
+	text-align:center;
+	border: 1px solid #CCC;
+	font-size: 1.2rem;
+	margin: 0px;
+}
+
+.tblinfo tr:last-child td{
 	font-weight: bold;
+	border-bottom-right-radius: 10px;
 }
 
+.tblinfo tr:first-child th:first-child {
+	border-top-left-radius: 10px;
+}
+
+.tblinfo tr:first-child td:last-child {
+	border-top-right-radius: 10px;
+}
+
+.tblinfo tr:last-child th:first-child {
+	border-bottom-left-radius: 10px;
+}
+
+.tblinfo tr:last-child td:last-child {
+	border-bottom-right-radius: 10px;
+}
+
+#star-rate {
+	margin:0 auto;
+	overflow: hidden;
+	width: 180px;
+}
+ 
 #btnlabel {
 	border: none;
 	border-radius: 10px;
@@ -110,7 +147,7 @@ h3 {
 	border-radius: 10px;
 	font-size: 1.2rem;
 	resize: none;
-	border: 2px solid #CCC;
+	border: 2px solid #D1E0F0;
 }
 
 .editintro {
@@ -123,24 +160,7 @@ h3 {
 	color: #666;
 }
 
-.tblapply {
-	width: 100%;
-	font-size: 1.2rem;
-}
 
-.tblapply tr {
-	border: 2px solid #DDD;
-}
-
-.tblapply tr>td:first-child {
-	text-align: left;
-	padding: 15px;
-}
-
-.tblapply tr>td:last-child {
-	text-align: center;
-	width: 100px;
-}
 
 .state {
 	width: 90%;
@@ -185,9 +205,15 @@ h3 {
 	padding: 8px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
+	height: 70px;
+	font-size: 1.2rem;
 }
 .tblcontent tbody tr {
 	cursor: pointer;
+}
+
+.tblcontent .subject-box {
+	margin-left: 20px;
 }
 
 .tblcontent th {
