@@ -1,5 +1,5 @@
 .content {
-	width: 1270px;
+	width: 1640px;
 	margin: 0 auto;
 	font-family: "SUITE-Regular"
 }
@@ -30,11 +30,13 @@
 }
 
 .leftbar {
-	width: 215px;
+	width: 400px;
+	background: url('/animingle/asset/commonimg/leftbar.png') no-repeat;
 }
 
 .rightbar {
-	width: 215px;
+	width: 400px;
+	background: url('/animingle/asset/commonimg/rightbar.png') no-repeat;
 }
 
 .maincontent {
