@@ -232,11 +232,20 @@
   
     }
      
-    function showMarkernInfo(positions, bounds) { 
+    function showMarkernInfo(positions, bounds) {         
+
+        var sessionID = '${session_id}';
         
-        for (var i = 0; i < positions.length; i ++) {            
+        for (var i = 0; i < positions.length; i ++) {     
             
-            var imageSrc = '/animingle/asset/commonimg/marker.png', // 마커이미지의 주소입니다    
+            var imageSrc;
+
+            if (positions[i].writerid === sessionID) { // 세션 id와 마커 id가 일치하는 경우
+                imageSrc = '/animingle/asset/commonimg/marker_id.png'; // 다른 마커 이미지 경로
+            } else {
+                imageSrc = '/animingle/asset/commonimg/marker.png'; // 기본 마커 이미지 경로
+            }
+            
             imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
             imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
