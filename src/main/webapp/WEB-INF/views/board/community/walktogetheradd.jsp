@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
 	<link rel="stylesheet" type="text/css" href="/animingle/asset/ckeditor/sample/styles.css">
 </head>
-<body>
+<body style="background-image: url('/animingle/asset/commonimg/background.png');">
     <%@ include file="/WEB-INF/views/inc/header.jsp" %>
     <section class="content">
         <div class="mycontainer">
@@ -31,6 +31,11 @@
 					</div>
 					<div>
 						<div class="menu-title">산책 루트</div>
+						<ul>
+							<li>마우스 왼쪽 버튼: 이 버튼을 누를 때마다 지도에 한 개의 지점이 찍힙니다. 두 개의 지점을 찍으면 자동으로 선이 이어집니다.
+</li>
+							<li>마우스 오른쪽 버튼: 이 버튼을 누르면 경로 선택이 종료됩니다. 즉, 경로 선택이 끝나면 추가적인 지점은 찍히지 않습니다.</li>
+                        </ul>
 						<div id="map3" style="width:100%;height:400px;"></div>
 					</div>
 					<div id="aboutInfo">
