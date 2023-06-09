@@ -194,3 +194,30 @@
 	border: 1px solid #0256AA;
 	color: white;
 }
+
+
+
+.back-to-list {
+width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.back-to-list:hover .material-symbols-outlined.back-to-listbtn, .back-to-list:hover {
+	color : #0256AA !important;
+	cursor : pointer;
+}
+
+.main-content-sel3 {
+	margin : 15px 0px;
+	width : 100%;
+	height : auto;
+}
+
+.material-symbols-outlined.back-to-listbtn {
+	font-size : 20px !important;
+	margin-right : 5px;
+	color : black !important;
+}
