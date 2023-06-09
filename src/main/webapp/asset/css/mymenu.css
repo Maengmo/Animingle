@@ -14,18 +14,20 @@
 	background-color: green;
 }
  */
-.mymenu ul > li:hover {
+.mymenu ul > li .ea:hover {
 	color: #F24822;
 }
 
-.mymenu ul > li {
+.mymenu ul > li .ea {
 	margin: 10px 0;
 	cursor: pointer;
+	color: black;
+	text-decoration: none;
 }
 .stamp {
 	width: 30px;
 	margin-right: 10px;
 }
-.selected {
+.mymenu li.selected  .ea {
 	color: #F24822;
 }
