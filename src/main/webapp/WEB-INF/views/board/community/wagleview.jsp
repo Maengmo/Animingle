@@ -105,7 +105,7 @@
 							<form method="POST" action="/animingle/board/waglecommentadd.do">
 								<div class="comment-add">
 									<div class="comment-image">
-										<img src="/animingle/asset/commonimg/${map.user_pic}">
+										<img src="/animingle/asset/commonimg/${usermap.user_pic}">
 									</div>
 									<div class="main-content-sel3">
 										<textarea name="content" id="editor"
