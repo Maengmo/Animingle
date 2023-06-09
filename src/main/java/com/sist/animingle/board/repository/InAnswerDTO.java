@@ -10,5 +10,8 @@ public class InAnswerDTO {
 	private String ina_content;
 	private String ina_regdate;
 	private String a_id;
+	
+	private String a_nickname;
+	private String u_nickname;
 
 }

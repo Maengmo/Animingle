@@ -26,11 +26,6 @@ public class SocialLogin extends HttpServlet {
 		String nickname = req.getParameter("nickname");
 		String profile_image = req.getParameter("profile_image");
 		
-		System.out.println(id);
-		System.out.println(email);
-		System.out.println(nickname);
-		System.out.println(profile_image);
-		
 		UserDAO dao = new UserDAO();
 		UserDTO dto = new UserDTO();
 		
@@ -41,7 +36,6 @@ public class SocialLogin extends HttpServlet {
 		
 		//카카오로 로그인한 유저가 유저 테이블에 존재하는지?
 		int result = dao.kakaoUserCheck(dto);
-		
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
@@ -60,6 +54,9 @@ public class SocialLogin extends HttpServlet {
 				req.getSession().setAttribute("id", result3.getUser_id()); //인증 티켓 발급
 				req.getSession().setAttribute("nickname", result3.getUser_nickname());
 				req.getSession().setAttribute("socialLogin", "kakao");
+				req.getSession().setAttribute("isVet", null);
+				req.getSession().setAttribute("isPet", null);
+				req.getSession().setAttribute("isAdmin", null);
 				
 				obj.put("result", "success");
 				writer.print(obj);
@@ -73,17 +70,27 @@ public class SocialLogin extends HttpServlet {
 			
 		} else if (result == 0) { //2. 유저가 없다! => user 테이블에 정보 넣고 로그인
 			
-			int result1 = dao.kakaoUserJoin(dto);
+			int result1 = dao.kakaoUserJoin(dto); //user 테이블에 정보 넣기
+			
+			//System.out.println("정보넣기의 결과 : " + result1);
+			
 			if (result1 == 1) {
 				//정보넣기 성공시
-				UserDTO result2 = dao.kakaoUserLogin(dto);
+				UserDTO result2 = dao.kakaoUserLogin(dto); //user 로그인
+				
+				//System.out.println("user 로그인의 결과 : " + result2);
+
+				
 				if (result2 != null) {
 					//로그인 성공시
 					req.getSession().setAttribute("id", result2.getUser_id()); //인증 티켓 발급
 					req.getSession().setAttribute("nickname", result2.getUser_nickname());
 					req.getSession().setAttribute("socialLogin", "kakao");
+					req.getSession().setAttribute("isVet", null);
+					req.getSession().setAttribute("isPet", null);
+					req.getSession().setAttribute("isAdmin", null);
 					
-					obj.put("result", "failed");
+					obj.put("result", "success");
 					writer.print(obj);
 					writer.close();
 				}

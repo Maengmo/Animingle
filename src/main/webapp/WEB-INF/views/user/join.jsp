@@ -74,8 +74,8 @@
                   
                   <span class="join-label">주소</span>
                   <div>
-                      <input type="text" id="sample6_postcode" class="post-num" placeholder="우편번호">
-                      <input type="text" name="address" id="sample6_address" class="address" placeholder="주소" required>
+                      <input type="text" id="sample6_postcode" class="post-num" placeholder="우편번호" readonly>
+                      <input type="text" name="address" id="sample6_address" class="address" placeholder="주소" required readonly>
                       <input type="button" class="search-btn" value="주소 검색" onclick="sample6_execDaumPostcode()">
                   </div>
                   <div>

@@ -104,7 +104,11 @@ public class InquiryDAO {
 				dto.setIn_subject(rs.getString("in_subject"));
 				dto.setIn_prefix(rs.getString("in_prefix"));
 				dto.setIn_content(rs.getString("in_content"));
-				dto.setIn_regdate(rs.getString("in_regdate"));
+				
+				String regdate = rs.getString("in_regdate").substring(0,10);
+				dto.setIn_regdate(regdate);
+				
+				
 
 				return dto;
 			}

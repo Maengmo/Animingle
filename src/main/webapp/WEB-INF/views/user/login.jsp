@@ -41,7 +41,7 @@
 					</form>
 					<div class="social-login">
 						<a href="javascript:kakaoLogin()">
-							<img src="/animingle/asset/pic/kakao_login.png" alt="카카오 로그인" class="social">
+							<img src="/animingle/asset/pic/kakao_login2.png" alt="카카오 로그인" class="social">
 						</a>
 					</div>
 				</div>
