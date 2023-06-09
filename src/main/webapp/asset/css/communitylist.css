@@ -15,7 +15,7 @@
 }
 
 .sub-navbar ul {
-	width: 860px;
+	width: 840px;
 	margin: 0 auto;
 }
 
@@ -35,13 +35,11 @@
 }
 
 .leftbar {
-	background-color: skyblue;
 	width: auto;
 	display: block;
 }
 
 .maincontent {
-	background-color: tomato;
 	width: 426px;
 	display: block;
 }
@@ -57,9 +55,14 @@
 
 .content-list-box {
 	width: 95%;
+	height: 140px;
 	background-color: white;
 	margin: 30px auto;
 	padding: 10px 20px;
+}
+
+.content-list-box:hover {
+	cursor: pointer;
 }
 
 .sub-content {
@@ -74,14 +77,110 @@
 	padding-bottom: 0px;
 }
 
+.wagletitle {
+	margin-top: 15px;
+}
+
 .content-title {
 	font-size: 30px;
 	background-color: white;
 	width: 95%;
 	padding: 10px;
 	height: 70px;
+	
 }
+
 
 .btn {
 	padding: 0px;
+}
+
+
+
+
+.user-info {
+	margin-bottom: 12px;
+	margin-top: 5px;
+}
+
+
+.user-info span:nth-child(2) {
+	font-family: "SUITE-Regular"; 
+	font-size: 18px;
+	margin-left: 5px;
+}
+
+.user-info span:nth-child(3) {
+	font-family: "SUITE-Regular"; 
+	font-size: 15px;
+	margin-left: 10px;
+	color: #AAAAAA;
+}
+
+.user-info img {
+	width: 35px;
+	height: 35px;
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+}
+
+.content-views {
+	width: auto;
+	float: right;
+	display: flex;
+	align-items: center;
+	margin-bottom: 0px;
+	margin-right: 3px;
+}
+
+.content-views .material-symbols-outlined {
+	font-size: 22px !important;
+	color: #777 !important;
+	margin-left: 5px;
+	margin-right: 2px;
+}
+
+.content-views span {
+	margin-top: 15px;
+}
+
+.content-title:hover .gohover {
+	color: tomato;
+}
+
+.content-title:hover {
+	cursor : pointer;
+}
+
+.content-list-box:hover .wagletitle{
+	color: tomato;
+}
+
+.vqnabox:hover .vqnatitle span {
+	color: tomato;
+}
+
+
+
+.vqna-top {
+	display: flex;
+	justify-content: space-between; 
+}
+
+.vqnatitle {
+	margin-top: 10px;
+}
+
+.vqnasub div {
+	margin-top: 13px;
+}
+
+.vqnasub {
+	padding: 0;
+	margin: 0;
+}
+
+.walkimg {
+	height: 700px;
+	
 }
