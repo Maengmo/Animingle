@@ -24,10 +24,11 @@ public class WagleView extends HttpServlet {
 
 		//WagleView.java
 		HttpSession session = req.getSession();
-
-
+		
+		String id = (String)session.getAttribute("id");
 		
 		String seq = req.getParameter("seq");
+		String page = req.getParameter("page");
 		
 		WagleDAO dao = new WagleDAO();
 		
@@ -54,11 +55,16 @@ public class WagleView extends HttpServlet {
 		}
 		
 		
+		
+		map.put("user_pic", dao.getuserpic(id).toString());
+		
+		
 		map.put("ccnt", ccnt);
 		
 		req.setAttribute("dto", dto);
 		req.setAttribute("clist", clist);
 		req.setAttribute("map", map);
+		req.setAttribute("page", page);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/wagleview.jsp");
 		dispatcher.forward(req, resp);

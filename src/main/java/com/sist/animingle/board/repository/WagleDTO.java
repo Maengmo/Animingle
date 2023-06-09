@@ -14,6 +14,7 @@ public class WagleDTO {
 	private Number wg_readcount;
 	private String wg_nickname;
 	
-	private Number wg_ccnt;                      
+	private Number wg_ccnt;
+	private String user_pic;
 
 }

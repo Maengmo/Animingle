@@ -11,5 +11,6 @@ public class WagleCommentDTO {
 	private String wgc_content;
 	
 	private String wgc_nickname;
+	private String user_pic;
 
 }

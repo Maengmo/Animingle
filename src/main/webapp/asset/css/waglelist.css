@@ -21,6 +21,10 @@
    border-radius: 30px;
 }
 
+.content-title {
+	cursor: pointer;
+}
+
 .content-title2 {
 	font-family: "SUITE-Regular"; 
    	font-size: 25px;

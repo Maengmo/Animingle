@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.test.my.DBUtil;
 
@@ -41,6 +42,7 @@ public class WagleDAO {
 			 String sql = String.format("select * from (select i.*, rownum r from (SELECT\r\n"
 		         		+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
 		         		+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+		         		+ "    (select user_pic from tblUser where user_id = tblWagle.wg_writer) as user_pic,\r\n"
 		         		+ "    CASE\r\n"
 		         		+ "        WHEN wg_prefix = 1 THEN '일상'\r\n"
 		         		+ "        WHEN wg_prefix = 2 THEN '정보공유'\r\n"
@@ -70,6 +72,7 @@ public class WagleDAO {
 				dto.setWg_readcount(rs.getInt("wg_readcount"));
 				dto.setWg_nickname(rs.getString("wg_nickname"));
 				dto.setWg_ccnt(Integer.parseInt(rs.getString("wg_ccnt")));
+				dto.setUser_pic(rs.getString("user_pic"));
 
 				list.add(dto);
 			}
@@ -91,6 +94,7 @@ public class WagleDAO {
 			String sql = "SELECT\r\n"
 					+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
 					+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+	         		+ "    (select user_pic from tblUser where user_id = tblWagle.wg_writer) as user_pic,\r\n"
 					+ "    CASE\r\n"
 					+ "        WHEN wg_prefix = 1 THEN '일상'\r\n"
 					+ "        WHEN wg_prefix = 2 THEN '정보공유'\r\n"
@@ -116,6 +120,7 @@ public class WagleDAO {
 				dto.setWg_writer(rs.getString("wg_writer"));
 				dto.setWg_readcount(rs.getInt("wg_readcount"));
 				dto.setWg_nickname(rs.getString("wg_nickname"));
+				dto.setUser_pic(rs.getString("user_pic"));
 				
 
 				return dto;
@@ -137,7 +142,7 @@ public class WagleDAO {
 		try {
 
 			
-			String sql = "select c.*, u.user_nickname\r\n"
+			String sql = "select c.*, u.user_nickname, u.user_pic\r\n"
 					+ "from tblwagleComment c inner join tblwagle w on c.wg_seq = w.wg_seq \r\n"
 					+ "                            inner join tblUser u on c.wgc_writer = u.user_id \r\n"
 					+ "where w.wg_seq = ? order by wgc_regdate";
@@ -158,6 +163,7 @@ public class WagleDAO {
 				cdto.setWgc_regdate(rs.getString("wgc_regdate"));
 				cdto.setWgc_content(rs.getString("wgc_content"));
 				cdto.setWgc_nickname(rs.getString("user_nickname"));
+				cdto.setUser_pic(rs.getString("user_pic"));
 				
 				
 				clist.add(cdto);
@@ -307,6 +313,7 @@ public class WagleDAO {
 			 String sql = String.format("select * from (select i.*, rownum r from (SELECT\r\n"
 		         		+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
 		         		+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+		         		+ "    (select user_pic from tblUser where user_id = tblWagle.wg_writer) as user_pic,\r\n"
 		         		+ "    CASE\r\n"
 		         		+ "        WHEN wg_prefix = 1 THEN '일상'\r\n"
 		         		+ "        WHEN wg_prefix = 2 THEN '정보공유'\r\n"
@@ -316,7 +323,6 @@ public class WagleDAO {
 		         		+ "FROM tblWagle where wg_prefix=%s %s order by wg_regdate desc) i) where r between ? and ?\r\n", prefix, where);
 
 			    int offset = (Integer.parseInt(currentPage) - 1) * Integer.parseInt(itemsPerPage);
-			    System.out.println(sql);
 		         
 		         pstat = conn.prepareStatement(sql);
 		         pstat.setInt(1, offset + 1);
@@ -338,6 +344,7 @@ public class WagleDAO {
 				dto.setWg_readcount(rs.getInt("wg_readcount"));
 				dto.setWg_nickname(rs.getString("wg_nickname"));
 				dto.setWg_ccnt(Integer.parseInt(rs.getString("wg_ccnt")));
+				dto.setUser_pic(rs.getString("user_pic"));
 
 				list.add(dto);
 			}
@@ -442,6 +449,7 @@ public class WagleDAO {
 	         String sql = "select * from (select i.*, rownum r from (SELECT\r\n"
 	         		+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
 	         		+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+	         		+ "    (select user_pic from tblUser where user_id = tblWagle.wg_writer) as user_pic,\r\n"
 	         		+ "    CASE\r\n"
 	         		+ "        WHEN wg_prefix = 1 THEN '일상'\r\n"
 	         		+ "        WHEN wg_prefix = 2 THEN '정보공유'\r\n"
@@ -472,6 +480,7 @@ public class WagleDAO {
 				
 				 dto.setWg_nickname(rs.getString("wg_nickname"));
 				 dto.setWg_ccnt(Integer.parseInt(rs.getString("wg_ccnt")));
+				 dto.setUser_pic(rs.getString("user_pic"));
 				 
 	            
 	            list.add(dto);
@@ -500,6 +509,7 @@ public class WagleDAO {
 			String sql = "select * from (select i.*, rownum r from (SELECT\r\n"
 					+ "		         		 wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content,\r\n"
 					+ "		         		(select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+	         		+ "    (select user_pic from tblUser where user_id = tblWagle.wg_writer) as user_pic,\r\n"
 					+ "		         		CASE\r\n"
 					+ "		         		     WHEN wg_prefix = 1 THEN '일상'\r\n"
 					+ "		         		    WHEN wg_prefix = 2 THEN '정보공유'\r\n"
@@ -527,6 +537,7 @@ public class WagleDAO {
 				dto.setWg_readcount(rs.getInt("wg_readcount"));
 				dto.setWg_nickname(rs.getString("wg_nickname"));
 				dto.setWg_ccnt(Integer.parseInt(rs.getString("wg_ccnt")));
+				dto.setUser_pic(rs.getString("user_pic"));
 
 				list.add(dto);
 			}
@@ -538,6 +549,43 @@ public class WagleDAO {
 		}
 		
 		return list;
+	}
+
+	public Map<String, String> getuserpic(String id) {
+		
+		
+		HashMap<String, String> map = new HashMap<String,String>();
+		
+		  try {
+		         
+		         String sql = "select user_pic from tblUser where user_id = ?";
+		         
+
+		         
+		         pstat = conn.prepareStatement(sql);
+		         pstat.setString(1, id);
+		         
+		         rs = pstat.executeQuery();
+		         
+		         if (rs.next()) {
+		        	 
+		            
+		           map.put("userpic", rs.getString("user_pic"));
+					 
+
+		         }
+		         
+		         rs.close();
+		         pstat.close();
+		         conn.close();
+		         
+		         return map;
+		         
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		      }
+		      
+		      return null;
 	}
 
 	

@@ -114,6 +114,8 @@ public class WagleList extends HttpServlet {
 		req.setAttribute("searchtext", searchtext);
 		req.setAttribute("search", search);
 		req.setAttribute("prefix", prefix);
+		req.setAttribute("page", pageParam);
+		
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/waglelist.jsp");
 		dispatcher.forward(req, resp);

@@ -25,18 +25,27 @@
 				<!-- 왼쪽 사이드바 입니다. -->
 			</div>
 			<div class="maincontent">
+				<c:if test="${page != null && page != ''}">
 				<div class="a-div">
-					<a href="/animingle/board/waglelist.do" class="a-back"> <span
-						class="material-symbols-outlined">arrow_back</span> <span
-						class="back-to-list">목록으로 돌아가기</span>
+					<a href="/animingle/board/waglelist.do?page=${page}" class="a-back"> 
+					<span class="material-symbols-outlined">arrow_back</span> 
+					<span class="back-to-list">목록으로 돌아가기</span>
 					</a>
 				</div>
+				</c:if>					
+				<c:if test="${page == null || page == ''}">
+				<div class="a-div">
+					<a href="/animingle/board/waglelist.do" class="a-back"> 
+					<span class="material-symbols-outlined">arrow_back</span> 
+					<span class="back-to-list">목록으로 돌아가기</span>
+					</a>
+				</div>
+				</c:if>					
 				<div class="content-box">
 					<div class="content-top">
 						<div class="user-profile">
-							<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지"
-								class="profile-img" id="profile-img"> <span
-								class="item-id">${dto.wg_nickname}(${dto.wg_writer})</span>
+							<img src="/animingle/asset/pic/${dto.user_pic}"	class="profile-img" id="profile-img"> 
+							<span class="item-id">${dto.wg_nickname}(${dto.wg_writer})</span>
 						</div>
 						<div class="content-top2">
 							<div class="content-title">
@@ -72,7 +81,7 @@
 						<c:forEach items="${clist}" var="cdto">
 							<div class="comment-view">
 								<div class="comment-image">
-									<img src="/animingle/asset/commonimg/animingle.png">
+									<img src="/animingle/asset/pic/${cdto.user_pic}">
 								</div>
 								<div class="comment">
 									<div class="comment-info">
@@ -96,7 +105,7 @@
 							<form method="POST" action="/animingle/board/waglecommentadd.do">
 								<div class="comment-add">
 									<div class="comment-image">
-										<img src="/animingle/asset/commonimg/animingle.png">
+										<img src="/animingle/asset/commonimg/${map.user_pic}">
 									</div>
 									<div class="main-content-sel3">
 										<textarea name="content" id="editor"
