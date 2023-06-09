@@ -239,10 +239,7 @@
             drawingFlag = true;
             
             //선이 이미 표시되어 있다면 삭제합니다.
-            deleteClickLine();
-            
-            // 지도 위에 커스텀오버레이가 표시되고 있다면 지도에서 제거합니다
-            deleteDistnce();
+            deleteClickLine();            
 
             // 지도 위에 선을 그리기 위해 클릭한 지점과 해당 지점의 거리정보가 표시되고 있다면 지도에서 제거합니다
             deleteCircleDot();
@@ -333,7 +330,6 @@
                 // 지도에 표시되고 있는 선과 정보들을 지도에서 제거합니다.
                 deleteClickLine();
                 deleteCircleDot(); 
-                deleteDistnce();
 
             }
             
@@ -367,17 +363,8 @@
         }
     }
 
-    // 그려지고 있는 선의 총거리 정보와 
-    // 선 그리가 종료됐을 때 선의 정보를 표시하는 커스텀 오버레이를 삭제하는 함수입니다
-    function deleteDistnce () {
-        if (distanceOverlay) {
-            distanceOverlay.setMap(null);
-            distanceOverlay = null;
-        }
-    }
 
     // 선이 그려지고 있는 상태일 때 지도를 클릭하면 호출하여 
-    // 클릭 지점에 대한 정보 (동그라미와 클릭 지점까지의 총거리)를 표출하는 함수입니다
     function displayCircleDot(position, distance) {
 
         // 클릭 지점을 표시할 빨간 동그라미 커스텀오버레이를 생성합니다
@@ -394,7 +381,7 @@
         dots.push({circle:circleOverlay, distance: distanceOverlay});
     }
 
-    // 클릭 지점에 대한 정보 (동그라미와 클릭 지점까지의 총거리)를 지도에서 모두 제거하는 함수입니다
+    // 클릭 지점에 대한 정보 (동그라미)를 지도에서 모두 제거하는 함수입니다
     function deleteCircleDot() {
         var i;
 
