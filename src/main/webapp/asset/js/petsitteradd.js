@@ -1,9 +1,30 @@
+    DecoupledEditor
+        .create( document.querySelector( '#editor' ), {
+        	ckfinder: {
+	        uploadUrl: '/animingle/fileupload' // 내가 지정한 업로드 url (post로 요청감)
+	        },
+	        
+	        toolbar: {
 
-   ClassicEditor.create( document.querySelector( '#editor' ), {
-      removePlugins: [ 'Heading' ],
-      language: "ko"
-   });
-   
+				items : ['bold', 'italic', '|', 'link', 'mediaEmbed', 'imageUpload', '|', 'undo','fontSize','highlight', 'fontColor', 'fontBackgroundColor', 'code'], 
+				
+				shouldNotGroupWhenFull: true
+			
+			},
+			
+			language: 'ko',
+
+        })
+        .then( editor => {
+            const toolbarContainer = document.querySelector( '#toolbar-container' );
+
+            toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+            
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+        
   	function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -28,7 +49,7 @@
     };
     
 	var today = new Date();
-	today.setDate(today.getDate() + 1); // 현재 날짜에 1을 더해서 내일로 설정
+	today.setDate(today.getDate()); // 현재 날짜에 1을 더해서 내일로 설정
 	
 	var startDateInput = document.getElementById('start-date');
 	

@@ -12,7 +12,7 @@
    <link rel="stylesheet" href="/animingle/asset/css/vetqnalist.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<body>
+<body style="background-image: url('/animingle/asset/commonimg/background.png');">
 
    <%@ include file="/WEB-INF/views/inc/header.jsp" %>
    <section class="content">
@@ -40,7 +40,7 @@
 	         </div>
 	         <div class="content-container">
 	         	<c:forEach items="${ list }" var="dto" varStatus="status">
-			         <div class="content-list-box">
+			         <div class="content-list-box" onclick="location.href='/animingle/board/vetqnaview.do?vq_seq=${ dto.vq_seq }&page=${ currentPage }'">
 			         	<div class="content-top-box">
 				         	<div class="tag">
 				         		<c:if test="${ dto.vq_prefix == 1 }">
@@ -68,10 +68,7 @@
 				         	</div>
 			         	</div>
 			         	<div class="content-list-title">
-			         		<a href="/animingle/board/vetqnaview.do?vq_seq=${ dto.vq_seq }">${ dto.vq_subject }</a>
-			         		<div class="content-list-sub-title">
-			         			${ dto.vq_content }
-			         		</div>
+			         		<span>${ dto.vq_subject }</span>
 			         	</div>
 			         	<div class="sub-content">
 			         		<div>
@@ -96,7 +93,7 @@
 	         </div>
 	         <div class="paging">
 	         	<c:if test="${ currentPage > 1 }">
-			     	<span>&lt;</span>
+			     	<span onclick="location.href='/animingle/board/vetqnalist.do?page=${ currentPage - 1 }'">&lt;</span>
 		     	</c:if>
 		        <ul>
 		        	<c:forEach var="pageNumber" begin="${ startPage }" end="${ endPage }">
@@ -105,7 +102,7 @@
 		        	</c:forEach>
 		        </ul>
 		        <c:if test="${currentPage < totalPage }">
-			        <span>&gt;</span>
+			        <span onclick="location.href='/animingle/board/vetqnalist.do?page=${ currentPage + 1 }'">&gt;</span>
 		        </c:if>
 	         </div>
          </div>

@@ -85,12 +85,13 @@ public class VetQnADAO {
 			String sql = "select\r\n"
 					+ "	u.user_nickname as user_nickname,\r\n"
 					+ "	u.user_id as user_id,\r\n"
+					+ "    u.user_pic as user_pic,\r\n"
 					+ "	l.vq_subject as vq_subject,\r\n"
 					+ "	l.vq_content as vq_content,\r\n"
 					+ "	l.vq_regdate as vq_regdate,\r\n"
 					+ "	l.vq_readcount as vq_readcount,\r\n"
-					+ " l.vq_prefix as vq_prefix,\r\n"
-					+ " (select count(*) from tblvqreply where vq_seq = l.vq_seq) as vqr_cnt\r\n"
+					+ "    l.vq_prefix as vq_prefix,\r\n"
+					+ "    (select count(*) from tblvqreply where vq_seq = l.vq_seq) as vqr_cnt\r\n"
 					+ "from tbluser u\r\n"
 					+ "	inner join tblvetqna l\r\n"
 					+ "	on u.user_id = l.vq_writer\r\n"
@@ -107,6 +108,7 @@ public class VetQnADAO {
 				
 				dto.setUser_nickname(rs.getString("user_nickname"));
 				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_pic(rs.getString("user_pic"));
 				dto.setVq_subject(rs.getString("vq_subject"));
 				dto.setVq_content(rs.getString("vq_content"));
 				dto.setVq_regdate(rs.getDate("vq_regdate"));
@@ -141,6 +143,7 @@ public class VetQnADAO {
 					+ "	e.vet_clinic as vet_clinic,\r\n"
 					+ "	e.vet_seq as vet_seq,\r\n"
 					+ "	u.user_nickname as user_nickname,\r\n"
+					+ "    u.user_pic as user_pic,\r\n"
 					+ "    (select count(*) from tblvqreply where vet_seq = e.vet_seq) as answer_cnt,\r\n"
 					+ "    (select count(*) from tblvqrcomment where vqr_seq = r.vqr_seq) as comment_cnt\r\n"
 					+ "from tblvqreply r\r\n"
@@ -166,6 +169,7 @@ public class VetQnADAO {
 				dto.setVet_clinic(rs.getString("vet_clinic"));
 				dto.setVet_seq(rs.getString("vet_seq"));
 				dto.setUser_nickname(rs.getString("user_nickname"));
+				dto.setUser_pic(rs.getString("user_pic"));
 				dto.setAnswer_cnt(rs.getString("answer_cnt"));
 				dto.setComment_cnt(rs.getString("comment_cnt"));
 				
@@ -434,7 +438,7 @@ public class VetQnADAO {
 		
 	}
 
-	public int getTotalDataCount() {
+	public int getVetTotalDataCount() {
 		
 		int page = 0;
 
@@ -458,7 +462,7 @@ public class VetQnADAO {
         
 	}
 
-	public List<VetQnAListDTO> getBoardContent(int currentPage, int itemsPerPage) {
+	public List<VetQnAListDTO> getVetBoardContent(int currentPage, int itemsPerPage) {
 		
 		List<VetQnAListDTO> list = new ArrayList<VetQnAListDTO>();
 		

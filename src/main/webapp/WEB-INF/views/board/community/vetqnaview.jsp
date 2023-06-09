@@ -21,7 +21,7 @@
 			</div>
 			<div class="maincontent main-border">
 				<div class="writer find-view-writer">
-					<img src="/animingle/asset/commonimg/logo_01.png"> ${ dto.user_nickname }(${ dto.user_id })
+					<img src="/animingle/asset/commonimg/${ dto.user_pic }"> ${ dto.user_nickname }(${ dto.user_id })
 					<span class="time">${ dto.vq_regdate }</span>
 				</div>
 				<div class="find-view-subject">
@@ -40,7 +40,7 @@
 						</c:if>
 						<button id="btnEdit" onclick="qnaedit(${ vq_seq }, '${ dto.user_id }', '${ id }')">수정하기</button>
 					</c:if>
-				</div>
+				</div>	
 				<div class="content-box">
 					<div class="title">답 변</div>
 					<c:forEach items="${ alist }" var="adto" varStatus="status">
@@ -48,7 +48,7 @@
 							<span class="time">${ adto.vqr_regdate }</span>
 							<div class="comment">${ adto.vqr_content }</div>
 							<div class="comment-profile-box">
-								<img src="/animingle/asset/commonimg/logo_01.png">
+								<img src="/animingle/asset/commonimg/${ adto.user_pic }">
 								<div class="profile-content">
 									<div>
 										${ adto.user_nickname } <small>(${ adto.vet_seq })</small>
@@ -130,7 +130,7 @@
 							</div>
 							<div class="comment-add-btn-box">
 								<input type="button" value="목록보기"
-									onclick="location.href='/animingle/board/vetqnalist.do'">
+									onclick="location.href='/animingle/board/vetqnalist.do?page=${ page }'">
 							</div>
 						</c:if>
 						<input name="vq_seq" type="hidden" value="${ vq_seq }">
@@ -172,11 +172,11 @@
 	        var currentLength = $(this).val().length;
 			var remainingLength = maxLength - currentLength;
 	
-		$(".character-count").text(currentLength + "/" + maxLength);
-	
-			if (currentLength > maxLength) {
-				$(this).val($(this).val().substring(0, maxLength));
-	        }
+			$(".character-count").text(currentLength + "/" + maxLength);
+		
+				if (currentLength > maxLength) {
+					$(this).val($(this).val().substring(0, maxLength));
+		        }
 			
 		});
 	    

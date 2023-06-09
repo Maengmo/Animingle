@@ -1,20 +1,25 @@
 .main-title {
-	font-weight : bold;
-	width : 100%;
+	font-weight: bold;
+	width: 100%;
 }
 
 hr {
-   width: 100%;
-   margin-top: 5px;
-   margin-bottom: 40px;
-   color: #868e96 !important;
-   border-top: 2px solid;
-   opacity: 0.5;
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 40px;
+	color: #868e96 !important;
+	border-top: 2px solid;
+	opacity: 0.5;
 }
+
 
 .ck-editor__editable { 
    height: 400px; 
    width : 100% !important;
+}
+
+#editor {
+	border: 1px solid #ccced1;
 }
 
 .ck {
@@ -24,51 +29,48 @@ hr {
 .ck .ck-toolbar__items {
 	margin-bottom: 5px;
 }
-
 .main-form {
-	width : 100%;
+	width: 100%;
 }
 
-.form-title div:nth-child(1),
-.date-title,
-.form-address div:nth-child(1),
-.main-content-sel3 div:nth-child(1)   {
+.form-title div:nth-child(1), .date-title, .form-address div:nth-child(1),
+	.main-content-sel3 div:nth-child(1) {
 	margin-bottom: 5px;
-	font-size : 18px;
-	font-weight : 500;
+	font-size: 18px;
+	font-weight: 500;
 }
 
 .form-date {
 	display: flex;
-    width: 50%;
-    align-items: center;
-    justify-content: space-between;
+	width: 50%;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .form-date span {
 	padding-top: 15px;
 }
 
-.form-address div:nth-child(2){
-	display : flex;
-	align-items : flex-start;
-	width : 100%;
+.form-address div:nth-child(2) {
+	display: flex;
+	align-items: flex-start;
+	width: 100%;
 }
 
 .form-address div:nth-child(2) div:nth-child(1) {
-	width : 100%;
+	width: 100%;
 }
- 
+
 .form-address div:nth-child(2) div:nth-child(2) {
-	width : 20%;
-	margin-left : 15px;
+	width: 20%;
+	margin-left: 15px;
 }
 
 .title, .petsitter-date, .address {
-	padding : 10px;
-	padding-left : 15px;
-	border-radius : 5px;
-	border : 1px solid #878787;
+	padding: 10px;
+	padding-left: 15px;
+	border-radius: 5px;
+	border: 1px solid #878787;
 	margin-bottom: 15px;
 }
 
@@ -77,47 +79,45 @@ hr {
 }
 
 .title {
-	width : 100%;
+	width: 100%;
 }
 
 .petsitter-date {
-	width : 190px;
+	width: 190px;
 }
 
 .address {
-	width : 100%;
+	width: 100%;
 }
 
 .btn-div {
-	display : flex;
+	display: flex;
 	flex-direction: row-reverse;
-
 }
 
-
 .content-btn {
-	margin-top : 20px;
-	padding : 15px 30px;
+	margin-top: 20px;
+	padding: 15px 30px;
 	width: 100px;
-	margin-left:10px;
-	border : none;
-	border-radius : 10px;
-	font-size : 18px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
 }
 
 .content-btn.add-btn {
 	background-color: #0256AA;
-	color : white;
+	color: white;
 }
 
 .find-address {
-	padding : 0px 15px;
-	border : 1px solid #ccc;
-	border-radius : 10px;
-	height : 50px;
+	padding: 0px 15px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	height: 50px;
 }
 
 .find-address:hover, .content-btn:hover {
-	transition : .3s; 
-	opacity : 0.8;
+	transition: .3s;
+	opacity: 0.8;
 }

@@ -75,6 +75,11 @@
 	border-radius: 30px;
 	box-shadow: 5px 5px #aaa;
 	padding: 20px;
+	cursor: pointer;
+}
+
+.content-list-box:hover .content-list-title span {
+	color: tomato;
 }
 
 .content-top-box {
@@ -123,13 +128,9 @@
 	padding-bottom: 15px;
 }
 
-.content-list-title a {
+.content-list-title span {
 	text-decoration: none;
 	color: #555;
-}
-
-.content-list-title a:hover {
-	color: tomato;
 }
 
 .content-list-title {

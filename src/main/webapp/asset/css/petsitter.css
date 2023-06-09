@@ -96,6 +96,10 @@
 	box-shadow: 5px 5px #aaa;
 }
 
+.item-wrap:hover .item-content {
+	color: tomato;
+}
+
 .item-header {
 	display : flex;
     align-items: baseline;
@@ -182,7 +186,7 @@
 .paging {
 	width : 100%;
 	display : flex;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .paging ul {
@@ -202,13 +206,17 @@
 
 .paging li:hover {
 	cursor : pointer;
+	color: tomato;
+}
 
+.paging span:hover {
+	cursor : pointer;
+	color: tomato;
 }
 
 .paging span {
 	font-size : 25px;
 	font-weight : bold;
-
 }
 
 .paging-hr {
@@ -224,4 +232,8 @@
 .move-to-view:hover {
 	text-decoration : none;
 	color : black;
+}
+
+.page-item.active {
+	color: tomato;
 }

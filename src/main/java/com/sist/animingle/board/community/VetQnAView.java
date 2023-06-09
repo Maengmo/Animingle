@@ -25,6 +25,7 @@ public class VetQnAView extends HttpServlet {
 		Object isVet = session.getAttribute("isVet");
 		
 		String seq = req.getParameter("vq_seq");
+		String page = req.getParameter("page");
 		
 		VetQnADAO dao = new VetQnADAO();
 		
@@ -50,6 +51,7 @@ public class VetQnAView extends HttpServlet {
 		req.setAttribute("vq_seq", seq);
 		req.setAttribute("id", id);
 		req.setAttribute("isVet", isVet);
+		req.setAttribute("page", page);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/vetqnaview.jsp");
 		dispatcher.forward(req, resp);

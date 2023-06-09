@@ -49,135 +49,64 @@
             
             <!-- 게시글 목록 -->
             <div class="board">
-            	<a href="http://localhost:8090/animingle/board/petsitterview.do" class="move-to-view">
+            <c:forEach items="${ list }" var="dto">
+            	<a href="/animingle/board/petsitterview.do?psr_seq=${ dto.psr_seq }&page=${ currentPage }" class="move-to-view">
 		            <div class="item-wrap">
 		            	<div class="item-header">
 		            		<div>
-			            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
-			            		<span class="item-id">밍글밍글(mingle77)</span>
-			            		<span class="item-time">16분전</span>
+			            		<img src="/animingle/asset/pic/${ dto.user_pic }" alt="프로필이미지" class="profile-img" id="profile-img"> 
+			            		<span class="item-id">${ dto.user_nickname }(${ dto.psr_writer })</span>
+			            		<span class="item-time">${ dto.psr_regdate }</span>
 			            	</div>
-		            		<div class="recruit-state">
-		            			모집중
-		            		</div>
+		            		<c:if test="${ dto.psr_state == '모집중' }">
+			            		<div class="recruit-state" style="background-color: tomato">
+			            				${ dto.psr_state }
+			            		</div>
+		            		</c:if>
+		            		<c:if test="${ dto.psr_state == '모집완료' }">
+			            		<div class="recruit-state" style="background-color: green;">
+			            				${ dto.psr_state }
+			            		</div>
+		            		</c:if>
 		            	</div>
 		            	<div class="item-content">
-		            		골든 리트리버 3살 3일간 맡아주실 분~!
+		            		${ dto.psr_subject }
 		            	</div>
 		            	
 		            	<div class="item-config">
-		            		<span>[2023.05.03 08:00 ~ 20:00]</span>
-		            		<span>서울시 강남구 역삼동</span>
+		            		<span>[<fmt:formatDate value="${dto.psr_fromdate}" pattern="yyyy-MM-dd HH:mm"/> ~ <fmt:formatDate value="${dto.psr_todate}" pattern="yyyy-MM-dd HH:mm"/>]</span>
+		            		<span>${ dto.psr_region }</span>
 		            	</div>
 		            </div>
 	            </a>
+			</c:forEach>
 	            
-	            <div class="item-wrap">
-	            	<div class="item-header">
-	            		<div>
-		            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
-		            		<span class="item-id">밍글밍글(mingle77)</span>
-		            		<span class="item-time">16분전</span>
-		            	</div>
-	            		<div class="recruit-state">
-	            			모집중
-	            		</div>
-	            	</div>
-	            	<div class="item-content">
-	            		골든 리트리버 3살 3일간 맡아주실 분~!
-	            	</div>
-	            	
-	            	<div class="item-config">
-	            		<span>[2023.05.03 08:00 ~ 20:00]</span>
-	            		<span>서울시 강남구 역삼동</span>
-	            	</div>
-	            </div>
-	            
-	            <div class="item-wrap">
-	            	<div class="item-header">
-	            		<div>
-		            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
-		            		<span class="item-id">밍글밍글(mingle77)</span>
-		            		<span class="item-time">16분전</span>
-		            	</div>
-	            		<div class="recruit-state-end">
-	            			모집완료
-	            		</div>
-	            	</div>
-	            	<div class="item-content">
-	            		골든 리트리버 3살 3일간 맡아주실 분~!
-	            	</div>
-	            	
-	            	<div class="item-config">
-	            		<span>[2023.05.03 08:00 ~ 20:00]</span>
-	            		<span>서울시 강남구 역삼동</span>
-	            	</div>
-	            </div>
-	            
-	            <div class="item-wrap">
-	            	<div class="item-header">
-	            		<div>
-		            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
-		            		<span class="item-id">밍글밍글(mingle77)</span>
-		            		<span class="item-time">16분전</span>
-		            	</div>
-	            		<div class="recruit-state">
-	            			모집중
-	            		</div>
-	            	</div>
-	            	<div class="item-content">
-	            		골든 리트리버 3살 3일간 맡아주실 분~!
-	            	</div>
-	            	
-	            	<div class="item-config">
-	            		<span>[2023.05.03 08:00 ~ 20:00]</span>
-	            		<span>서울시 강남구 역삼동</span>
-	            	</div>
-	            </div>
-	            
-	            <div class="item-wrap">
-	            	<div class="item-header">
-	            		<div>
-		            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
-		            		<span class="item-id">밍글밍글(mingle77)</span>
-		            		<span class="item-time">16분전</span>
-		            	</div>
-	            		<div class="recruit-state">
-	            			모집중
-	            		</div>
-	            	</div>
-	            	<div class="item-content">
-	            		골든 리트리버 3살 3일간 맡아주실 분~!
-	            	</div>
-	            	
-	            	<div class="item-config">
-	            		<span>[2023.05.03 08:00 ~ 20:00]</span>
-	            		<span>서울시 강남구 역삼동</span>
-	            	</div>
-	            </div>
-	         </div>
-	         
 	         <div class="btn-div">
-	         	<button type="submit" id="write-btn" class="write-btn" onclick="window.location='http://localhost:8090/animingle/board/petsitteradd.do';">
+	         	<c:if test="${ id != null }">
+	         	<button type="submit" id="write-btn" class="write-btn" onclick="location.href='/animingle/board/petsitteradd.do';">
 		         	<span class="material-symbols-outlined">
 						edit_note
 					</span>
 		         	작성하기
 	         	</button>
+	         	</c:if>
 	         </div>
 	         
 	         <hr class="paging-hr">
 	         
 	         <div class="paging">
-	         	<span>&lt;</span>
-	         	<ul>
-	         		<li>1</li>
-	         		<li>2</li>
-	         		<li>3</li>
-	         		<li>4</li>
-	         		<li>5</li>
-	         	</ul>
-	         	<span>&gt;</span>
+	         	<c:if test="${ currentPage > 1 }">
+			     	<span onclick="location.href='/animingle/board/petsitter.do?page=${ currentPage - 1 }'">&lt;</span>
+		     	</c:if>
+		        <ul>
+		        	<c:forEach var="pageNumber" begin="${ startPage }" end="${ endPage }">
+			        	<li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
+			        		onclick="location.href='/animingle/board/petsitter.do?page=${pageNumber}'">${ pageNumber }</li>
+		        	</c:forEach>
+		        </ul>
+		        <c:if test="${currentPage < totalPage }">
+			        <span onclick="location.href='/animingle/board/petsitter.do?page=${ currentPage + 1 }'">&gt;</span>
+		        </c:if>
 	         </div>
          </div>
          <div class="rightbar">

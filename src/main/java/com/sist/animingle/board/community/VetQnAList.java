@@ -34,13 +34,13 @@ public class VetQnAList extends HttpServlet {
 		VetQnADAO dao = new VetQnADAO();
 		
 		// 모든 게시물의 수를 담는다
-		int totalDataCount = dao.getTotalDataCount();
+		int totalDataCount = dao.getVetTotalDataCount();
 		
 		// 현재 페이지 수 계산
 		int totalPage = (int) Math.ceil((double) totalDataCount / itemsPerPage);
 		
 		// 모든 게시글 목록을 리스트에 담는다
-        List<VetQnAListDTO> list = dao.getBoardContent(currentPage, itemsPerPage);
+        List<VetQnAListDTO> list = dao.getVetBoardContent(currentPage, itemsPerPage);
         
         dao = new VetQnADAO();
         List<VetQnAListDTO> clist = dao.getCommentCnt();
