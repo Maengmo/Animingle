@@ -39,7 +39,7 @@
 		            			</c:if>
 		            			
 		            			<div class="content-config">
-			            		${indto.in_writer } | ${indto.in_regdate}
+			            		${indto.in_writer }(${indto.nickname }) | ${indto.in_regdate}
 			            	
 			            		</div>
 			            	</div>

@@ -34,7 +34,7 @@
 		         <div class="content-list-box">
 			         	<div class="content-list-title" onclick="location.href='/animingle/user/admin/inquiryview.do?seq=${dto.in_seq}'">
 			         		<div class="list-item1">
-			         			<div class="item-writer">${dto.in_writer }</div>
+			         			<div class="item-writer">${dto.in_writer }(${dto.nickname })</div>
 			         			<div> ${dto.in_regdate }</div>
 			         		</div>
 			         		<div>

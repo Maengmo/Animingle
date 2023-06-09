@@ -50,7 +50,7 @@ public class InquiryDAO {
 		
 		
 		try {
-			String sql = "select * from tblInquiry where in_prefix  = ?";
+			String sql = "select i.*, u.user_nickname as nickname  from tblInquiry  i inner join tbluser u on i.in_writer = u.user_id where i.in_prefix  = ? order by in_regdate desc";
 			
 			pstat = conn.prepareStatement(sql);
 			
@@ -69,6 +69,7 @@ public class InquiryDAO {
 				dto.setIn_prefix(rs.getString("in_prefix"));
 				dto.setIn_content(rs.getString("in_content"));
 				dto.setIn_regdate(rs.getString("in_regdate").substring(0, 10));
+				dto.setNickname(rs.getString("nickname"));
 				
 				list.add(dto);
 			}
@@ -88,7 +89,7 @@ public class InquiryDAO {
 		
 		try {
 
-			String sql = "select * from tblInquiry where in_seq = ?";
+			String sql = "select i.*, u.user_nickname as nickname from tblInquiry i inner join tbluser u on i.in_writer = u.user_id where in_seq = ?";
 
 			pstat = conn.prepareStatement(sql);
 
@@ -104,6 +105,7 @@ public class InquiryDAO {
 				dto.setIn_subject(rs.getString("in_subject"));
 				dto.setIn_prefix(rs.getString("in_prefix"));
 				dto.setIn_content(rs.getString("in_content"));
+				dto.setNickname(rs.getString("nickname"));
 				
 				String regdate = rs.getString("in_regdate").substring(0,10);
 				dto.setIn_regdate(regdate);
@@ -119,6 +121,97 @@ public class InquiryDAO {
 		
 		return null;
 		
+	}
+
+	//문의 내역 갯수
+	public int getInquiryCount_1() {
+		try {
+
+			String sql = "select count(*) as cnt from tblinquiry where in_prefix = 1";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			if (rs.next()) {
+
+				return rs.getInt("cnt");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	
+	//신고 내역 갯수
+	public int getInquiryCount_2() {
+		try {
+
+			String sql = "select count(*) as cnt from tblinquiry where in_prefix = 2";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			if (rs.next()) {
+
+				return rs.getInt("cnt");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	
+	//문의 완료 갯수
+	public int getAnswerCount_1() {
+		try {
+
+			String sql = "select count(*) as cnt from (select i.in_seq, count(ina.ina_content)\r\n"
+					+ "from tblinquiry i\r\n"
+					+ "left outer join tblinanswer ina on i.in_seq = ina.in_seq\r\n"
+					+ "where i.in_prefix = 1\r\n"
+					+ "group by i.in_seq\r\n"
+					+ "having count(ina.ina_content) > 0)";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			if (rs.next()) {
+
+				return rs.getInt("cnt");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public int getAnswerCount_2() {
+		try {
+
+			String sql = "select count(*) as cnt from (select i.in_seq, count(ina.ina_content)\r\n"
+					+ "from tblinquiry i\r\n"
+					+ "left outer join tblinanswer ina on i.in_seq = ina.in_seq\r\n"
+					+ "where i.in_prefix = 2\r\n"
+					+ "group by i.in_seq\r\n"
+					+ "having count(ina.ina_content) > 0)";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			if (rs.next()) {
+
+				return rs.getInt("cnt");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 	
 	
