@@ -38,6 +38,14 @@
    
 }
 
+.content-bottom:hover {
+	cursor: pointer;
+}
+
+.content-bottom:hover .content-title2 {
+	color: tomato;
+}
+
 .content-bottom img {
 	width: 45px;
 	height: 45px;

@@ -25,18 +25,19 @@
             <div class="content-top">
                <div class="content-title">와글와글</div>
                <div class="content-filter">
-                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=1';">일상</button>
-                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=2';">정보 공유</button>
-                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=3';">나눔</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=1&searchtext=${searchtext}';">일상</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=2&searchtext=${searchtext}';">정보 공유</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=3&searchtext=${searchtext}';">나눔</button>
                        <button onclick="location.href='/animingle/board/waglelist.do';">전체보기</button>
                </div>
-               <form id="searchform" action="/animingle/board/waglelist.do" method="POST">
+               <form id="searchform" action="/animingle/board/waglelist.do" method="GET">
                   <div class="search-box">
                        <input class="content-search" type="text" placeholder="검색" name="searchtext">
                        <span class="material-symbols-outlined">
                      search
                   </span>
                   </div>
+                  
                </form>
             </div>
             <c:forEach items="${list}" var="dto">
@@ -69,7 +70,7 @@
               <ul>
                  <c:forEach var="pageNumber" begin="${ startPage }" end="${ endPage }">
                     <li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
-                       onclick="location.href='/animingle/board/waglelist.do?page=${pageNumber}'">${ pageNumber }</li>
+                       onclick="location.href='/animingle/board/waglelist.do?page=${pageNumber}&searchtext=${searchtext}&prefix=${prefix}'">${ pageNumber }</li>
                  </c:forEach>
               </ul>
               <c:if test="${currentPage < totalPage }">
@@ -97,5 +98,14 @@
    <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+
+
+	<c:if test="${search == 'y'}">
+	$('input[name=searchtext]').val('${searchtext}');
+	</c:if>
+
+
+</script>
 </body>
 </html>

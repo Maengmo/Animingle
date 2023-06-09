@@ -258,11 +258,12 @@ public class WagleDAO {
 		return 0;
 	}
 
-	public List<WagleDTO> prefixlist(String prefix) {
+	public List<WagleDTO> prefixlist(HashMap<String, String> map) {
 		List<WagleDTO> list = new ArrayList<WagleDTO>();
 
 		try {
 			
+			/*
 			String sql = "SELECT\r\n"
 					+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
 					+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
@@ -273,6 +274,7 @@ public class WagleDAO {
 					+ "    END AS  wg_prefix,\r\n"
 					+ "    (select count(*) from tblWagleComment where tblWagleComment.wg_seq = tblWagle.wg_seq) as wg_ccnt\r\n"
 					+ "FROM tblWagle where wg_prefix = ? order by wg_regdate desc";
+			
 
 
 			pstat = conn.prepareStatement(sql);
@@ -280,6 +282,48 @@ public class WagleDAO {
 			pstat.setString(1, prefix);
 
 			rs = pstat.executeQuery();
+			*/
+			
+			
+			String where = "";
+			
+			String currentPage = map.get("currentPage");
+			String itemsPerPage = map.get("itemsPerPage");
+			String prefix =  map.get("prefix");
+			
+			/*
+			if (map.get("prefix") == null) {
+				prefix = "";
+			} else {
+				prefix = map.get("prefix");
+			}
+			*/
+			
+			 if (map.get("search").equals("y")) { 
+				 where = String.format("and wg_subject like '%%%s%%'" , map.get("searchtext")); 
+				 }
+			 
+			
+			 String sql = String.format("select * from (select i.*, rownum r from (SELECT\r\n"
+		         		+ "    wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content, \r\n"
+		         		+ "    (select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+		         		+ "    CASE\r\n"
+		         		+ "        WHEN wg_prefix = 1 THEN '일상'\r\n"
+		         		+ "        WHEN wg_prefix = 2 THEN '정보공유'\r\n"
+		         		+ "        ELSE '나눔'\r\n"
+		         		+ "    END AS  wg_prefix,\r\n"
+		         		+ "    (select count(*) from tblWagleComment where tblWagleComment.wg_seq = tblWagle.wg_seq) as wg_ccnt\r\n"
+		         		+ "FROM tblWagle where wg_prefix=%s %s order by wg_regdate desc) i) where r between ? and ?\r\n", prefix, where);
+
+			    int offset = (Integer.parseInt(currentPage) - 1) * Integer.parseInt(itemsPerPage);
+			    System.out.println(sql);
+		         
+		         pstat = conn.prepareStatement(sql);
+		         pstat.setInt(1, offset + 1);
+		         pstat.setInt(2, offset + Integer.parseInt(itemsPerPage));
+		         
+		         rs = pstat.executeQuery();
+		         
 
 			while (rs.next()) {
 
@@ -445,6 +489,55 @@ public class WagleDAO {
 	      }
 	      
 	      return null;
+	}
+
+	public List<WagleDTO> comwaglelist() {
+		List<WagleDTO> list = new ArrayList<WagleDTO>();
+		
+		try {
+			
+
+			String sql = "select * from (select i.*, rownum r from (SELECT\r\n"
+					+ "		         		 wg_seq, wg_subject, wg_regdate, wg_writer, wg_readcount, wg_content,\r\n"
+					+ "		         		(select user_nickname from tblUser where user_id = tblWagle.wg_writer) as wg_nickname,\r\n"
+					+ "		         		CASE\r\n"
+					+ "		         		     WHEN wg_prefix = 1 THEN '일상'\r\n"
+					+ "		         		    WHEN wg_prefix = 2 THEN '정보공유'\r\n"
+					+ "		         		     ELSE '나눔'\r\n"
+					+ "		         	  END AS  wg_prefix,\r\n"
+					+ "		         		   (select count(*) from tblWagleComment where tblWagleComment.wg_seq = tblWagle.wg_seq) as wg_ccnt\r\n"
+					+ "                    FROM tblWagle order by wg_regdate desc) i) where r between 1 and 4";
+			
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			
+
+			while (rs.next()) {
+
+				WagleDTO dto = new WagleDTO();
+
+				dto.setWg_seq(rs.getInt("wg_seq"));
+				dto.setWg_prefix(rs.getString("wg_prefix"));
+				dto.setWg_subject(rs.getString("wg_subject"));
+				dto.setWg_content(rs.getString("wg_content"));
+				dto.setWg_regdate(rs.getString("wg_regdate"));
+				dto.setWg_writer(rs.getString("wg_writer"));
+				dto.setWg_readcount(rs.getInt("wg_readcount"));
+				dto.setWg_nickname(rs.getString("wg_nickname"));
+				dto.setWg_ccnt(Integer.parseInt(rs.getString("wg_ccnt")));
+
+				list.add(dto);
+			}
+
+			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 	
