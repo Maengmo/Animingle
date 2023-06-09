@@ -24,7 +24,7 @@
 					<thead>
 					<tr class="tr" id="search">
 						<th>
-							<p style="color: #0256AA;">요기에서 검색 항목을 <br>선택하세요!</p>
+							<p style="color: #0256AA;">요기에서 검색 항목을 <br>선택하세요! ✧ʕ•ٹ•ʔ</p>
 							<!--  <div id="search2">
 								<input type="text" id="txt1" placeholder="입력하세요."> <span
 									class="material-symbols-outlined">search</span>
@@ -40,7 +40,7 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr class="place-list">
+					<tr class="place-lis">
 						<th>동물병원 or 동물약국 <small id="small">선택해주세요!</small> <br>
 						<small id="small2">선택 후, 지도를 이동 시 <br>해당 항목이 나타납니다.</small></th>
 					</tr>
@@ -186,7 +186,7 @@
 				
 				<hr>
 
-				<div id="review-box" style="cursor: pointer;">후기를 작성해 주세요.</div>
+				<div id="review-box" style="cursor: pointer;">후기를 작성해 주세요! (●´ϖ`●)</div>
 
 				<form id="review-form">
 				  <div id="review-add">
@@ -733,11 +733,19 @@ kakao.maps.load(function() {
 	          success: function(result) {
 	            $("#side tbody").html("");
 	            createMarkersInBounds(result, bounds);
+	            console.log(result);
+	              if(result.length == 0){
+	            	  $("#side tbody").append(`
+	            			  <tr class="place-list">
+	    	                  <th>현재 이곳에는 병원이 <br>존재하지 않아요<br><small id="small">&nbsp;&nbsp;٩(๑•̀o•́๑)و</small><br>
+	    	                  <small id="small2">다른 곳으로 이동해주세요!!</small>
+	    	                  </th>
+	    	                  </tr>
+	    	                `);
+	              }
 	            $(result).each((index, item) => {
 	            //coords = new kakao.maps.LatLng(item.h_lat, item.h_lng);
-	            
-	            
-	            
+
 	            console.log('item', item.h_seq);
 	              $("#side tbody").append(`
            		  	<tr class="place-list" id="\${item.h_seq}" onclick="addside(\${item.h_seq}, \${item.h_lat}, \${item.h_lng})">
@@ -771,6 +779,17 @@ kakao.maps.load(function() {
 	          success: function(result) {
 	            $("#side tbody").html("");
 	            createMarkersInBounds(result, bounds);
+	            
+	            if(result.length == 0){
+            	  $("#side tbody").append(`
+            			  <tr class="place-list">
+    	                  <th>현재 이곳에는 약국이 <br>존재하지 않아요<br><small id="small">&nbsp;&nbsp;٩(๑•̀o•́๑)و</small><br>
+    	                  <small id="small2">다른 곳으로 이동해주세요!!</small>
+    	                  </th>
+    	                  </tr>
+    	                `);
+              	}
+	            
 	            $(result).each((index, item) => {
 	            console.log(result);
 	            //coords = new kakao.maps.LatLng(item.p_lat, item.p_lng);

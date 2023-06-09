@@ -70,6 +70,7 @@
 	border : 1px solid black;
 	text-align : center;
 	border-bottom: 0;
+	background-color : #F9F5F6;
 }
 
 #search th {
@@ -132,6 +133,7 @@
     border-width: 0px;
     margin: 0px;
     margin-left: -17px;
+    background-color : #F9F5F6;
 }
 
 #close {
