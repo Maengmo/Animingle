@@ -25,13 +25,13 @@
   </filter-mapping>
   
   <filter>
-	<filter-name>auth</filter-name>
-	<filter-class>com.sist.animingle.filter.AuthFilter</filter-class>
+   <filter-name>auth</filter-name>
+   <filter-class>com.sist.animingle.filter.AuthFilter</filter-class>
   </filter>
   
   <filter-mapping>
-  	<filter-name>auth</filter-name>
-  	<url-pattern>*.do</url-pattern>
+     <filter-name>auth</filter-name>
+     <url-pattern>*.do</url-pattern>
   </filter-mapping>
   
 </web-app>
