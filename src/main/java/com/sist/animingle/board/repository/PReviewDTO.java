@@ -18,5 +18,12 @@ public class PReviewDTO {
 	private String pr_regdate;
 	private String pr_receipt;
 	private String p_seq;
-	
+	private String p_name;
+	private String p_address;
+	private String p_call;
+	private String p_open;
+	private String p_close;
+	private String user_id;
+	private String user_nickname;
+	private String user_pic;
 }

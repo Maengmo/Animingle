@@ -18,4 +18,17 @@ public class HReviewDTO {
 	private String hr_regdate;
 	private String hr_receipt;
 	private String h_seq;
+	private String h_name;
+	private String h_address;
+	private String h_call;
+	private String h_open;
+	private String h_close;
+	private String user_id;
+	private String user_nickname;
+	private String user_pic;
+	private String tag1c;
+	private String tag2c;
+	private String tag3c;
+	private String tag4c;
+	private String tag5c;
 }

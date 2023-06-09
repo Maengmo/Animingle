@@ -270,8 +270,7 @@ CREATE TABLE tblPharmacy (
     p_lat VARCHAR2(30) NOT NULL,
 	p_lng VARCHAR2(30) NOT NULL,
 	p_open VARCHAR2(10) NULL,
-	p_close VARCHAR2(10) NULL,
-	pr_seq number NULL
+	p_close VARCHAR2(10) NULL
 );
 
 -- 병원(tblHospital)
@@ -283,8 +282,7 @@ CREATE TABLE tblHospital (
 	h_lat VARCHAR2(30) NOT NULL,
 	h_lng VARCHAR2(30) NOT NULL,
 	h_open VARCHAR2(10) NULL,
-	h_close VARCHAR2(10) NULL,
-	hr_seq number NULL
+	h_close VARCHAR2(10) NULL
 );
 
 
