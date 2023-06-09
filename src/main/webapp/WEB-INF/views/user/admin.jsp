@@ -31,7 +31,7 @@
 							</li>
 							<li>
 								문의완료 :
-								<span>${cnt4}</span>
+								<span>${cnt3}</span>
 							</li>
 							<li>
 								<a href="/animingle/user/admin/inquirylist.do?prefix=2">신고현황 :</a>
@@ -39,7 +39,7 @@
 							</li>
 							<li>
 								신고완료 :
-								<span>${cnt3}</span>
+								<span>${cnt4}</span>
 							</li>
 						</ul>
 					</div>

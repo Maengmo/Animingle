@@ -51,7 +51,7 @@ public class MyQuest extends HttpServlet {
 				String content = mqdto.getIna_content();
 				
 				subject = subject.replace("<", "&lt;").replace(">","&gt;").replace("\\n", "<br>");
-				content = content.replace("<", "&lt;").replace(">","&gt;").replace("\\n", "<br>");
+				//content = content.replace("<", "&lt;").replace(">","&gt;").replace("\\n", "<br>");
 				
 				mqdto.setIn_subject(subject);
 				mqdto.setIna_content(content);
