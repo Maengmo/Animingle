@@ -27,9 +27,9 @@
             <div class="wagleform">
             	<div>말머리</div>
 					<select name="waglesub">
-					    <option value="일상">일상</option>
-					    <option value="정보공유">정보 공유</option>
-					    <option value="나눔">나눔</option>
+					    <option value=1>일상</option>
+					    <option value=2>정보 공유</option>
+					    <option value=3>나눔</option>
 					</select>
             	<div>제목</div>
             	<input class="title-box" type="text" placeholder="제목을 입력해주세요.">

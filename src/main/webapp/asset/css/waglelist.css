@@ -21,6 +21,10 @@
    border-radius: 30px;
 }
 
+.content-title {
+	cursor: pointer;
+}
+
 .content-title2 {
 	font-family: "SUITE-Regular"; 
    	font-size: 25px;
@@ -36,6 +40,14 @@
    border-radius: 20px;
    padding: 30px;
    
+}
+
+.content-bottom:hover {
+	cursor: pointer;
+}
+
+.content-bottom:hover .content-title2 {
+	color: tomato;
 }
 
 .content-bottom img {
@@ -169,6 +181,46 @@
 }
 
 
+.paging {
+	width : 100%;
+	display : flex;
+	justify-content: space-between;
+	align-content: center;
+	margin-top: 30px;
+	
+}
+
+.paging ul {
+	list-style-type : none;
+	display : inline-block;
+}
+
+.paging li {
+	float : left;
+	display : inline-block;
+	width : 100px !important;
+	font-size : 25px;
+	font-weight : bold;
+	text-align : center;
+
+}
+
+.paging li:hover {
+	cursor : pointer;
+
+}
+
+.paging span {
+	font-size : 25px;
+	font-weight : bold;
+}
+
 .ck-editor__editable { 
    height: 400px; 
+}
+
+
+.page-item.active {
+	color: tomato;
+	
 }
