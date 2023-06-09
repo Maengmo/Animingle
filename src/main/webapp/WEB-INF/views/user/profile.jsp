@@ -43,17 +43,25 @@
 
 			<div class="maincontent">
 				<div class="content-top">
-					<div class="content-title">회원 정보</div>
+					<c:if test="${socialLogin != null}">
+					<div class="content-title">회원 정보<small>(${dto.user_email.substring(0, dto.user_email.indexOf("@"))})</small></div>
+					</c:if>
+					<c:if test="${socialLogin == null}">
+					<div class="content-title">회원 정보<small>(${id })</small></div>
+					</c:if>
 				</div>
 
 				<div class="mypage-profile">
 					<div class="mypage-profile-img">
 						<form id="formpic" enctype="multipart/form-data">
-							<c:if test="${socialLogin != null}">
+							<c:if test='${socialLogin.equals("kakao")}'>
 								<img src="${dto.user_pic }" id="userpic">
+								<div class="social-${socialLogin }"><img src="/animingle/asset/pic/kakao_login.png" alt="카카오 로그인" class="social"></div>
 							</c:if>
 							<c:if test="${socialLogin == null }">
-								<img src="/animingle/asset/pic/userpic/${dto.user_pic }" id="userpic" alt="${dto.user_pic }">
+								<div style="width: 180px; height: 215px;">
+									<img src="/animingle/asset/pic/userpic/${dto.user_pic }" id="userpic" alt="${dto.user_pic }">
+								</div>
 								
 								<!-- 회원이 저장한 이미지로 변경 -->
 								<input type="file" name="editpic" id="editpic" accept=".gif, .jpg, .png, .jpeg">
@@ -63,7 +71,6 @@
 								</label>
 								<input type="hidden" value="${dto.user_pic }" name="oldpic" id="oldpic">
 							</c:if>
-	
 						</form>
 						<div class="mypage-profile-count">
 						<table id="tblCount">
@@ -80,6 +87,9 @@
 					</div>
 					<form action="/animingle/user/profile.do" method="POST">
 						<div class="mypage-profile-main">
+							<c:if test="${dto.user_animalnum != null }">
+								<div style="width: 400px; height: 50px; color: #0256AA; font-size:1.5rem; text-align: center;">&lt;동물 등록 회원&gt;</div>
+							</c:if>
 							<div class="form-title">이름</div>
 							<div>
 								<input type="text" value="${dto.user_name }" readonly>

@@ -124,7 +124,7 @@ img#userpic {
 	margin-bottom: 10px;
 }
 
-.mypage-profile-main div:nth-child(6) button {
+.mypage-profile-main button.search-btn {
 	width: 110px;
 	height: 43px;
 	background-color: #F0F0F0;
