@@ -59,31 +59,31 @@ public class WalkTogetherAdd extends HttpServlet {
 		if(!isExist) {
 			
 			//새 글 삽입
-			dao.addContent(dto1);
+			//dao.addContent(dto1);
 
 			String new_seq = String.valueOf(dao.getWtSeq());
 			dto1.setWt_seq(new_seq);
 			
 			//새 글 경로 삽입
-			dao.addPath(addPathDTO(pathLat, pathLng, new_seq));
+			//dao.addPath(addPathDTO(pathLat, pathLng, new_seq));
 			
 		} else {
 			
 			// 글 내용 수정
-			dto1.setWt_seq(edit_seq);
+			//dto1.setWt_seq(edit_seq);
 			
-			dao.editContent(dto1);
+			//dao.editContent(dto1);
 				
 			if(pathLat != null && pathLng != null) {
 				
 				//경로 수정
-				dao.delPath(edit_seq);
-				dao.editPath(addPathDTO(pathLat, pathLng, edit_seq));
+				//dao.delPath(edit_seq);
+				//dao.editPath(addPathDTO(pathLat, pathLng, edit_seq));
 			}
 			
 		}
 		
-		resp.sendRedirect("/animingle/board/walktogetherlist.do");
+		//resp.sendRedirect("/animingle/board/walktogetherlist.do");
 		
 	}
 

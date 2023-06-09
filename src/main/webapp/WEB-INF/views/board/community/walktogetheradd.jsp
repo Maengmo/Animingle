@@ -90,9 +90,6 @@
 					window.editor = editor;
 				} )
 				.catch( error => {
-					console.error( 'Oops, something went wrong!' );
-					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-					console.warn( 'Build id: wxum3antebby-dqjd5cbz4wpc' );
 					console.error( error );
 				} );
     
@@ -201,18 +198,16 @@
         var isEditPath = true; 
 
         kakao.maps.event.addListener(map2, 'click', function(mouseEvent) {
-            
-        	if (isEditPath) { // 처음 클릭 시에만 확인 창 표시
-            	if (confirm('경로가 모두 초기화됩니다. 수정하시겠습니까?')) {
-              		polyLine.setMap(null);
-              		drawLine(map2, mouseEvent);
-            	}
-            	isEditPath = false; // 처음 클릭 상태를 false로 변경하여 다음 클릭부터는 확인 창이 뜨지 않도록 함
-            
-			} else {
-			    drawLine(map2, mouseEvent); // 처음 클릭 이후에는 바로 drawLine 실행
-			}
-        	
+            if (isEditPath) {
+                if (confirm('경로가 모두 초기화됩니다. 수정하시겠습니까?')) {
+                    polyLine.setMap(null);
+                    drawLine(map2, mouseEvent);
+                    isEditPath = false; // 사용자가 경로를 수정하도록 선택하면, 다음 클릭부터는 확인 창이 뜨지 않도록 함
+                }
+                // 사용자가 '취소'를 선택하면 아무것도 하지 않음
+            } else {
+                drawLine(map2, mouseEvent); // isEditPath가 false인 경우 새로운 경로를 그림
+            }
         });
         
         kakao.maps.event.addListener(map2, 'mousemove', function(mouseEvent) {
@@ -417,7 +412,7 @@
     }
     
     function check() {
-
+      	
         //본문을 입력하지 않으면 알림창 띄우기
         let text = $('body > section > div > div.maincontent > form > div:nth-child(4) > div > div.centered > div > div > div > div.ck.ck-editor__main > div').text();
         
@@ -427,7 +422,7 @@
         }
         
       	//지도에 경로를 표시하지 않으면 알림창 띄우기
-        if(typeof dots.length !== 'number' && '${path}'.length === 0) {
+        if((typeof dots.length !== 'number' && '${path}'.length === 0) || dots.length < 1) {
             alert('지도에 산책 경로를 표시해주세요.');
             event.preventDefault();
         } 
