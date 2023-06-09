@@ -333,19 +333,20 @@ public class MedicalDAO {
 		try {
 			
 			String sql = "insert into tblPReview (pr_seq, pr_writer, pr_num, pr_rate, pr_content, pr_tag1, pr_tag2, pr_tag3, pr_tag4, pr_tag5, pr_regdate, pr_receipt, p_seq) \r\n"
-					+ "    values(PR_SEQ.nextVal, 'jade456', 3140000000000000000, ?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
+					+ "    values(PR_SEQ.nextVal, ?, 3140000000000000000, ?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
 
 			pstat = MedicalDAO.mapconn.prepareStatement(sql);
 
-			pstat.setString(1, dto.getPr_rate());
-			pstat.setString(2, dto.getPr_content());
-			pstat.setString(3, dto.getPr_tag1());
-			pstat.setString(4, dto.getPr_tag2());
-			pstat.setString(5, dto.getPr_tag3());
-			pstat.setString(6, dto.getPr_tag4());
-			pstat.setString(7, dto.getPr_tag5());
-			pstat.setString(8, dto.getPr_receipt());
-			pstat.setString(9, dto.getP_seq());
+			pstat.setString(1, dto.getPr_writer());
+			pstat.setString(2, dto.getPr_rate());
+			pstat.setString(3, dto.getPr_content());
+			pstat.setString(4, dto.getPr_tag1());
+			pstat.setString(5, dto.getPr_tag2());
+			pstat.setString(6, dto.getPr_tag3());
+			pstat.setString(7, dto.getPr_tag4());
+			pstat.setString(8, dto.getPr_tag5());
+			pstat.setString(9, dto.getPr_receipt());
+			pstat.setString(10, dto.getP_seq());
 			
 			return pstat.executeUpdate();
 
@@ -361,19 +362,20 @@ public class MedicalDAO {
 		try {
 			
 			String sql = "insert into tblHReview (hr_seq, hr_writer, hr_num, hr_rate, hr_content, hr_tag1, hr_tag2, hr_tag3, hr_tag4, hr_tag5, hr_regdate, hr_receipt, h_seq) \r\n"
-					+ "    values(HR_SEQ.nextVal, 'jade456', 3140000000000000000, ?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
+					+ "    values(HR_SEQ.nextVal, ?, 3140000000000000000, ?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
 
 			pstat = MedicalDAO.mapconn.prepareStatement(sql);
 
-			pstat.setString(1, dto.getHr_rate());
-			pstat.setString(2, dto.getHr_content());
-			pstat.setString(3, dto.getHr_tag1());
-			pstat.setString(4, dto.getHr_tag2());
-			pstat.setString(5, dto.getHr_tag3());
-			pstat.setString(6, dto.getHr_tag4());
-			pstat.setString(7, dto.getHr_tag5());
-			pstat.setString(8, dto.getHr_receipt());
-			pstat.setString(9, dto.getH_seq());
+			pstat.setString(1, dto.getHr_writer());
+			pstat.setString(2, dto.getHr_rate());
+			pstat.setString(3, dto.getHr_content());
+			pstat.setString(4, dto.getHr_tag1());
+			pstat.setString(5, dto.getHr_tag2());
+			pstat.setString(6, dto.getHr_tag3());
+			pstat.setString(7, dto.getHr_tag4());
+			pstat.setString(8, dto.getHr_tag5());
+			pstat.setString(9, dto.getHr_receipt());
+			pstat.setString(10, dto.getH_seq());
 			
 			return pstat.executeUpdate();
 

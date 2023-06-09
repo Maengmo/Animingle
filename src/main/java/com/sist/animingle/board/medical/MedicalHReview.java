@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,7 +17,6 @@ import org.json.simple.JSONObject;
 import com.sist.animingle.board.repository.HReviewCountDTO;
 import com.sist.animingle.board.repository.HReviewDTO;
 import com.sist.animingle.board.repository.MedicalDAO;
-import com.sist.animingle.board.repository.PReviewDTO;
 
 @WebServlet("/board/medicalHReview.do")
 public class MedicalHReview extends HttpServlet {
@@ -114,6 +113,10 @@ public class MedicalHReview extends HttpServlet {
         String rating = req.getParameter("rating");
         String hseq = req.getParameter("seq");
         
+        HttpSession session = req.getSession();
+        String id = (String)session.getAttribute("id");
+        
+        
         System.out.println(selectedTags);
         System.out.println(hseq);
 
@@ -123,6 +126,7 @@ public class MedicalHReview extends HttpServlet {
 		dto.setHr_receipt(fileName);
 		dto.setHr_rate(rating);
 		dto.setH_seq(hseq);
+		dto.setHr_writer(id);
 		if(selectedTags.equals("TAG1")) {
 			dto.setHr_tag1("y");
 			dto.setHr_tag2("n");

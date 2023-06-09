@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.animingle.board.repository.MedicalDAO;
 import com.sist.animingle.board.repository.PReviewDTO;
@@ -47,6 +48,9 @@ public class MedicalView extends HttpServlet {
         String rating = req.getParameter("rating");
         String pseq = req.getParameter("seq");
         
+        HttpSession session = req.getSession();
+        String id = (String)session.getAttribute("id");
+        
         System.out.println(selectedTags);
         System.out.println(pseq);
 
@@ -56,6 +60,7 @@ public class MedicalView extends HttpServlet {
 		dto.setPr_receipt(fileName);
 		dto.setPr_rate(rating);
 		dto.setP_seq(pseq);
+		dto.setPr_writer(id);
 		if(selectedTags.equals("TAG1")) {
 			dto.setPr_tag1("y");
 			dto.setPr_tag2("n");
