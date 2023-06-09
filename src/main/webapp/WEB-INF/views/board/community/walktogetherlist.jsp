@@ -66,12 +66,8 @@
                             </div>
                             <div class="modal-footer">
                                 <div class="btn-div btn-margin">
-                                	<span id="editBtns">					            		
-				            		</span>
-                                    <button type="button" class="write-btn">
-                                        <span class="material-symbols-outlined">sms</span>
-                                        채팅하기
-                                    </button>
+                                	<span id="editBtns"></span>
+				            		<span id="chatBtn"></span>
                                 </div>
                             </div>
                         </div>
@@ -363,6 +359,19 @@
         $('#petInfo').text(data.petkind);
         $('#timeInfo').text(data.time);
         $('#introInfo').html(data.content);
+        
+        if(data.sessionid !== null) {
+            $('#chatBtn').html(
+                    
+            	`
+            	<button type="button" class="write-btn">
+                	<span class="material-symbols-outlined">sms</span>
+                     채팅하기
+                </button>
+                ` 
+            
+            );
+        }
 
         if(data.sessionid === data.writerid) {
             $('#editBtns').html(

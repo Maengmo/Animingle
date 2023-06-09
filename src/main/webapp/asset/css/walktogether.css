@@ -65,16 +65,16 @@ a:hover {
 	color: white !important;
 }
 
-#delForm {
+#delForm{
 	display: inline-block;
 }
 
-#editBtns {
+#editBtns, #chatBtn {
 	display: flex;
 }
 
 .write-btn {
-	font-size : 20px;
+	font-size : 22px;
 	border-radius : 10px;
 	display : flex;
     align-items: center;
@@ -86,6 +86,7 @@ a:hover {
 }
 
 .write-btn .material-symbols-outlined {
+	margin-right: 5px;
 	font-size: 25px !important;
 	color: #555;
 }
