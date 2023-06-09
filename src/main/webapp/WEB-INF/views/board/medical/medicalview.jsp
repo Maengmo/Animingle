@@ -23,7 +23,7 @@
 				<table id="side">
 					<thead>
 					<tr class="tr" id="search">
-						<th>
+						<th style="background-color: #F9F5F6;">
 							<p style="color: #0256AA;">요기에서 검색 항목을 <br>선택하세요! ✧ʕ•ٹ•ʔ</p>
 							<!--  <div id="search2">
 								<input type="text" id="txt1" placeholder="입력하세요."> <span
@@ -186,10 +186,10 @@
 				
 				<hr>
 
-				<div id="review-box" style="cursor: pointer;">후기를 작성해 주세요! (●´ϖ`●)</div>
+				<div id="review-box" style="cursor: pointer;">후기를 작성해 주세요! (●´ϖ`●) <small id="sm">Click Here!!</small></div>
 
 				<form id="review-form">
-				  <div id="review-add">
+				  <div id="review-add" style="display:none">
 				    <div id="Hash-tag">
 				      <div class="tag" data-tag="TAG1">친절해요</div>
 				      <div class="tag" data-tag="TAG2">복약지도를 잘해줘요</div>

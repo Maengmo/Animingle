@@ -70,7 +70,7 @@
 	border : 1px solid black;
 	text-align : center;
 	border-bottom: 0;
-	background-color : #F9F5F6;
+	
 }
 
 #search th {
@@ -371,11 +371,15 @@
 	width : 50px;
 }
 
+.place-lis {
+	background-color : #F9F5F6;
+}
+
 .place-list {
 	
 	width : 200px;
 	height : 50px;
-	
+	background-color : #F9F5F6;
 }
 
 .place-list:hover {
@@ -431,6 +435,10 @@
 
 #kind-select {
 	margin: 10px 10px;
+}
+
+#sm {
+	font-size : 10px;
 }
 
 .highlight {
