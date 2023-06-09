@@ -39,7 +39,7 @@
 			</div>
 			<div class="maincontent">
 				<div class="a-div">
-					<a href="http://localhost:8090/animingle/board/findlist.do?page=1&prefix=${prefix}" class="a-back">
+					<a href="http://localhost:8090/animingle/board/findlist.do?page=1&prefix=${prefix}&word=${word}" class="a-back">
 						<span class="material-symbols-outlined">arrow_back</span>
 						<span class="back-to-list">목록으로 돌아가기</span>
 					</a>
@@ -98,8 +98,8 @@
 				<div class="find-view-comment-button">
 					<button id="btnCommentAdd">댓글 쓰기</button>
 				</div>
-				<input type="hidden" name="lat" id="lat-value" value="37.4993">
-			    <input type="hidden" name="lng" id="lng-value" value="127.0331">
+				<input type="hidden" name="lat" id="lat-value" value="90">
+			    <input type="hidden" name="lng" id="lng-value" value="90">
 			</div>
 			<div class="rightbar">
 				<!-- 오른쪽 사이드바 입니다. -->

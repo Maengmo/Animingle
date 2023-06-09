@@ -46,6 +46,15 @@ public class FindList extends HttpServlet {
 		
 		String word = req.getParameter("word");
 		String prefix = req.getParameter("prefix");
+		String search = "n";
+				
+		
+		if (( word == null)
+	             ||  word.equals("")) {
+	         search = "n";
+	      } else {
+	         search = "y";
+	      }
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		
@@ -53,6 +62,7 @@ public class FindList extends HttpServlet {
 		map.put("end", end + "");
 		map.put("word", word);
 		map.put("prefix", prefix);
+		map.put("search", search);
 		
 		FindDAO dao = new FindDAO();
 		

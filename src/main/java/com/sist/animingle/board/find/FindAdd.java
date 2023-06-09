@@ -56,7 +56,7 @@ public class FindAdd extends HttpServlet {
 		int result = dao.findadd(dto);
 		
 		if (result == 1) {
-			resp.sendRedirect("/animingle/board/findlist.do?page=&prefix=" + prefix);
+			resp.sendRedirect("/animingle/board/findlist.do?page=&prefix=");
 		} else {
 			PrintWriter writerAlert = resp.getWriter();
 			writerAlert.print("<script>alert('failed');history.back();</script>");

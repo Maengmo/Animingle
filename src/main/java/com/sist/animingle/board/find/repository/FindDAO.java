@@ -54,12 +54,21 @@ public class FindDAO {
 			
 			String where = "";
 			
-			if (map.get("prefix").equals("1") || map.get("prefix").equals("2")) {
-				where = String.format("where ff_prefix = %s", map.get("prefix"));
+			if ((map.get("prefix").equals("1") || map.get("prefix").equals("2")) && map.get("search").equals("y")) {
+			
+				where = String.format(" where ff_prefix = %s and ff_subject like '%%%s%%'", map.get("prefix"), map.get("word"));
+			} else if ((map.get("prefix").equals("1") || map.get("prefix").equals("2")) && map.get("search").equals("n")) {
+				where = String.format(" where ff_prefix = %s", map.get("prefix"));
+			} else if (map.get("prefix").equals("0") && map.get("search").equals("y")) {
+				where = String.format(" where ff_subject like '%%%s%%'", map.get("word"));
+			} else if (map.get("prefix").equals("0") && map.get("search").equals("n")) {
+				where = "";
 			}
 			
 			String sql = String.format("select * from (select ff.*, rownum as rnum from (select (select user_nickname from tblUser where user_id = ff_writer) as nickname, (select count(*) from tblffcomment where ff_seq = f.ff_seq) as ffc_cnt, ff_seq, ff_writer, to_char(ff_regdate, 'YYYY-MM-DD') as ff_regdate, ff_prefix, ff_subject, ff_readcount from tblFindFamily f %s order by ff_seq desc) ff)"
-					+ "where rnum between %s and %s order by ff_seq desc", where, map.get("begin"), map.get("end"));
+					+ " where rnum between %s and %s order by ff_seq desc", where, map.get("begin"), map.get("end"));
+			
+			
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);

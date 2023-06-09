@@ -30,6 +30,9 @@ public class FindView extends HttpServlet {
 		
 		String seq = req.getParameter("seq");
 		String prefix = req.getParameter("prefix");
+		String word = req.getParameter("word");
+		String search = req.getParameter("search");
+		
 		
 		FindDAO dao = new FindDAO();
 		
@@ -55,6 +58,8 @@ public class FindView extends HttpServlet {
 		req.setAttribute("clist", clist);
 		req.setAttribute("cplist", cplist);
 		req.setAttribute("prefix", prefix);
+		req.setAttribute("word", word);
+		req.setAttribute("search", search);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/find/findview.jsp");
 		dispatcher.forward(req, resp);

@@ -27,20 +27,20 @@
             <div class="content-top">
                <div class="content-title">우리 가족을 찾아주세요</div>
 	            <div class="content-filter">
-	                	<button onclick="location.href='/animingle/board/findlist.do?prefix=1';" <c:if test="${map.prefix ==  1}">class="prefix-select"</c:if>>주인 찾아요</button>
-	                    <button onclick="location.href='/animingle/board/findlist.do?prefix=2';" <c:if test="${map.prefix ==  2}">class="prefix-select"</c:if>>펫 찾아요</button>
-	                    <button onclick="location.href='/animingle/board/findlist.do?prefix=';">전체보기</button>
+	                	<button onclick="location.href='/animingle/board/findlist.do?nowpage=&prefix=1&word=';" <c:if test="${map.prefix ==  1}">class="prefix-select"</c:if>>주인 찾아요</button>
+	                    <button onclick="location.href='/animingle/board/findlist.do?nowpage=&prefix=2&word=';" <c:if test="${map.prefix ==  2}">class="prefix-select"</c:if>>펫 찾아요</button>
+	                    <button onclick="location.href='/animingle/board/findlist.do?nowpage=&prefix=0&word=';">전체보기</button>
 	            </div>
-	            <form action="#">
+	            
 	            	<div class="search-box">
 	            	    <input class="content-search" type="text" placeholder="검색" name="word">
-	                    <span class="material-symbols-outlined">search</span>
+	                    <span class="material-symbols-outlined search-bar" >search</span>
 	                </div>
-	            </form>
+	           
             </div>
 
             <c:forEach items="${list}" var="dto">
-            <a href="/animingle/board/findview.do?seq=${dto.seq}&prefix=${map.prefix}" class="move-to-view">
+            <a href="/animingle/board/findview.do?seq=${dto.seq}&prefix=${map.prefix}&word=${map.word}" class="move-to-view">
             <div class="find-content">
                <div class="writer view-writer">
                   <img src="/animingle/asset/commonimg/logo_01.png">
@@ -91,6 +91,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
+   	
+   	$('.search-bar').click(function() {
+   		
+   		location.href='/animingle/board/findlist.do?nowpage=${nowpage}&prefix=${map.prefix}&word=' + $('.content-search').val();
+   	});
    	
 </script>
 </body>

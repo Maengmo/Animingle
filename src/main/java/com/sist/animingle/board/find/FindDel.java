@@ -37,7 +37,7 @@ public class FindDel extends HttpServlet {
 		System.out.println(result);
 		
 		if (result >= 1) {
-			resp.sendRedirect("/animingle/board/findlist.do?page=&prefix");
+			resp.sendRedirect("/animingle/board/findlist.do?page=&prefix=");
 		} else {
 			PrintWriter writer = resp.getWriter();
 			writer.print("<script>alert('failed');history.back();</script>");
