@@ -24,6 +24,7 @@ public class CommunityList extends HttpServlet {
 
 		//CommunityList.java
 		
+
 		HttpSession session = req.getSession();
 		
 		WagleDAO wagledao = new WagleDAO();

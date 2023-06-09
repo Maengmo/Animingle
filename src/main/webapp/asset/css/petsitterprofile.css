@@ -1,46 +1,133 @@
+.content-top {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 25px;
+}
+
+.content-title {
+	width: 100%;
+	border: 2px solid #ccc;
+	padding: 20px;
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	border-radius: 30px;
+}
+
 .content {
-	font-family: "SUITE-Regular";	
+	font-family: "SUITE-Regular";
 }
-.maincontent {
-	padding: 30px;
-}
+
 h1 {
 	text-align: center;
 	font-weight: bold;
 }
+
 .infobox {
-	margin: 15px auto;
+	margin: 40px auto 0;
 	display: flex;
 }
+
 .picbox {
-	border: 1px solid #DDD;
+	font-family: "SUITE-Regular";
+	width: 200px;
+	text-align: center;
+	float: left;
+	padding: 10px;
 }
-.picbox > img {
+
+img#petsitterpic {
 	width: 180px;
 	height: 200px;
+	object-fit: cover;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 15px;
 }
+
+#btnlabel {
+	cursor: pointer;
+	margin: 0 auto;
+	width: 100px;
+	height: 40px;
+	padding: 7px;
+}
+
+#editpic {
+	display: none;
+}
+
+
 .tblinfo {
 	margin-left: 30px;
+	width: 600px;
+	border-collapse: separate;
+	border-radius: 10px;
+	border-spacing: 0;
 }
 
 .tblinfo th {
-	width: 100px;
+	width: 150px;
+	background-color: #D1E0F0;
+	text-align: center;
+	border: 1px solid #CCC;
+	height: 60px;
+	font-size: 1.2rem
 }
 
-.tblinfo tr:last-child {
-	height: 80px;
-	font-size: 40px;
+.tblinfo td {
+	text-align:center;
+	border: 1px solid #CCC;
+	font-size: 1.2rem;
+	margin: 0px;
+}
+
+.tblinfo tr:last-child td{
 	font-weight: bold;
+	border-bottom-right-radius: 10px;
 }
 
-.btn.editpic, .editintro {
-	margin-left: 50px;
+.tblinfo tr:first-child th:first-child {
+	border-top-left-radius: 10px;
+}
+
+.tblinfo tr:first-child td:last-child {
+	border-top-right-radius: 10px;
+}
+
+.tblinfo tr:last-child th:first-child {
+	border-bottom-left-radius: 10px;
+}
+
+.tblinfo tr:last-child td:last-child {
+	border-bottom-right-radius: 10px;
+}
+
+#star-rate {
+	margin:0 auto;
+	overflow: hidden;
+	width: 180px;
+}
+ 
+#btnlabel {
+	border: none;
+	border-radius: 10px;
+	font-size: 18px;
+	background-color: #0256AA;
+	color: white;
+}
+
+#btnlabel, .editintro {
 	background-color: #0256AA;
 }
 
-.btn.editpic:hover, .editintro:hover  {
-	transition : .3s;
-	opacity : 0.8;
+#btnlabel:hover, #btnlabel:hover {
+	transition: .3s;
+	opacity: 0.8;
 }
 
 .selfintro {
@@ -48,9 +135,9 @@ h1 {
 }
 
 h3 {
-	padding-left: 30px;
 	margin-bottom: 15px;
 }
+
 .selfintro textarea {
 	width: 100%;
 	min-height: 300px;
@@ -58,8 +145,9 @@ h3 {
 	line-height: 30px;
 	outline: none;
 	border-radius: 10px;
-	background: linear-gradient( 45deg, #FFD5DE, #F8EDEB );
 	font-size: 1.2rem;
+	resize: none;
+	border: 2px solid #D1E0F0;
 }
 
 .editintro {
@@ -68,30 +156,11 @@ h3 {
 
 .score {
 	position: relative;
-	top:10px;
+	top: 10px;
 	color: #666;
 }
 
-.tblapply {
-	width: 100%;
-	font-size: 1.2rem;
-}
 
-.tblapply tr {
-	border: 2px solid #DDD;
-}
-
-
-
-.tblapply tr > td:first-child {
-	text-align: left;
-	padding: 15px;
-}
-
-.tblapply tr > td:last-child {
-	text-align: center;
-	width: 100px;
-}
 
 .state {
 	width: 90%;
@@ -99,19 +168,61 @@ h3 {
 }
 
 .ing {
-	background-color:tomato;
+	background-color: tomato;
 	color: white;
-	
 }
 
 .accept {
-	background-color:#14AE5C;
+	background-color: #14AE5C;
 	color: white;
 }
 
 .deny {
-	background-color:gold;
+	background-color: gold;
 	color: #A38902;
 }
 
 
+.tblcontent {
+	border-collapse: separate;
+	width: 100%;
+	border-radius: 10px;
+	border-spacing: 0;
+}
+
+.tblcontent tr:first-child th:first-child {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.tblcontent tr:last-child td:first-child {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.tblcontent th, .tblcontent td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	height: 70px;
+	font-size: 1.2rem;
+}
+.tblcontent tbody tr {
+	cursor: pointer;
+}
+
+.tblcontent .subject-box {
+	margin-left: 20px;
+}
+
+.tblcontent th {
+	background-color: #D1E0F0;
+	text-align: center;
+}
+
+.tblcontent td {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

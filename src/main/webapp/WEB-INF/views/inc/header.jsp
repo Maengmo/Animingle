@@ -37,7 +37,7 @@
               <a class="nav-link text-dark" aria-current="page" href="/animingle/user/join.do"
                 >회원가입</a>
             </c:if>
-            <c:if test="${not empty id}">
+            <c:if test="${not empty id && isAdmin != 'Y'}">
               <a class="nav-link text-dark" aria-current="page" href="/animingle/user/profile.do"
                 >마이페이지</a>
             </li>
@@ -46,6 +46,12 @@
                 >고객센터</a
               >
             </li>
+            </c:if>
+            <c:if test="${not empty id && isAdmin == 'Y'}">
+              <a class="nav-link text-dark" aria-current="page" href="/animingle/user/admin.do">
+                관리 센터</a>
+            </li>
+           
             </c:if>
           </ul>
         </div>
@@ -64,7 +70,14 @@
           	<a href="/animingle/board/findlist.do">우리 가족을 찾아주세요</a>
           </li>
           <li>
-          	<a href="/animingle/board/communitylist.do">커뮤니티</a>
+          	<div class="comunity-wrapper">
+			  <a class="comunity" href="/animingle/board/communitylist.do">커뮤니티</a>
+			  <div class="comunity-submenu">
+			    <div><a href="/animingle/board/walktogetherlist.do">산책 친구 구해요</a></div>
+			    <div><a href="/animingle/board/waglelist.do">와글와글</a></div>
+			    <div><a href="/animingle/board/vetqnalist.do">수의사 QnA</a></div>
+			  </div>
+			</div>
           </li>
           <li>
           	<a href="/animingle/board/medicalview.do">병원/약국찾기</a>
