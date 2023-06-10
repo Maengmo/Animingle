@@ -27,105 +27,103 @@
 			</div>
 			<div class="maincontent">
 				<div class="a-div">
-					<a href="http://localhost:8090/animingle/board/petsitter.do" class="a-back">
+					<a href="/animingle/board/petsitter.do?page=${ page }" class="a-back">
 						<span class="material-symbols-outlined">arrow_back</span>
 						<span class="back-to-list">목록으로 돌아가기</span>
 					</a>
 				</div>
 				<div class="content-box">
 					<div>
-	            		<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="profile-img" id="profile-img"> 
-	            		<span class="item-id">밍글밍글(mingle77)</span>
+	            		<img src="/animingle/asset/pic/${ dto.user_pic }" alt="프로필이미지" class="profile-img" id="profile-img"> 
+	            		<span class="item-id">${ dto.user_nickname }(${ dto.psr_writer })</span>
 	            	</div>
 	            	
 	            	<div class="detail-content">
 	            		<div>
-		            		<div class="content-title">골든 리트리버 3살 3일간 맡아주실 분~</div>
-		            		<span class="content-time">16분전</span>
+		            		<div class="content-title">${ dto.psr_subject }</div>
+		            		<span class="content-time">${ dto.psr_regdate }</span>
 		            	</div>
 		            	<div class="detail-config">
-		            		<span>[2023.05.03 08:00 ~ 20:00]</span>
-		            		<span>서울시 강남구 역삼동</span>
+		            		<span>[<fmt:formatDate value="${dto.psr_fromdate}" pattern="yyyy-MM-dd HH:mm"/> ~ <fmt:formatDate value="${dto.psr_todate}" pattern="yyyy-MM-dd HH:mm"/>]</span>
+		            		<span>${ dto.psr_region }</span>
 		            	</div>
 		            	
 		            	<div class="content-text">
-			            	3살 된 골든 리트리버입니다. 3개월 아닙니다. <br>
-							순하고 착해요.. 산책만 하루에 2번 시켜 주시고 사료는 소분해서 잘 보이는 곳에 뒀습니다.<br>
-							산책 꼭 시켜주셔야 됩니다 ㅠㅠ 아이가 밖에서만 배변을 해서...<br>
-							부탁 드리겠습니다. <br><br>
-							사례비: 15만원 <br>
-							olo-48s3-7q23 연락 부탁드립니다ㅠ
-		            		
-		            		<img src="/animingle/asset/pic/dog.jpg" alt="반려동물 이미지" width="100%">
+			            	${ dto.psr_content }
 		            	</div>
 		            	
 		            	<div class="btn-div">
-		            		<button type="button" class="content-btn1">수정하기</button>
-		            		<button type="button" class="content-btn2">삭제하기</button>
+		            		<c:if test="${ dto.psr_writer == id }">
+			            		<button type="button" class="content-btn1" onclick="location.href='/animingle/board/petsitteredit.do?psr_seq=${ psr_seq }&page=${ page }'">수정하기</button>
+			            		<c:if test="${ plist.size() == 0}">
+			            			<button type="button" class="content-btn2" onclick="location.href='/animingle/board/petsitterdel.do?psr_seq=${ psr_seq }&psr_writer=${dto.psr_writer}&page=${ page }'">삭제하기</button>
+			            		</c:if>
+		            		</c:if>
 		            	</div>
 		            	<div class="writebtn-div">
-				         	<button type="submit" id="write-btn" class="write-btn">
-					         	신청하기
-				         	</button>
+		            		<c:if test="${ isPet == 'Y' && dto.psr_state == '모집중'}">
+					         	<button type="submit" id="write-btn" class="write-btn" onclick="location.href='/animingle/board/petsitterapply.do?psr_seq=${ psr_seq }&page=${ page }'">
+						         	신청하기
+					         	</button>
+				         	</c:if>
 			        	 </div>
 	            	</div>
-	            	
-	            	
-			
 	            		
 		            <div class="applicant-list">
 		            	<span class="applicant-list-title">신청자 목록</span>
-		            	<div class="list-item">
-		            		<div class="list-item-div">
-		            			<div>
-		            			<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="applicant-profile-img" id="profile-img"> 
-		            			</div>
-		            			
-		            			<div class="item-div2">
-		            				<div class="applicant-id">펫시터1(ilovedog22)</div>
-		            				<div>돌봄 횟수 : 15회</div>
-		            				<div>별점 : 4.5</div>
-		            			</div>
-		            			
-		            			<div>
-		            				<button type="button" class="applicant-btn">채팅하기</button>
-		            				<button type="button" class="applicant-btn">맡기기</button>
-		            			</div>
-		            			
-		            		</div>
-		            		<div class="info">
-		            			강아지 사랑<br>
-		            			나라 사랑<br>
-		            			나라에서 허락한 유일한 마약 = 강아지!	            			
-		            		</div>
-		            	</div>
-		            	
-		            	<div class="list-item">
-		            		<div class="list-item-div">
-		            			<div>
-		            			<img src="/animingle/asset/pic/pic.jpg" alt="프로필이미지" class="applicant-profile-img" id="profile-img"> 
-		            			</div>
-		            			
-		            			<div class="item-div2">
-		            				<div class="applicant-id">펫시터1(ilovedog22)</div>
-		            				<div>돌봄 횟수 : 15회</div>
-		            				<div>별점 : 4.5</div>
-		            			</div>
-		            			
-		            			<div>
-		            				<button type="button" class="applicant-btn">채팅하기</button>
-		            				<button type="button" class="applicant-btn">맡기기</button>
-		            			</div>
-		            			
-		            		</div>
-		            		<div>
-		            			강아지 사랑<br>
-		            			나라 사랑<br>
-		            			나라에서 허락한 유일한 마약 = 강아지!	            			
-		            		</div>
-		            	</div>
-		            	
-		            	
+		            	<c:forEach items="${ plist }" var="pdto">
+			            	<div class="list-item">
+			            		<div class="list-item-div">
+			            			<div class="item-div1">
+			            				<img src="/animingle/asset/pic/${ pdto.user_pic }" alt="프로필이미지" class="applicant-profile-img" id="profile-img"> 
+			            			</div>
+			            			
+			            			<div class="item-div2">
+			            				<div class="applicant-id">${ pdto.user_nickname }(${ pdto.ps_id })</div>
+			            				<div>돌봄 횟수 : ${ pdto.ps_cnt }회</div>
+			            				<div>별점 : ${ pdto.rate }</div>
+			            			</div>
+			            			
+		            				<c:if test='${ id.equals(pdto.psr_writer) or pdto.ps_id.equals(id) }'>
+				            			<div class="item-div3">
+				            				<c:if test="${ pdto.psa_adoptdate != null }">
+				            					<button type="button" class="applicant-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">채팅하기</button>
+				            				</c:if>
+				            				<c:if test='${dto.psr_state.equals("모집중") }'>
+				            					<button type="button" class="applicant-btn" onclick="location.href='/animingle/board/selectpetsitter.do?psr_seq=${ psr_seq }&page=${ page }&psa_seq=${ pdto.psa_seq }&psr_writer=${ pdto.psr_writer }'">맡기기</button>
+				            				</c:if>
+				            			</div>
+				            			<!-- 채팅모달 -->
+										<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+										  <div class="modal-dialog">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="staticBackdropLabel">${ pdto.user_nickname }님과 채팅</h5>
+										        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										      </div>
+										      <div id="messageWindow" class="modal-dialog modal-dialog-scrollable">
+										      </div>
+										      <div class="modal-footer">
+										      	<input id="inputMessage" class="cht-msg-box" type="text" onkeyup="enterkey()">
+										        <button type="button" class="btn btn-primary" onclick="send()">전 송</button>
+										      </div>
+										    </div>
+										  </div>
+										</div>
+										<c:if test="${(id ne '') and !(empty id)}">
+									        <input type="hidden" value='${id}' id='chat_id' />
+									    </c:if>
+									    <c:if test="${(id eq '') or (empty id)}">
+									        <input type="hidden" value='<%=session.getId().substring(0, 6)%>'
+									            id='chat_id' />
+									    </c:if>
+		            				</c:if>
+			            		</div> 	
+			            		<div class="info">
+			            			${ pdto.ps_intro }           			
+			            		</div>
+			            	</div>
+		            	</c:forEach>
 	            	</div>
 				</div>
 			</div>
@@ -137,5 +135,79 @@
 	<%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+		
+		var textarea = document.getElementById("messageWindow");
+		var webSocket = new WebSocket('ws://localhost:8090/animingle/petsitterview.do');
+		var inputMessage = document.getElementById('inputMessage');
+		
+		webSocket.onerror = function(event) {
+	        onError(event)
+	    };
+	    
+	    webSocket.onopen = function(event) {
+	        onOpen(event)
+	    };
+	    
+	    webSocket.onmessage = function(event) {
+	        onMessage(event)
+	    };
+	    
+	    function onMessage(event) {
+	        var message = event.data.split("|");
+	        var sender = message[0];
+	        var content = message[1];
+	        if (content == "") {
+	            
+	        } else {
+	            if (content.match("/")) {
+	                if (content.match(("/" + $("#chat_id").val()))) {
+	                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
+	                    if (temp[1].trim() == "") {
+	                    } else {
+	                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
+	                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
+	                    }
+	                } else {
+	                }
+	            } else {
+	                if (content.match("!")) {
+	                    $("#messageWindow").html($("#messageWindow").html()
+	                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+	                } else {
+	                    $("#messageWindow").html($("#messageWindow").html()
+	                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+	                }
+	            }
+	        }
+	    }
+	    
+	    function onOpen(event) {
+	        $("#messageWindow").html("<p class='chat_content'>채팅에 참여하였습니다.</p>");
+	        /* alert($("#messageWindow")); */
+	    }
+	    
+	    function onError(event) {
+	        alert(event.data + '채팅서버 에러');
+	    }
+	    
+	    function send() {
+	        if (inputMessage.value == "") {
+	        } else {
+	            $("#messageWindow").html($("#messageWindow").html()
+	                + "<p class='chat_content'>나 : " + inputMessage.value + "</p>");
+	        }
+	        webSocket.send($("#chat_id").val() + "|" + inputMessage.value);
+	        inputMessage.value = "";
+	    }
+	    
+	    //     엔터키를 통해 send함
+	    function enterkey() {
+	        if (window.event.keyCode == 13) {
+	            send();
+	        }
+	    }
+	    
+</script>
 </body>
 </html>

@@ -22,28 +22,29 @@
          <div class="maincontent">
          	<div class="main-content-box">
          		<div class="main-content-title">수의사QnA</div>
-         		<form action="/animingle/board/vetqnaadd.do" method="POST">
+         		<form action="/animingle/board/vetqnaedit.do" method="POST">
 	         		<div>
 	         			<div class="main-content-sel1">
 	         				<div>말머리</div>
 	         				<select name="tag">
-	         					<option>강아지</option>
-	         					<option>고양이</option>
-	         					<option>기타</option>
+	         					<option ${vq_prefix == 1 ? 'selected' : ''}>강아지</option>
+  								<option ${vq_prefix == 2 ? 'selected' : ''}>고양이</option>
+  								<option ${vq_prefix == 3 ? 'selected' : ''}>기타</option>
 	         				</select>
 	         			</div>
 	         			<div class="main-content-sel2">
 	         				<div>제목</div>
-	         				<input name="title" type="text" placeholder="제목을 입력하세요">
+	         				<input name="title" type="text" placeholder="제목을 입력하세요" value="${ vq_subject }">
 	         			</div>
 	         			<div class="main-content-sel3">
 	         				<div>본문</div>
-	         				<textarea name="content" id="editor" placeholder="내용을 입력하세요."></textarea>
+	         				<textarea name="content" id="editor" placeholder="내용을 입력하세요.">${ vq_content }</textarea>
 	         			</div>
 	         		</div>
 	         		<div class="btn-div">
 	            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
-						<button type="submit" id="add-btn" class="content-btn add-btn">등 록</button>
+						<button type="submit" id="add-btn" class="content-btn add-btn">수 정</button>
+						<input name="vq_seq" type="hidden" value="${ vq_seq }">
 	        		</div>
          		</form>
          	</div>

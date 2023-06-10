@@ -75,6 +75,17 @@
 	border-radius: 30px;
 	box-shadow: 5px 5px #aaa;
 	padding: 20px;
+	cursor: pointer;
+}
+
+.content-list-box:hover .content-list-title span {
+	color: tomato;
+}
+
+.content-top-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .tag {
@@ -98,16 +109,62 @@
 	object-fit: cover;
 }
 
-.content-list-title {
-	font-size: 18px;
-	font-weight: bold;
-	padding-bottom: 15px;
+.view-subject-icon {
+	display: flex;
+	align-items: center;
+	color: #555;
+}
+
+.view-subject-icon .material-symbols-outlined {
+	font-size: 25px !important;
+	color: #555 !important;
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
 .content-list-title {
 	font-size: 18px;
 	font-weight: bold;
 	padding-bottom: 15px;
+}
+
+.content-list-title span {
+	text-decoration: none;
+	color: #555;
+}
+
+.content-list-title {
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 15px;
+}
+
+.content-list-sub-title {
+	font-size: 15px;
+	font-weight: normal;
+	color: #aaa;
+}
+
+.sub-content {
+	width: 760px;
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 10px;
+}
+
+.sub-content div {
+	margin-right: 12px;
+	color: #aaa;
+}
+
+.sub-content div:nth-child(1) {
+	width: 76px;
+	text-align: center;
+}
+
+.sub-content div:nth-child(2) {
+	width: 100px;
+	text-align: center;
 }
 
 .content-list-sub-title {
@@ -125,31 +182,6 @@
 .sub-content div {
 	margin-right: 12px;
 	color: #aaa;
-}
-
-.sub-content div:nth-child(1) {
-	color: #555;
-}
-
-.content-list-sub-title {
-	font-size: 15px;
-	font-weight: normal;
-	color: #aaa;
-}
-
-.sub-content {
-	display: flex;
-	justify-content: flex-end;
-	margin-bottom: 10px;
-}
-
-.sub-content div {
-	margin-right: 12px;
-	color: #aaa;
-}
-
-.sub-content div:nth-child(1) {
-	color: #555;
 }
 
 .button-box {
@@ -184,4 +216,40 @@
 	background-color: #0256AA;
 	border: 1px solid #0256AA;
 	color: white;
+}
+
+.paging {
+	width : 100%;
+	display : flex;
+	justify-content: center;
+}
+
+.paging ul {
+	list-style-type : none;
+	display : inline-block;
+}
+
+.paging li {
+	display : inline-block;
+	width : 100px !important;
+	font-size : 25px;
+	font-weight : bold;
+	text-align : center;
+
+}
+
+.paging li:hover,
+.paging span:hover {
+	cursor : pointer;
+	color: tomato;
+
+}
+
+.page-item.active {
+	color: tomato;
+}
+
+.paging span {
+	font-size : 25px;
+	font-weight : bold;
 }
