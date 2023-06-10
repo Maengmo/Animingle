@@ -20,8 +20,6 @@ import com.sist.animingle.board.repository.InAnswerDTO;
 import com.sist.animingle.board.repository.InquiryDAO;
 import com.sist.animingle.board.repository.InquiryDTO;
 
-import oracle.jdbc.replay.driver.TxnReplayableSqlxml;
-
 @WebServlet("/user/admin/inquiryview.do")
 public class AdminInquiryView extends HttpServlet {
 

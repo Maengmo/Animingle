@@ -67,7 +67,7 @@
           	<a href="/animingle/board/adoptionlist.do">당신을 기다려요</a>
           </li>
           <li>
-          	<a href="/animingle/board/findlist.do">우리 가족을 찾아주세요</a>
+          	<a href="/animingle/board/findlist.do?page=1&prefix=0&word=">우리 가족을 찾아주세요</a>
           </li>
           <li>
           	<div class="comunity-wrapper">

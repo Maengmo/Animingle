@@ -40,8 +40,9 @@
             </div>
 
             <c:forEach items="${list}" var="dto">
-            <a href="/animingle/board/findview.do?seq=${dto.seq}&prefix=${map.prefix}&word=${map.word}" class="move-to-view">
+            
             <div class="find-content">
+	            <a href="/animingle/board/findview.do?seq=${dto.seq}&prefix=${map.prefix}&word=${map.word}" class="move-to-view">
                <div class="writer view-writer">
                   <img src="/animingle/asset/commonimg/logo_01.png">
                   ${dto.nickname}(${dto.writer})
@@ -60,8 +61,9 @@
                   <span class="material-symbols-outlined">visibility</span>${dto.readcount}
                   <span class="material-symbols-outlined">chat</span>${dto.ffc_cnt}
                </div>
+               </a>
             </div>
-            </a>
+            
             </c:forEach>
             
             <c:if test="${not empty id}">
