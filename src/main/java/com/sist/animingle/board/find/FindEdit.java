@@ -63,7 +63,7 @@ public class FindEdit extends HttpServlet {
 		int result = dao.findedit(dto);
 		
 		if (result == 1) {
-			resp.sendRedirect("/animingle/board/findview.do?seq=" + seq + "&prefix=" + prefix);
+			resp.sendRedirect("/animingle/board/findview.do?seq=" + seq + "&prefix=" + prefix + "&word=");
 		} else {
 			PrintWriter writerAlert = resp.getWriter();
 			writerAlert.print("<script>alert('failed');history.back();</script>");

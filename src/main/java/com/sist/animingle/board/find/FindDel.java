@@ -31,13 +31,9 @@ public class FindDel extends HttpServlet {
 		
 		result *= dao.findDel(seq);
 		
-		if (result >= 1) {
-			resp.sendRedirect("/animingle/board/findlist.do?page=&prefix=");
-		} else {
-			PrintWriter writer = resp.getWriter();
-			writer.print("<script>alert('failed');history.back();</script>");
-			writer.close();
-		}
+		
+		resp.sendRedirect("/animingle/board/findlist.do?page=&prefix=&word=");
+		
 
 	}
 }

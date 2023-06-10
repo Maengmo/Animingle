@@ -104,11 +104,11 @@
 				<input type="hidden" name="lat" id="lat-value" value="90">
 			    <input type="hidden" name="lng" id="lng-value" value="90">
 			</div>
-			<div class="rightbar">
-				<!-- 오른쪽 사이드바 입니다. -->
-			</div>
-		</div>
 			
+		</div>
+		<div class="rightbar">
+			<!-- 오른쪽 사이드바 입니다. -->
+		</div>
 	</section>
 	<%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
