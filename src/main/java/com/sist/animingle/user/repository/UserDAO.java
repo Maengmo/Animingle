@@ -708,7 +708,7 @@ public class UserDAO {
 
          List<VetQnADTO> list = new ArrayList<VetQnADTO>();
          
-         int num = 5;
+         int num = 0;
 
          while (rs.next() && num < 5) {
 

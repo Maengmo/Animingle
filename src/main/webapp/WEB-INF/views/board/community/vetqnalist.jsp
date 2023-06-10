@@ -12,7 +12,7 @@
    <link rel="stylesheet" href="/animingle/asset/css/vetqnalist.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<body style="background-image: url('/animingle/asset/commonimg/background.png');">
+<body>
 
    <%@ include file="/WEB-INF/views/inc/header.jsp" %>
    <section class="content">

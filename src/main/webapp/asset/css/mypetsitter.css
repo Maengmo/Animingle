@@ -80,8 +80,9 @@
 
 .date {
 	color: gray;
-	font-size: 1rem;
-	margin-right: 3px;
+	font-size: 13px;
+	margin: 0 auto;	
+	display: inline-block;
 }
 
 

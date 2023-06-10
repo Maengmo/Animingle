@@ -54,7 +54,7 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${psrlist }" var="psrdto">
-						<tr onclick="location.href='/animingle/board/psrecruitmentview.do&seq=${psrdto.psr_seq}'" style="cursor: pointer;">
+						<tr onclick="location.href='/animingle/board/petsitterview.do?psr_seq=${psrdto.psr_seq}&page=1'" style="cursor: pointer;">
 							<td>
 								<%-- <div class="date">[${psrdto.psr_regdate }]</div> --%>
 								<div class="subject-box">${psrdto.psr_subject }</div>

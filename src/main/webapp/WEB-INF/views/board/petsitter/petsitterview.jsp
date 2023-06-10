@@ -98,23 +98,23 @@
 										  <div class="modal-dialog">
 										    <div class="modal-content">
 										      <div class="modal-header">
-										        <h5 class="modal-title" id="staticBackdropLabel">${ pdto.user_nickname }님과 채팅</h5>
+										        <h5 class="modal-title" id="staticBackdropLabel">채팅</h5>
 										        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										      </div>
-										      <div id="messageWindow" class="modal-dialog modal-dialog-scrollable">
+										      <div id="messageWindow" >
 										      </div>
 										      <div class="modal-footer">
-										      	<input id="inputMessage" class="cht-msg-box" type="text" onkeyup="enterkey()">
+										      	<input id="inputMessage" class="cht-msg-box" type="text" onkeyup="enterkey()" autocomplete="off">
 										        <button type="button" class="btn btn-primary" onclick="send()">전 송</button>
 										      </div>
 										    </div>
 										  </div>
 										</div>
-										<c:if test="${(id ne '') and !(empty id)}">
-									        <input type="hidden" value='${id}' id='chat_id' />
+										<c:if test="${(sessionScope.nickname ne '') and !(empty sessionScope.nickname)}">
+									        <input type="hidden" value='${sessionScope.nickname}' id='chat_id' />
 									    </c:if>
-									    <c:if test="${(id eq '') or (empty id)}">
-									        <input type="hidden" value='<%=session.getId().substring(0, 6)%>'
+									    <c:if test="${(sessionScope.nickname eq '') or (empty sessionScope.nickname)}">
+									        <input type="hidden" value="${ sessionScope.nickname.substring(0, 6) }"
 									            id='chat_id' />
 									    </c:if>
 		            				</c:if>
