@@ -37,9 +37,12 @@
 	         				<input name="title" type="text" placeholder="제목을 입력하세요">
 	         			</div>
 	         			<div class="main-content-sel3">
-	         				<div>본문</div>
-	         				<textarea name="content" id="editor" placeholder="내용을 입력하세요."></textarea>
-	         			</div>
+	                        <div>본문</div>
+	                        <div id="toolbar-container"></div>
+	                       	<div id="editor">
+	                       	</div>
+	                        <textarea style="display:none;" name="content" id="editor1"></textarea>
+	                    </div>
 	         		</div>
 	         		<div class="btn-div">
 	            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
@@ -57,13 +60,11 @@
    <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/decoupled-document/ckeditor.js"></script>
+<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+<script src="/animingle/asset/js/ckedit.js"></script>
 <script>
-	ClassicEditor.create( document.querySelector( '#editor' ), {
-		removePlugins: [ 'Heading' ],
-		language: "ko"
-	});
 </script>
 </body>
 </html>

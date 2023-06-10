@@ -222,14 +222,13 @@
 
 .comment-text {
 	width: 93%;
-	border: 3px solid #AAAAAA;
+	border: 2px solid #AAAAAA;
 	margin-left: 60px;
 	padding: 20px;
 	border-radius: 10px;
 	font-family: "SUITE-Regular"; 
 	font-weight: 500;
 	font-size: 20px;
-	
 }
 
 
@@ -294,6 +293,9 @@
 	width: 100%;
 	resize: none;
 	border-radius: 8px;
+	height: 80px;
+	padding: 10px;
+	outline-color: #aaa;
 }
 
 .comment-add {

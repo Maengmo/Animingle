@@ -74,7 +74,7 @@
 		            	</div>
 		            	
 		            	<div class="item-config">
-		            		<span>[<fmt:formatDate value="${dto.psr_fromdate}" pattern="yyyy-MM-dd HH:mm"/> ~ <fmt:formatDate value="${dto.psr_todate}" pattern="yyyy-MM-dd HH:mm"/>]</span>
+		            		<span>[<fmt:formatDate value="${dto.psr_fromdate}" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${dto.psr_todate}" pattern="yyyy-MM-dd"/>]</span>
 		            		<span>${ dto.psr_region }</span>
 		            	</div>
 		            </div>

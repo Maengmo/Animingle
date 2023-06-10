@@ -90,4 +90,21 @@
 
 .ck-editor__editable { 
    height: 400px; 
+   width : 100% !important;
+}
+
+#editor {
+	border: 1px solid #ccced1;
+}
+
+.ck {
+	margin: 0px !important;
+}
+
+.ck .ck-toolbar__items {
+	margin-bottom: 5px;
+}
+
+#toolbar-container {
+	margin-bottom: 0px;
 }

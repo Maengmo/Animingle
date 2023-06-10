@@ -51,6 +51,8 @@
 							<canvas id="myChart"></canvas>
 						</div>
 					</div>
+				</div>
+				<div class="main-content-box">
 					<div class="sub-content-box">
 						<div class="title">일자별 요약</div>
 						<div class="table-box">
@@ -113,9 +115,8 @@
 								</tr>
 							</table>
 						</div>
-					</div>
+					</div>				
 				</div>
-				
 				<div class="main-content-box">
 					<div class="sub-content-box">
 						<div class="title">문의 현황</div>
@@ -138,7 +139,8 @@
 							</table>
 						</div>
 					</div>
-					
+				</div>	
+				<div class="main-content-box">
 					<div class="sub-content-box">
 						<div class="title">신고 현황</div>
 						<div class="table-box">
@@ -160,7 +162,7 @@
 							</table>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
          </div>
          <div class="rightbar">

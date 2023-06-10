@@ -50,10 +50,14 @@
 						    </div>
 						</div>					
 						
-						<div class="main-content-sel3">
+	         			<div class="main-content-sel3">
 	                        <div>본문</div>
-	                        <textarea name="text" id="editor" placeholder="내용을 입력하세요.">${ dto.psr_content }</textarea>
-	                     </div>
+	                        <div id="toolbar-container"></div>
+	                       	<div id="editor">
+	                       		${ dto.psr_content }
+	                       	</div>
+	                        <textarea style="display:none;" name="content" id="editor1"></textarea>
+	                    </div>
 						
 						<div class="btn-div">
 							<button type="submit" id="add-btn" class="content-btn add-btn">수 정</button>
@@ -75,7 +79,8 @@
 	<%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/decoupled-document/ckeditor.js"></script>
+<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/animingle/asset/js/petsitteradd.js"></script>
