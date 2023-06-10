@@ -31,7 +31,7 @@
 							</li>
 							<li>
 								문의완료 :
-								<span>${cnt4}</span>
+								<span>${cnt3}</span>
 							</li>
 							<li>
 								<a href="/animingle/user/admin/inquirylist.do?prefix=2">신고현황 :</a>
@@ -39,7 +39,7 @@
 							</li>
 							<li>
 								신고완료 :
-								<span>${cnt3}</span>
+								<span>${cnt4}</span>
 							</li>
 						</ul>
 					</div>
@@ -115,14 +115,50 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<div>
-						<div>제목</div>
-						<div>내용</div>
+				
+				<div class="main-content-box">
+					<div class="sub-content-box">
+						<div class="title">문의 현황</div>
+						<div class="table-box">
+							<table>
+								<tr>
+									<th>제목</th>
+									<th>글쓴이</th>
+									<th>날짜</th>
+									<th>답변여부</th>
+								</tr>
+								<c:forEach items="${list1}" var="dto">
+									<tr>
+										<td>${dto.in_subject}</td>
+										<td>${dto.in_writer }</td>
+										<td>${dto.in_regdate}</td>
+										<td>${dto.answerCnt}</td>
+									</tr>
+								</c:forEach>
+							</table>
+						</div>
 					</div>
-					<div>
-						<div>제목</div>
-						<div>내용</div>
+					
+					<div class="sub-content-box">
+						<div class="title">신고 현황</div>
+						<div class="table-box">
+							<table>
+								<tr>
+									<th>제목</th>
+									<th>글쓴이</th>
+									<th>날짜</th>
+									<th>답변여부</th>
+								</tr>
+								<c:forEach items="${list2}" var="dto">
+									<tr>
+										<td>${dto.in_subject}</td>
+										<td>${dto.in_writer }</td>
+										<td>${dto.in_regdate}</td>
+										<td>${dto.answerCnt}</td>
+									</tr>
+								</c:forEach>
+							</table>
+						</div>
 					</div>
 				</div>	
 			</div>
