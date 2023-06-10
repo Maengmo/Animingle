@@ -22,7 +22,8 @@ public class FindList extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		//session.setAttribute("id", "pecan789");
+		session.getAttribute("id");
+		//session.setAttribute("id", "pecan789");)
 		session.setAttribute("read", "n");
 		
 		String page= req.getParameter("page");
@@ -78,9 +79,9 @@ public class FindList extends HttpServlet {
 		
 		//이전 10페이지x
 		if (n == 1) {
-			sb.append(String.format("<a href=\"#!\">&lt;</a>", blockSize));
+			sb.append(String.format("<a href=\"#!\">&lt;</a>"));
 		} else {
-			sb.append(String.format("<a href=\"/animingle/board/findlist.do?page=%d\">&lt;</a>", n-1, blockSize));
+			sb.append(String.format("<a href=\"/animingle/board/findlist.do?page=%d&prefix=%s&prefix%s\">&lt;</a>", n-1, prefix, word));
 		}
 		
 		
@@ -90,7 +91,7 @@ public class FindList extends HttpServlet {
 			if (n == nowPage) {
 				sb.append(String.format("<a href=\"#!\" style='color:tomato';> %d </a>", n));
 			} else {
-				sb.append(String.format("<a href=\"/animingle/board/findlist.do?page=%d\"> %d </a>", n, n));
+				sb.append(String.format("<a href=\"/animingle/board/findlist.do?page=%d&prefix=%s&word=%s\"> %d </a>", n, prefix, word, n));
 			}
 			
 			loop++;
@@ -99,9 +100,9 @@ public class FindList extends HttpServlet {
 		
 		//다음 10페이지
 		if (n > totalPage) {
-			sb.append(String.format("<a href=\"#!\">&gt;</a>", blockSize));
-		} else {
-			sb.append(String.format("<a href=\"/animingle/board/findlist.do?page=%d\">&gt;</a>", n, blockSize));
+			sb.append(String.format("<a href=\"#!\">&gt;</a>"));
+		} else {	
+			sb.append(String.format("<a href=\"/animingle/board/findlist.do?page=%d&prefix=%s&word=%s\">&gt;</a>", n, prefix, word));
 		}
 						
 		req.setAttribute("list",list);

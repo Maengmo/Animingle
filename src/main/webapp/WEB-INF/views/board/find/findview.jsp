@@ -89,15 +89,18 @@
 						</c:forEach>
 						<input type="hidden" name="writer" value="pecan567">
 				</div>
+				<c:if test="${not empty id}">
 				<div class="comment-add-text-box">
 					<div class="commet-add-text-area-box">
 							<textarea class="comment-area" maxlength="1000" placeholder="댓글 내용을 입력하세요" name="content" id="comment-area"></textarea>
 							<div class="character-count">0/160</div>
 						</div>
 					</div>
+				
 				<div class="find-view-comment-button">
 					<button id="btnCommentAdd">댓글 쓰기</button>
 				</div>
+				</c:if>
 				<input type="hidden" name="lat" id="lat-value" value="90">
 			    <input type="hidden" name="lng" id="lng-value" value="90">
 			</div>

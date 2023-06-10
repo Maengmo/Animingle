@@ -25,6 +25,7 @@ public class FindCommentAdd extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = req.getSession();
+		session.getAttribute("id");
 		
 		String seq = req.getParameter("seq");
 		String writer = req.getParameter("writer");

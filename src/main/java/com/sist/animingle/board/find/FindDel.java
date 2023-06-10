@@ -24,17 +24,12 @@ public class FindDel extends HttpServlet {
 		FindDAO dao = new FindDAO();
 		
 		int result = 0;
-		
-		System.out.println(seq);
-		
+				
 		result = dao.findDelCPosition(seq);
-		System.out.println(result);
 		
 		result *= dao.findDelComment(seq);
-		System.out.println(result);
 		
 		result *= dao.findDel(seq);
-		System.out.println(result);
 		
 		if (result >= 1) {
 			resp.sendRedirect("/animingle/board/findlist.do?page=&prefix=");

@@ -32,7 +32,8 @@ public class FindAdd extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		String writer = req.getParameter("writer");
+		
+		String writer = session.getAttribute("id").toString();
 		String subject = req.getParameter("subject");
 		String content = req.getParameter("content");
 		String prefix = req.getParameter("prefix");
@@ -56,7 +57,7 @@ public class FindAdd extends HttpServlet {
 		int result = dao.findadd(dto);
 		
 		if (result == 1) {
-			resp.sendRedirect("/animingle/board/findlist.do?page=&prefix=");
+			resp.sendRedirect("/animingle/board/findlist.do?nowpage=&prefix=0&word=");
 		} else {
 			PrintWriter writerAlert = resp.getWriter();
 			writerAlert.print("<script>alert('failed');history.back();</script>");

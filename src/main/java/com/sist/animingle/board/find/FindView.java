@@ -24,8 +24,7 @@ public class FindView extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		
-		session.setAttribute("id", "pecan789");
+		session.getAttribute("id");
 		//session.setAttribute("id", "");
 		
 		String seq = req.getParameter("seq");
