@@ -112,7 +112,7 @@
 						</thead>
 						<tbody>
 						<c:forEach items="${vqlist }" var="dto">
-						<tr onclick="location.href='/animingle/board/vetqnaview.do&seq=${dto.vq_seq}'">
+						<tr onclick="location.href='/animingle/board/vetqnaview.do?vq_seq=${dto.vq_seq}&page=1'">
 							<td>
 								${dto.vq_subject } 
 								<div>

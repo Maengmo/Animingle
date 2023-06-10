@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-   <title>Insert title here</title>
+   <title>Animingle</title>
    <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
    <link rel="stylesheet" href="/animingle/asset/css/adoption.css">
    <style>
@@ -27,154 +27,40 @@
          </div>
          	<div class="cardbox">
 
-
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/animingle.png" class="anipic">
+				
+			<c:forEach items="${list}" var="dto" varStatus="status">
+               <div 
+               <c:if test="${dto.gender == '암컷'}"> class="card W"</c:if>
+               <c:if test="${dto.gender == '수컷'}"> class="card M"</c:if>>
+               		<a href="/animingle/board/adoptionview.do?num=${dto.num}">
+               		<c:if test="${not empty dto.imgurl}">
+                    	<img src="http://${dto.imgurl}" class="anipic">
+                    </c:if>
+                    <c:if test="${empty dto.imgurl}">
+                    	<img src="/animingle/asset/commonimg/animingle.png" class="anipic">
+                    </c:if>
+                    </a>
                		<div class="info">
                         <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
+                           <li style="font-size: 13px">이름(센터): ${dto.name}</li>
+                           <li>종: ${dto.species}</li>
+                           <li>품종: ${dto.breed}</li>
+                           <li>성별: ${dto.gender}</li>
                         </ul>
                		</div>
                </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/logo_01.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/animingle.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/logo_01.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/animingle.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/logo_01.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/animingle.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/logo_01.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/animingle.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/logo_01.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/animingle.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
-               <div class="card">
-                    <img src="/animingle/asset/commonimg/logo_01.png" class="anipic">
-               		<div class="info">
-                        <ul>
-                           <li>이름(센터): 초코</li>
-                           <li>종: 강아지</li>
-                           <li>품종: 토이푸들</li>
-                           <li>성별: 수컷</li>
-                        </ul>
-               		</div>
-               </div>
+        
+             </c:forEach>
+             
+ 
+               
          	</div>
          	
 	         <hr class="paging-hr">
 	         
 	         <div class="paging">
-	         	<span>&lt;</span>
-	         	<ul>
-	         		<li>1</li>
-	         		<li>2</li>
-	         		<li>3</li>
-	         		<li>4</li>
-	         		<li>5</li>
-	         	</ul>
-	         	<span>&gt;</span>
-	         </div>
+               <div id="pagination" style="text-align: center; margin-bottom:10px;">${pagination}</div>
+             </div>
          	
          </div>
          <div class="rightbar">

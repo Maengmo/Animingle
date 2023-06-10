@@ -25,17 +25,17 @@
 			<div class="maincontent">			
 				<h2 class="main-title">우리 가족을 찾아주세요</h2>
 				<hr>
-				<form id="form-content" action="" method="POST">
+				<form id="form-content" action="/animingle/board/findadd.do" method="POST">
 					<div class="form-prefix">
 						<div>말머리</div>
-						<select>
+						<select name="prefix">
 							<option value="1" class="ff_prefix">주인 찾아요</option>
 							<option value="2" class="ff_prefix">펫 찾아요</option>
 						</select>
 					</div>
 					<div class="form-subject">
 						<div>제목</div>
-						<div><input type="text" id="ff_subject" placeholder="제목을 입력해주세요."></div>
+						<div><input type="text" name="subject" id="ff_subject" placeholder="제목을 입력해주세요."></div>
 					</div>
 					<div class="form-locate">
 						<div>위치</div>
@@ -43,13 +43,17 @@
 					</div>
 					<div class="form-content">
 						<div>본문</div>
-						<textarea id="editor" placeholder="내용을 입력하세요."></textarea>
+						<textarea id="editor" placeholder="내용을 입력하세요." name="content"></textarea>
 					</div>
+					<div class="btn-div">
+						<button type="submit" id="add-btn" class="content-btn add-btn">등 록</button>
+	            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
+				    </div>
+				    <input type="hidden" name="writer" value="pecan789">
+				    <input type="hidden" name="lat" id="lat-value" value="37.4993">
+				    <input type="hidden" name="lng" id="lng-value" value="127.0331">
 				</form>
-				<div class="btn-div">
-					<button type="button" id="add-btn" class="content-btn add-btn">등 록</button>
-	            	<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
-	            </div>
+				
 			</div>
 			<div class="rightbar">
 				<!-- 오른쪽 사이드바 입니다. -->
@@ -78,7 +82,6 @@
 	});
 	
 	
-	
 	marker.setMap(map);
 	
 	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
@@ -87,8 +90,9 @@
 		
 		marker.setPosition(latlng);
 		
-		//console.log(latlng.getLat()); //위도
-		//console.log(latlng.getLng()); //경도
+		$('#lat-value').val(latlng.getLat());
+		$('#lng-value').val(latlng.getLng());
+		
 	});
 	
 	 ClassicEditor.create( document.querySelector( '#editor' ), {

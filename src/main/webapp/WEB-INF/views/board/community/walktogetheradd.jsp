@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/animingle/asset/css/index.css">
     <link rel="stylesheet" href="/animingle/asset/css/walktogether.css">
     <link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
-	<link rel="stylesheet" type="text/css" href="/animingle/asset/ckeditor/sample/styles.css">
+   <link rel="stylesheet" type="text/css" href="/animingle/asset/ckeditor/sample/styles.css">
 </head>
 <body>
     <%@ include file="/WEB-INF/views/inc/header.jsp" %>
@@ -20,78 +20,78 @@
             <div class="leftbar">
             </div>
             <div class="maincontent">
-            	<h2 class="content-header">산책 친구 구하기</h2>
-				<hr>
-				
-				<form method="post" action="/animingle/board/walktogetheradd.do" id="addForm">
-					<div>
-						<div class="menu-title">제목</div>
-						<input type="text" name="subject" placeholder="제목을 입력해주세요." required value="${subject}">
-					</div>
-					<div>
-						<div class="menu-title">산책 루트</div>
-						<ul>
-							<li>마우스 왼쪽 버튼을 누를 때마다 지도에 한 개의 지점이 찍힙니다. 두 개의 지점을 찍으면 자동으로 선이 이어집니다.
+               <h2 class="content-header">산책 친구 구하기</h2>
+            <hr>
+            
+            <form method="post" action="/animingle/board/walktogetheradd.do" id="addForm">
+               <div>
+                  <div class="menu-title">제목</div>
+                  <input type="text" name="subject" placeholder="제목을 입력해주세요." required value="${subject}">
+               </div>
+               <div>
+                  <div class="menu-title">산책 루트</div>
+                  <ul>
+                     <li>마우스 왼쪽 버튼을 누를 때마다 지도에 한 개의 지점이 찍힙니다. 두 개의 지점을 찍으면 자동으로 선이 이어집니다.
 </li>
-							<li>마우스 오른쪽 버튼을 누르면 경로 선택이 종료됩니다.</li>
+                     <li>마우스 오른쪽 버튼을 누르면 경로 선택이 종료됩니다.</li>
                         </ul>
-						<div id="map3" style="width:100%;height:400px;"></div>
-					</div>
-					<div id="aboutInfo">
-						<span>
-							<span class="menu-title">반려동물 종</span>
-							<input type="text" name="petKind" placeholder="예) 강아지" required value="${petKind}">
-						</span>
-						<span>
-							<span class="menu-title">산책 가능 요일/시간</span>
-							<input type="text" name="walkTime" placeholder="예) 월수금 18시 이후" required value="${time}">
-						</span>
-					</div>
-					<div>
-						<div class="main-content-sel3">
-							<div class="menu-title">본문</div>
-							<div class="centered">
-								<div class="row row-editor">
-									<div class="editor-container">
-										<textarea class="editor" name="text" id="editor" placeholder="내용을 입력하세요.">
-										${content}
-										</textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="btns">
-		            	<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
-						<button type="submit" id="add-btn" class="content-btn add-btn" onclick="check()">등 록</button>
-		            </div>
-		            <div id="pathInfo">
-		            </div>		     
-		            <input type="hidden" name="seq" value="${seq}">
-				</form>
-			</div>
-			<div class="rightbar">
-			</div>
-		</div>
+                  <div id="map3" style="width:100%;height:400px;"></div>
+               </div>
+               <div id="aboutInfo">
+                  <span>
+                     <span class="menu-title">반려동물 종</span>
+                     <input type="text" name="petKind" placeholder="예) 강아지" required value="${petKind}">
+                  </span>
+                  <span>
+                     <span class="menu-title">산책 가능 요일/시간</span>
+                     <input type="text" name="walkTime" placeholder="예) 월수금 18시 이후" required value="${time}">
+                  </span>
+               </div>
+               <div>
+                  <div class="main-content-sel3">
+                     <div class="menu-title">본문</div>
+                     <div class="centered">
+                        <div class="row row-editor">
+                           <div class="editor-container">
+                              <textarea class="editor" name="text" id="editor" placeholder="내용을 입력하세요.">
+                              ${content}
+                              </textarea>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="btns">
+                     <button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
+                  <button type="submit" id="add-btn" class="content-btn add-btn" onclick="check()">등 록</button>
+                  </div>
+                  <div id="pathInfo">
+                  </div>           
+                  <input type="hidden" name="seq" value="${seq}">
+            </form>
+         </div>
+         <div class="rightbar">
+         </div>
+      </div>
     </section>
     <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="/animingle/asset/ckeditor/build/ckeditor.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	6d88daddca380ab9ff45e48fab144915"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=   6d88daddca380ab9ff45e48fab144915"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script>
 
     /*CKEditor5*/
     ClassicEditor.create( document.querySelector( '.editor' ), {
-					licenseKey: '',
-				} )
-				.then( editor => {
-					window.editor = editor;
-				} )
-				.catch( error => {
-					console.error( error );
-				} );
+               licenseKey: '',
+            } )
+            .then( editor => {
+               window.editor = editor;
+            } )
+            .catch( error => {
+               console.error( error );
+            } );
     
     
     /* 지도 생성 */
@@ -135,13 +135,13 @@
                 map = new kakao.maps.Map(container, options);     
 
                 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-                    drawLine(mouseEvent);
+                    drawLine(map, mouseEvent);
                 });
                 kakao.maps.event.addListener(map, 'mousemove', function(mouseEvent) {
-                    mouseMoveEvent(mouseEvent);
+                    mouseMoveEvent(map, mouseEvent);
                 });
                 kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
-                    mouseRightClick(mouseEvent);
+                    mouseRightClick(map, mouseEvent);
                 });
                 
             });
@@ -153,22 +153,22 @@
             map = new kakao.maps.Map(container, options);
        
             kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-                drawLine(mouseEvent);
+                drawLine(map, mouseEvent);
             });
             kakao.maps.event.addListener(map, 'mousemove', function(mouseEvent) {
-                mouseMoveEvent(mouseEvent);
+                mouseMoveEvent(map, mouseEvent);
             });
             kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
-                mouseRightClick(mouseEvent);
+                mouseRightClick(map, mouseEvent);
             });
         }    
         
     } else {
         
-     	// 지도 경로수정
-     	
-     	var path = JSON.parse('${path}');
-     	
+        // 지도 경로수정
+        
+        var path = JSON.parse('${path}');
+        
         var filteredCenterPath = path.filter(item => item.order === '2');
         var centerLat = filteredCenterPath.map(item => item.lat);
         var centerLng = filteredCenterPath.map(item => item.lng);
@@ -180,10 +180,10 @@
         };
         var map2 = new kakao.maps.Map(container2, options2);
         
-     	// 경로 위도와 경도 정보를 담은 배열을 생성합니다.
+        // 경로 위도와 경도 정보를 담은 배열을 생성합니다.
         var pathList = path.map((item) => new kakao.maps.LatLng(item.lat , item.lng));
-     	
-     	
+        
+        
         // 폴리라인을 생성하고 지도에 표시합니다.
         var polyLine = new kakao.maps.Polyline({
             path: pathList, // 선을 구성하는 좌표 배열입니다
@@ -191,7 +191,7 @@
             strokeColor: 'blue', // 선의 색깔입니다
             strokeOpacity: 1, // 선의 불투명도입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
             strokeStyle: 'solid' // 선의 스타일입니다
-        });	                
+        });                   
 
         polyLine.setMap(map2);      
         
@@ -234,7 +234,7 @@
         
         // 지도 클릭이벤트가 발생했는데 선을 그리고있는 상태가 아니면
         if (!drawingFlag) {
-		
+      
             // 상태를 true로, 선이 그리고있는 상태로 변경합니다
             drawingFlag = true;
             
@@ -243,7 +243,7 @@
 
             // 지도 위에 선을 그리기 위해 클릭한 지점과 해당 지점의 거리정보가 표시되고 있다면 지도에서 제거합니다
             deleteCircleDot();
-        	
+           
             // 클릭한 위치를 기준으로 선을 생성하고 지도위에 표시합니다
             clickLine = new kakao.maps.Polyline({
                 map: map, // 선을 표시할 지도입니다 
@@ -304,7 +304,7 @@
 
     // 지도에 마우스 오른쪽 클릭 이벤트를 등록합니다
     // 선을 그리고있는 상태에서 마우스 오른쪽 클릭 이벤트가 발생하면 선 그리기를 종료합니다
-    function mouseRightClick(map, mouseEvent) {		
+    function mouseRightClick(map, mouseEvent) {      
         
         // 지도 오른쪽 클릭 이벤트가 발생했는데 선을 그리고있는 상태이면
         if (drawingFlag) {
@@ -337,7 +337,7 @@
             drawingFlag = false;        
             
             //경로 정보 배열
-    		let mas = path.map(item => item.Ma); //위도
+          let mas = path.map(item => item.Ma); //위도
             let las = path.map(item => item.La); //경도         
 
             $("input[name='pathLat']").remove();
@@ -345,13 +345,13 @@
             
             for (let i=0; i<las.length; i++) {
                 
-        		$('#pathInfo').append(
-            		    `<input type="hidden" name="pathLat" value="\${mas[i]}">
-            		    <input type="hidden" name="pathLng" value="\${las[i]}">`
-            	);           
-        		
+              $('#pathInfo').append(
+                      `<input type="hidden" name="pathLat" value="\${mas[i]}">
+                      <input type="hidden" name="pathLng" value="\${las[i]}">`
+               );           
+              
             } 
-    		
+          
         }  
     }    
 
@@ -399,7 +399,7 @@
     }
     
     function check() {
-      	
+         
         //본문을 입력하지 않으면 알림창 띄우기
         let text = $('body > section > div > div.maincontent > form > div:nth-child(4) > div > div.centered > div > div > div > div.ck.ck-editor__main > div').text();
         
@@ -408,7 +408,7 @@
             event.preventDefault();
         }
         
-      	//지도에 경로를 표시하지 않으면 알림창 띄우기
+         //지도에 경로를 표시하지 않으면 알림창 띄우기
         if((typeof dots.length !== 'number' && '${path}'.length === 0) || dots.length < 1) {
             alert('지도에 산책 경로를 표시해주세요.');
             event.preventDefault();

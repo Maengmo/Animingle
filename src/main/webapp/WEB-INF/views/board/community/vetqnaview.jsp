@@ -21,97 +21,120 @@
 			</div>
 			<div class="maincontent main-border">
 				<div class="writer find-view-writer">
-					<img src="/animingle/asset/commonimg/logo_01.png">
-					밍글맹글(mingle77) <span class="time">16분전</span>
+					<img src="/animingle/asset/commonimg/${ dto.user_pic }"> ${ dto.user_nickname }(${ dto.user_id })
+					<span class="time">${ dto.vq_regdate }</span>
 				</div>
 				<div class="find-view-subject">
-					<span id="view-subject">[강아지] 낯선 사람이 오면 짖어요</span>
+					<span id="view-subject">${ dto.vq_subject }</span>
 					<div class="view-subject-icon">
-						<span class="material-symbols-outlined">visibility</span>50 
-						<span class="material-symbols-outlined">chat</span>2
+						<span class="material-symbols-outlined">visibility</span>${ dto.vq_readcount }
+						<span class="material-symbols-outlined">chat</span>${ dto.vqr_cnt }
+						<input type="hidden" value="${ dto.vq_prefix }">
 					</div>
 				</div>
-				<div class="find-view-content">
-					문 밖에 사람 인기척만 나도 하루종일 짖어요...<br>
-					너무 짖어서 목이 다 쉬었어요... 하지 말라고 간식을 줘도 오히려 더 짖는 것 같네요ㅠㅠ
-				</div>
+				<div class="find-view-content">${ dto.vq_content }</div>
 				<div class="view-button">
-					<button id="btnDel">삭제하기</button>
-					<button id="btnEdit">수정하기</button>
-				</div>
+					<c:if test="${ dto.user_id == id }">
+						<c:if test="${ dto.vqr_cnt < 1 }">
+							<button id="btnDel" onclick="qnadel(${ vq_seq }, '${ dto.user_id }');">삭제하기</button>
+						</c:if>
+						<button id="btnEdit" onclick="qnaedit(${ vq_seq }, '${ dto.user_id }', '${ id }')">수정하기</button>
+					</c:if>
+				</div>	
 				<div class="content-box">
 					<div class="title">답 변</div>
-					<div class="answer-box">
-						<span class="time">10분전</span>
-						<div class="comment">
-							청각이 특히 예민한 아이가 있습니다.<br>
-							사람 인기척에 익숙해 질 수 있도록 꾸준한 훈련을 해주면 좋을 것 같습니다.<br>
-							인기척이 날 때 긍정적 보상을 주는 방법이 있어요~~~<br>
-							심각해지면 저희 병원에 데려오세요
-						</div>
-						<div class="comment-profile-box">
-							<img src="/animingle/asset/commonimg/logo_01.png">
-							<div class="profile-content">
-								<div>수의사1 <small>(docter77)</small></div>
-								<div>참조아동물병원</div>
-								<div>답변 횟수: 90회</div>
-							</div>
-						</div>
-						<div class="comment-list-btn-box">
-							<span class="material-symbols-outlined">
-								comment
-							</span>
-							<button class="comment-list-btn">2개의 댓글</button>
-						</div>
-						<div class="comment-box">
-							<div class="comment-main">
-								<div class="comment-main-profile-box">
-									<img src="/animingle/asset/commonimg/logo_01.png">
+					<c:forEach items="${ alist }" var="adto" varStatus="status">
+						<div class="answer-box">
+							<span class="time">${ adto.vqr_regdate }</span>
+							<div class="comment">${ adto.vqr_content }</div>
+							<div class="comment-profile-box">
+								<img src="/animingle/asset/commonimg/${ adto.user_pic }">
+								<div class="profile-content">
 									<div>
-										<div>작성자</div>
-										<span>10분전</span>
+										${ adto.user_nickname } <small>(${ adto.vet_seq })</small>
 									</div>
-								</div>						
-								<div class="comment">
-									댓글댓글
+									<div>${ adto.vet_clinic }</div>
+									<div>답변 횟수: ${ adto.answer_cnt }</div>
+									<input class="vqr_seq-${ status.index }" type="hidden" value="${ adto.vqr_seq }">
 								</div>
-								<div class="comment-btn-box">
-									<div class="comment-list-btn-box">
-										<span class="material-symbols-outlined">
-											expand_less
-										</span>
-										<button class="comment-box-btn">댓글 모두 숨기기</button>
-									</div>
-									<button class="comment-add-btn">댓글 쓰기</button>
-									<div class="main-content-sel3">
-                        				<textarea name="text" id="editor" placeholder="내용을 입력하세요."></textarea>
-                     				</div>
+							</div>
+
+							<div class="comment-list-btn-box">
+								<span class="material-symbols-outlined"> comment </span>
+								<button class="comment-list-btn"
+									data-target="#comment-box-${status.index}">
+									<span class="comment-count-${status.index}">${ adto.comment_cnt }개의 댓글</span>
+								</button>
+							</div>
+							<div class="comment-box" id="comment-box-${status.index}">
+								<div class="comment-main-${ adto.vqr_seq }">
+									<c:forEach items="${ clist }" var="cdto">
+										<c:if test="${adto.vqr_seq eq cdto.vqr_seq}">
+											<div class="comment-sub-box">
+												<div class="comment-main-profile-box">
+													<img class="comment-profile-img" src="/animingle/asset/commonimg/logo_01.png">
+													<div>
+														<div>${ cdto.vqrc_writer }</div>
+														<span>${ cdto.vqrc_regdate }</span>
+													</div>
+												</div>
+												<div class="comment">${ cdto.vqrc_content }</div>
+											</div>
+										</c:if>
+									</c:forEach>
 								</div>
-								<div class="comment-sub-box">
-									<div class="comment-sub-profile">
-										<img src="/animingle/asset/commonimg/logo_01.png">
-										<div>
-											<div>작성자</div>
-											<span>10분전</span>
-										</div>
-									</div>	
-									<div class="comment">
-										댓글댓글
-									</div>		
-								</div>		
+								<button class="comment-add-btn"
+									data-target="#comment-add-btn-${status.index}">댓글쓰기</button>
+								<div class="comment-textarea-box" id="comment-add-btn-${status.index}">
+									<c:if test="${ id != null }">
+										<form id="comment-add" class="comment-add">
+											<textarea class="comment-textarea-${ status.index }" name="text" id="editor-${status.index}"
+												placeholder="내용을 입력하세요."></textarea>
+											<div class="btn-box">
+												<input class="comment-btn" type="button" value="댓글작성" onclick="commentadd(${status.index})">
+											</div>
+										</form>
+									</c:if>
+									<c:if test="${ id == null }">
+										<form id="comment-add" class="comment-add">
+											<textarea class="comment-textarea-${ status.index }" name="text" id="editor-${status.index}"
+												placeholder="댓글은 로그인 후 입력 가능합니다."></textarea>
+											<div class="btn-box">
+											</div>
+										</form>
+									</c:if>
+								</div>
 							</div>
 						</div>
-					</div>
+					</c:forEach>
 				</div>
 				<div class="comment-add-text-box">
-					<div class="commet-add-text-area-box">
-						<textarea class="comment-area" maxlength="1000" placeholder="댓글 내용을 입력하세요"></textarea>
-						<div class="character-count">0/1000</div>
-					</div>
-					<div class="comment-add-btn-box">
-						<input type="button" value="목록보기">
-						<input type="button" value="댓글쓰기">
-					</div>
+					<form action="/animingle/board/vetqnaanswer.do" method="POST">
+						<c:if test="${ isVet == 'Y' }">
+							<div class="commet-add-text-area-box">
+								<textarea name="vqr_content" class="comment-area"
+									maxlength="1000" placeholder="답변을 입력하세요"></textarea>
+								<div class="character-count">0/1000</div>
+							</div>
+							<div class="comment-add-btn-box">
+								<input type="button" value="목록보기"
+									onclick="location.href='/animingle/board/vetqnalist.do'">
+								<input class="answer_add_btn" type="submit" value="답변쓰기">
+							</div>
+						</c:if>
+						<c:if test="${ isVet != 'Y' }">
+							<div class="commet-add-text-area-box">
+								<textarea name="vqr_content" class="comment-area"
+									maxlength="1000" readonly="readonly" placeholder="답변은 수의사만 가능합니다."></textarea>
+								<div class="character-count">0/1000</div>
+							</div>
+							<div class="comment-add-btn-box">
+								<input type="button" value="목록보기"
+									onclick="location.href='/animingle/board/vetqnalist.do?page=${ page }'">
+							</div>
+						</c:if>
+						<input name="vq_seq" type="hidden" value="${ vq_seq }">
+					</form>
 				</div>
 			</div>
 			<div class="rightbar">
@@ -121,45 +144,142 @@
 	</section>
 	<%@ include file="/WEB-INF/views/inc/footer.jsp"%>
 
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script	src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+	<script	src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script>
-	$(document).ready(function() {
-		
-		$(".comment-box").hide();
-		$(".main-content-sel3").toggle();
-		
-		$(".comment-list-btn").click(function() {
-			$(".comment-box").toggle();
-		});
-		
-		$(".comment-box-btn").click(function() {
-			$(".comment-sub-box").toggle();
-		});
-		
-		$(".comment-add-btn").click(function () {
-			$(".main-content-sel3").toggle();
-		});
-		
-		$(".comment-area").on('input', function() {
-			var maxLength = 1000;
-		    var currentLength = $(this).val().length;
-		    var remainingLength = maxLength - currentLength;
-		    
-		    $(".character-count").text(currentLength + "/" + maxLength);
-		    
-		    if (currentLength > maxLength) {
-		      $(this).val($(this).val().substring(0, maxLength));
-		    }
-		});
-		
-	});
+
+	var myEditor = [];
 	
-	ClassicEditor.create( document.querySelector( '#editor' ), {
-		removePlugins: [ 'Heading' ],
-		language: "ko"
-	});
+	$(document).ready(function() {
+	
+			$(".comment-box").hide();
+			$(".comment-textarea-box").hide();
+		
+			$(".comment-list-btn").click(function() {
+				var target = $(this).data('target');
+				$(target).toggle();
+			});
+		
+			$(".comment-add-btn").click(function() {
+				var target = $(this).data('target');
+				$(target).toggle();
+			});
+		
+			$(".comment-area").on('input', function() {
+				var maxLength = 1000;
+				var currentLength = $(this).val().length;
+				var remainingLength = maxLength - currentLength;
+		
+				$(".character-count").text(currentLength + "/" + maxLength);
+		
+				if (currentLength > maxLength) {
+					$(this).val($(this).val().substring(0, maxLength));
+				}
+		
+			});
+			
+			<c:forEach items="${alist}" var="adto" varStatus="status">
+				ClassicEditor.create(document.querySelector('#editor-${status.index}'), {
+					toolbar: {
+			
+						items: [
+					        'undo', 'redo',
+					        '|', 'heading',
+					        '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+					        '|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'code',
+					        '|', 'link', 'blockQuote', 'codeBlock',
+					        '|', 'bulletedList', 'numberedList', 'todoList', 'outdent', 'indent'
+					    ],
+			
+						shouldNotGroupWhenFull: true
+			
+						},
+					
+						removePlugins: ['Heading'],
+						language: 'ko'
+						
+					}).then( editor => {
+					myEditor.push(editor);
+					});
+			</c:forEach >
+		
+		});
+	
+	function commentadd(count) {
+	
+		var vqr_seq = $(`.vqr_seq-\${count}`).val();
+		var vqrc_content = myEditor[count].getData();
+	
+		$.ajax({
+			url: "/animingle/board/vetqnacomment.do",
+			type: "POST",
+			dataType: "json",
+			data: {
+				vqr_seq: vqr_seq,
+				vqrc_writer: 'leehan0608',
+				vqrc_content: vqrc_content
+			},
+			success: function(result) {
+				$(`.comment-main-\${ result.vqr_seq }`).append(
+					`
+								<div class="comment-sub-box">
+									<div class="comment-main-profile-box">
+										<img class="comment-profile-img" src="/animingle/asset/commonimg/logo_01.png">
+										<div>
+											<div>\${ result.vqrc_writer }</div>
+											<span>\${ result.vqrc_regdate }</span>
+										</div>
+									</div>
+									<div class="comment">\${ result.vqrc_content }</div>
+								</div>
+							`
+				);
+	
+				myEditor[count].setData("");
+				$(`.comment-count-\${count}`).text(result.comment_cnt + "개의 댓글");
+			},
+			error: function(a, b, c) {
+				console.log(a, b, c);
+			}
+		});
+	
+	};
+	
+	function qnadel(vq_seq, user_id) {
+	
+		if (!confirm("정말 게시물을 삭제 할까요??")) {
+			alert("삭제를 취소합니다.");
+	
+		} else {
+			location.href = "/animingle/board/vetqnadel.do?vq_seq=" + vq_seq + "&user_id=" + user_id;
+		}
+	
+	};
+	
+	function qnaedit(vq_seq, user_id, id) {
+	
+		let subject = $("#view-subject").text();
+		let content = $(".find-view-content").html();
+		let prefix = $("input[type='hidden']").val();
+	
+		if (user_id == id) {
+	
+			let url = "/animingle/board/vetqnaedit.do" +
+				"?vq_seq=" + vq_seq +
+				"&vq_subject=" + encodeURIComponent(subject) +
+				"&vq_content=" + encodeURIComponent(content) +
+				"&vq_prefix=" + encodeURIComponent(prefix);
+	
+			location.href = url;
+	
+		} else {
+			alert("게시글 작성자가 아닙니다.");
+			location.href = "/animingle/index.do";
+		}
+	
+	};
+	
 </script>
 </body>
 </html>

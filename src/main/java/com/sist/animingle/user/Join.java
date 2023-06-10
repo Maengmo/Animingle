@@ -36,12 +36,12 @@ public class Join extends HttpServlet {
 			
 			MultipartRequest multi = new MultipartRequest(
 					req, 
-					req.getRealPath("/asset/pic"), 
+					req.getRealPath("/asset/pic/userpic"), 
 					1024 * 1024 * 100, 
 					"UTF-8", 
 					new DefaultFileRenamePolicy());
 			
-			System.out.println(req.getRealPath("/asset/pic"));
+			//System.out.println(req.getRealPath("/asset/pic"));
 			
 			String id = multi.getParameter("id");
 			String pw = multi.getParameter("pw");
@@ -55,7 +55,7 @@ public class Join extends HttpServlet {
 			String pets = multi.getParameter("pets");
 			String profile = multi.getFilesystemName("profile");
 			
-			System.out.println("프로필 사진 : " + profile);
+			//System.out.println("프로필 사진 : " + profile);
 			
 			UserDTO dto = new UserDTO();
 			dto.setUser_id(id);

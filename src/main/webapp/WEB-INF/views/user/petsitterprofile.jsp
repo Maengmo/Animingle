@@ -92,7 +92,7 @@
 						</thead>
 						<tbody>
 						<c:forEach items="${psalist }" var="psr">
-						<tr onclick="location.href='/animingle/board/psrecruitmentview.do&seq=${psr.psr_seq}'">
+						<tr onclick="location.href='/animingle/board/petsitterview.do?psr_seq=${psr.psr_seq}&page=1'">
 							<td>
 								<div class="subject-box">
 								${psr.psr_subject }

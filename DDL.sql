@@ -261,6 +261,31 @@ CREATE TABLE tblBanner (
 
 drop table tblBanner;
 
+-- 약국(tblPharmacy)
+CREATE TABLE tblPharmacy (
+	p_seq VARCHAR2(30) PRIMARY KEY,
+	p_name VARCHAR2(50) NOT NULL,
+	p_address VARCHAR2(500) NOT NULL,
+    p_ing VARCHAR2(20) NOT NULL,
+    p_lat VARCHAR2(30) NOT NULL,
+	p_lng VARCHAR2(30) NOT NULL,
+	p_open VARCHAR2(10) NULL,
+	p_close VARCHAR2(10) NULL
+);
+
+-- 병원(tblHospital)
+CREATE TABLE tblHospital (
+	h_seq VARCHAR2(30) PRIMARY KEY,
+	h_name VARCHAR2(50) NOT NULL,
+	h_address VARCHAR2(500) NOT NULL,
+	h_ing VARCHAR2(20) NOT NULL,
+	h_lat VARCHAR2(30) NOT NULL,
+	h_lng VARCHAR2(30) NOT NULL,
+	h_open VARCHAR2(10) NULL,
+	h_close VARCHAR2(10) NULL
+);
+
+
 ------------------------------------- Sequence 문 ----------------------------------------
 
 --채팅, 문의내역
@@ -296,3 +321,7 @@ CREATE SEQUENCE vc_seq;
 CREATE SEQUENCE psa_seq;
 CREATE SEQUENCE psr_seq;
 CREATE SEQUENCE pslog_seq;
+
+select * from tblPharmacy;
+
+select * from tblHospital;
