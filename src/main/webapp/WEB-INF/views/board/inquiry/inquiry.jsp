@@ -68,7 +68,6 @@
 	}).catch( error => {
 	    console.error( error );
 	});
-
 	
 	$('#add-btn').on('click', function() {
 		

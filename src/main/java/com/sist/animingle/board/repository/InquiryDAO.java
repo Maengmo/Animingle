@@ -213,6 +213,97 @@ public class InquiryDAO {
 		}
 		return 0;
 	}
+
+	public List<InquiryDTO> loadDashboard1() {
+		
+		try {
+
+			String sql = "select i.*,\r\n"
+					+ "case \r\n"
+					+ "    when o.answerCnt > 0 then 'o'\r\n"
+					+ "    else 'x'\r\n"
+					+ "end as answerCnt\r\n"
+					+ "from tblinquiry i\r\n"
+					+ "inner join (select i.in_seq as seq,  count(ina_content) as answerCnt from tblinquiry i\r\n"
+					+ "left outer join tblinanswer a on i.in_seq = a.in_seq\r\n"
+					+ "where i.in_prefix = 1\r\n"
+					+ "group by i.in_seq) o on o.seq = i.in_seq\r\n"
+					+ "where i.in_prefix = 1\r\n"
+					+ "order by i.in_seq";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			List<InquiryDTO> list = new ArrayList<InquiryDTO>();
+
+			while (rs.next()) {
+
+				InquiryDTO dto = new InquiryDTO();
+				
+				dto.setIn_subject(rs.getString("in_subject"));
+				dto.setIn_writer(rs.getString("in_writer"));
+				String regdate = rs.getString("in_regdate").substring(0,10);
+				dto.setIn_regdate(regdate);
+				dto.setAnswerCnt(rs.getString("answerCnt"));
+
+				list.add(dto);
+			}
+			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+	
+	
+public List<InquiryDTO> loadDashboard2() {
+		
+		try {
+
+			String sql = "select i.*,\r\n"
+					+ "case \r\n"
+					+ "    when o.answerCnt > 0 then 'o'\r\n"
+					+ "    else 'x'\r\n"
+					+ "end as answerCnt\r\n"
+					+ "from tblinquiry i\r\n"
+					+ "inner join (select i.in_seq as seq,  count(ina_content) as answerCnt from tblinquiry i\r\n"
+					+ "left outer join tblinanswer a on i.in_seq = a.in_seq\r\n"
+					+ "where i.in_prefix = 2\r\n"
+					+ "group by i.in_seq) o on o.seq = i.in_seq\r\n"
+					+ "where i.in_prefix = 2\r\n"
+					+ "order by i.in_seq";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			List<InquiryDTO> list = new ArrayList<InquiryDTO>();
+
+			while (rs.next()) {
+
+				InquiryDTO dto = new InquiryDTO();
+				
+				dto.setIn_subject(rs.getString("in_subject"));
+				dto.setIn_writer(rs.getString("in_writer"));
+				String regdate = rs.getString("in_regdate").substring(0,10);
+				dto.setIn_regdate(regdate);
+				dto.setAnswerCnt(rs.getString("answerCnt"));
+
+				list.add(dto);
+			}
+			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return null;
+	}
 	
 	
 }
