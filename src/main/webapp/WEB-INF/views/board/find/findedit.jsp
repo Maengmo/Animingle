@@ -41,10 +41,14 @@
 						<div>위치</div>
 						<div class="map" id="map"></div>
 					</div>
-					<div class="form-content">
-						<div>본문</div>
-						<textarea id="editor" placeholder="내용을 입력하세요." name="content">${dto.content}</textarea>
-					</div>
+         			<div class="form-content">
+                        <div>본문</div>
+                        <div id="toolbar-container"></div>
+                       	<div id="editor">
+                       		${ dto.content }
+                       	</div>
+                        <textarea style="display:none;" name="content" id="editor1"></textarea>
+                    </div>
 					<div class="btn-div">
 						<button type="submit" id="edit-btn" class="content-btn edit-btn">수 정</button>
 	            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
@@ -66,8 +70,10 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b4f885d6bb97b2a4a23735b58ee2a8c"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/decoupled-document/ckeditor.js"></script>
+<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+<script src="/animingle/asset/js/ckedit.js"></script>
 <script>
 	var container = document.getElementById('map'); 
 	var options = { 
@@ -97,12 +103,6 @@
 		//console.log(latlng.getLat()); //위도
 		//console.log(latlng.getLng()); //경도
 	});
-	
-	 ClassicEditor.create( document.querySelector( '#editor' ), {
-	    removePlugins: [ 'Heading' ],
-	 	language: "ko"
-	 });
-	
 	 
 	 $('.prefix').val("${dto.prefix}").prop("selected", true);
 	 

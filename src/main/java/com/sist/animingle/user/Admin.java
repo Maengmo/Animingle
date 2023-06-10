@@ -18,8 +18,6 @@ public class Admin extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		
 		
 		InquiryDAO dao = new InquiryDAO();
 		
