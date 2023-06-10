@@ -1,3 +1,38 @@
+/* header */
+a:hover {
+    text-decoration: none !important;
+}
+
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: "SUITE-Regular";
+  font-weight: 600;
+  justify-content: center;
+  border-bottom: 2px solid #0256aa;
+}
+
+.navbar > div {
+	margin: 0 !important;
+}
+
+.main-logo {
+  width: 250px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.navbar-toggler {
+  padding: 0;  
+}
+
+@media (min-width: 1200px) {
+	.container {
+	    max-width: 1280px;
+	    margin: 0 auto !important;
+	}
+}
+
 /* WalkTogetherList*/
 
 .content-top {
@@ -20,6 +55,34 @@
    border-radius: 30px;
 }
 
+.btn-div {
+	display : flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.content-btn1 {
+	margin-top : 18px;
+	padding : 15px 20px;
+	width : 90px !important;
+	margin-left:10px;
+	background-color: #0256AA;
+	border : none;
+	border-radius : 10px;
+	color: white;
+	font-size : 20px;
+}
+
+.content-btn2 {
+	margin-top : 18px;
+	padding : 15px 0;
+	width : 90px;
+	margin-left:10px;
+	background-color : #F0F0F0;
+	border : 1px solid #DDD;
+	border-radius : 10px;
+	font-size : 20px;
+}
 .write-btn:hover {
 	background-color: #0256AA;
 	border: 1px solid #0256AA;
@@ -32,8 +95,16 @@
 	color: white !important;
 }
 
+#delForm{
+	display: inline-block;
+}
+
+#editBtns, #chatBtn {
+	display: flex;
+}
+
 .write-btn {
-	font-size : 20px;
+	font-size : 22px;
 	border-radius : 10px;
 	display : flex;
     align-items: center;
@@ -41,11 +112,19 @@
     border: 1px solid #555;
     color: #555;
     padding: 7px 10px;
+    margin-top: 20px;
 }
 
 .write-btn .material-symbols-outlined {
+	margin-right: 5px;
 	font-size: 25px !important;
 	color: #555;
+}
+
+.content-btn1:hover,
+.content-btn2:hover {
+ 	transition : .3s; 
+	opacity : 0.8;	
 }
 
 .btn-div {
@@ -93,9 +172,17 @@ h6 {
    border: 2px solid #ccc;
    border-radius: 10px;
    padding: 15px;
-   margin-top: 15px;
+   padding-bottom: 0;
+   margin-top: 15px;   
 }
 
+.walkInfo li{
+	margin-left: 19px;
+}
+
+.basicInfo {
+   padding-bottom: 15px;
+}
 
 /* WalkTogetherAdd*/
 .maincontent {
@@ -103,8 +190,52 @@ h6 {
 	font-family: "SUITE-Regular";
 }
 
+.editor-container {
+	padding-left: 0;
+	padding-right: 0;
+	display: inline-block !important;
+	margin-bottom: 20px;
+}
+
+.centered {
+	width: 100%;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	display: flex;
+	justify-content: center;
+}
+
+.row {
+	width: 100% !important;
+}
+
+.editor {
+	width: 100%;
+}
+
 .ck-editor__editable { 
 	height: 400px; 
+}
+
+.ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
+	border-color: #CCC !important;	
+}
+
+.ck.ck-button.ck-on {
+	background-color: #DDD !important;
+	color: black !important;
+	font-weight: bold;	
+}
+
+.ck.ck-button:active, .ck.ck-button:focus, a.ck.ck-button:active, a.ck.ck-button:focus {
+	border: none !important;
+	box-shadow: #CCC 0 0 !important;
+}
+
+/* CKEditor footer로 인해 충돌 > 수정 필요 */
+.footer {
+	margin: 0;
+	margin-top: 50px;
 }
 
 .content-header {
@@ -123,9 +254,10 @@ hr {
 }
 
 .menu-title {
-	margin-bottom: 5px;
+	margin-bottom: 7px;
 	margin-top: 15px;
 	font-size: 18px;
+	width: 100%;
 }
 
 input[type="text"] {
@@ -134,7 +266,7 @@ input[type="text"] {
 	border-radius : 5px;
 	border : 1px solid #878787;
 	margin-bottom: 10px;
-	width: 100%
+	width: 100%;
 }
 
 input[type="text"]:focus-visible {
@@ -146,16 +278,16 @@ input[type="text"]:focus-visible {
 }
 
 #aboutInfo input[type="text"] {
-	width: 30%;
+	width: 33%;
 }
 
 #aboutInfo > span:nth-child(1) > span {
-	margin-right: 5px;
+	margin-right: 8px;
 }
 
 #aboutInfo > span:nth-child(2) > span {
-	margin-left:30px; 
-	margin-right: 5px;
+	margin-left: 40px; 
+	margin-right: 8px;
 }
 
 #btns {
@@ -175,4 +307,52 @@ input[type="text"]:focus-visible {
 .content-btn.add-btn {
 	background-color: #0256AA;
 	color : white;
+}
+
+#addForm {
+	width: 100%;
+}
+
+
+.info ul {
+	margin-right: 50px;
+	margin-bottom: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.info {	
+    display: inline-block;
+    background: #fff;
+    margin-right: 35px;
+    padding-left: 0; 
+    padding-top: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    box-shadow: 3px 3px #aaa;
+}
+
+#messageWindow {
+	padding: 10px;
+	width: 100%;
+	max-height: 300px;
+	overflow: auto;
+}
+
+.modal-footer {
+	display: flex;
+	justify-content:center;
+	width: 100%;
+	flex-direction: row;
+}
+
+#inputMessage {
+	width: 80%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 35px;
+	outline-color: #aaa;
+	padding: 10px;
 }

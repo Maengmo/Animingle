@@ -81,3 +81,8 @@
 .table-box table td {
 	padding: 5px 0px;
 }
+
+a {
+	color : #212529;
+	text-decoration : none;
+}

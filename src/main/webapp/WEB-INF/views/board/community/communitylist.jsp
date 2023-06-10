@@ -18,114 +18,89 @@
       <div class="mycontainer">
          <div class="leftbar">
             <!-- 왼쪽 사이드바 입니다. -->
+                       <div class="content-top">
+	         	<div class="content-title" onclick="location.href='/animingle/board/walktogetherlist.do';">산책 친구 구해요
+		         	<button type="button" class="btn">
+		         		<span class="material-symbols-outlined gohover">send</span>
+		         	</button>
+	         	</div>
+	         	<img src="/animingle/asset/commonimg/communitywalk.png" class="walkimg" onclick="location.href='/animingle/board/walktogetherlist.do';">
+	         	</div>
 		</div>
          <div class="maincontent">
-                
+           <div class="content-top">
+	         	<div class="content-title" onclick="location.href='/animingle/board/waglelist.do';">와글와글
+		         	<button type="button" class="btn">
+		         		<span class="material-symbols-outlined gohover">send</span>
+		         	</button>
+	         	</div>
+	         	</div>
+	         	<c:forEach items="${waglelist}" var="dto">
+                 <div class="content-list-box" onclick="location.href='/animingle/board/wagleview.do?seq=${dto.wg_seq}';">
+		         	<div class="user-info">
+		            	<img src="/animingle/asset/pic/${dto.user_pic}">
+		            	<span>${dto.wg_nickname}(${dto.wg_writer})</span>
+		            	<span>${dto.wg_regdate}</span>
+		            </div>
+		         	<div class="content-list-title wagletitle">
+		            	<span>[${dto.wg_prefix}]</span>
+		            	<span>${dto.wg_subject}</span>
+		         	</div>
+		         	<div class="content-views">
+							<span class="material-symbols-outlined">visibility</span> 
+							<span class="views-count">${dto.wg_readcount}</span>
+							<span class="material-symbols-outlined">chat</span> 
+							<span class="views-count">${dto.wg_ccnt}</span>
+						</div>
+		         </div>
+		         </c:forEach>
+		         
 
          </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->
                     <div class="content-top">
-	         	<div class="content-title">수의사 Q&A
+	         	<div class="content-title" onclick="location.href='/animingle/board/vetqnalist.do';">수의사 Q&A
 		         	<button type="button" class="btn">
-		         		<span class="material-symbols-outlined">send</span>
+		         		<span class="material-symbols-outlined gohover">send</span>
 		         	</button>
 	         	</div>
 	         	</div>
-            <div class="content-list-box">
+	         	<c:forEach items="${qnalist}" var="dto">
+            <div class="content-list-box vqnabox" onclick="location.href='/animingle/board/vetqnaview.do?vq_seq=${dto.vq_seq}';">
+            	<div class="vqna-top">
 		         	<div class="tag">
-		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_01.png">
-		         		<span>강아지</span>
+		         		<c:if test="${dto.vq_prefix == '강아지'}">
+		         			<img class="tag-img" src="/animingle/asset/commonimg/tag_01.png">
+		         		</c:if>
+		         		<c:if test="${dto.vq_prefix == '고양이'}">
+		         			<img class="tag-img" src="/animingle/asset/commonimg/tag_02.png">
+		         		</c:if>
+		         		<c:if test="${ dto.vq_prefix == '기타' }">
+				         	<img class="tag-img" src="/animingle/asset/commonimg/tag_03.png">
+				         </c:if>
+		         		<span>${dto.vq_prefix}</span>
 		         	</div>
-		         	<div class="content-list-title">
-		         		강아지가 먹으면 안되는 음식
-		         		<div class="content-list-sub-title">
-		         			강아지가 먹으면 안되는 음식 알려주세용
-		         		</div>
+		         		<div class="content-views">
+							<span class="material-symbols-outlined">visibility</span> 
+							<span class="views-count">${dto.vq_readcount}</span>
+							<span class="material-symbols-outlined">chat</span> 
+							<span class="views-count">${dto.answer_cnt}</span>
+						</div>
+					</div>
+		         	<div class="content-list-title vqnatitle">
+		         		<span>${dto.vq_subject}</span>
 		         	</div>
-		         	<div class="sub-content">
+		         	<div class="sub-content vqnasub">
 		         		<div>
-		         			답변: 0
+		         			${dto.vq_writer}
 		         		</div>
 		         		<div>
-		         			과일구미
-		         		</div>
-		         		<div>
-		         			7시간 전
+		         			${dto.vq_regdate}
 		         		</div>
 		         	</div>
 		         </div>
-		         <div class="content-list-box">
-		         	<div class="tag">
-		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_01.png">
-		         		<span>강아지</span>
-		         	</div>
-		         	<div class="content-list-title">
-		         		강아지가 먹으면 안되는 음식
-		         		<div class="content-list-sub-title">
-		         			강아지가 먹으면 안되는 음식 알려주세용
-		         		</div>
-		         	</div>
-		         	<div class="sub-content">
-		         		<div>
-		         			답변: 0
-		         		</div>
-		         		<div>
-		         			과일구미
-		         		</div>
-		         		<div>
-		         			7시간 전
-		         		</div>
-		         	</div>
-		         </div>
-		         <div class="content-list-box">
-		         	<div class="tag">
-		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_02.png">
-		         		<span>고양이</span>
-		         	</div>
-		         	<div class="content-list-title">
-		         		강아지가 먹으면 안되는 음식
-		         		<div class="content-list-sub-title">
-		         			강아지가 먹으면 안되는 음식 알려주세용
-		         		</div>
-		         	</div>
-		         	<div class="sub-content">
-		         		<div>
-		         			답변: 0
-		         		</div>
-		         		<div>
-		         			과일구미
-		         		</div>
-		         		<div>
-		         			7시간 전
-		         		</div>
-		         	</div>
-		         </div>
-		         <div class="content-list-box">
-		         	<div class="tag">
-		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_02.png">
-		         		<span>고양이</span>
-		         	</div>
-		         	<div class="content-list-title">
-		         		강아지가 먹으면 안되는 음식
-		         		<div class="content-list-sub-title">
-		         			강아지가 먹으면 안되는 음식 알려주세용
-		         		</div>
-		         	</div>
-		         	<div class="sub-content">
-		         		<div>
-		         			답변: 0
-		         		</div>
-		         		<div>
-		         			과일구미
-		         		</div>
-		         		<div>
-		         			7시간 전
-		         		</div>
-		         	</div>
-		         </div>
-               
-            
+		         </c:forEach>               
          </div>
          </div>
    </section>

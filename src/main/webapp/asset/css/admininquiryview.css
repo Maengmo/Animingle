@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+
+.content-box {
+	border : 1px solid #aaa;
+	width : 100%;
+	padding : 15px;
+	box-shadow: 5px 5px #ccc;
+	border-radius: 20px;
+}
+
+.detail-content {
+	margin-top : 20px;
+	padding : 10px;
+	width : 100%;
+}
+
+.content-title {
+	font-weight : bold;
+	font-size : 25px;
+	padding-bottom : 10px;
+	width : 100%;
+	display : flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.content-text {
+	width : 100%;
+	min-height : 200px;
+	font-size : 18px;
+	padding-left : 10px;
+}
+
+.content-writer {
+	margin-left : 10px;
+	color : #595959;
+	font-weight : 400;
+	font-size : 15px !important;
+}
+
+.content-time {
+	width : 100%;
+	text-align : right;
+}
+
+.a-div {
+	width : 100%;
+	text-align : left;
+}
+
+.a-back {
+	text-decoration : none;	
+	margin-bottom : 10px;
+	display : flex;
+	align-items: center;
+	width : fit-content;
+}
+
+.back-to-list{
+	color :  #5C5C5C;
+	font-size : 18px;
+	font-weight : bold;
+}
+
+.profile-img {
+	width : 40px;
+	height : 40px;
+	padding : 5px;
+	border : 2px solid #F0F0F0;
+	border-radius : 10px;
+}
+
+
+.item-header {
+	display : flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.item-id {
+	font-size : 17px;
+}
+
+
+.answer-content {
+	margin-top : 25px;
+	font-size : 20px;
+	font-weight : bold;
+}
+
+.answer {
+	border : 1px solid #aaa;
+	padding : 20px;
+	border-radius : 10px;
+	margin-top : 10px;
+	font-weight : 400;
+	font-size : 17px;
+}
+.material-symbols-outlined {
+	font-size : 20px !important;
+	color : black;
+	margin-right : 5px;
+}
+
+.content-config {
+	font-weight : 400;
+	font-size : 15px;
+}
+
+
+.answer-config {
+	font-weight : bold;
+	margin-bottom : 10px;
+	font-size : 20px;
+}
+
+.answer-regdate {
+	font-weight : 400;
+	font-size : 14px;
+}
+
+.answer div:last-child {
+	margin-top : 10px;
+	font-size : 15px;
+	text-align : right;
+}
+
+.back-to-list {
+width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.back-to-list:hover .material-symbols-outlined.back-to-listbtn, .back-to-list:hover {
+	color : #0256AA;
+	cursor : pointer;
+}
+
+.main-content-sel3 {
+	margin : 15px 0px;
+	width : 100%;
+	height : auto;
+}
+
+.ck-editor__editable { 
+	height: 150px;
+}
+
+.add-btn {
+	padding : 10px 20px;
+	background-color: #0256AA;
+	color : white;
+	width: 100px;
+	border : none;
+	border-radius : 10px;
+	font-size : 18px;
+	float : right ;
+}
+
+.add-btn:hover {
+	
+	opacity : 0.8;
+}
+
+.answer-list {
+	display : block;
+}

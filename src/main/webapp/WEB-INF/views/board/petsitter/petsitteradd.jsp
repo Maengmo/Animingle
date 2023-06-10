@@ -24,40 +24,45 @@
 				<hr>
 				
 				<div class="main-form">
-					<div class="form-title">
-						<div>제목</div>
-						<div><input type="text" class="title" id="title" placeholder="제목을 입력해주세요." autofocus></div>
-					</div>
-					<div class="form-address">
-						<div>지역(동)</div>
-						<div>
-							<div><input type="text" class="address" id="address" placeholder="지역(동)을 입력해주세요."></div>
+					<form action="/animingle/board/petsitteradd.do" method="POST">
+						<div class="form-title">
+							<div>제목</div>
+							<div><input type="text" name="title" class="title" id="title" placeholder="제목을 입력해주세요." autofocus></div>
+						</div>
+						<div class="form-address">
+							<div>지역(동)</div>
 							<div>
-								<button type="button" class="find-address" id="find-address" onclick="sample6_execDaumPostcode();">주소 찾기</button>
+								<div><input type="text" name="address" class="address" id="address" placeholder="지역(동)을 입력해주세요." readonly="readonly"></div>
+								<div>
+									<button type="button" class="find-address" id="find-address" onclick="sample6_execDaumPostcode();">주소 찾기</button>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-date">
-					    <div>
-					        <div class="date-title">부터</div>
-					        <div><input type="date" class="petsitter-date" id="start-date"></div>
-					    </div>
-					    <span> ~ </span>
-					    <div>
-					        <div class="date-title">까지</div>
-					        <div><input type="date" class="petsitter-date" id="end-date" onchange="checkDate();"></div>
-					    </div>
-					</div>					
-					
-					<div class="main-content-sel3">
-                        <div>본문</div>
-                        <textarea name="text" id="editor" placeholder="내용을 입력하세요."></textarea>
-                     </div>
-					
-					<div class="btn-div">
-						<button type="button" id="add-btn" class="content-btn add-btn">등 록</button>
-	            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
-	            	</div>
+						<div class="form-date">
+						    <div>
+						        <div class="date-title">부터</div>
+						        <div><input type="date" name="start-date" class="petsitter-date" id="start-date"></div>
+						    </div>
+						    <span> ~ </span>
+						    <div>
+						        <div class="date-title">까지</div>
+						        <div><input type="date" name="end-date" class="petsitter-date" id="end-date" onchange="checkDate();"></div>
+						    </div>
+						</div>					
+						
+						<div class="main-content-sel3">
+	                        <div>본문</div>
+	                        <div id="toolbar-container"></div>
+	                       	<div id="editor">
+	                       	</div>
+	                        <textarea style="display:none;" name="text" id="editor1"></textarea>
+	                     </div>
+						
+						<div class="btn-div">
+							<button type="submit" id="add-btn" class="content-btn add-btn">등 록</button>
+		            		<button type="button" id="del-btn" class="content-btn cancel-btn" onclick="history.back();">취 소</button>
+		            	</div>
+	            	</form>
 				</div>
 				
 				
@@ -70,11 +75,19 @@
 	<%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/decoupled-document/ckeditor.js"></script>
+<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/animingle/asset/js/petsitteradd.js"></script>
 <script>
+
+	$("form").on('submit',function(){
+	    html = $("#editor").html();
+	    $("#editor1").val(html);
+	})
+	
+
 </script>
 </body>
 </html>

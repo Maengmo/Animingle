@@ -23,84 +23,106 @@
          </div>
           <div class="maincontent">
             <div class="content-top">
-               <div class="content-title">와글와글</div>
+               <div class="content-title" onclick="location.href='/animingle/board/waglelist.do';">와글와글</div>
                <div class="content-filter">
-                  <form action="#">
-                       <button>일상</button>
-                       <button>정보 공유</button>
-                       <button>나눔</button>
-                       <button>전체보기</button>
-                  </form>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=1&searchtext=${searchtext}';">일상</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=2&searchtext=${searchtext}';">정보 공유</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do?prefix=3&searchtext=${searchtext}';">나눔</button>
+                       <button onclick="location.href='/animingle/board/waglelist.do';">전체보기</button>
                </div>
-               <form action="#">
+               <form id="searchform" action="/animingle/board/waglelist.do" method="GET">
                   <div class="search-box">
-                       <input class="content-search" type="text" placeholder="검색">
+                       <input class="content-search" type="text" placeholder="검색" name="searchtext">
+                       <input type="hidden" name="prefix" value="${prefix}">
                        <span class="material-symbols-outlined">
                      search
                   </span>
                   </div>
+                  
                </form>
             </div>
-            <div class="content-bottom">
+            <c:forEach items="${list}" var="dto">
+            <div class="content-bottom" onclick="location.href='/animingle/board/wagleview.do?seq=${dto.wg_seq}&page=${page}';">
 	            <div class="content-info">
 		            <div class="user-info">
-		            	<img src="/animingle/asset/commonimg/animingle.png">
-		            	<span>밍글맹글(mingle77)</span>
-		            	<span>16분 전</span>
+		            	<img src="/animingle/asset/pic/${dto.user_pic}">
+		            	<span>${dto.wg_nickname}(${dto.wg_writer})</span>
+		            	<span>${dto.wg_regdate}</span>
 		            </div>
 		            <div class="content-text">
 		            	<div class="content-title2">
-		            	<span>[일상]</span>
-		            	<span>우리 애기 돌잔치 했어용</span>
+		            	<span>[${dto.wg_prefix}]</span>
+		            	<span>${dto.wg_subject}</span>
 		            	</div>
 		            	<div class="content-views">
 							<span class="material-symbols-outlined">visibility</span> 
-							<span class="views-count">54</span>
+							<span class="views-count">${dto.wg_readcount}</span>
 							<span class="material-symbols-outlined">chat</span> 
-							<span class="views-count">3</span>
+							<span class="views-count">${dto.wg_ccnt}</span>
 						</div>
 		            </div>
 	            </div>
             </div>
-            <div class="content-bottom">
-	            <div class="content-info">
-		            <div class="user-info">
-		            	<img src="/animingle/asset/commonimg/animingle.png">
-		            	<span>밍글맹글(mingle77)</span>
-		            	<span>16분 전</span>
-		            </div>
-		            <div class="content-text">
-		            	<div class="content-title2">
-		            		<span>[일상]</span>
-		            		<span>우리 애기 돌잔치 했어용</span>
-		            	</div>
-		            	<div class="content-views">
-							<span class="material-symbols-outlined icon">visibility</span> 
-							<span class="views-count">54</span>
-							<span class="material-symbols-outlined icon">chat</span> 
-							<span class="views-count">3</span>
-						</div>
-		            </div>
-	            </div>
+            </c:forEach>
+         <div class="paging">
+               <c:if test="${ currentPage > 1 }">
+                 <span onclick="location.href='/animingle/board/waglelist.do?page=${ currentPage - 1 }'">&lt;</span>
+              </c:if>
+               <c:if test="${ currentPage == 1 }">
+                 <span onclick="location.href='/animingle/board/waglelist.do?page=${ currentPage }'">&lt;</span>
+              </c:if>
+              <ul>
+                 <c:forEach var="pageNumber" begin="${ startPage }" end="${ endPage }">
+                 	<c:if test="${ searchtext != null && prefix != null }">
+                    <li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
+                       onclick="location.href='/animingle/board/waglelist.do?page=${pageNumber}&searchtext=${searchtext}&prefix=${prefix}'">${ pageNumber }</li>
+                    </c:if>
+                 	<c:if test="${ searchtext == null && prefix != null }">
+                    <li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
+                       onclick="location.href='/animingle/board/waglelist.do?page=${pageNumber}&prefix=${prefix}'">${ pageNumber }</li>
+                    </c:if>
+                 	<c:if test="${ searchtext == null && prefix == null }">
+                    <li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
+                       onclick="location.href='/animingle/board/waglelist.do?page=${pageNumber}'">${ pageNumber }</li>
+                    </c:if>
+                 </c:forEach>
+              </ul>
+              <c:if test="${currentPage < totalPage }">
+                 <span onclick="location.href='/animingle/board/waglelist.do?page=${ currentPage + 1 }'">&gt;</span>
+              </c:if>
+              <c:if test="${currentPage == totalPage }">
+                 <span onclick="location.href='/animingle/board/waglelist.do?page=${ currentPage }'">&gt;</span>
+              </c:if>
             </div>
+            <c:if test="${not empty id}">
             <div class="submit-btn">
-				<button class="submit-btn2" type="button" onclick="">
+				<button class="submit-btn2" type="button" onclick="location.href='/animingle/board/wagleadd.do'">
 					<span class="material-symbols-outlined">
 							edit_note
 					</span>
 					작성하기
 				</button>
 			</div>
-         </div>
-		
+			</c:if>
+		 </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->
          </div>
         </div>
          
    </section>
+   
    <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+
+
+	<c:if test="${search == 'y'}">
+	$('input[name=searchtext]').val('${searchtext}');
+	</c:if>
+
+
+</script>
 </body>
 </html>

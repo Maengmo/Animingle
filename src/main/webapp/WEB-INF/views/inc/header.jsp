@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>   
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
  	<nav class="navbar navbar-expand-lg navbar-dark bg-white">
       <div class="container" style="margin: 0 auto;">
@@ -20,20 +21,38 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
+            <c:if test="${empty id}">
               <a class="nav-link text-dark" aria-current="page" href="/animingle/user/login.do"
-                >로그인</a
-              >
+                >로그인</a>
+            </c:if>
+            <c:if test="${not empty id}">
+              <a class="nav-link text-dark" aria-current="page" href="/animingle/user/logout.do"
+                >로그아웃</a>
+            </c:if>
             </li>
+			
+			
             <li class="nav-item">
+            <c:if test="${empty id}">
               <a class="nav-link text-dark" aria-current="page" href="/animingle/user/join.do"
-                >회원가입</a
-              >
+                >회원가입</a>
+            </c:if>
+            <c:if test="${not empty id && isAdmin != 'Y'}">
+              <a class="nav-link text-dark" aria-current="page" href="/animingle/user/profile.do"
+                >마이페이지</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-dark" aria-current="page" href="/animingle/board/inquiry.do"
                 >고객센터</a
               >
             </li>
+            </c:if>
+            <c:if test="${not empty id && isAdmin == 'Y'}">
+              <a class="nav-link text-dark" aria-current="page" href="/animingle/user/admin.do">
+                관리 센터</a>
+            </li>
+           
+            </c:if>
           </ul>
         </div>
       </div>
@@ -51,7 +70,14 @@
           	<a href="/animingle/board/findlist.do">우리 가족을 찾아주세요</a>
           </li>
           <li>
-          	<a href="/animingle/board/communitylist.do">커뮤니티</a>
+          	<div class="comunity-wrapper">
+			  <a class="comunity" href="/animingle/board/communitylist.do">커뮤니티</a>
+			  <div class="comunity-submenu">
+			    <div><a href="/animingle/board/walktogetherlist.do">산책 친구 구해요</a></div>
+			    <div><a href="/animingle/board/waglelist.do">와글와글</a></div>
+			    <div><a href="/animingle/board/vetqnalist.do">수의사 QnA</a></div>
+			  </div>
+			</div>
           </li>
           <li>
           	<a href="/animingle/board/medicalview.do">병원/약국찾기</a>
