@@ -156,11 +156,17 @@
 	color: tomato;
 }
 
+.content-list-box.vqnabox {
+	width: 95%;
+}
+
+.sub-content.vqnasub {
+	width: 100%;
+}
+
 .vqnabox:hover .vqnatitle span {
 	color: tomato;
 }
-
-
 
 .vqna-top {
 	display: flex;
@@ -182,5 +188,6 @@
 
 .walkimg {
 	height: 700px;
+	width: 100%;
 }
 

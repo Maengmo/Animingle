@@ -74,6 +74,30 @@
                     </div>
                 </div>
             </div>
+            <!-- 채팅모달 -->
+			<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="staticBackdropLabel">채팅</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div id="messageWindow" >
+						</div>
+						<div class="modal-footer">
+							<input id="inputMessage" class="cht-msg-box" type="text" onkeyup="enterkey()" autocomplete="off">
+							<button type="button" class="btn btn-primary" onclick="send()">전 송</button>
+						</div>
+					</div>
+				</div>
+				<c:if test="${(sessionScope.nickname ne '') and !(empty sessionScope.nickname)}">
+					<input type="hidden" value='${sessionScope.nickname}' id='chat_id' />
+				</c:if>
+				<c:if test="${(sessionScope.nickname eq '') or (empty sessionScope.nickname)}">
+					<input type="hidden" value="${ sessionScope.nickname.substring(0, 6) }"
+						id='chat_id' />
+				</c:if>
+			</div>
         </div>
         <div class="rightbar">
         	<!-- 오른쪽 사이드바 입니다. -->
@@ -89,8 +113,6 @@
     crossorigin="anonymous"></script>
 <script>
 
-	
-
     var lat = 37.4993;
     var lng = 127.0331;
 
@@ -101,9 +123,76 @@
 
     var map;
     
+	var textarea = document.getElementById("messageWindow");
+	var webSocket = new WebSocket('ws://localhost:8090/animingle/walktogetherlist.do');
+	var inputMessage = document.getElementById('inputMessage');
+	
+	webSocket.onerror = function(event) {
+        onError(event)
+    };
     
+    webSocket.onopen = function(event) {
+        onOpen(event)
+    };
     
+    webSocket.onmessage = function(event) {
+        onMessage(event)
+    };
     
+    function onMessage(event) {
+        var message = event.data.split("|");
+        var sender = message[0];
+        var content = message[1];
+        if (content == "") {
+            
+        } else {
+            if (content.match("/")) {
+                if (content.match(("/" + $("#chat_id").val()))) {
+                    var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
+                    if (temp[1].trim() == "") {
+                    } else {
+                        $("#messageWindow").html($("#messageWindow").html() + "<p class='whisper'>"
+                            + sender + content.replace("/" + $("#chat_id").val(), "(귓속말) :") + "</p>");
+                    }
+                } else {
+                }
+            } else {
+                if (content.match("!")) {
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'><b class='impress'>" + sender + " : " + content + "</b></p>");
+                } else {
+                    $("#messageWindow").html($("#messageWindow").html()
+                        + "<p class='chat_content'>" + sender + " : " + content + "</p>");
+                }
+            }
+        }
+    }
+    
+    function onOpen(event) {
+        $("#messageWindow").html("<p class='chat_content'>채팅에 참여하였습니다.</p>");
+        /* alert($("#messageWindow")); */
+    }
+    
+    function onError(event) {
+        alert(event.data + '채팅서버 에러');
+    }
+    
+    function send() {
+        if (inputMessage.value == "") {
+        } else {
+            $("#messageWindow").html($("#messageWindow").html()
+                + "<p class='chat_content'>나 : " + inputMessage.value + "</p>");
+        }
+        webSocket.send($("#chat_id").val() + "|" + inputMessage.value);
+        inputMessage.value = "";
+    }
+    
+    //     엔터키를 통해 send함
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            send();
+        }
+    }
 
     /* 현재 위치 받아서 기본 지도 화면 출력하기 */
     if (navigator.geolocation) {
@@ -361,10 +450,11 @@
         $('#introInfo').html(data.content);
         
         if(data.sessionid !== null) {
+        	
             $('#chatBtn').html(
                     
             	`
-            	<button type="button" class="write-btn">
+            	<button type="button" class="write-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
                 	<span class="material-symbols-outlined">sms</span>
                      채팅하기
                 </button>

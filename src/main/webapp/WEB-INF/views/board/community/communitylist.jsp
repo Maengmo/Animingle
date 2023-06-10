@@ -71,11 +71,14 @@
             	<div class="vqna-top">
 		         	<div class="tag">
 		         		<c:if test="${dto.vq_prefix == '강아지'}">
-		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_01.png">
+		         			<img class="tag-img" src="/animingle/asset/commonimg/tag_01.png">
 		         		</c:if>
 		         		<c:if test="${dto.vq_prefix == '고양이'}">
-		         		<img class="tag-img" src="/animingle/asset/commonimg/tag_02.png">
+		         			<img class="tag-img" src="/animingle/asset/commonimg/tag_02.png">
 		         		</c:if>
+		         		<c:if test="${ dto.vq_prefix == '기타' }">
+				         	<img class="tag-img" src="/animingle/asset/commonimg/tag_03.png">
+				         </c:if>
 		         		<span>${dto.vq_prefix}</span>
 		         	</div>
 		         		<div class="content-views">
