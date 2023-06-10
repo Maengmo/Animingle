@@ -1,4 +1,4 @@
-package com.sist.animingle;
+package com.sist.animingle.board;
 
 import java.io.IOException;
 

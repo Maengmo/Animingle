@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.json.simple.JSONObject;
 
 import com.sist.animingle.board.repository.VetQnAAnswerDTO;
@@ -24,8 +26,11 @@ public class VetQnAAnswerAdd extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		
 		String vq_seq = req.getParameter("vq_seq");
-		String vet_seq = "iris678";
+		String vet_seq = id;
 		String vqr_content = req.getParameter("vqr_content");
 		
 		VetQnAAnswerDTO dto = new VetQnAAnswerDTO();

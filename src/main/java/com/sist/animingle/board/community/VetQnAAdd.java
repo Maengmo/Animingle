@@ -28,11 +28,11 @@ public class VetQnAAdd extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
-		Object id = session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		
 		req.setCharacterEncoding("UTF-8");
 		
-		String vq_writer = id + "";
+		String vq_writer = id;
 		String vq_subject = req.getParameter("title");
 		String vq_prefix = req.getParameter("tag");
 		String vq_content = req.getParameter("content");

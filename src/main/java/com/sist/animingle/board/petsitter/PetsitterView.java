@@ -35,6 +35,8 @@ public class PetsitterView extends HttpServlet {
     	
     	dao = new PetsitterDAO();
     	List<PetsitterViewDTO> plist = dao.petLog(psr_seq);
+    	
+    	System.out.println(id);
 
     	req.setAttribute("dto", dto);
     	req.setAttribute("id", id);

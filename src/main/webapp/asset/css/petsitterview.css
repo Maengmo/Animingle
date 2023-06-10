@@ -236,3 +236,22 @@ span.image-inline {
 .content-text img {
 	width: 100%;
 }
+
+.modal-dialog {
+	padding: 10px;
+	width: 90%;
+}
+
+.modal-footer {
+	display: flex;
+	justify-content: center;
+}
+
+.cht-msg-box {
+	width: 80%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 35px;
+	outline-color: #aaa;
+	padding: 10px;
+}

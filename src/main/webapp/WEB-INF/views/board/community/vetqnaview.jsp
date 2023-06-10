@@ -147,55 +147,70 @@
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script	src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
 	<script	src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
-	
 <script>
-	
+
 	var myEditor = [];
 	
-	$(document).ready(function () {
+	$(document).ready(function() {
 	
-		$(".comment-box").hide();
-	    $(".comment-textarea-box").hide();
-	
-	    $(".comment-list-btn").click(function () {
-	    	var target = $(this).data('target');
-	        $(target).toggle();
-	    });
-	
-		$(".comment-add-btn").click(function () {
-	    	var target = $(this).data('target');
-	        $(target).toggle();
-		});
-	
-	    $(".comment-area").on('input', function () {
-			var maxLength = 1000;
-	        var currentLength = $(this).val().length;
-			var remainingLength = maxLength - currentLength;
-	
-			$(".character-count").text(currentLength + "/" + maxLength);
+			$(".comment-box").hide();
+			$(".comment-textarea-box").hide();
+		
+			$(".comment-list-btn").click(function() {
+				var target = $(this).data('target');
+				$(target).toggle();
+			});
+		
+			$(".comment-add-btn").click(function() {
+				var target = $(this).data('target');
+				$(target).toggle();
+			});
+		
+			$(".comment-area").on('input', function() {
+				var maxLength = 1000;
+				var currentLength = $(this).val().length;
+				var remainingLength = maxLength - currentLength;
+		
+				$(".character-count").text(currentLength + "/" + maxLength);
 		
 				if (currentLength > maxLength) {
 					$(this).val($(this).val().substring(0, maxLength));
-		        }
+				}
+		
+			});
 			
+			<c:forEach items="${alist}" var="adto" varStatus="status">
+				ClassicEditor.create(document.querySelector('#editor-${status.index}'), {
+					toolbar: {
+			
+						items: [
+					        'undo', 'redo',
+					        '|', 'heading',
+					        '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+					        '|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'code',
+					        '|', 'link', 'blockQuote', 'codeBlock',
+					        '|', 'bulletedList', 'numberedList', 'todoList', 'outdent', 'indent'
+					    ],
+			
+						shouldNotGroupWhenFull: true
+			
+						},
+					
+						removePlugins: ['Heading'],
+						language: 'ko'
+						
+					}).then( editor => {
+					myEditor.push(editor);
+					});
+			</c:forEach >
+		
 		});
-	    
-		<c:forEach items="${alist}" var="adto" varStatus="status">
-	    	ClassicEditor.create(document.querySelector('#editor-${status.index}'), {
-	    		removePlugins: ['Heading'],
-	    		language: 'ko'
-	    	}).then( editor => {
-	    		myEditor.push(editor);
-	    	});
-		</c:forEach>
-
-	});
 	
-    function commentadd(count) {
-		
+	function commentadd(count) {
+	
 		var vqr_seq = $(`.vqr_seq-\${count}`).val();
-		var vqrc_content = myEditor[count].getData(); 
-		
+		var vqrc_content = myEditor[count].getData();
+	
 		$.ajax({
 			url: "/animingle/board/vetqnacomment.do",
 			type: "POST",
@@ -207,63 +222,64 @@
 			},
 			success: function(result) {
 				$(`.comment-main-\${ result.vqr_seq }`).append(
-						`
-							<div class="comment-sub-box">
-								<div class="comment-main-profile-box">
-									<img class="comment-profile-img" src="/animingle/asset/commonimg/logo_01.png">
-									<div>
-										<div>\${ result.vqrc_writer }</div>
-										<span>\${ result.vqrc_regdate }</span>
+					`
+								<div class="comment-sub-box">
+									<div class="comment-main-profile-box">
+										<img class="comment-profile-img" src="/animingle/asset/commonimg/logo_01.png">
+										<div>
+											<div>\${ result.vqrc_writer }</div>
+											<span>\${ result.vqrc_regdate }</span>
+										</div>
 									</div>
+									<div class="comment">\${ result.vqrc_content }</div>
 								</div>
-								<div class="comment">\${ result.vqrc_content }</div>
-							</div>
-						`
+							`
 				);
-				
+	
 				myEditor[count].setData("");
 				$(`.comment-count-\${count}`).text(result.comment_cnt + "개의 댓글");
 			},
 			error: function(a, b, c) {
 				console.log(a, b, c);
-			}			
+			}
 		});
-		
+	
 	};
 	
 	function qnadel(vq_seq, user_id) {
-		
+	
 		if (!confirm("정말 게시물을 삭제 할까요??")) {
 			alert("삭제를 취소합니다.");
-			
+	
 		} else {
 			location.href = "/animingle/board/vetqnadel.do?vq_seq=" + vq_seq + "&user_id=" + user_id;
 		}
-		
-	}
+	
+	};
 	
 	function qnaedit(vq_seq, user_id, id) {
-		
+	
 		let subject = $("#view-subject").text();
 		let content = $(".find-view-content").html();
 		let prefix = $("input[type='hidden']").val();
-		
+	
 		if (user_id == id) {
-			
+	
 			let url = "/animingle/board/vetqnaedit.do" +
-		      "?vq_seq=" + vq_seq +
-		      "&vq_subject=" + encodeURIComponent(subject) +
-		      "&vq_content=" + encodeURIComponent(content) +
-		      "&vq_prefix=" + encodeURIComponent(prefix);
-			
+				"?vq_seq=" + vq_seq +
+				"&vq_subject=" + encodeURIComponent(subject) +
+				"&vq_content=" + encodeURIComponent(content) +
+				"&vq_prefix=" + encodeURIComponent(prefix);
+	
 			location.href = url;
-			
+	
 		} else {
 			alert("게시글 작성자가 아닙니다.");
 			location.href = "/animingle/index.do";
 		}
-		
-	}
+	
+	};
+	
 </script>
 </body>
 </html>
