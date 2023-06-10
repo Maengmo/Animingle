@@ -26,20 +26,20 @@
 					<div class="ul-box">
 						<ul>
 							<li>
-								신고현황 :
-								<span>3</span>
-							</li>
-							<li>
-								문의현황 :
-								<span>2</span>
-							</li>
-							<li>
-								신고완료 :
-								<span>0</span>
+								<a href="/animingle/user/admin/inquirylist.do?prefix=1">문의현황 :</a>
+								<span>${cnt1}</span>
 							</li>
 							<li>
 								문의완료 :
-								<span>2</span>
+								<span>${cnt3}</span>
+							</li>
+							<li>
+								<a href="/animingle/user/admin/inquirylist.do?prefix=2">신고현황 :</a>
+								<span>${cnt2}</span>
+							</li>
+							<li>
+								신고완료 :
+								<span>${cnt4}</span>
 							</li>
 						</ul>
 					</div>

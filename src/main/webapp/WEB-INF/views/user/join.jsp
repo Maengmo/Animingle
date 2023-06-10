@@ -74,8 +74,8 @@
                   
                   <span class="join-label">주소</span>
                   <div>
-                      <input type="text" id="sample6_postcode" class="post-num" placeholder="우편번호">
-                      <input type="text" name="address" id="sample6_address" class="address" placeholder="주소" required>
+                      <input type="text" id="sample6_postcode" class="post-num" placeholder="우편번호" readonly>
+                      <input type="text" name="address" id="sample6_address" class="address" placeholder="주소" required readonly>
                       <input type="button" class="search-btn" value="주소 검색" onclick="sample6_execDaumPostcode()">
                   </div>
                   <div>
@@ -89,9 +89,9 @@
                  </div>
                   <div class="upload-file">
                       <span class="join-label">프로필 이미지</span>
-                      <input type="text" name="profile" class="file-name" value="첨부파일" placeholder="첨부파일" readonly>
+                      <input type="text" class="file-name" value="첨부파일" placeholder="첨부파일" readonly>
                       <label for="pic">파일 업로드</label> 
-                      <input type="file" id="pic">
+                      <input type="file" name="profile" id="pic">
                   </div>
 
                   <div>

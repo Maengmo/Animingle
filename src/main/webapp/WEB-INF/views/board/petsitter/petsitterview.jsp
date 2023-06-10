@@ -68,9 +68,6 @@
 				         	</c:if>
 			        	 </div>
 	            	</div>
-	            	
-	            	
-			
 	            		
 		            <div class="applicant-list">
 		            	<span class="applicant-list-title">신청자 목록</span>

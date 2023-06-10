@@ -74,6 +74,33 @@
   color: #f24822;
 }
 
+.comunity-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.comunity:hover ~ .comunity-submenu,
+.comunity-submenu:hover {
+  display: block;
+}
+
+.comunity-submenu {
+  z-index: 999;
+  display: none;
+  position: absolute;
+  left: -70%;
+  top: 90%;
+  width: max-content;
+  padding: 15px;
+  background-color : white;
+  box-shadow : 1px 1px 1px #ccc;
+}
+
+.comunity-submenu > div {
+  margin-bottom: 10px;
+
+}
+
 @media (max-width: 1280px) {
   .sub-navbar > div {
   	width: 860px;

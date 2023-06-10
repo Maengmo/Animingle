@@ -10,4 +10,5 @@ public class InquiryDTO {
 	private String in_prefix;
 	private String in_content;
 	private String in_regdate;
+	private String nickname;
 }
