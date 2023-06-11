@@ -64,7 +64,7 @@
 				         	</div>
 				         	<div class="view-subject-icon">
 				         		<span class="material-symbols-outlined">visibility</span>${ dto.vq_readcount }
-	      						<span class="material-symbols-outlined">chat</span>${ clist[status.index].answer_cnt }
+	      						<span class="material-symbols-outlined">chat</span>${ dto.answer_cnt }
 				         	</div>
 			         	</div>
 			         	<div class="content-list-title">

@@ -43,7 +43,7 @@ public class VetQnAList extends HttpServlet {
         List<VetQnAListDTO> list = dao.getVetBoardContent(currentPage, itemsPerPage);
         
         dao = new VetQnADAO();
-        List<VetQnAListDTO> clist = dao.getCommentCnt();
+        //List<VetQnAListDTO> clist = dao.getCommentCnt();
 		
         //페이징 이전 페디 불러오는 코드
 		//List<VetQnAListDTO> list = dao.list();
@@ -54,7 +54,7 @@ public class VetQnAList extends HttpServlet {
 		
         req.setAttribute("id", id);
 		req.setAttribute("list", list);
-		req.setAttribute("clist", clist);
+		//req.setAttribute("clist", clist);
 		req.setAttribute("currentPage", currentPage);
         req.setAttribute("totalPage", totalPage);
         req.setAttribute("startPage", startPage);

@@ -468,10 +468,17 @@ public class VetQnADAO {
 		
 		try {
 			
-			String sql = "select * \r\n"
-					+ "from (select i.*, rownum r from\r\n"
-					+ "     (select * from tblvetqna order by vq_seq DESC) i)\r\n"
-					+ "where r between ? and ?";
+			String sql = "SELECT i.*, \r\n"
+					+ "       (SELECT COUNT(*) FROM tblvqreply WHERE vq_seq = i.vq_seq) AS answer_cnt\r\n"
+					+ "FROM (\r\n"
+					+ "  SELECT t.*, rownum r\r\n"
+					+ "  FROM (\r\n"
+					+ "    SELECT *\r\n"
+					+ "    FROM tblvetqna\r\n"
+					+ "    ORDER BY vq_seq DESC\r\n"
+					+ "  ) t\r\n"
+					+ ") i\r\n"
+					+ "WHERE r BETWEEN ? AND ?";
 			
 			int offset = (currentPage - 1) * itemsPerPage;
 			
@@ -491,6 +498,8 @@ public class VetQnADAO {
 				dto.setVq_content(rs.getString("vq_content"));
 				dto.setVq_regdate(rs.getDate("vq_regdate"));
 				dto.setVq_readcount(rs.getString("vq_readcount"));
+				
+				dto.setAnswer_cnt(rs.getString("answer_cnt"));
 				
 				list.add(dto);
 				
@@ -545,6 +554,61 @@ public class VetQnADAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return null;
+	}
+
+	public List<VetQnAListDTO> indexList() {
+		
+			try {
+			
+			List<VetQnAListDTO> vlist = new ArrayList<VetQnAListDTO>();
+			
+			String sql = "select v.vq_seq as vq_seq,\r\n"
+					+ "case v.vq_prefix\r\n"
+					+ "when 1 then '강아지'\r\n"
+					+ "when 2 then '고양이'\r\n"
+					+ "when 3 then '기타'\r\n"
+					+ "end as vq_prefix,\r\n"
+					+ "v.vq_subject, to_char(v.vq_regdate, 'yyyy-mm-dd') as vq_regdate, v.vq_readcount,\r\n"
+					+ "u.user_id, u.user_nickname, u.user_pic,\r\n"
+					+ "(select count(*) from tblVQReply vr where vr.vq_seq = v.vq_seq) as answer_cnt\r\n"
+					+ "from tblVetQnA v \r\n"
+					+ "inner join tblUser u \r\n"
+					+ "on v.vq_writer = u.user_id \r\n"
+					+ "order by vq_regdate desc";
+			
+			stat = conn.createStatement();
+			
+			rs = stat.executeQuery(sql);
+			
+			int num = 0;
+			
+			while (rs.next() && num < 5) {
+				
+				num++;
+				
+				VetQnAListDTO dto = new VetQnAListDTO();
+				
+				dto.setVq_seq(rs.getString("vq_seq"));
+				dto.setVq_prefix(rs.getString("vq_prefix"));
+				dto.setVq_subject(rs.getString("vq_subject"));
+				dto.setVq_regdate(rs.getDate("vq_regdate"));
+				dto.setVq_writer(rs.getString("user_id"));
+				dto.setVq_nickname(rs.getString("user_nickname"));
+				dto.setVq_pic(rs.getString("user_pic"));
+				dto.setVq_readcount(rs.getString("vq_readcount"));
+				dto.setAnswer_cnt(rs.getString("answer_cnt"));
+				
+				vlist.add(dto);
+			}
+			
+			return vlist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		return null;
 	}

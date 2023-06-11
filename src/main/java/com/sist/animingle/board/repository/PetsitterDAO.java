@@ -488,4 +488,50 @@ public class PetsitterDAO {
 		return 0;
 	}
 
+	public List<PetsitterDTO> indexList() {
+		
+			try {
+			
+			List<PetsitterDTO> plist = new ArrayList<PetsitterDTO>();
+			
+			String sql = "select psr.psr_seq as psr_seq,\r\n"
+					+ "psr.psr_subject, to_char(psr.psr_regdate, 'yyyy-mm-dd') as psr_regdate,\r\n"
+					+ "u.user_id, u.user_nickname, u.user_pic\r\n"
+					+ "from tblPSRecruitment psr \r\n"
+					+ "inner join tblUser u \r\n"
+					+ "on psr.psr_writer = u.user_id \r\n"
+					+ "order by psr_regdate desc";
+			
+			stat = conn.createStatement();
+			
+			rs = stat.executeQuery(sql);
+			
+			int num = 0;
+			
+			while (rs.next() && num < 5) {
+				
+				num++;
+				
+				PetsitterDTO dto = new PetsitterDTO();
+				
+				dto.setPsr_seq(rs.getString("psr_seq"));
+				dto.setPsr_subject(rs.getString("psr_subject"));
+				dto.setPsr_regdate(rs.getDate("psr_regdate"));
+				dto.setPsr_writer(rs.getString("user_id"));
+				dto.setUser_nickname(rs.getString("user_nickname"));
+				dto.setUser_pic(rs.getString("user_pic"));
+				
+				plist.add(dto);
+			}
+			
+			return plist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+
 }

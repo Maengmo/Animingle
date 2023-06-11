@@ -40,6 +40,7 @@
 	                        <div>본문</div>
 	                        <div id="toolbar-container"></div>
 	                       	<div id="editor">
+	                       		${vq_content }
 	                       	</div>
 	                        <textarea style="display:none;" name="content" id="editor1"></textarea>
 	                    </div>

@@ -58,6 +58,7 @@ public class WagleView extends HttpServlet {
 		
 	    HashMap<String, String> usermap = new HashMap<String,String>();
 	    usermap = dao.getuserpic(id);
+	    System.out.println(usermap.toString());
 		
 		
 		map.put("ccnt", ccnt);
@@ -66,6 +67,7 @@ public class WagleView extends HttpServlet {
 		req.setAttribute("clist", clist);
 		req.setAttribute("map", map);
 		req.setAttribute("page", page);
+		req.setAttribute("usermap", usermap);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/community/wagleview.jsp");
 		dispatcher.forward(req, resp);
