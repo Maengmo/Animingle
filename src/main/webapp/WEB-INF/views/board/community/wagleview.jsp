@@ -28,7 +28,7 @@
 				<c:if test="${page != null && page != ''}">
 				<div class="a-div">
 					<a href="/animingle/board/waglelist.do?page=${page}" class="a-back"> 
-					<span class="material-symbols-outlined">arrow_back</span> 
+					<span id="arrow" class="material-symbols-outlined">arrow_back</span> 
 					<span class="back-to-list">목록으로 돌아가기</span>
 					</a>
 				</div>
@@ -36,7 +36,7 @@
 				<c:if test="${page == null || page == ''}">
 				<div class="a-div">
 					<a href="/animingle/board/waglelist.do" class="a-back"> 
-					<span class="material-symbols-outlined">arrow_back</span> 
+					<span id="arrow" class="material-symbols-outlined">arrow_back</span> 
 					<span class="back-to-list">목록으로 돌아가기</span>
 					</a>
 				</div>

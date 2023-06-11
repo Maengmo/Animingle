@@ -128,10 +128,18 @@
 									maxlength="1000" readonly="readonly" placeholder="답변은 수의사만 가능합니다."></textarea>
 								<div class="character-count">0/1000</div>
 							</div>
-							<div class="comment-add-btn-box">
-								<input type="button" value="목록보기"
-									onclick="location.href='/animingle/board/vetqnalist.do?page=${ page }'">
-							</div>
+							<c:if test="${ !(page != null) }">
+								<div class="comment-add-btn-box">
+									<input type="button" value="목록보기"
+										onclick="location.href='/animingle/board/vetqnalist.do'">
+								</div>
+							</c:if>
+							<c:if test="${ page != null }">
+								<div class="comment-add-btn-box">
+									<input type="button" value="목록보기"
+										onclick="location.href='/animingle/board/vetqnalist.do?page=${page}'">
+								</div>
+							</c:if>
 						</c:if>
 						<input name="vq_seq" type="hidden" value="${ vq_seq }">
 					</form>

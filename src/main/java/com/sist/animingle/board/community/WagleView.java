@@ -56,7 +56,8 @@ public class WagleView extends HttpServlet {
 		
 		
 		
-		map.put("user_pic", dao.getuserpic(id).toString());
+	    HashMap<String, String> usermap = new HashMap<String,String>();
+	    usermap = dao.getuserpic(id);
 		
 		
 		map.put("ccnt", ccnt);

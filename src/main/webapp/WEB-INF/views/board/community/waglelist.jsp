@@ -31,14 +31,18 @@
                        <button onclick="location.href='/animingle/board/waglelist.do';">전체보기</button>
                </div>
                <form id="searchform" action="/animingle/board/waglelist.do" method="GET">
-                  <div class="search-box">
-                       <input class="content-search" type="text" placeholder="검색" name="searchtext">
-                       <input type="hidden" name="prefix" value="${prefix}">
-                       <span class="material-symbols-outlined">
-                     search
-                  </span>
-                  </div>
-                  
+					<div class="search-box">
+						<input class="content-search" type="text" placeholder="검색" name="searchtext">
+						<c:if test="${ prefix != null }">
+							<input type="hidden" name="prefix" value="${prefix}">
+						</c:if>
+						<c:if test="${ prefix == null }">
+							<input type="hidden" name="page" value="1">
+						</c:if>
+						<span class="material-symbols-outlined">
+							search
+						</span>
+					</div>
                </form>
             </div>
             <c:forEach items="${list}" var="dto">
@@ -84,6 +88,10 @@
                  	<c:if test="${ searchtext == null && prefix == null }">
                     <li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
                        onclick="location.href='/animingle/board/waglelist.do?page=${pageNumber}'">${ pageNumber }</li>
+                    </c:if>
+                    <c:if test="${ searchtext != null && prefix == null }">
+                    	<li class="page-item ${pageNumber eq currentPage ? 'active' : ''}"
+                       		onclick="location.href='/animingle/board/waglelist.do?page=${pageNumber}&searchtext=${searchtext}'">${ pageNumber }</li>
                     </c:if>
                  </c:forEach>
               </ul>

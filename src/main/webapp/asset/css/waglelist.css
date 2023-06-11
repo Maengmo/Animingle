@@ -190,6 +190,11 @@
 	
 }
 
+.paging span:hover {
+	color: tomato;
+	cursor: pointer;
+}
+
 .paging ul {
 	list-style-type : none;
 	display : inline-block;
@@ -207,7 +212,7 @@
 
 .paging li:hover {
 	cursor : pointer;
-
+	color: tomato;
 }
 
 .paging span {

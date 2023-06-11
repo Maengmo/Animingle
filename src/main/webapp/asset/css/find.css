@@ -330,8 +330,17 @@
 		font-weight : bold;
 	}
 	
-	.material-symbols-outlined {
+	#arrow {
 		font-size : 22px !important;
+		color: #5C5C5C;
+	}
+	
+	.a-back:hover #arrow {
+		color: #0256AA;
+	}
+	
+	.a-back:hover .back-to-list {
+		color: #0256AA;
 	}
 		
 	.find-view-writer {

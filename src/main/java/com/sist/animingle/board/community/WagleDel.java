@@ -29,9 +29,9 @@ public class WagleDel extends HttpServlet {
 		
 		result = dao.delAllComment(seq);
 		
-		result *= dao.wagleDel(seq); 
+		result = dao.wagleDel(seq); 
 		
-		if (result >= 1) {
+		if (result == 1) {
 			resp.sendRedirect("/animingle/board/waglelist.do");
 		} else {
 			PrintWriter writer = resp.getWriter();

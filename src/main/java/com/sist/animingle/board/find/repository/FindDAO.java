@@ -399,6 +399,57 @@ public class FindDAO {
 		return 0;
 	}
 
-	
+	public List<FindDTO> indexList() {
+		
+		List<FindDTO> flist = new ArrayList<FindDTO>();
+		
+		try {
+			
+			String sql = "select \r\n"
+					+ "    ff_seq as ff_seq,\r\n"
+					+ "    user_nickname as user_nickname,\r\n"
+					+ "    ff_writer as ff_writer,\r\n"
+					+ "    ff_prefix as ff_prefix,\r\n"
+					+ "    ff_subject as ff_subject,\r\n"
+					+ "    to_char(ff_regdate, 'yyyy-mm-dd') as ff_regdate,\r\n"
+					+ "    ff_readcount as ff_readcount,\r\n"
+					+ "    (select count(*) from tblffcomment where ff_seq = f.ff_seq) as ccnt\r\n"
+					+ "from tblfindfamily f\r\n"
+					+ "    inner join tbluser u\r\n"
+					+ "        on f.ff_writer = u.user_id";
+					
+			stat = conn.createStatement();
+			
+			rs = stat.executeQuery(sql);
+			
+			int num = 0;
+			
+			while(rs.next() && num < 5) {
+				
+					num++;
+					
+					FindDTO dto = new FindDTO();
+					
+					dto.setSeq(rs.getString("ff_seq"));
+					dto.setNickname(rs.getString("user_nickname"));
+					dto.setWriter(rs.getString("ff_writer"));
+					dto.setPrefix(rs.getInt("ff_prefix"));
+					dto.setSubject(rs.getString("ff_subject"));
+					dto.setRegdate(rs.getString("ff_regdate"));
+					dto.setReadcount(rs.getInt("ff_readcount"));
+					dto.setFfc_cnt(rs.getInt("ccnt"));
+					
+					flist.add(dto);
+				
+			}
+			
+			return flist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	
 }
