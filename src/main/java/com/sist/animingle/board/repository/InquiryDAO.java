@@ -259,7 +259,7 @@ public class InquiryDAO {
 	}
 	
 	
-public List<InquiryDTO> loadDashboard2() {
+	public List<InquiryDTO> loadDashboard2() {
 		
 		try {
 
@@ -298,9 +298,94 @@ public List<InquiryDTO> loadDashboard2() {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		return null;
+	}
+
+	
+	public List<InquiryDTO> getCountDashboard() {
 		
+		try {
+
+			String sql = "select * from \r\n"
+					+ "    (select in_regdate as regdate1, count(*) as inquiryCnt1 from tblInquiry where in_prefix = 1 group by in_regdate order by regdate1) tbl1 \r\n"
+					+ "    right outer join (select in_regdate as regdate2 , count(*) as inquiryCnt2 from tblInquiry where in_prefix = 2 group by in_regdate order by regdate2) tbl2\r\n"
+					+ "    on tbl1.regdate1 = tbl2.regdate2\r\n"
+					+ "    order by tbl2.regdate2";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			List<InquiryDTO> list = new ArrayList<InquiryDTO>();
+
+			while (rs.next()) {
+
+				InquiryDTO dto = new InquiryDTO();
+				
+				String regdate = rs.getString("regdate2").substring(0, 10);
+				dto.setIn_regdate(regdate);
+				
+				if (rs.getString("inquiryCnt1") == null) {
+					dto.setCnt1("-");
+				} else {
+					
+					dto.setCnt1(rs.getString("inquiryCnt1"));
+				}
+				
+				dto.setCnt2(rs.getString("inquiryCnt2"));
+				
+				list.add(dto);
+			}
+			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
+		return null;
+	}
+	
+	
+	
+public List<InquiryDTO> getLimitCountDashboard() {
 		
+		try {
+
+			String sql = "select * from (select * from\r\n"
+					+ "(select in_regdate as regdate1, count(*) as inquiryCnt1 from tblInquiry where in_prefix = 1 group by in_regdate order by regdate1) tbl1\r\n"
+					+ " right outer join (select in_regdate as regdate2 , count(*) as inquiryCnt2 from tblInquiry where in_prefix = 2 group by in_regdate order by regdate2) tbl2\r\n"
+					+ "on tbl1.regdate1 = tbl2.regdate2  \r\n"
+					+ "where rownum <= 5 \r\n"
+					+ "order by tbl2.regdate2 desc) r order by r.regdate2 asc";
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			List<InquiryDTO> list = new ArrayList<InquiryDTO>();
+
+			while (rs.next()) {
+
+				InquiryDTO dto = new InquiryDTO();
+				
+				String regdate = rs.getString("regdate2").substring(0, 10);
+				dto.setIn_regdate(regdate);
+				
+				if (rs.getString("inquiryCnt1") == null) {
+					dto.setCnt1("0");
+				} else {
+					
+					dto.setCnt1(rs.getString("inquiryCnt1"));
+				}
+				
+				dto.setCnt2(rs.getString("inquiryCnt2"));
+				
+				list.add(dto);
+			}
+			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return null;
 	}

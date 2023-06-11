@@ -46,7 +46,7 @@
 				</div>
 				<div class="main-content-box">
 					<div class="sub-content-box">
-						<div class="title">신규 가입자 현황</div>
+						<div class="title">문의 내역 그래프</div>
 						<div class="graph-box">
 							<canvas id="myChart"></canvas>
 						</div>
@@ -54,65 +54,24 @@
 				</div>
 				<div class="main-content-box">
 					<div class="sub-content-box">
+						
 						<div class="title">일자별 요약</div>
 						<div class="table-box">
 							<table>
 								<tr>
 									<th>일자</th>
-									<th>방문자</th>
-									<th>가입</th>
 									<th>문의</th>
 									<th>신고</th>
 								</tr>
-								<tr>
-									<td>2023-06-04</td>
-									<td>10</td>
-									<td>3</td>
-									<td>5</td>
-									<td>2</td>
-								</tr>
-								<tr>
-									<td>2023-06-05</td>
-									<td>10</td>
-									<td>3</td>
-									<td>5</td>
-									<td>2</td>
-								</tr>
-								<tr>
-									<td>2023-06-06</td>
-									<td>10</td>
-									<td>3</td>
-									<td>5</td>
-									<td>2</td>
-								</tr>
-								<tr>
-									<td>2023-06-07</td>
-									<td>10</td>
-									<td>3</td>
-									<td>5</td>
-									<td>2</td>
-								</tr>
-								<tr>
-									<td>2023-06-08</td>
-									<td>10</td>
-									<td>3</td>
-									<td>5</td>
-									<td>2</td>
-								</tr>
-								<tr>
-									<td>2023-06-09</td>
-									<td>10</td>
-									<td>3</td>
-									<td>5</td>
-									<td>2</td>
-								</tr>
-								<tr>
-									<td>2023-06-10</td>
-									<td>10</td>
-									<td>3</td>
-									<td>5</td>
-									<td>2</td>
-								</tr>
+								<c:forEach items="${countBoard}" var="dto">
+									<tr>
+										<td>${dto.in_regdate}</td>
+										<td>${dto.cnt1 }</td>	
+										<td>${dto.cnt2 }</td>
+									</tr>
+								</c:forEach>
+								
+							
 							</table>
 						</div>
 					</div>				
@@ -177,39 +136,61 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 	$(document).ready(function() {
+		
+		var label = [];
+		<c:forEach items="${graphCnt}" var="dto">
+	 	 	label.push('${dto.in_regdate}');
+	  	
+	  	</c:forEach>
+		  	
+		var data2 = [];
+		<c:forEach items="${graphCnt}" var="dto">
+	 	 	data2.push('${dto.cnt1}');
+	  	
+	  	</c:forEach>
+	  	
+	  	var data3 = [];
+		<c:forEach items="${graphCnt}" var="dto">
+	 	 	data3.push('${dto.cnt2}');
+	  	
+	  	</c:forEach>
+	  	
+	  	
 	    var ctx = document.getElementById('myChart').getContext('2d');
 	    var myChart = new Chart(ctx, {
 	       type: 'line',
 	       data: {
-	          labels: [
-	        	  '06-04'
-	        	  , '06-05'
-	        	  , '06-06'
-	        	  , '06-07'
-	        	  , '06-08'
-	        	  , '06-09'
-	        	  , '06-10'],
-	          datasets: [{
-	             label: '신규 가입자',
-	             data: [10, 15, 8, 12, 20, 10, 12], 
-				 backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)'
-	  			 ],
-	  			 borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)'
-				 ],
-	             borderWidth: 1 
-	          }]
+	          labels: label,
+	          datasets: [
+	              {
+	                 label: '문의 현황',
+	                 data: data2, 
+	                 backgroundColor: [
+	                    'rgba(255, 99, 132, 0.2)',
+	                    'rgba(54, 162, 235, 0.2)',
+	                    'rgba(255, 206, 86, 0.2)',
+	                    'rgba(75, 192, 192, 0.2)',
+	                    'rgba(153, 102, 255, 0.2)',
+	                    'rgba(255, 159, 64, 0.2)'
+	                 ],
+	                 borderColor: [
+	                    'rgba(255, 99, 132, 1)',
+	                    'rgba(54, 162, 235, 1)',
+	                    'rgba(255, 206, 86, 1)',
+	                    'rgba(75, 192, 192, 1)',
+	                    'rgba(153, 102, 255, 1)',
+	                    'rgba(255, 159, 64, 1)'
+	                 ],
+	                 borderWidth: 1 
+	              },
+	              {
+	                 label: '신고 현황',
+	                 data: data3,
+	                 backgroundColor: 'rgba(255, 205, 86, 0.2)',
+	                 borderColor: 'rgba(255, 205, 86, 1)',
+	                 borderWidth: 1 
+	              }
+	          ]
 	       },
 	       options: {
 	          scales: {
@@ -220,7 +201,7 @@
 	          maintainAspectRatio: false
 	       }
 	    });
-	 });
+	});
 </script>
 </body>
 </html>

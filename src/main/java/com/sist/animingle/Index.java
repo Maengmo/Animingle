@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sist.animingle.board.find.repository.FindDAO;
 import com.sist.animingle.board.find.repository.FindDTO;
+import com.sist.animingle.board.repository.PetsitterDAO;
+import com.sist.animingle.board.repository.PetsitterDTO;
+import com.sist.animingle.board.repository.VetQnADAO;
+import com.sist.animingle.board.repository.VetQnAListDTO;
 import com.sist.animingle.board.repository.WagleDAO;
 import com.sist.animingle.board.repository.WagleDTO;
 
@@ -23,12 +27,19 @@ public class Index extends HttpServlet {
 		
 		WagleDAO wdao = new WagleDAO();
 		FindDAO fdao = new FindDAO();
+		VetQnADAO vdao = new VetQnADAO();
+		PetsitterDAO pdao = new PetsitterDAO();
+		
 		
 		List<WagleDTO> wlist = wdao.indexList();
 		List<FindDTO> flist = fdao.indexList();
+		List<VetQnAListDTO> vlist = vdao.indexList();
+		List<PetsitterDTO> plist = pdao.indexList();
 		
 		req.setAttribute("wlist", wlist);
 		req.setAttribute("flist", flist);
+		req.setAttribute("vlist", vlist);
+		req.setAttribute("plist", plist);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/index.jsp");
 		dispatcher.forward(req, resp);

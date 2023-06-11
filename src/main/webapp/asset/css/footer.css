@@ -12,6 +12,7 @@
 	height: 150px;
 	font-size: 50px;
 	font-family: "GoryeongStrawberry";
+	flex-direction: column;
 	/* border-top: 2px solid #0256aa; */
 	
 	color: #0256aa;
@@ -19,11 +20,29 @@
     /* background-clip: text; */
     /* -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
+    margin: 100px 0;
+}
+
+.finfo {
+	
+	font-size: 1.5rem;
+	font-family: SUITE-Regular;
+	
+}
+
+.finfo-box {
+	padding-top: 50px;
+	height: 250px;
+	display: flex;
+	/* flex-direction: column; */
 }
 
 @media (max-width: 1280px) {
 	.footer {
 		font-size: 70px;
+	}
+	.finfo-box {
+		flex-direction: column;
 	}
 }
 

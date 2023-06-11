@@ -15,5 +15,8 @@ public class VetQnAListDTO {
 	private Date vq_regdate;		//작성 날짜
 	private String vq_readcount;	//조회수
 	private String answer_cnt;
+	
+	private String vq_pic;
+	private String vq_nickname;
 
 }

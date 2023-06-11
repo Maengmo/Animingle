@@ -1,6 +1,7 @@
 package com.sist.animingle.user;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,8 +19,18 @@ public class Admin extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		
 		
 		InquiryDAO dao = new InquiryDAO();
+		
+		//일자별 문의, 신고 현황 
+		List<InquiryDTO> countBoard = dao.getCountDashboard();
+		req.setAttribute("countBoard", countBoard);
+		
+		//그래프에 띄울 문의, 신고 현황 갯수
+		List<InquiryDTO> graphCnt = dao.getLimitCountDashboard();
+		req.setAttribute("graphCnt", graphCnt);
 		
 		//문의 현황, 신고 현황 갯수
 		int count1 = dao.getInquiryCount_1();
@@ -41,6 +52,7 @@ public class Admin extends HttpServlet {
 	    
 		List<InquiryDTO> list2 = dao.loadDashboard2();
 		req.setAttribute("list2", list2);
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/admin.jsp");
 		dispatcher.forward(req, resp);

@@ -12,4 +12,8 @@ public class InquiryDTO {
 	private String in_regdate;
 	private String nickname;
 	private String answerCnt;
+	
+	//일자별 갯수
+	private String cnt1;
+	private String cnt2;
 }

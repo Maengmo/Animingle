@@ -20,7 +20,7 @@
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 12px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
-    .info .body {position: relative;overflow: hidden; padding-left: 4px;}
+    .info .body {position: relative; overflow-y: auto; padding: 5px; width: 200px; height: 120px;}
     .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
     .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
     .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
@@ -179,15 +179,26 @@
 		    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
 		    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 		    (function(marker, infowindow) {
+		    	
+		    	var clicked = false;
 		        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-		        kakao.maps.event.addListener(marker, 'mouseover', function() {
-		            infowindow.open(map, marker);
+		        kakao.maps.event.addListener(marker, 'click', function() {
+		            if (clicked == false) {
+			            infowindow.open(map, marker);
+			            clicked = true;
+		            } else {
+			        	infowindow.close();
+		        		clicked = false;	
+		            }
+		            
+
 		        });
 
 		        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-		        kakao.maps.event.addListener(marker, 'mouseout', function() {
-		            infowindow.close();
-		        });
+/* 		        kakao.maps.event.addListener(marker, 'click', function() {
+
+		            
+		        }); */
 		    })(marker, infowindow);
 			/* var marker = new kakao.maps.Marker({
 				map: map,

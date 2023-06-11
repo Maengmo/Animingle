@@ -95,7 +95,28 @@
 							수의사QnA
 						</div>
 						<div class="sub-box-list-content">
-							123
+							<c:forEach items="${ vlist }" var="vdto">
+								<div class="sub-content-box" onclick="location.href='/animingle/board/vetqnaview.do?vq_seq=${vdto.vq_seq}&page=1'">
+									<div class="sub-content-info">
+										<div class="sub-user-info">
+											<img src="/animingle/asset/pic/animingle.png">
+											<div>
+												${ vdto.vq_nickname } <small>(${ vdto.vq_writer })</small>
+											</div>
+										</div>
+										<div class="date">${ vdto.vq_regdate }</div>
+									</div>
+									<div class="sub-content-subject">
+										<div class="title">[${ vdto.vq_prefix }]${ vdto.vq_subject }</div>
+										<div class="content-views">
+											<span class="material-symbols-outlined">visibility</span> 
+											<span class="views-count">${ vdto.vq_readcount }</span>
+											<span class="material-symbols-outlined">chat</span> 
+											<span class="views-count">${ vdto.answer_cnt }</span>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -139,7 +160,24 @@
 							펫시터
 						</div>
 						<div class="sub-box-list-content">
-							123
+							<c:forEach items="${ plist }" var="pdto">
+								<div class="sub-content-box" onclick="location.href='/animingle/board/petsitterview.do?psr_seq=${pdto.psr_seq}&page=1'">
+									<div class="sub-content-info">
+										<div class="sub-user-info">
+											<img src="/animingle/asset/pic/animingle.png">
+											<div>
+												${ pdto.user_nickname } <small>(${ pdto.psr_writer })</small>
+											</div>
+										</div>
+										<div class="date">${ pdto.psr_regdate }</div>
+									</div>
+									<div class="sub-content-subject">
+										<div class="title">${ pdto.psr_subject }</div>
+										<div class="content-views">
+										</div>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
