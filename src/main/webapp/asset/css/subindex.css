@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mycontainer-sub-box {
+	width: 620px;
+	margin: 10px;
+}
+
+.sub-box {
+	height: 553px;	
+	border: 2px solid #aaa;
+	border-radius: 10px;
+	box-shadow: 7px 7px #D1E1F0;
+	margin-bottom: 20px;
+}
+
+.sub-box-list-tile {
+	font-family: BMJUA;
+	height: 70px;
+	font-size: 2rem;
+	border-bottom: 2px solid #aaa;
+	text-align: center;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #0256aa;
+	color: white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px; 
+}
+
+.sub-box-list-content {
+	height: 50px;	
+}
+
+.sub-content-box {
+	padding: 10px;
+	border-bottom: 1px solid #aaa;
+}
+
+.sub-content-box {
+	cursor: pointer;
+}
+
+.sub-content-box:hover .title {
+	color: tomato;
+}
+
+.sub-content-box:last-child {
+	border-bottom: 0px;
+}
+
+.sub-content-info {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.sub-user-info {
+	display: flex;
+	align-items: center;
+}
+
+.sub-content-info img {
+	border: 1px solid #aaa;
+	width: 35px;
+	object-fit: cover;
+	margin-right: 10px;
+	border-radius: 50%;
+}
+
+.sub-content-subject {
+	font-size: 20px;
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.sub-content-subject div:nth-child(1) {
+	font-weight: bold;
+}
+
+.content-views {
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	color: #555;
+}
+
+.content-views .material-symbols-outlined {
+	font-size: 22px !important;
+	color: #555;
+}

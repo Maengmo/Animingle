@@ -22,29 +22,30 @@
          </div>
          <div class="maincontent">
          	<div class="top-title">
-            <div class="addtitle">와글와글</div>
+          	  <div class="addtitle">와글와글</div>
             </div>
             <div class="wagleform">
-            	<div>말머리</div>
-					<select name="waglesub">
-					    <option value=1>일상</option>
-					    <option value=2>정보 공유</option>
-					    <option value=3>나눔</option>
-					</select>
-            	<div>제목</div>
-            	<input class="title-box" type="text" placeholder="제목을 입력해주세요.">
-      			<div class="main-content-sel3">
-                	<div>본문</div>
-                    <div id="toolbar-container"></div>
-                    	<div id="editor">
-                    	</div>
-                    <textarea style="display:none;" name="content" id="editor1"></textarea>
-                </div>
-            </div>
-            
-            <div class="waglesubmit">
-	            <button type="button" onclick="location.href='http://localhost:8090/animingle/board/waglelist.do'">취 소</button>
-	            <button type="button" onclick="location.href='#'">등 록</button>
+	            <form action="/animingle/board/wagleadd.do" method="POST">
+	            	<div>말머리</div>
+						<select name="waglesub">
+						    <option value=1>일상</option>
+						    <option value=2>정보 공유</option>
+						    <option value=3>나눔</option>
+						</select>
+	            	<div>제목</div>
+	            	<input class="title-box" type="text" name="title" placeholder="제목을 입력해주세요.">
+	      			<div class="main-content-sel3">
+	                	<div>본문</div>
+	                    <div id="toolbar-container"></div>
+	                    	<div id="editor">
+	                    	</div>
+	                    <textarea style="display:none;" name="content" id="editor1"></textarea>
+	                </div>
+		            <div class="waglesubmit">
+			            <button type="button" onclick="location.href='http://localhost:8090/animingle/board/waglelist.do'">취 소</button>
+			            <button type="submit">등 록</button>
+		            </div>
+	            </form>
             </div>
          </div>
          <div class="rightbar">

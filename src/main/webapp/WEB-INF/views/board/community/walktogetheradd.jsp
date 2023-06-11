@@ -77,7 +77,7 @@
     <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 
 <script src="/animingle/asset/ckeditor/build/ckeditor.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=   6d88daddca380ab9ff45e48fab144915"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d88daddca380ab9ff45e48fab144915"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script>

@@ -104,9 +104,18 @@
 	color: #777 !important;
 }
 
-.material-symbols-outlined {
-	font-size: 20px !important;
+#arrow {
+	font-size: 22px !important;
 	padding-top: 10px;
+	color: #5C5C5C;
+}
+
+.a-back:hover:hover .back-to-list {
+	color: #0256aa;
+}
+
+.a-back:hover #arrow {
+	color: #0256aa !important;
 }
 
 .btn-div {
@@ -185,7 +194,7 @@
 	font-family: "SUITE-Regular"; 
 	font-size: 20px;
 	font-weight: 300;
-	border-bottom: 2px solid #AAAAAA;
+	border-bottom: 1px solid #AAAAAA;
 	padding-bottom: 8px;
 	margin-bottom: 20px;
 }
@@ -222,7 +231,7 @@
 
 .comment-text {
 	width: 93%;
-	border: 2px solid #AAAAAA;
+	border: 1px solid #AAAAAA;
 	margin-left: 60px;
 	padding: 20px;
 	border-radius: 10px;
@@ -296,6 +305,7 @@
 	height: 80px;
 	padding: 10px;
 	outline-color: #aaa;
+	border: 1px solid #AAAAAA;	
 }
 
 .comment-add {

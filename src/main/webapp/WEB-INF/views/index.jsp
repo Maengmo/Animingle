@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 	<link rel="stylesheet" href="/animingle/asset/css/index.css">
+	<link rel="stylesheet" href="/animingle/asset/css/subindex.css">
 </head>
 <body>
 
@@ -58,17 +59,92 @@
 			</button>
 		</div>
 		<div class="mycontainer">
-			<div class="leftbar">
-				<!-- 왼쪽 사이드바 입니다. -->
+			<div class="mycontainer-sub-box">
+				<div>
+					<div class="sub-box">
+						<div class="sub-box-list-tile">
+							와글와글
+						</div>
+						<div class="sub-box-list-content">
+							<c:forEach items="${ wlist }" var="wdto">
+								<div class="sub-content-box" onclick="location.href='/animingle/board/wagleview.do?&seq=${wdto.wg_seq}'">
+									<div class="sub-content-info">
+										<div class="sub-user-info">
+											<img src="/animingle/asset/pic/animingle.png">
+											<div>
+												${ wdto.wg_nickname } <small>(${ wdto.wg_writer })</small>
+											</div>
+										</div>
+										<div class="date">${ wdto.wg_regdate }</div>
+									</div>
+									<div class="sub-content-subject">
+										<div class="title">[${ wdto.wg_prefix }]${ wdto.wg_subject }</div>
+										<div class="content-views">
+											<span class="material-symbols-outlined">visibility</span> 
+											<span class="views-count">${ wdto.wg_readcount }</span>
+											<span class="material-symbols-outlined">chat</span> 
+											<span class="views-count">${ wdto.wg_ccnt }</span>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+					<div class="sub-box">
+						<div class="sub-box-list-tile">
+							수의사QnA
+						</div>
+						<div class="sub-box-list-content">
+							123
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="maincontent">
-				
-			</div>
-			<div class="rightbar">
-				<!-- 오른쪽 사이드바 입니다. -->
+			<div class="mycontainer-sub-box">
+				<div>
+					<div class="sub-box">
+						<div class="sub-box-list-tile">
+							우리 가족을 찾아주세요
+						</div>
+						<c:forEach items="${ flist }" var="fdto">
+							<div class="sub-content-box" onclick="location.href='/animingle/board/findview.do?&seq=${fdto.seq}&page=1'">
+								<div class="sub-content-info">
+									<div class="sub-user-info">
+										<img src="/animingle/asset/pic/animingle.png">
+										<div>
+											${ fdto.nickname } <small>(${ fdto.writer })</small>
+										</div>
+									</div>
+									<div class="date">${ fdto.regdate }</div>
+								</div>
+								<div class="sub-content-subject">
+									<c:if test="${ fdto.prefix == 1 }">
+										<div class="title">[주인 찾아요]${ fdto.subject }</div>
+									</c:if>
+									<c:if test="${ fdto.prefix == 2 }">
+										<div class="title">[펫 찾아요]${ fdto.subject }</div>
+									</c:if>
+									<div class="content-views">
+										<span class="material-symbols-outlined">visibility</span> 
+										<span class="views-count">${ fdto.readcount }</span>
+										<span class="material-symbols-outlined">chat</span> 
+										<span class="views-count">${ fdto.ffc_cnt }</span>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+					<div class="sub-box">
+						<div class="sub-box-list-tile">
+							펫시터
+						</div>
+						<div class="sub-box-list-content">
+							123
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-			
 	</section>
 	<%@ include file="/WEB-INF/views/inc/footer.jsp" %>
 

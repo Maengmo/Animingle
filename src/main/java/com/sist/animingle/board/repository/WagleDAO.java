@@ -551,7 +551,7 @@ public class WagleDAO {
 		return list;
 	}
 
-	public Map<String, String> getuserpic(String id) {
+	public HashMap<String, String> getuserpic(String id) {
 		
 		
 		HashMap<String, String> map = new HashMap<String,String>();
@@ -586,6 +586,88 @@ public class WagleDAO {
 		      }
 		      
 		      return null;
+	}
+
+	public int wagleAdd(WagleDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblWagle "
+					+ "(wg_seq, wg_writer, wg_prefix, wg_subject, wg_content, wg_regdate, wg_readcount) "
+					+ "values (wg_seq.nextVal, ?, ?, ?, ?, sysdate, 0)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getWg_writer());
+			pstat.setString(2, dto.getWg_prefix());
+			pstat.setString(3, dto.getWg_subject());
+			pstat.setString(4, dto.getWg_content());
+			
+			int result = pstat.executeUpdate();
+			
+			pstat.close();
+			conn.close();
+			
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public List<WagleDTO> indexList() {
+		
+		try {
+			
+			List<WagleDTO> wlist = new ArrayList<WagleDTO>();
+			
+			String sql = "select w.wg_seq as wg_seq,\r\n"
+					+ "			case w.wg_prefix\r\n"
+					+ "			when 1 then '일상'\r\n"
+					+ "			when 2 then '정보공유'\r\n"
+					+ "			when 3 then '나눔'\r\n"
+					+ "			end as wg_prefix,\r\n"
+					+ "			w.wg_subject, to_char(w.wg_regdate, 'yyyy-mm-dd') as wg_regdate, w.wg_readcount,\r\n"
+					+ "			u.user_id, u.user_nickname, u.user_pic,\r\n"
+					+ "			(select count(*) from tblWagleComment wc where wc.wg_seq = w.wg_seq) as wg_ccnt\r\n"
+					+ "			from tblWagle w \r\n"
+					+ "			inner join tblUser u \r\n"
+					+ "			on w.wg_writer = u.user_id \r\n"
+					+ "			order by wg_regdate desc";
+			
+			stat = conn.createStatement();
+			
+			rs = stat.executeQuery(sql);
+			
+			int num = 0;
+			
+			while (rs.next() && num < 5) {
+				
+				num++;
+				
+				WagleDTO dto = new WagleDTO();
+				
+				dto.setWg_seq(rs.getInt("wg_seq"));
+				dto.setWg_prefix(rs.getString("wg_prefix"));
+				dto.setWg_subject(rs.getString("wg_subject"));
+				dto.setWg_regdate(rs.getString("wg_regdate"));
+				dto.setWg_writer(rs.getString("user_id"));
+				dto.setWg_nickname(rs.getString("user_nickname"));
+				dto.setUser_pic(rs.getString("user_pic"));
+				dto.setWg_readcount(rs.getInt("wg_readcount"));
+				dto.setWg_ccnt(rs.getInt("wg_ccnt"));
+				
+				wlist.add(dto);
+			}
+			
+			return wlist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 	

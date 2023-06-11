@@ -109,10 +109,11 @@
 		        </c:if>
 	         </div>
          </div>
+      </div>
          <div class="rightbar">
             <!-- 오른쪽 사이드바 입니다. -->
          </div>
-      </div>
+     </div>
          
    </section>
    <%@ include file="/WEB-INF/views/inc/footer.jsp" %>
