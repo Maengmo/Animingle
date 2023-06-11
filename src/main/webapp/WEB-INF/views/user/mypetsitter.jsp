@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>펫시터 모집 내역</title>
+	<title>Animingle</title>
 	<%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 	<link rel="stylesheet" href="/animingle/asset/css/mymenu.css">
 	<link rel="stylesheet" href="/animingle/asset/css/mypetsitter.css">

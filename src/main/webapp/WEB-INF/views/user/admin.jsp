@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-   <title>Insert title here</title>
+   <title>Animingle</title>
    <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
    <link rel="stylesheet" href="/animingle/asset/css/index.css">
    <link rel="stylesheet" href="/animingle/asset/css/admin.css">
