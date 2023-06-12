@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>병원/약국 찾기</title>
+<title>Animingle</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp"%>
 <link rel="stylesheet" href="/animingle/asset/css/index.css">
 <link rel="stylesheet" href="/animingle/asset/css/medicalview.css">
