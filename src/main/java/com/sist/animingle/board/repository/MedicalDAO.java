@@ -146,10 +146,9 @@ public class MedicalDAO {
 				dto.setHr_writer(rs.getString("hr_writer"));
 				dto.setHr_rate(rs.getString("hr_rate"));
 				dto.setHr_content(rs.getString("hr_content"));
-				dto.setHr_regdate(rs.getString("hr_regdate"));
+				dto.setHr_regdate(rs.getString("hr_regdate").substring(0, 10));
 				dto.setUser_nickname(rs.getString("user_nickname"));
 				dto.setUser_pic(rs.getString("user_pic"));
-				dto.setHr_regdate(rs.getString("hr_regdate"));
 				
 				rlist.add(dto);
 				
@@ -252,10 +251,9 @@ public class MedicalDAO {
 				dto.setPr_writer(rs.getString("pr_writer"));
 				dto.setPr_rate(rs.getString("pr_rate"));
 				dto.setPr_content(rs.getString("pr_content"));
-				dto.setPr_regdate(rs.getString("pr_regdate"));
+				dto.setPr_regdate(rs.getString("pr_regdate").substring(0, 10));
 				dto.setUser_nickname(rs.getString("user_nickname"));
 				dto.setUser_pic(rs.getString("user_pic"));
-				dto.setPr_regdate(rs.getString("pr_regdate"));
 				
 				plist.add(dto);
 				

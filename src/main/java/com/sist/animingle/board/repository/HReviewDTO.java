@@ -1,5 +1,7 @@
 package com.sist.animingle.board.repository;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
