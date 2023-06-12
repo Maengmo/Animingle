@@ -84,6 +84,7 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/animingle/asset/js/petsitteradd.js"></script>
+<script src="/animingle/asset/js/ckedit.js"></script>
 <script>
 
 </script>

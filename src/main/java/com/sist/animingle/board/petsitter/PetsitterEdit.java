@@ -52,8 +52,10 @@ public class PetsitterEdit extends HttpServlet {
     	String psr_region = req.getParameter("address");
     	String psr_fromdate = req.getParameter("start-date");
     	String psr_todate = req.getParameter("end-date");
-    	String psr_content = req.getParameter("text");
+    	String psr_content = req.getParameter("content");
     	String page = req.getParameter("page");
+    	
+    	System.out.println(psr_content);
     	
     	PetsitterAddDTO dto = new PetsitterAddDTO();
     	dto.setPsr_writer(psr_writer);
