@@ -44,7 +44,7 @@
 				<div class="content-box">
 					<div class="content-top">
 						<div class="user-profile">
-							<img src="/animingle/asset/pic/${dto.user_pic}"	class="profile-img" id="profile-img"> 
+							<img src="/animingle/asset/pic/userpic/${dto.user_pic}"	class="profile-img" id="profile-img"> 
 							<span class="item-id">${dto.wg_nickname}(${dto.wg_writer})</span>
 						</div>
 						<div class="content-top2">
@@ -81,7 +81,7 @@
 						<c:forEach items="${clist}" var="cdto">
 							<div class="comment-view">
 								<div class="comment-image">
-									<img src="/animingle/asset/pic/${cdto.user_pic}">
+									<img src="/animingle/asset/pic/userpic/${cdto.user_pic}">
 								</div>
 								<div class="comment">
 									<div class="comment-info">
@@ -105,7 +105,7 @@
 							<form method="POST" action="/animingle/board/waglecommentadd.do">
 								<div class="comment-add">
 									<div class="comment-image">
-										<img src="/animingle/asset/pic/${usermap.userpic}">
+										<img src="/animingle/asset/pic/userpic/${usermap.userpic}">
 									</div>
 									<div class="main-content-sel3">
 										<textarea name="content" id="editor"

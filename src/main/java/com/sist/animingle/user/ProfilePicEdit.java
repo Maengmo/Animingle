@@ -55,10 +55,10 @@ public class ProfilePicEdit extends HttpServlet {
 
 		
 		//파일 수정 시 원래 있던 파일 삭제 
-		if (userpic != "") {
-			File file = new File(req.getRealPath("/asset/pic/userpic") + "\\" + oldpic);
-			file.delete();
-		}
+		/*
+		 * if (userpic != "") { File file = new
+		 * File(req.getRealPath("/asset/pic/userpic") + "\\" + oldpic); file.delete(); }
+		 */
 
 		
 		UserDAO dao = new UserDAO();

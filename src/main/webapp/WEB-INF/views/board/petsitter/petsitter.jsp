@@ -54,7 +54,7 @@
 		            <div class="item-wrap">
 		            	<div class="item-header">
 		            		<div>
-			            		<img src="/animingle/asset/pic/${ dto.user_pic }" alt="프로필이미지" class="profile-img" id="profile-img"> 
+			            		<img src="/animingle/asset/pic/userpic/${ dto.user_pic }" alt="프로필이미지" class="profile-img" id="profile-img"> 
 			            		<span class="item-id">${ dto.user_nickname }(${ dto.psr_writer })</span>
 			            		<span class="item-time">${ dto.psr_regdate }</span>
 			            	</div>

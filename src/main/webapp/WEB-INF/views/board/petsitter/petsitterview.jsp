@@ -34,7 +34,7 @@
 				</div>
 				<div class="content-box">
 					<div>
-	            		<img src="/animingle/asset/pic/${ dto.user_pic }" alt="프로필이미지" class="profile-img" id="profile-img"> 
+	            		<img src="/animingle/asset/pic/userpic/${ dto.user_pic }" alt="프로필이미지" class="profile-img" id="profile-img"> 
 	            		<span class="item-id">${ dto.user_nickname }(${ dto.psr_writer })</span>
 	            	</div>
 	            	
@@ -75,7 +75,7 @@
 			            	<div class="list-item">
 			            		<div class="list-item-div">
 			            			<div class="item-div1">
-			            				<img src="/animingle/asset/pic/${ pdto.user_pic }" alt="프로필이미지" class="applicant-profile-img" id="profile-img"> 
+			            				<img src="/animingle/asset/pic/userpic/${ pdto.user_pic }" alt="프로필이미지" class="applicant-profile-img" id="profile-img"> 
 			            			</div>
 			            			
 			            			<div class="item-div2">

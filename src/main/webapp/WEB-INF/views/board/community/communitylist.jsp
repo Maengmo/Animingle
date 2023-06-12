@@ -38,7 +38,7 @@
 	         	<c:forEach items="${waglelist}" var="dto">
                  <div class="content-list-box" onclick="location.href='/animingle/board/wagleview.do?seq=${dto.wg_seq}';">
 		         	<div class="user-info">
-		            	<img src="/animingle/asset/pic/${dto.user_pic}">
+		            	<img src="/animingle/asset/pic/userpic/${dto.user_pic}">
 		            	<span>${dto.wg_nickname}(${dto.wg_writer})</span>
 		            	<span>${dto.wg_regdate}</span>
 		            </div>
