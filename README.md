@@ -120,7 +120,8 @@
 
 #### 1️⃣1️⃣ 마이페이지
 - 구현 내용 : 마이페이지에는 회원정보, 펫시터 프로필, 펫시터 모집내역, 인증센터, 내 문의사항 기능이 있습니다. 각각의 기능에서도 기본적인 CRUD 기능이 들어 가 있어 다양한 서비스를 제공하고 있습니다.
-![image](https://github.com/Maengmo/Animingle/assets/117720344/0787169e-d1d4-4ab5-857a-d33ad0e0e014)
+![8-1  마이페이지 - 회원 정보](https://github.com/Maengmo/Animingle/assets/117720344/80d5fb61-3b44-458b-9b16-f98960c0fc1b)
+
 
 
 
