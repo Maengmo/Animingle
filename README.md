@@ -1,5 +1,5 @@
 ### 🐶동물과 사람들이 어울리는 공간을 만들어주는 펫 관련 플랫폼😸 <br> 
-![image](https://github.com/Maengmo/Animingle/assets/115568532/1bd4aadc-eb3b-4719-ae68-fefdff8fb1bd)
+![image] (https://github.com/Maengmo/Animingle/assets/115568532/1bd4aadc-eb3b-4719-ae68-fefdff8fb1bd)
 
 <br>
 
