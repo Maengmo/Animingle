@@ -1,6 +1,6 @@
 ----------------------- 테이블 생성 ----------------------------------------
 
--- 관리자
+-- 관리자.
 CREATE TABLE tblAdmin (
 	a_id varchar2(30) PRIMARY KEY,
 	a_pw varchar2(30) NOT NULL,
