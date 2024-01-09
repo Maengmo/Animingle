@@ -1,7 +1,7 @@
 ### 🐶동물과 사람들이 어울리는 공간을 만들어주는 펫 관련 플랫폼😸 <br>   
 ![image]  (https://github.com/Maengmo/Animingle/assets/115568532/1bd4aadc-eb3b-4719-ae68-fefdff8fb1bd) 
   
-<br> 
+<br>  
 
 ## ⁉ 프로그램 소개
   <p>"애니밍글"은 다양한 반려동물 관련 기능을 한 플랫폼에 통합하여 반려동물을 사랑하는 사람들에게 편리한 서비스와 정보를 제공합니다.</p>
